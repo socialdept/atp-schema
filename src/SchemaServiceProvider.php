@@ -7,76 +7,48 @@ use Illuminate\Support\ServiceProvider;
 class SchemaServiceProvider extends ServiceProvider
 {
     /**
-     * Perform post-registration booting of services.
-     *
-     * @return void
+     * Register any package services.
+     */
+    public function register(): void
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/schema.php', 'schema');
+
+        // Singleton bindings will be added in subsequent commits as we create the implementations
+    }
+
+    /**
+     * Bootstrap the application services.
      */
     public function boot(): void
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'social-dept');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'social-dept');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
-        // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
     }
 
     /**
-     * Register any package services.
-     *
-     * @return void
-     */
-    public function register(): void
-    {
-        $this->mergeConfigFrom(__DIR__.'/../config/schema.php', 'schema');
-
-        // Register the service the package provides.
-        $this->app->singleton('schema', function ($app) {
-            return new Schema();
-        });
-    }
-
-    /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return array<string>
      */
-    public function provides()
+    public function provides(): array
     {
         return ['schema'];
     }
 
     /**
      * Console-specific booting.
-     *
-     * @return void
      */
     protected function bootForConsole(): void
     {
-        // Publishing the configuration file.
+        // Publish config
         $this->publishes([
             __DIR__.'/../config/schema.php' => config_path('schema.php'),
-        ], 'schema.config');
+        ], 'schema-config');
 
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/social-dept'),
-        ], 'schema.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/social-dept'),
-        ], 'schema.assets');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/social-dept'),
-        ], 'schema.lang');*/
-
-        // Registering package commands.
-        // $this->commands([]);
+        // Publish stubs (will be created in later commits)
+        $this->publishes([
+            __DIR__.'/../stubs' => base_path('stubs/schema'),
+        ], 'schema-stubs');
     }
 }
