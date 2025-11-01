@@ -18,11 +18,24 @@ class ComplexTypeParser
     protected PrimitiveParser $primitiveParser;
 
     /**
+     * Type parser for resolving references.
+     */
+    protected ?object $typeParser = null;
+
+    /**
      * Create a new ComplexTypeParser.
      */
     public function __construct(?PrimitiveParser $primitiveParser = null)
     {
         $this->primitiveParser = $primitiveParser ?? new PrimitiveParser();
+    }
+
+    /**
+     * Set the type parser for reference resolution.
+     */
+    public function setTypeParser(object $typeParser): void
+    {
+        $this->typeParser = $typeParser;
     }
 
     /**
