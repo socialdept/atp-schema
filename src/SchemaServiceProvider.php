@@ -50,5 +50,13 @@ class SchemaServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../stubs' => base_path('stubs/schema'),
         ], 'schema-stubs');
+
+        // Register commands
+        $this->commands([
+            Console\GenerateCommand::class,
+            Console\ValidateCommand::class,
+            Console\ListCommand::class,
+            Console\ClearCacheCommand::class,
+        ]);
     }
 }
