@@ -18,7 +18,7 @@ class TypeResolutionException extends SchemaException
     /**
      * Create exception for unresolvable reference.
      */
-    public static function unresolv ableReference(string $ref, string $nsid): self
+    public static function unresolvableReference(string $ref, string $nsid): self
     {
         return static::withContext(
             "Cannot resolve reference {$ref} in schema {$nsid}",

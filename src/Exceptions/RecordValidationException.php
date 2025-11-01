@@ -50,4 +50,26 @@ class RecordValidationException extends SchemaException
             ['field' => $field, 'constraint' => $constraint, 'value' => $value]
         );
     }
+
+    /**
+     * Create exception for invalid type.
+     */
+    public static function invalidType(string $path, string $expected, string $actual): self
+    {
+        return static::withContext(
+            "Expected type '{$expected}' at '{$path}' but got '{$actual}'",
+            ['path' => $path, 'expected' => $expected, 'actual' => $actual]
+        );
+    }
+
+    /**
+     * Create exception for invalid value.
+     */
+    public static function invalidValue(string $path, string $reason): self
+    {
+        return static::withContext(
+            "Invalid value at '{$path}': {$reason}",
+            ['path' => $path, 'reason' => $reason]
+        );
+    }
 }
