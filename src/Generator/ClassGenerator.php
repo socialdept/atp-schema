@@ -1,0 +1,319 @@
+<?php
+
+namespace SocialDept\Schema\Generator;
+
+use SocialDept\Schema\Data\LexiconDocument;
+use SocialDept\Schema\Exceptions\GenerationException;
+
+class ClassGenerator
+{
+    /**
+     * Naming converter instance.
+     */
+    protected NamingConverter $naming;
+
+    /**
+     * Type mapper instance.
+     */
+    protected TypeMapper $typeMapper;
+
+    /**
+     * Stub renderer instance.
+     */
+    protected StubRenderer $renderer;
+
+    /**
+     * Create a new ClassGenerator.
+     */
+    public function __construct(
+        ?NamingConverter $naming = null,
+        ?TypeMapper $typeMapper = null,
+        ?StubRenderer $renderer = null
+    ) {
+        $this->naming = $naming ?? new NamingConverter;
+        $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
+        $this->renderer = $renderer ?? new StubRenderer;
+    }
+
+    /**
+     * Generate a complete PHP class from a lexicon document.
+     */
+    public function generate(LexiconDocument $document): string
+    {
+        $nsid = $document->getNsid();
+        $mainDef = $document->getMainDefinition();
+
+        if ($mainDef === null) {
+            throw GenerationException::withContext('No main definition found', ['nsid' => $nsid]);
+        }
+
+        $type = $mainDef['type'] ?? null;
+
+        if (! in_array($type, ['record', 'object'])) {
+            throw GenerationException::withContext(
+                'Can only generate classes for record and object types',
+                ['nsid' => $nsid, 'type' => $type]
+            );
+        }
+
+        // Get class components
+        $namespace = $this->naming->nsidToNamespace($nsid);
+        $className = $this->naming->toClassName($document->id->getName());
+        $useStatements = $this->collectUseStatements($mainDef);
+        $properties = $this->generateProperties($mainDef);
+        $constructor = $this->generateConstructor($mainDef);
+        $methods = $this->generateMethods($document);
+        $docBlock = $this->generateClassDocBlock($document, $mainDef);
+
+        // Render the class
+        return $this->renderer->render('class', [
+            'namespace' => $namespace,
+            'imports' => $this->formatUseStatements($useStatements),
+            'docBlock' => $docBlock,
+            'className' => $className,
+            'extends' => ' extends \\SocialDept\\Schema\\Data\\Data',
+            'implements' => '',
+            'properties' => $properties,
+            'constructor' => $constructor,
+            'methods' => $methods,
+        ]);
+    }
+
+    /**
+     * Generate class properties.
+     *
+     * @param  array<string, mixed>  $definition
+     */
+    protected function generateProperties(array $definition): string
+    {
+        $properties = $definition['properties'] ?? [];
+        $required = $definition['required'] ?? [];
+
+        if (empty($properties)) {
+            return '';
+        }
+
+        $lines = [];
+
+        foreach ($properties as $name => $propDef) {
+            $isRequired = in_array($name, $required);
+            $phpType = $this->typeMapper->toPhpType($propDef, ! $isRequired);
+            $docType = $this->typeMapper->toPhpDocType($propDef, ! $isRequired);
+            $description = $propDef['description'] ?? null;
+
+            // Build property doc comment
+            $docLines = ['    /**'];
+            if ($description) {
+                $docLines[] = '     * '.$description;
+                $docLines[] = '     *';
+            }
+            $docLines[] = '     * @var '.$docType;
+            $docLines[] = '     */';
+
+            $lines[] = implode("\n", $docLines);
+            $lines[] = '    public readonly '.$phpType.' $'.$name.';';
+            $lines[] = '';
+        }
+
+        return rtrim(implode("\n", $lines));
+    }
+
+    /**
+     * Generate class constructor.
+     *
+     * @param  array<string, mixed>  $definition
+     */
+    protected function generateConstructor(array $definition): string
+    {
+        $properties = $definition['properties'] ?? [];
+        $required = $definition['required'] ?? [];
+
+        if (empty($properties)) {
+            return '';
+        }
+
+        $params = [];
+
+        foreach ($properties as $name => $propDef) {
+            $isRequired = in_array($name, $required);
+            $phpType = $this->typeMapper->toPhpType($propDef, ! $isRequired);
+            $default = ! $isRequired ? ' = null' : '';
+
+            $params[] = '        public readonly '.$phpType.' $'.$name.$default.',';
+        }
+
+        // Remove trailing comma from last parameter
+        if (! empty($params)) {
+            $params[count($params) - 1] = rtrim($params[count($params) - 1], ',');
+        }
+
+        return "    public function __construct(\n".implode("\n", $params)."\n    ) {\n    }";
+    }
+
+    /**
+     * Generate class methods.
+     */
+    protected function generateMethods(LexiconDocument $document): string
+    {
+        $methods = [];
+
+        // Generate getLexicon method
+        $methods[] = $this->generateGetLexiconMethod($document);
+
+        // Generate fromArray method
+        $methods[] = $this->generateFromArrayMethod($document);
+
+        return implode("\n\n", $methods);
+    }
+
+    /**
+     * Generate getLexicon method.
+     */
+    protected function generateGetLexiconMethod(LexiconDocument $document): string
+    {
+        $nsid = $document->getNsid();
+
+        return "    public static function getLexicon(): string\n".
+               "    {\n".
+               "        return '{$nsid}';\n".
+               "    }";
+    }
+
+    /**
+     * Generate fromArray method.
+     */
+    protected function generateFromArrayMethod(LexiconDocument $document): string
+    {
+        $mainDef = $document->getMainDefinition();
+        $properties = $mainDef['properties'] ?? [];
+
+        if (empty($properties)) {
+            return "    public static function fromArray(array \$data): static\n".
+                   "    {\n".
+                   "        return new static();\n".
+                   "    }";
+        }
+
+        $assignments = [];
+        foreach ($properties as $name => $propDef) {
+            $type = $propDef['type'] ?? 'unknown';
+
+            // Handle nested objects/refs
+            if ($type === 'ref' && isset($propDef['ref'])) {
+                $refClass = $this->naming->nsidToClassName($propDef['ref']);
+                $refClassName = basename(str_replace('\\', '/', $refClass));
+                $assignments[] = "            {$name}: isset(\$data['{$name}']) ? {$refClassName}::fromArray(\$data['{$name}']) : null,";
+            } elseif ($type === 'array' && isset($propDef['items']['type']) && $propDef['items']['type'] === 'ref') {
+                $refClass = $this->naming->nsidToClassName($propDef['items']['ref']);
+                $refClassName = basename(str_replace('\\', '/', $refClass));
+                $assignments[] = "            {$name}: isset(\$data['{$name}']) ? array_map(fn (\$item) => {$refClassName}::fromArray(\$item), \$data['{$name}']) : [],";
+            } else {
+                $assignments[] = "            {$name}: \$data['{$name}'] ?? null,";
+            }
+        }
+
+        return "    public static function fromArray(array \$data): static\n".
+               "    {\n".
+               "        return new static(\n".
+               implode("\n", $assignments)."\n".
+               "        );\n".
+               "    }";
+    }
+
+    /**
+     * Generate class-level documentation block.
+     *
+     * @param  array<string, mixed>  $definition
+     */
+    protected function generateClassDocBlock(LexiconDocument $document, array $definition): string
+    {
+        $lines = ['/**'];
+
+        if ($document->description) {
+            $lines[] = ' * '.$document->description;
+            $lines[] = ' *';
+        }
+
+        $lines[] = ' * Lexicon: '.$document->getNsid();
+
+        if (isset($definition['type'])) {
+            $lines[] = ' * Type: '.$definition['type'];
+        }
+
+        $lines[] = ' */';
+
+        return implode("\n", $lines);
+    }
+
+    /**
+     * Collect all use statements needed for the class.
+     *
+     * @param  array<string, mixed>  $definition
+     * @return array<string>
+     */
+    protected function collectUseStatements(array $definition): array
+    {
+        $uses = ['SocialDept\\Schema\\Data\\Data'];
+        $properties = $definition['properties'] ?? [];
+
+        foreach ($properties as $propDef) {
+            $propUses = $this->typeMapper->getUseStatements($propDef);
+            $uses = array_merge($uses, $propUses);
+
+            // Handle array items
+            if (isset($propDef['items'])) {
+                $itemUses = $this->typeMapper->getUseStatements($propDef['items']);
+                $uses = array_merge($uses, $itemUses);
+            }
+        }
+
+        // Remove duplicates and sort
+        $uses = array_unique($uses);
+        sort($uses);
+
+        return $uses;
+    }
+
+    /**
+     * Format use statements for output.
+     *
+     * @param  array<string>  $uses
+     */
+    protected function formatUseStatements(array $uses): string
+    {
+        if (empty($uses)) {
+            return '';
+        }
+
+        $lines = [];
+        foreach ($uses as $use) {
+            $lines[] = 'use '.ltrim($use, '\\').';';
+        }
+
+        return implode("\n", $lines);
+    }
+
+    /**
+     * Get the naming converter.
+     */
+    public function getNaming(): NamingConverter
+    {
+        return $this->naming;
+    }
+
+    /**
+     * Get the type mapper.
+     */
+    public function getTypeMapper(): TypeMapper
+    {
+        return $this->typeMapper;
+    }
+
+    /**
+     * Get the stub renderer.
+     */
+    public function getRenderer(): StubRenderer
+    {
+        return $this->renderer;
+    }
+}
