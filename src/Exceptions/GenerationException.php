@@ -36,4 +36,92 @@ class GenerationException extends SchemaException
             ['nsid' => $nsid, 'feature' => $feature]
         );
     }
+
+    /**
+     * Create exception for template not found.
+     */
+    public static function templateNotFound(string $templateName): self
+    {
+        return static::withContext(
+            "Template not found: {$templateName}",
+            ['template' => $templateName]
+        );
+    }
+
+    /**
+     * Create exception for file already exists.
+     */
+    public static function fileExists(string $path): self
+    {
+        return static::withContext(
+            "File already exists: {$path}",
+            ['path' => $path]
+        );
+    }
+
+    /**
+     * Create exception for directory not found.
+     */
+    public static function directoryNotFound(string $directory): self
+    {
+        return static::withContext(
+            "Directory not found: {$directory}",
+            ['directory' => $directory]
+        );
+    }
+
+    /**
+     * Create exception for cannot create directory.
+     */
+    public static function cannotCreateDirectory(string $directory): self
+    {
+        return static::withContext(
+            "Cannot create directory: {$directory}",
+            ['directory' => $directory]
+        );
+    }
+
+    /**
+     * Create exception for cannot write file.
+     */
+    public static function cannotWriteFile(string $path): self
+    {
+        return static::withContext(
+            "Cannot write file: {$path}",
+            ['path' => $path]
+        );
+    }
+
+    /**
+     * Create exception for cannot delete file.
+     */
+    public static function cannotDeleteFile(string $path): self
+    {
+        return static::withContext(
+            "Cannot delete file: {$path}",
+            ['path' => $path]
+        );
+    }
+
+    /**
+     * Create exception for file not found.
+     */
+    public static function fileNotFound(string $path): self
+    {
+        return static::withContext(
+            "File not found: {$path}",
+            ['path' => $path]
+        );
+    }
+
+    /**
+     * Create exception for cannot read file.
+     */
+    public static function cannotReadFile(string $path): self
+    {
+        return static::withContext(
+            "Cannot read file: {$path}",
+            ['path' => $path]
+        );
+    }
 }
