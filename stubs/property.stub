@@ -1,0 +1,2 @@
+{{ docBlock }}
+{{ visibility }}{{ static }}{{ readonly }} {{ type }} ${{ name }}{{ default }};

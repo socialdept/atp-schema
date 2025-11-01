@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+{{ imports }}
+
+{{ docBlock }}
+class {{ className }}{{ extends }}{{ implements }}
+{
+{{ properties }}
+
+{{ constructor }}
+
+{{ methods }}
+}

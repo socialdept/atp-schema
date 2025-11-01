@@ -1,0 +1,6 @@
+{{ docBlock }}
+public function __construct(
+{{ parameters }}
+) {
+{{ body }}
+}
