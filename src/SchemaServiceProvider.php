@@ -54,9 +54,125 @@ class SchemaServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->bootValidationRules();
+
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+    }
+
+    /**
+     * Register custom validation rules.
+     */
+    protected function bootValidationRules(): void
+    {
+        $validator = $this->app->make('validator');
+
+        // Register AT Protocol validation rules
+        $validator->extend('nsid', function ($attribute, $value) {
+            $rule = new Validation\Rules\Nsid();
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute is not a valid NSID.');
+
+        $validator->extend('did', function ($attribute, $value) {
+            $rule = new Validation\Rules\Did();
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute is not a valid DID.');
+
+        $validator->extend('handle', function ($attribute, $value) {
+            $rule = new Validation\Rules\Handle();
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute is not a valid handle.');
+
+        $validator->extend('at_uri', function ($attribute, $value) {
+            $rule = new Validation\Rules\AtUri();
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute is not a valid AT URI.');
+
+        $validator->extend('at_datetime', function ($attribute, $value) {
+            $rule = new Validation\Rules\AtDatetime();
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute is not a valid AT Protocol datetime.');
+
+        $validator->extend('cid', function ($attribute, $value) {
+            $rule = new Validation\Rules\Cid();
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute is not a valid CID.');
+
+        $validator->extend('max_graphemes', function ($attribute, $value, $parameters) {
+            if (empty($parameters)) {
+                return false;
+            }
+            $rule = new Validation\Rules\MaxGraphemes((int) $parameters[0]);
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute may not be greater than :max_graphemes graphemes.');
+
+        $validator->extend('min_graphemes', function ($attribute, $value, $parameters) {
+            if (empty($parameters)) {
+                return false;
+            }
+            $rule = new Validation\Rules\MinGraphemes((int) $parameters[0]);
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute must be at least :min_graphemes graphemes.');
+
+        $validator->extend('language', function ($attribute, $value) {
+            $rule = new Validation\Rules\Language();
+            $failed = false;
+            $rule->validate($attribute, $value, function () use (&$failed) {
+                $failed = true;
+            });
+
+            return ! $failed;
+        }, 'The :attribute is not a valid BCP 47 language code.');
+
+        // Register replacements for parameterized rules
+        $validator->replacer('max_graphemes', function ($message, $attribute, $rule, $parameters) {
+            return str_replace(':max_graphemes', $parameters[0], $message);
+        });
+
+        $validator->replacer('min_graphemes', function ($message, $attribute, $rule, $parameters) {
+            return str_replace(':min_graphemes', $parameters[0], $message);
+        });
     }
 
     /**
