@@ -14,7 +14,7 @@ class NamingConverter
     /**
      * Create a new NamingConverter.
      */
-    public function __construct(string $baseNamespace = 'App\\Lexicon')
+    public function __construct(string $baseNamespace = 'App\\Lexicons')
     {
         $this->baseNamespace = rtrim($baseNamespace, '\\');
     }

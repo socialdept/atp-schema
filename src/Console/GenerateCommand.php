@@ -29,8 +29,8 @@ class GenerateCommand extends Command
     public function handle(): int
     {
         $nsid = $this->argument('nsid');
-        $output = $this->option('output') ?? config('schema.generation.output_directory');
-        $namespace = $this->option('namespace') ?? config('schema.generation.base_namespace');
+        $output = $this->option('output') ?? config('schema.lexicons.output_path');
+        $namespace = $this->option('namespace') ?? config('schema.lexicons.base_namespace');
         $force = $this->option('force');
         $dryRun = $this->option('dry-run');
 

@@ -14,7 +14,7 @@ class NamespaceResolver
     /**
      * Create a new NamespaceResolver.
      */
-    public function __construct(string $baseNamespace = 'App\\Lexicon')
+    public function __construct(string $baseNamespace = 'App\\Lexicons')
     {
         $this->baseNamespace = rtrim($baseNamespace, '\\');
     }

@@ -49,3 +49,5 @@ if (! function_exists('schema_generate')) {
         return Schema::generate($nsid, $options);
     }
 }
+
+

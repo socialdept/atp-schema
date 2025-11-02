@@ -19,8 +19,8 @@ class GenerateCommandTest extends TestCase
 
         config([
             'schema.sources' => [__DIR__.'/../../fixtures'],
-            'schema.generation.output_directory' => sys_get_temp_dir().'/schema-test',
-            'schema.generation.base_namespace' => 'Test\\Generated',
+            'schema.lexicons.output_path' => sys_get_temp_dir().'/schema-test',
+            'schema.lexicons.base_namespace' => 'Test\\Generated',
         ]);
     }
 

@@ -60,6 +60,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Lexicon Generation Settings
+    |--------------------------------------------------------------------------
+    |
+    | Configure how Lexicon classes are generated from AT Protocol schemas.
+    | These settings are separate from Data class generation to allow for
+    | different organizational structures.
+    |
+    */
+
+    'lexicons' => [
+        // Output directory for generated Lexicon classes
+        'output_path' => env('SCHEMA_LEXICON_OUTPUT_PATH', app_path('Lexicons')),
+
+        // Base namespace for generated Lexicon classes
+        'base_namespace' => env('SCHEMA_LEXICON_BASE_NAMESPACE', 'App\\Lexicons'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Caching Configuration
     |--------------------------------------------------------------------------
     |

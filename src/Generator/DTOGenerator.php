@@ -49,8 +49,8 @@ class DTOGenerator implements DataGenerator
      */
     public function __construct(
         SchemaLoader $schemaLoader,
-        string $baseNamespace = 'App\\Lexicon',
-        string $outputDirectory = 'app/Lexicon',
+        string $baseNamespace = 'App\\Lexicons',
+        string $outputDirectory = 'app/Lexicons',
         ?TypeParser $typeParser = null,
         ?NamespaceResolver $namespaceResolver = null,
         ?TemplateRenderer $templateRenderer = null,
@@ -61,8 +61,8 @@ class DTOGenerator implements DataGenerator
         $this->outputDirectory = rtrim($outputDirectory, '/');
         $this->typeParser = $typeParser ?? new TypeParser(schemaLoader: $schemaLoader);
         $this->namespaceResolver = $namespaceResolver ?? new NamespaceResolver($baseNamespace);
-        $this->templateRenderer = $templateRenderer ?? new TemplateRenderer();
-        $this->fileWriter = $fileWriter ?? new FileWriter();
+        $this->templateRenderer = $templateRenderer ?? new TemplateRenderer;
+        $this->fileWriter = $fileWriter ?? new FileWriter;
     }
 
     /**

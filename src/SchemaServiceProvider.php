@@ -30,12 +30,28 @@ class SchemaServiceProvider extends ServiceProvider
             );
         });
 
+        // Register NamingConverter
+        $this->app->singleton(Generator\NamingConverter::class, function ($app) {
+            return new Generator\NamingConverter(
+                baseNamespace: config('schema.lexicons.base_namespace', 'App\\Lexicons')
+            );
+        });
+
+        // Register NamespaceResolver
+        $this->app->singleton(Generator\NamespaceResolver::class, function ($app) {
+            return new Generator\NamespaceResolver(
+                baseNamespace: config('schema.lexicons.base_namespace', 'App\\Lexicons')
+            );
+        });
+
         // Register DTOGenerator
         $this->app->singleton(Generator\DTOGenerator::class, function ($app) {
             return new Generator\DTOGenerator(
                 schemaLoader: $app->make(Parser\SchemaLoader::class),
-                baseNamespace: config('schema.generation.base_namespace', 'App\\Lexicon'),
-                outputDirectory: config('schema.generation.output_directory', 'app/Lexicon')
+                baseNamespace: config('schema.lexicons.base_namespace', 'App\\Lexicons'),
+                outputDirectory: config('schema.lexicons.output_path', app_path('Lexicons')),
+                typeParser: null,
+                namespaceResolver: $app->make(Generator\NamespaceResolver::class)
             );
         });
 
@@ -70,7 +86,7 @@ class SchemaServiceProvider extends ServiceProvider
 
         // Register AT Protocol validation rules
         $validator->extend('nsid', function ($attribute, $value) {
-            $rule = new Validation\Rules\Nsid();
+            $rule = new Validation\Rules\Nsid;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -80,7 +96,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid NSID.');
 
         $validator->extend('did', function ($attribute, $value) {
-            $rule = new Validation\Rules\Did();
+            $rule = new Validation\Rules\Did;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -90,7 +106,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid DID.');
 
         $validator->extend('handle', function ($attribute, $value) {
-            $rule = new Validation\Rules\Handle();
+            $rule = new Validation\Rules\Handle;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -100,7 +116,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid handle.');
 
         $validator->extend('at_uri', function ($attribute, $value) {
-            $rule = new Validation\Rules\AtUri();
+            $rule = new Validation\Rules\AtUri;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -110,7 +126,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid AT URI.');
 
         $validator->extend('at_datetime', function ($attribute, $value) {
-            $rule = new Validation\Rules\AtDatetime();
+            $rule = new Validation\Rules\AtDatetime;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -120,7 +136,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid AT Protocol datetime.');
 
         $validator->extend('cid', function ($attribute, $value) {
-            $rule = new Validation\Rules\Cid();
+            $rule = new Validation\Rules\Cid;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -156,7 +172,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute must be at least :min_graphemes graphemes.');
 
         $validator->extend('language', function ($attribute, $value) {
-            $rule = new Validation\Rules\Language();
+            $rule = new Validation\Rules\Language;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
