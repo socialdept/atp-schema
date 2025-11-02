@@ -319,6 +319,41 @@ class MethodGeneratorTest extends TestCase
         $this->assertStringContainsString('*/', $method);
     }
 
+    public function test_it_generates_to_model_method(): void
+    {
+        $method = $this->generator->generateToModel([
+            'name' => ['type' => 'string'],
+            'age' => ['type' => 'integer'],
+        ], 'User');
+
+        $this->assertStringContainsString('public function toModel(): User', $method);
+        $this->assertStringContainsString('* Convert to a Laravel model instance.', $method);
+        $this->assertStringContainsString('return new User([', $method);
+        $this->assertStringContainsString("'name' => \$this->name,", $method);
+        $this->assertStringContainsString("'age' => \$this->age,", $method);
+    }
+
+    public function test_it_generates_from_model_method(): void
+    {
+        $method = $this->generator->generateFromModel([
+            'name' => ['type' => 'string'],
+            'age' => ['type' => 'integer'],
+        ], 'User');
+
+        $this->assertStringContainsString('public static function fromModel(User $model): static', $method);
+        $this->assertStringContainsString('* Create an instance from a Laravel model.', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString('name: $model->name ?? null,', $method);
+        $this->assertStringContainsString('age: $model->age ?? null', $method);
+    }
+
+    public function test_it_gets_model_mapper(): void
+    {
+        $mapper = $this->generator->getModelMapper();
+
+        $this->assertInstanceOf(\SocialDept\Schema\Generator\ModelMapper::class, $mapper);
+    }
+
     /**
      * Helper to create a test document.
      *

@@ -22,16 +22,23 @@ class MethodGenerator
     protected StubRenderer $renderer;
 
     /**
+     * Model mapper instance.
+     */
+    protected ModelMapper $modelMapper;
+
+    /**
      * Create a new MethodGenerator.
      */
     public function __construct(
         ?NamingConverter $naming = null,
         ?TypeMapper $typeMapper = null,
-        ?StubRenderer $renderer = null
+        ?StubRenderer $renderer = null,
+        ?ModelMapper $modelMapper = null
     ) {
         $this->naming = $naming ?? new NamingConverter;
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
         $this->renderer = $renderer ?? new StubRenderer;
+        $this->modelMapper = $modelMapper ?? new ModelMapper($this->naming, $this->typeMapper);
     }
 
     /**
@@ -268,5 +275,63 @@ class MethodGenerator
         }
 
         return implode(', ', $formatted);
+    }
+
+    /**
+     * Generate toModel method.
+     *
+     * @param  array<string, array<string, mixed>>  $properties
+     */
+    public function generateToModel(array $properties, string $modelClass = 'Model'): string
+    {
+        $body = $this->modelMapper->generateToModelBody($properties, $modelClass);
+
+        return $this->renderer->render('method', [
+            'docBlock' => $this->generateDocBlock(
+                'Convert to a Laravel model instance.',
+                $modelClass,
+                []
+            ),
+            'visibility' => 'public ',
+            'static' => '',
+            'name' => 'toModel',
+            'parameters' => '',
+            'returnType' => ': '.$modelClass,
+            'body' => $body,
+        ]);
+    }
+
+    /**
+     * Generate fromModel method.
+     *
+     * @param  array<string, array<string, mixed>>  $properties
+     */
+    public function generateFromModel(array $properties, string $modelClass = 'Model'): string
+    {
+        $body = $this->modelMapper->generateFromModelBody($properties);
+
+        return $this->renderer->render('method', [
+            'docBlock' => $this->generateDocBlock(
+                'Create an instance from a Laravel model.',
+                'static',
+                [
+                    ['name' => 'model', 'type' => $modelClass, 'description' => 'The model instance'],
+                ]
+            ),
+            'visibility' => 'public ',
+            'static' => 'static ',
+            'name' => 'fromModel',
+            'parameters' => $modelClass.' $model',
+            'returnType' => ': static',
+            'body' => $body,
+        ]);
+    }
+
+    /**
+     * Get the model mapper.
+     */
+    public function getModelMapper(): ModelMapper
+    {
+        return $this->modelMapper;
     }
 }
