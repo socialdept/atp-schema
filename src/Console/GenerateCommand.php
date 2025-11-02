@@ -38,7 +38,14 @@ class GenerateCommand extends Command
 
         try {
             $sources = config('schema.sources', []);
-            $loader = new SchemaLoader($sources);
+            $loader = new SchemaLoader(
+                sources: $sources,
+                useCache: config('schema.cache.enabled', true),
+                cacheTtl: config('schema.cache.schema_ttl', 3600),
+                cachePrefix: config('schema.cache.prefix', 'schema'),
+                dnsResolutionEnabled: config('schema.dns_resolution.enabled', true),
+                httpTimeout: config('schema.http.timeout', 10)
+            );
 
             $generator = new DTOGenerator(
                 schemaLoader: $loader,

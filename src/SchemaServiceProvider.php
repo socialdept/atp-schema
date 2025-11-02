@@ -18,8 +18,10 @@ class SchemaServiceProvider extends ServiceProvider
             return new Parser\SchemaLoader(
                 sources: config('schema.sources', []),
                 useCache: config('schema.cache.enabled', true),
-                cacheTtl: config('schema.cache.ttl', 3600),
-                cachePrefix: config('schema.cache.prefix', 'schema')
+                cacheTtl: config('schema.cache.schema_ttl', 3600),
+                cachePrefix: config('schema.cache.prefix', 'schema'),
+                dnsResolutionEnabled: config('schema.dns_resolution.enabled', true),
+                httpTimeout: config('schema.http.timeout', 10)
             );
         });
 
@@ -86,7 +88,7 @@ class SchemaServiceProvider extends ServiceProvider
 
         // Register AT Protocol validation rules
         $validator->extend('nsid', function ($attribute, $value) {
-            $rule = new Validation\Rules\Nsid;
+            $rule = new Validation\Rules\Nsid();
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -96,7 +98,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid NSID.');
 
         $validator->extend('did', function ($attribute, $value) {
-            $rule = new Validation\Rules\Did;
+            $rule = new Validation\Rules\Did();
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -106,7 +108,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid DID.');
 
         $validator->extend('handle', function ($attribute, $value) {
-            $rule = new Validation\Rules\Handle;
+            $rule = new Validation\Rules\Handle();
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -116,7 +118,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid handle.');
 
         $validator->extend('at_uri', function ($attribute, $value) {
-            $rule = new Validation\Rules\AtUri;
+            $rule = new Validation\Rules\AtUri();
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -126,7 +128,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid AT URI.');
 
         $validator->extend('at_datetime', function ($attribute, $value) {
-            $rule = new Validation\Rules\AtDatetime;
+            $rule = new Validation\Rules\AtDatetime();
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -136,7 +138,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid AT Protocol datetime.');
 
         $validator->extend('cid', function ($attribute, $value) {
-            $rule = new Validation\Rules\Cid;
+            $rule = new Validation\Rules\Cid();
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -172,7 +174,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute must be at least :min_graphemes graphemes.');
 
         $validator->extend('language', function ($attribute, $value) {
-            $rule = new Validation\Rules\Language;
+            $rule = new Validation\Rules\Language();
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;

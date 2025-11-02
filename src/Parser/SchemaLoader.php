@@ -3,6 +3,7 @@
 namespace SocialDept\Schema\Parser;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use SocialDept\Schema\Exceptions\SchemaNotFoundException;
 use SocialDept\Schema\Exceptions\SchemaParseException;
 
@@ -38,6 +39,16 @@ class SchemaLoader
     protected string $cachePrefix;
 
     /**
+     * Whether DNS resolution is enabled.
+     */
+    protected bool $dnsResolutionEnabled;
+
+    /**
+     * HTTP timeout for schema fetching.
+     */
+    protected int $httpTimeout;
+
+    /**
      * Create a new SchemaLoader instance.
      *
      * @param  array<string>  $sources
@@ -46,12 +57,16 @@ class SchemaLoader
         array $sources,
         bool $useCache = true,
         int $cacheTtl = 3600,
-        string $cachePrefix = 'schema'
+        string $cachePrefix = 'schema',
+        bool $dnsResolutionEnabled = true,
+        int $httpTimeout = 10
     ) {
         $this->sources = $sources;
         $this->useCache = $useCache;
         $this->cacheTtl = $cacheTtl;
         $this->cachePrefix = $cachePrefix;
+        $this->dnsResolutionEnabled = $dnsResolutionEnabled;
+        $this->httpTimeout = $httpTimeout;
     }
 
     /**
@@ -117,6 +132,15 @@ class SchemaLoader
             }
         }
 
+        // Try DNS resolution as fallback if enabled
+        if ($this->dnsResolutionEnabled) {
+            $schema = $this->loadViaDns($nsid);
+
+            if ($schema !== null) {
+                return $schema;
+            }
+        }
+
         throw SchemaNotFoundException::forNsid($nsid);
     }
 
@@ -127,27 +151,27 @@ class SchemaLoader
     {
         // Try NSID-based path (app.bsky.feed.post -> app/bsky/feed/post.json)
         $nsidPath = $this->nsidToPath($nsid);
-        $jsonPath = $source . '/' . $nsidPath . '.json';
+        $jsonPath = $source.'/'.$nsidPath.'.json';
 
         if (file_exists($jsonPath)) {
             return $this->loadJsonFile($jsonPath, $nsid);
         }
 
         // Try PHP file
-        $phpPath = $source . '/' . $nsidPath . '.php';
+        $phpPath = $source.'/'.$nsidPath.'.php';
 
         if (file_exists($phpPath)) {
             return $this->loadPhpFile($phpPath, $nsid);
         }
 
         // Try flat structure (app.bsky.feed.post.json)
-        $flatJsonPath = $source . '/' . $nsid . '.json';
+        $flatJsonPath = $source.'/'.$nsid.'.json';
 
         if (file_exists($flatJsonPath)) {
             return $this->loadJsonFile($flatJsonPath, $nsid);
         }
 
-        $flatPhpPath = $source . '/' . $nsid . '.php';
+        $flatPhpPath = $source.'/'.$nsid.'.php';
 
         if (file_exists($flatPhpPath)) {
             return $this->loadPhpFile($flatPhpPath, $nsid);
@@ -241,5 +265,52 @@ class SchemaLoader
     public function getCachedNsids(): array
     {
         return array_keys($this->memoryCache);
+    }
+
+    /**
+     * Load schema via DNS resolution from official sources.
+     */
+    protected function loadViaDns(string $nsid): ?array
+    {
+        // Try to fetch from official AT Protocol GitHub repository
+        $urls = $this->getOfficialSchemaUrls($nsid);
+
+        foreach ($urls as $url) {
+            try {
+                $response = Http::timeout($this->httpTimeout)
+                    ->get($url);
+
+                if ($response->successful()) {
+                    $data = $response->json();
+
+                    if (is_array($data) && isset($data['lexicon'])) {
+                        return $data;
+                    }
+                }
+            } catch (\Exception $e) {
+                // Continue to next URL
+                continue;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Get official schema URLs for an NSID.
+     *
+     * @return array<string>
+     */
+    protected function getOfficialSchemaUrls(string $nsid): array
+    {
+        $path = str_replace('.', '/', $nsid);
+
+        return [
+            // Official AT Protocol lexicons repository (main branch)
+            "https://raw.githubusercontent.com/bluesky-social/atproto/main/lexicons/{$path}.json",
+
+            // Fallback to legacy location
+            "https://raw.githubusercontent.com/bluesky-social/atproto/main/lexicons/{$nsid}.json",
+        ];
     }
 }
