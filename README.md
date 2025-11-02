@@ -1,57 +1,409 @@
-# Schema
+[![Schema Header](./header.png)](https://github.com/socialdept/atp-signals)
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
+<h3 align="center">
+    Parse, validate, and transform AT Protocol Lexicon schemas in Laravel.
+</h3>
 
-This is where your description should go. Take a look at [contributing.md](CONTRIBUTING.md) to see a to do list.
+<p align="center">
+    <br>
+    <a href="https://packagist.org/packages/socialdept/atp-schema" title="Latest Version on Packagist"><img src="https://img.shields.io/packagist/v/socialdept/atp-schema.svg?style=flat-square"></a>
+    <a href="https://packagist.org/packages/socialdept/atp-schema" title="Total Downloads"><img src="https://img.shields.io/packagist/dt/socialdept/atp-schema.svg?style=flat-square"></a>
+    <a href="LICENSE" title="Software License"><img src="https://img.shields.io/github/license/socialdept/atp-schema?style=flat-square"></a>
+</p>
+
+---
+
+## What is Schema?
+
+**Schema** is a Laravel package for working with AT Protocol Lexicon schemas. It provides comprehensive tools for parsing schema definitions, validating data against those schemas, handling file uploads (blobs), and transforming between raw data and domain models.
+
+Think of it as your complete toolkit for building AT Protocol applications that need strict data validation and schema compliance.
+
+## Why use Schema?
+
+- **Complete Lexicon support** - All types, formats, and constraints from the AT Protocol spec
+- **Multiple validation modes** - STRICT, OPTIMISTIC, and LENIENT for different use cases
+- **Laravel integration** - Works seamlessly with Laravel's validation and storage systems
+- **Blob handling** - Built-in file upload validation and storage
+- **Model transformation** - Convert between arrays and domain objects
+- **Union types** - Full support for discriminated unions with `$type` fields
+- **Extensible** - Macros and hooks let you customize behavior
+- **Production ready** - 818 passing tests with comprehensive coverage
+
+## Quick Example
+
+```php
+use SocialDept\Schema\Data\LexiconDocument;
+use SocialDept\Schema\Validation\Validator;
+use SocialDept\Schema\Parser\SchemaLoader;
+
+// Load a schema
+$schema = LexiconDocument::fromArray([
+    'lexicon' => 1,
+    'id' => 'app.bsky.feed.post',
+    'defs' => [
+        'main' => [
+            'type' => 'record',
+            'record' => [
+                'type' => 'object',
+                'required' => ['text', 'createdAt'],
+                'properties' => [
+                    'text' => ['type' => 'string', 'maxLength' => 300],
+                    'createdAt' => ['type' => 'string', 'format' => 'datetime'],
+                ],
+            ],
+        ],
+    ],
+]);
+
+// Validate data
+$validator = new Validator(new SchemaLoader([]));
+
+$data = [
+    'text' => 'Hello, AT Protocol!',
+    'createdAt' => '2024-01-01T12:00:00Z',
+];
+
+if ($validator->validate($data, $schema)) {
+    // Data is valid!
+}
+
+// Get Laravel-formatted errors
+$errors = $validator->validateWithErrors($invalidData, $schema);
+// ['text' => ['The text field exceeds maximum length.']]
+```
 
 ## Installation
 
-Via Composer
-
 ```bash
-composer require social-dept/schema
+composer require socialdept/atp-schema
 ```
 
-## Usage
+The package will auto-register with Laravel. Optionally publish the config:
 
-## Change log
+```bash
+php artisan vendor:publish --tag=schema-config
+```
 
-Please see the [changelog](changelog.md) for more information on what has changed recently.
+## Basic Usage
+
+### Validation Modes
+
+Choose the validation strictness that fits your use case:
+
+```php
+use SocialDept\Schema\Validation\Validator;
+
+// STRICT - Rejects unknown fields
+$validator->setMode(Validator::MODE_STRICT);
+
+// OPTIMISTIC - Allows unknown fields (default)
+$validator->setMode(Validator::MODE_OPTIMISTIC);
+
+// LENIENT - Skips constraint validation
+$validator->setMode(Validator::MODE_LENIENT);
+```
+
+### Handling Blobs
+
+Upload and validate files with built-in constraints:
+
+```php
+use SocialDept\Schema\Services\BlobHandler;
+
+$blobHandler = new BlobHandler('local');
+
+$blob = $blobHandler->store(request()->file('image'), [
+    'accept' => ['image/*'],
+    'maxSize' => 1024 * 1024 * 5, // 5MB
+]);
+
+// Use in validated data
+$data = [
+    'image' => $blob->toArray(),
+];
+```
+
+### Model Transformation
+
+Transform between raw arrays and domain objects:
+
+```php
+use SocialDept\Schema\Services\ModelMapper;
+use SocialDept\Schema\Contracts\Transformer;
+
+class Post
+{
+    public function __construct(
+        public string $text,
+        public string $createdAt
+    ) {}
+}
+
+class PostTransformer implements Transformer
+{
+    public function fromArray(array $data): Post
+    {
+        return new Post(
+            text: $data['text'],
+            createdAt: $data['createdAt']
+        );
+    }
+
+    public function toArray(mixed $model): array
+    {
+        return [
+            'text' => $model->text,
+            'createdAt' => $model->createdAt,
+        ];
+    }
+
+    public function supports(string $type): bool
+    {
+        return $type === 'app.bsky.feed.post';
+    }
+}
+
+// Register and use
+$mapper = new ModelMapper();
+$mapper->register('app.bsky.feed.post', new PostTransformer());
+
+$post = $mapper->fromArray('app.bsky.feed.post', $data);
+$array = $mapper->toArray('app.bsky.feed.post', $post);
+```
+
+### Union Types
+
+Work with discriminated unions using the `$type` field:
+
+```php
+use SocialDept\Schema\Services\UnionResolver;
+
+$resolver = new UnionResolver();
+
+$data = [
+    '$type' => 'app.bsky.embed.images',
+    'images' => [/* ... */],
+];
+
+$type = $resolver->extractType($data);
+// "app.bsky.embed.images"
+
+$isValid = $resolver->validate($data, $unionDef);
+```
+
+## Complete Workflow Example
+
+Here's how to validate a post with an image upload:
+
+```php
+use SocialDept\Schema\Data\LexiconDocument;
+use SocialDept\Schema\Validation\Validator;
+use SocialDept\Schema\Services\BlobHandler;
+
+// Load schema
+$schema = LexiconDocument::fromArray([/* ... */]);
+
+// Handle image upload
+$blobHandler = new BlobHandler('local');
+$blob = $blobHandler->store(request()->file('image'), [
+    'accept' => ['image/*'],
+    'maxSize' => 1024 * 1024 * 5,
+]);
+
+// Create post data
+$postData = [
+    'text' => 'Check out this photo!',
+    'createdAt' => now()->toIso8601String(),
+    'embed' => [
+        '$type' => 'app.bsky.embed.images',
+        'images' => [
+            [
+                'image' => $blob->toArray(),
+                'alt' => 'A beautiful sunset',
+            ],
+        ],
+    ],
+];
+
+// Validate
+$validator = new Validator(new SchemaLoader([]));
+
+if ($validator->validate($postData, $schema)) {
+    // Store post...
+} else {
+    $errors = $validator->validateWithErrors($postData, $schema);
+    // Handle errors...
+}
+```
+
+## Supported Types
+
+Schema supports all AT Protocol Lexicon types:
+
+- **Primitives** - `string`, `integer`, `boolean`, `bytes`
+- **Objects** - Nested objects with properties
+- **Arrays** - Sequential lists with item validation
+- **Blobs** - File uploads with mime type and size constraints
+- **Unions** - Discriminated unions with `$type` field
+- **Unknown** - Accept any value
+
+## Supported Formats
+
+Built-in validators for AT Protocol formats:
+
+- `datetime` - ISO 8601 timestamps
+- `uri` - Valid URIs
+- `at-uri` - AT Protocol URIs
+- `did` - Decentralized identifiers
+- `nsid` - Namespaced identifiers
+- `cid` - Content identifiers
+
+## Advanced Features
+
+### Extension Hooks
+
+Add custom logic at key points in the validation lifecycle:
+
+```php
+use SocialDept\Schema\Support\ExtensionManager;
+
+$extensions = new ExtensionManager();
+
+$extensions->hook('before:validate', function ($data) {
+    $data['text'] = trim($data['text']);
+    return $data;
+});
+
+$transformed = $extensions->filter('before:validate', $data);
+```
+
+### Macros
+
+Extend core services with custom methods:
+
+```php
+use SocialDept\Schema\Services\ModelMapper;
+
+ModelMapper::macro('validateAndTransform', function ($type, $data, $schema) {
+    if (!$this->validator->validate($data, $schema)) {
+        return null;
+    }
+    return $this->fromArray($type, $data);
+});
+
+$mapper = new ModelMapper();
+$result = $mapper->validateAndTransform('app.bsky.feed.post', $data, $schema);
+```
+
+## API Reference
+
+### Core Classes
+
+**LexiconDocument**
+```php
+LexiconDocument::fromArray(array $data): self
+LexiconDocument::fromJson(string $json): self
+$document->getNsid(): string
+$document->getVersion(): int
+$document->getDefinition(string $name = 'main'): array
+```
+
+**Validator**
+```php
+$validator->validate(array $data, LexiconDocument $schema): bool
+$validator->validateWithErrors(array $data, LexiconDocument $schema): array
+$validator->setMode(string $mode): self
+```
+
+**BlobHandler**
+```php
+$handler->store(UploadedFile $file, array $constraints = []): BlobReference
+$handler->storeFromString(string $content, string $mimeType): BlobReference
+$handler->get(string $ref): ?string
+$handler->delete(string $ref): bool
+$handler->exists(string $ref): bool
+```
+
+**ModelMapper**
+```php
+$mapper->register(string $type, Transformer $transformer): self
+$mapper->fromArray(string $type, array $data): mixed
+$mapper->toArray(string $type, mixed $model): array
+$mapper->fromArrayMany(string $type, array $items): array
+```
+
+**UnionResolver**
+```php
+$resolver->extractType(array $data): ?string
+$resolver->validate(array $data, array $definition): bool
+$resolver->getTypeDefinition(array $data, array $definition): ?LexiconDocument
+```
 
 ## Testing
 
+Run the test suite:
+
 ```bash
-composer test
+vendor/bin/phpunit
 ```
 
-## Contributing
+Run specific test categories:
 
-Please see [contributing.md](CONTRIBUTING.md) for details and a todolist.
+```bash
+# Unit tests only
+vendor/bin/phpunit --testsuite=unit
 
-## Security
+# Integration tests only
+vendor/bin/phpunit --testsuite=integration
+```
 
-If you discover any security related issues, please email author@email.com instead of using the issue tracker.
+## Configuration
+
+Customize behavior in `config/schema.php`:
+
+```php
+return [
+    'storage' => [
+        'disk' => env('SCHEMA_STORAGE_DISK', 'local'),
+    ],
+
+    'validation' => [
+        'mode' => env('SCHEMA_VALIDATION_MODE', 'optimistic'),
+    ],
+
+    'blob' => [
+        'max_size' => env('SCHEMA_BLOB_MAX_SIZE', 1024 * 1024 * 10), // 10MB
+    ],
+];
+```
+
+## Requirements
+
+- PHP 8.2+
+- Laravel 11+
+
+## Resources
+
+- [AT Protocol Documentation](https://atproto.com/)
+- [Lexicon Specification](https://atproto.com/specs/lexicon)
+- [Bluesky API Docs](https://docs.bsky.app/)
+
+## Support & Contributing
+
+Found a bug or have a feature request? [Open an issue](https://github.com/socialdept/atp-schema/issues).
+
+Want to contribute? We'd love your help! Check out the [contribution guidelines](CONTRIBUTING.md).
 
 ## Credits
 
-- [Author Name][link-author]
-- [All Contributors][link-contributors]
+- [Miguel Batres](https://batres.co) - founder & lead maintainer
+- [All contributors](https://github.com/socialdept/atp-schema/graphs/contributors)
 
 ## License
 
-MIT. Please see the [license file](LICENSE) for more information.
+Schema is open-source software licensed under the [MIT license](LICENSE).
 
-[ico-version]: https://img.shields.io/packagist/v/social-dept/schema.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/social-dept/schema.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/social-dept/schema/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
+---
 
-[link-packagist]: https://packagist.org/packages/social-dept/schema
-[link-downloads]: https://packagist.org/packages/social-dept/schema
-[link-travis]: https://travis-ci.org/social-dept/schema
-[link-styleci]: https://styleci.io/repos/12345678
-[link-author]: https://github.com/social-dept
-[link-contributors]: ../../contributors
+**Built for the Federation** • By Social Dept.
