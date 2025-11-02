@@ -1,5 +1,5 @@
 {{ docBlock }}
-{{ visibility }}{{ static }} function {{ name }}({{ parameters }}){{ returnType }}
+{{ visibility }}{{ static }}function {{ name }}({{ parameters }}){{ returnType }}
 {
 {{ body }}
 }

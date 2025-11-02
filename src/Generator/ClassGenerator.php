@@ -23,16 +23,23 @@ class ClassGenerator
     protected StubRenderer $renderer;
 
     /**
+     * Method generator instance.
+     */
+    protected MethodGenerator $methodGenerator;
+
+    /**
      * Create a new ClassGenerator.
      */
     public function __construct(
         ?NamingConverter $naming = null,
         ?TypeMapper $typeMapper = null,
-        ?StubRenderer $renderer = null
+        ?StubRenderer $renderer = null,
+        ?MethodGenerator $methodGenerator = null
     ) {
         $this->naming = $naming ?? new NamingConverter;
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
         $this->renderer = $renderer ?? new StubRenderer;
+        $this->methodGenerator = $methodGenerator ?? new MethodGenerator($this->naming, $this->typeMapper, $this->renderer);
     }
 
     /**
@@ -155,69 +162,9 @@ class ClassGenerator
      */
     protected function generateMethods(LexiconDocument $document): string
     {
-        $methods = [];
-
-        // Generate getLexicon method
-        $methods[] = $this->generateGetLexiconMethod($document);
-
-        // Generate fromArray method
-        $methods[] = $this->generateFromArrayMethod($document);
+        $methods = $this->methodGenerator->generateAll($document);
 
         return implode("\n\n", $methods);
-    }
-
-    /**
-     * Generate getLexicon method.
-     */
-    protected function generateGetLexiconMethod(LexiconDocument $document): string
-    {
-        $nsid = $document->getNsid();
-
-        return "    public static function getLexicon(): string\n".
-               "    {\n".
-               "        return '{$nsid}';\n".
-               "    }";
-    }
-
-    /**
-     * Generate fromArray method.
-     */
-    protected function generateFromArrayMethod(LexiconDocument $document): string
-    {
-        $mainDef = $document->getMainDefinition();
-        $properties = $mainDef['properties'] ?? [];
-
-        if (empty($properties)) {
-            return "    public static function fromArray(array \$data): static\n".
-                   "    {\n".
-                   "        return new static();\n".
-                   "    }";
-        }
-
-        $assignments = [];
-        foreach ($properties as $name => $propDef) {
-            $type = $propDef['type'] ?? 'unknown';
-
-            // Handle nested objects/refs
-            if ($type === 'ref' && isset($propDef['ref'])) {
-                $refClass = $this->naming->nsidToClassName($propDef['ref']);
-                $refClassName = basename(str_replace('\\', '/', $refClass));
-                $assignments[] = "            {$name}: isset(\$data['{$name}']) ? {$refClassName}::fromArray(\$data['{$name}']) : null,";
-            } elseif ($type === 'array' && isset($propDef['items']['type']) && $propDef['items']['type'] === 'ref') {
-                $refClass = $this->naming->nsidToClassName($propDef['items']['ref']);
-                $refClassName = basename(str_replace('\\', '/', $refClass));
-                $assignments[] = "            {$name}: isset(\$data['{$name}']) ? array_map(fn (\$item) => {$refClassName}::fromArray(\$item), \$data['{$name}']) : [],";
-            } else {
-                $assignments[] = "            {$name}: \$data['{$name}'] ?? null,";
-            }
-        }
-
-        return "    public static function fromArray(array \$data): static\n".
-               "    {\n".
-               "        return new static(\n".
-               implode("\n", $assignments)."\n".
-               "        );\n".
-               "    }";
     }
 
     /**
@@ -315,5 +262,13 @@ class ClassGenerator
     public function getRenderer(): StubRenderer
     {
         return $this->renderer;
+    }
+
+    /**
+     * Get the method generator.
+     */
+    public function getMethodGenerator(): MethodGenerator
+    {
+        return $this->methodGenerator;
     }
 }

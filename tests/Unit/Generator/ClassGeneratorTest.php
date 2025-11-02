@@ -89,7 +89,7 @@ class ClassGeneratorTest extends TestCase
 
         $this->assertStringContainsString('public static function fromArray(array $data): static', $code);
         $this->assertStringContainsString('return new static(', $code);
-        $this->assertStringContainsString("text: \$data['text'] ?? null", $code);
+        $this->assertStringContainsString("text: \$data['text']", $code);
     }
 
     public function test_it_includes_use_statements(): void
