@@ -49,6 +49,16 @@ class SchemaLoader
     protected int $httpTimeout;
 
     /**
+     * Whether the atp-resolver package is available.
+     */
+    protected bool $hasResolver = false;
+
+    /**
+     * Whether we've shown the resolver warning.
+     */
+    protected static bool $resolverWarningShown = false;
+
+    /**
      * Create a new SchemaLoader instance.
      *
      * @param  array<string>  $sources
@@ -67,6 +77,7 @@ class SchemaLoader
         $this->cachePrefix = $cachePrefix;
         $this->dnsResolutionEnabled = $dnsResolutionEnabled;
         $this->httpTimeout = $httpTimeout;
+        $this->hasResolver = class_exists('SocialDept\\Resolver\\Resolver');
     }
 
     /**
@@ -268,49 +279,153 @@ class SchemaLoader
     }
 
     /**
-     * Load schema via DNS resolution from official sources.
+     * Load schema via DNS resolution following AT Protocol spec.
+     *
+     * AT Protocol DNS-based lexicon discovery:
+     * 1. Query DNS TXT record at _lexicon.<authority-domain>
+     * 2. Extract DID from TXT record (format: did=<DID>)
+     * 3. Resolve DID to PDS endpoint (requires atp-resolver package)
+     * 4. Fetch lexicon from repository via com.atproto.repo.getRecord
      */
     protected function loadViaDns(string $nsid): ?array
     {
-        // Try to fetch from official AT Protocol GitHub repository
-        $urls = $this->getOfficialSchemaUrls($nsid);
+        // Check if atp-resolver is available
+        if (! $this->hasResolver) {
+            $this->showResolverWarning();
 
-        foreach ($urls as $url) {
-            try {
-                $response = Http::timeout($this->httpTimeout)
-                    ->get($url);
+            return null;
+        }
 
-                if ($response->successful()) {
-                    $data = $response->json();
+        try {
+            $nsidParsed = Nsid::parse($nsid);
 
-                    if (is_array($data) && isset($data['lexicon'])) {
-                        return $data;
-                    }
-                }
-            } catch (\Exception $e) {
-                // Continue to next URL
-                continue;
+            // Step 1: Query DNS TXT record for DID
+            $did = $this->queryLexiconDid($nsidParsed);
+            if ($did === null) {
+                return null;
             }
+
+            // Step 2: Resolve DID to PDS endpoint
+            $pdsUrl = $this->resolvePdsEndpoint($did);
+            if ($pdsUrl === null) {
+                return null;
+            }
+
+            // Step 3: Fetch lexicon schema from repository
+            return $this->fetchLexiconFromRepository($pdsUrl, $did, $nsid);
+        } catch (\Exception $e) {
+            // Silently fail and return null - will try other sources or fail with main error
+            return null;
+        }
+    }
+
+    /**
+     * Query DNS TXT record for lexicon DID.
+     *
+     * Queries _lexicon.<authority-domain> for TXT record containing did=<DID>
+     */
+    protected function queryLexiconDid(Nsid $nsid): ?string
+    {
+        // Convert authority to domain (e.g., pub.leaflet -> leaflet.pub)
+        $authority = $nsid->getAuthority();
+        $parts = explode('.', $authority);
+        $domain = implode('.', array_reverse($parts));
+
+        // Query DNS TXT record at _lexicon.<domain>
+        $hostname = "_lexicon.{$domain}";
+
+        try {
+            $records = dns_get_record($hostname, DNS_TXT);
+
+            if ($records === false || empty($records)) {
+                return null;
+            }
+
+            // Look for TXT record with did= prefix
+            foreach ($records as $record) {
+                if (isset($record['txt']) && str_starts_with($record['txt'], 'did=')) {
+                    return substr($record['txt'], 4); // Remove 'did=' prefix
+                }
+            }
+        } catch (\Exception $e) {
+            // DNS query failed
+            return null;
         }
 
         return null;
     }
 
     /**
-     * Get official schema URLs for an NSID.
-     *
-     * @return array<string>
+     * Resolve DID to PDS endpoint using atp-resolver.
      */
-    protected function getOfficialSchemaUrls(string $nsid): array
+    protected function resolvePdsEndpoint(string $did): ?string
     {
-        $path = str_replace('.', '/', $nsid);
+        if (! $this->hasResolver) {
+            return null;
+        }
 
-        return [
-            // Official AT Protocol lexicons repository (main branch)
-            "https://raw.githubusercontent.com/bluesky-social/atproto/main/lexicons/{$path}.json",
+        try {
+            // Get resolver from Laravel container if available
+            if (function_exists('app') && app()->has(\SocialDept\Resolver\Resolver::class)) {
+                $resolver = app(\SocialDept\Resolver\Resolver::class);
+            } else {
+                // Can't instantiate without dependencies
+                return null;
+            }
 
-            // Fallback to legacy location
-            "https://raw.githubusercontent.com/bluesky-social/atproto/main/lexicons/{$nsid}.json",
-        ];
+            // Use the resolvePds method which handles DID resolution and PDS extraction
+            return $resolver->resolvePds($did);
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Fetch lexicon schema from AT Protocol repository.
+     */
+    protected function fetchLexiconFromRepository(string $pdsUrl, string $did, string $nsid): ?array
+    {
+        try {
+            // Construct XRPC call to com.atproto.repo.getRecord
+            $response = Http::timeout($this->httpTimeout)
+                ->get("{$pdsUrl}/xrpc/com.atproto.repo.getRecord", [
+                    'repo' => $did,
+                    'collection' => 'com.atproto.lexicon.schema',
+                    'rkey' => $nsid,
+                ]);
+
+            if ($response->successful()) {
+                $data = $response->json();
+
+                // Extract the lexicon schema from the record value
+                if (isset($data['value']) && is_array($data['value']) && isset($data['value']['lexicon'])) {
+                    return $data['value'];
+                }
+            }
+        } catch (\Exception $e) {
+            return null;
+        }
+
+        return null;
+    }
+
+    /**
+     * Show warning about missing atp-resolver package.
+     */
+    protected function showResolverWarning(): void
+    {
+        if (self::$resolverWarningShown) {
+            return;
+        }
+
+        if (function_exists('logger')) {
+            logger()->warning(
+                'DNS-based lexicon resolution requires the socialdept/atp-resolver package. '.
+                'Install it with: composer require socialdept/atp-resolver '.
+                'Falling back to local lexicon sources only.'
+            );
+        }
+
+        self::$resolverWarningShown = true;
     }
 }

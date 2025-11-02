@@ -149,29 +149,24 @@ return [
     | DNS-Based Lexicon Resolution
     |--------------------------------------------------------------------------
     |
-    | Configure DNS-based lexicon resolution for third-party schemas.
-    | Requires socialdept/atp-resolver package for DID resolution.
+    | Configure DNS-based lexicon resolution following AT Protocol specification.
+    |
+    | When enabled, the schema loader will attempt to discover custom lexicons via:
+    | 1. Querying DNS TXT record at _lexicon.<authority-domain> for DID
+    | 2. Resolving DID to PDS endpoint (requires socialdept/atp-resolver)
+    | 3. Fetching lexicon from repository via com.atproto.repo.getRecord
+    |
+    | IMPORTANT: DNS resolution requires the optional socialdept/atp-resolver package.
+    | Install with: composer require socialdept/atp-resolver
+    |
+    | If atp-resolver is not installed, DNS resolution will be skipped and a
+    | warning will be logged. The schema loader will fall back to local sources.
     |
     */
 
     'dns_resolution' => [
-        // Enable DNS-based lexicon resolution
+        // Enable DNS-based lexicon resolution (requires socialdept/atp-resolver)
         'enabled' => env('SCHEMA_DNS_RESOLUTION_ENABLED', true),
-
-        // Use Resolver for DID resolution (requires socialdept/atp-resolver)
-        'use_resolver' => env('SCHEMA_USE_RESOLVER', true),
-
-        // Fallback behavior when schema not found: fail, warn, allow
-        'fallback' => env('SCHEMA_DNS_FALLBACK', 'warn'),
-
-        // DNS nameservers (null = system default)
-        'nameservers' => env('SCHEMA_DNS_NAMESERVERS', null),
-
-        // DNS query timeout (seconds)
-        'timeout' => env('SCHEMA_DNS_TIMEOUT', 5),
-
-        // Auto-generate Data classes for resolved schemas
-        'auto_generate' => env('SCHEMA_DNS_AUTO_GENERATE', false),
     ],
 
     /*
