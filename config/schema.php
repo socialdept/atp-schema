@@ -131,7 +131,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Configure DNS-based lexicon resolution for third-party schemas.
-    | Requires socialdept/atp-beacon package for DID resolution.
+    | Requires socialdept/atp-resolver package for DID resolution.
     |
     */
 
@@ -139,8 +139,8 @@ return [
         // Enable DNS-based lexicon resolution
         'enabled' => env('SCHEMA_DNS_RESOLUTION_ENABLED', true),
 
-        // Use Beacon for DID resolution (requires socialdept/atp-beacon)
-        'use_beacon' => env('SCHEMA_USE_BEACON', true),
+        // Use Resolver for DID resolution (requires socialdept/atp-resolver)
+        'use_resolver' => env('SCHEMA_USE_RESOLVER', true),
 
         // Fallback behavior when schema not found: fail, warn, allow
         'fallback' => env('SCHEMA_DNS_FALLBACK', 'warn'),

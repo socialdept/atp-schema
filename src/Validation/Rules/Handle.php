@@ -18,16 +18,16 @@ class Handle implements ValidationRule
             return;
         }
 
-        // Check if Beacon package is available
-        if (class_exists('SocialDept\Beacon\Support\Identity')) {
-            if (! \SocialDept\Beacon\Support\Identity::isHandle($value)) {
+        // Check if Resolver package is available
+        if (class_exists('SocialDept\Resolver\Support\Identity')) {
+            if (! \SocialDept\Resolver\Support\Identity::isHandle($value)) {
                 $fail("The {$attribute} is not a valid handle.");
             }
 
             return;
         }
 
-        // Fallback validation if Beacon is not available
+        // Fallback validation if Resolver is not available
         if (! $this->isValidHandle($value)) {
             $fail("The {$attribute} is not a valid handle.");
         }

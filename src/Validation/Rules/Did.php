@@ -18,16 +18,16 @@ class Did implements ValidationRule
             return;
         }
 
-        // Check if Beacon package is available
-        if (class_exists('SocialDept\Beacon\Support\Identity')) {
-            if (! \SocialDept\Beacon\Support\Identity::isDid($value)) {
+        // Check if Resolver package is available
+        if (class_exists('SocialDept\Resolver\Support\Identity')) {
+            if (! \SocialDept\Resolver\Support\Identity::isDid($value)) {
                 $fail("The {$attribute} is not a valid DID.");
             }
 
             return;
         }
 
-        // Fallback validation if Beacon is not available
+        // Fallback validation if Resolver is not available
         if (! $this->isValidDid($value)) {
             $fail("The {$attribute} is not a valid DID.");
         }
