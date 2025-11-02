@@ -13,7 +13,7 @@ class PropertyGeneratorTest extends TestCase
     {
         parent::setUp();
 
-        $this->generator = new PropertyGenerator;
+        $this->generator = new PropertyGenerator();
     }
 
     public function test_it_generates_required_string_property(): void

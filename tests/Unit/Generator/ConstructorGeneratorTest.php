@@ -13,7 +13,7 @@ class ConstructorGeneratorTest extends TestCase
     {
         parent::setUp();
 
-        $this->generator = new ConstructorGenerator;
+        $this->generator = new ConstructorGenerator();
     }
 
     public function test_it_generates_constructor_with_promoted_properties(): void

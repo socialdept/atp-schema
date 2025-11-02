@@ -16,7 +16,7 @@ class ClassGeneratorTest extends TestCase
     {
         parent::setUp();
 
-        $this->generator = new ClassGenerator;
+        $this->generator = new ClassGenerator();
     }
 
     public function test_it_generates_simple_record_class(): void

@@ -15,7 +15,7 @@ class MethodGeneratorTest extends TestCase
     {
         parent::setUp();
 
-        $this->generator = new MethodGenerator;
+        $this->generator = new MethodGenerator();
     }
 
     public function test_it_generates_get_lexicon_method(): void

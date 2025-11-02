@@ -16,7 +16,7 @@ class DocBlockGenerator
      */
     public function __construct(?TypeMapper $typeMapper = null)
     {
-        $this->typeMapper = $typeMapper ?? new TypeMapper;
+        $this->typeMapper = $typeMapper ?? new TypeMapper();
     }
 
     /**

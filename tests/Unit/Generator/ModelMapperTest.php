@@ -13,7 +13,7 @@ class ModelMapperTest extends TestCase
     {
         parent::setUp();
 
-        $this->mapper = new ModelMapper;
+        $this->mapper = new ModelMapper();
     }
 
     public function test_it_generates_to_model_body_for_simple_properties(): void
@@ -281,6 +281,7 @@ class ModelMapperTest extends TestCase
         foreach ($lines as $line) {
             if (str_contains($line, 'last:')) {
                 $lastPropertyLine = $line;
+
                 break;
             }
         }

@@ -35,9 +35,9 @@ class MethodGenerator
         ?StubRenderer $renderer = null,
         ?ModelMapper $modelMapper = null
     ) {
-        $this->naming = $naming ?? new NamingConverter;
+        $this->naming = $naming ?? new NamingConverter();
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
-        $this->renderer = $renderer ?? new StubRenderer;
+        $this->renderer = $renderer ?? new StubRenderer();
         $this->modelMapper = $modelMapper ?? new ModelMapper($this->naming, $this->typeMapper);
     }
 

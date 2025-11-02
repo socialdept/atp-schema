@@ -15,7 +15,7 @@ class DocBlockGeneratorTest extends TestCase
     {
         parent::setUp();
 
-        $this->generator = new DocBlockGenerator;
+        $this->generator = new DocBlockGenerator();
     }
 
     public function test_it_generates_class_docblock_with_description(): void
