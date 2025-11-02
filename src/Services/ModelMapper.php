@@ -2,11 +2,13 @@
 
 namespace SocialDept\Schema\Services;
 
+use Illuminate\Support\Traits\Macroable;
 use SocialDept\Schema\Contracts\Transformer;
 use SocialDept\Schema\Exceptions\SchemaException;
 
 class ModelMapper
 {
+    use Macroable;
     /**
      * Registered transformers.
      *

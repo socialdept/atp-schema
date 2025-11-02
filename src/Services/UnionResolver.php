@@ -2,12 +2,14 @@
 
 namespace SocialDept\Schema\Services;
 
+use Illuminate\Support\Traits\Macroable;
 use SocialDept\Schema\Contracts\LexiconRegistry;
 use SocialDept\Schema\Data\LexiconDocument;
 use SocialDept\Schema\Exceptions\RecordValidationException;
 
 class UnionResolver
 {
+    use Macroable;
     /**
      * Create a new UnionResolver.
      */

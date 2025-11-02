@@ -2,6 +2,7 @@
 
 namespace SocialDept\Schema\Validation;
 
+use Illuminate\Support\Traits\Macroable;
 use SocialDept\Schema\Contracts\LexiconValidator as LexiconValidatorContract;
 use SocialDept\Schema\Data\LexiconDocument;
 use SocialDept\Schema\Exceptions\RecordValidationException;
@@ -11,6 +12,7 @@ use SocialDept\Schema\Parser\TypeParser;
 
 class Validator implements LexiconValidatorContract
 {
+    use Macroable;
     /**
      * Validation mode constants.
      */

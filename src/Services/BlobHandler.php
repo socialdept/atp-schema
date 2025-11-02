@@ -5,11 +5,13 @@ namespace SocialDept\Schema\Services;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Traits\Macroable;
 use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Exceptions\RecordValidationException;
 
 class BlobHandler
 {
+    use Macroable;
     /**
      * Storage disk name.
      */
