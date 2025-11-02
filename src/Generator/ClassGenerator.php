@@ -28,18 +28,25 @@ class ClassGenerator
     protected MethodGenerator $methodGenerator;
 
     /**
+     * DocBlock generator instance.
+     */
+    protected DocBlockGenerator $docBlockGenerator;
+
+    /**
      * Create a new ClassGenerator.
      */
     public function __construct(
         ?NamingConverter $naming = null,
         ?TypeMapper $typeMapper = null,
         ?StubRenderer $renderer = null,
-        ?MethodGenerator $methodGenerator = null
+        ?MethodGenerator $methodGenerator = null,
+        ?DocBlockGenerator $docBlockGenerator = null
     ) {
         $this->naming = $naming ?? new NamingConverter;
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
         $this->renderer = $renderer ?? new StubRenderer;
         $this->methodGenerator = $methodGenerator ?? new MethodGenerator($this->naming, $this->typeMapper, $this->renderer);
+        $this->docBlockGenerator = $docBlockGenerator ?? new DocBlockGenerator($this->typeMapper);
     }
 
     /**
@@ -174,22 +181,7 @@ class ClassGenerator
      */
     protected function generateClassDocBlock(LexiconDocument $document, array $definition): string
     {
-        $lines = ['/**'];
-
-        if ($document->description) {
-            $lines[] = ' * '.$document->description;
-            $lines[] = ' *';
-        }
-
-        $lines[] = ' * Lexicon: '.$document->getNsid();
-
-        if (isset($definition['type'])) {
-            $lines[] = ' * Type: '.$definition['type'];
-        }
-
-        $lines[] = ' */';
-
-        return implode("\n", $lines);
+        return $this->docBlockGenerator->generateClassDocBlock($document, $definition);
     }
 
     /**
@@ -270,5 +262,13 @@ class ClassGenerator
     public function getMethodGenerator(): MethodGenerator
     {
         return $this->methodGenerator;
+    }
+
+    /**
+     * Get the docblock generator.
+     */
+    public function getDocBlockGenerator(): DocBlockGenerator
+    {
+        return $this->docBlockGenerator;
     }
 }
