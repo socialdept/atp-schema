@@ -64,7 +64,7 @@ class TypeMapperTest extends TestCase
     {
         $type = $this->mapper->toPhpType(['type' => 'blob']);
 
-        $this->assertSame('\\SocialDept\\Schema\\Data\\BlobReference', $type);
+        $this->assertSame('BlobReference', $type);
     }
 
     public function test_it_maps_bytes_type(): void
@@ -95,7 +95,7 @@ class TypeMapperTest extends TestCase
             'ref' => 'app.bsky.feed.post',
         ]);
 
-        $this->assertSame('\\App\\Lexicon\\Feed\\Bsky\\App\\Post', $type);
+        $this->assertSame('Post', $type);
     }
 
     public function test_it_maps_union_type(): void
@@ -166,7 +166,7 @@ class TypeMapperTest extends TestCase
             ],
         ]);
 
-        $this->assertSame('\\App\\Lexicon\\Feed\\Bsky\\App\\Post|\\App\\Lexicon\\Feed\\Bsky\\App\\Repost', $docType);
+        $this->assertSame('mixed', $docType);
     }
 
     public function test_it_adds_null_to_doc_type_when_nullable(): void
@@ -178,13 +178,8 @@ class TypeMapperTest extends TestCase
 
     public function test_it_checks_if_type_is_nullable(): void
     {
-        // Field marked as required
         $this->assertFalse($this->mapper->isNullable(['required' => true]));
-
-        // Field in required array
         $this->assertFalse($this->mapper->isNullable(['name' => 'field'], ['field']));
-
-        // Optional field
         $this->assertTrue($this->mapper->isNullable([]));
     }
 
@@ -249,10 +244,10 @@ class TypeMapperTest extends TestCase
             'ref' => 'app.bsky.feed.post',
         ]);
 
-        $this->assertContains('App\\Lexicon\\Feed\\Bsky\\App\\Post', $uses);
+        $this->assertContains('App\\Lexicon\\App\\Bsky\\Feed\\Post', $uses);
     }
 
-    public function test_it_gets_use_statements_for_union(): void
+    public function test_it_gets_use_statements_for_open_union(): void
     {
         $uses = $this->mapper->getUseStatements([
             'type' => 'union',
@@ -262,8 +257,23 @@ class TypeMapperTest extends TestCase
             ],
         ]);
 
-        $this->assertContains('App\\Lexicon\\Feed\\Bsky\\App\\Post', $uses);
-        $this->assertContains('App\\Lexicon\\Feed\\Bsky\\App\\Repost', $uses);
+        $this->assertEmpty($uses);
+    }
+
+    public function test_it_gets_use_statements_for_closed_union(): void
+    {
+        $uses = $this->mapper->getUseStatements([
+            'type' => 'union',
+            'closed' => true,
+            'refs' => [
+                'app.bsky.feed.post',
+                'app.bsky.feed.repost',
+            ],
+        ]);
+
+        $this->assertCount(2, $uses);
+        $this->assertContains('App\\Lexicon\\App\\Bsky\\Feed\\Post', $uses);
+        $this->assertContains('App\\Lexicon\\App\\Bsky\\Feed\\Repost', $uses);
     }
 
     public function test_it_gets_empty_use_statements_for_primitive(): void

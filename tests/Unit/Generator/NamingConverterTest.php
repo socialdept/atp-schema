@@ -20,14 +20,14 @@ class NamingConverterTest extends TestCase
     {
         $className = $this->converter->nsidToClassName('app.bsky.feed.post');
 
-        $this->assertSame('App\\Lexicon\\Feed\\Bsky\\App\\Post', $className);
+        $this->assertSame('App\\Lexicon\\App\\Bsky\\Feed\\Post', $className);
     }
 
     public function test_it_converts_nsid_to_namespace(): void
     {
         $namespace = $this->converter->nsidToNamespace('app.bsky.feed.post');
 
-        $this->assertSame('App\\Lexicon\\Feed\\Bsky\\App', $namespace);
+        $this->assertSame('App\\Lexicon\\App\\Bsky\\Feed', $namespace);
     }
 
     public function test_it_handles_multi_part_names(): void
@@ -102,7 +102,7 @@ class NamingConverterTest extends TestCase
     {
         $className = $this->converter->nsidToClassName('com.atproto.repo.getRecord');
 
-        $this->assertSame('App\\Lexicon\\Repo\\Atproto\\Com\\GetRecord', $className);
+        $this->assertSame('App\\Lexicon\\Com\\Atproto\\Repo\\GetRecord', $className);
     }
 
     public function test_it_gets_base_namespace(): void
@@ -130,7 +130,7 @@ class NamingConverterTest extends TestCase
     {
         $className = $this->converter->nsidToClassName('com.example.api.getUser');
 
-        $this->assertSame('App\\Lexicon\\Api\\Example\\Com\\GetUser', $className);
+        $this->assertSame('App\\Lexicon\\Com\\Example\\Api\\GetUser', $className);
     }
 
     public function test_it_handles_hyphens_in_names(): void
@@ -149,10 +149,10 @@ class NamingConverterTest extends TestCase
 
     public function test_namespace_parts_are_reversed(): void
     {
-        // app.bsky.feed should become Feed\Bsky\App (reversed)
+        // app.bsky.feed should become App\Bsky\Feed (authority-first)
         $namespace = $this->converter->nsidToNamespace('app.bsky.feed.post');
 
-        $this->assertStringContainsString('Feed\\Bsky\\App', $namespace);
+        $this->assertStringContainsString('App\\Bsky\\Feed', $namespace);
     }
 
     public function test_it_handles_single_letter_parts(): void

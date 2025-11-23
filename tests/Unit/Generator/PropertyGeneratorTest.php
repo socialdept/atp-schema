@@ -179,7 +179,7 @@ class PropertyGeneratorTest extends TestCase
             ['author']
         );
 
-        $this->assertStringContainsString('App\\Lexicon\\Test\\App\\Author', $property);
+        $this->assertStringContainsString('public readonly Author $author', $property);
     }
 
     public function test_it_generates_promoted_with_default(): void

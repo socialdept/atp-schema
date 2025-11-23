@@ -239,6 +239,6 @@ class ConstructorGeneratorTest extends TestCase
             ['author']
         );
 
-        $this->assertStringContainsString('App\\Lexicon\\Test\\App\\Author', $constructor);
+        $this->assertStringContainsString('public readonly Author $author', $constructor);
     }
 }

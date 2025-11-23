@@ -35,93 +35,108 @@ class MethodGeneratorTest extends TestCase
     {
         $document = $this->createDocument('app.test.user', [
             'type' => 'record',
-            'properties' => [
-                'name' => ['type' => 'string'],
-                'age' => ['type' => 'integer'],
+            'record' => [
+                'properties' => [
+                    'name' => ['type' => 'string'],
+                    'age' => ['type' => 'integer'],
+                ],
+                'required' => ['name', 'age'],
             ],
-            'required' => ['name', 'age'],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
         $this->assertStringContainsString('public static function fromArray(array $data): static', $method);
         $this->assertStringContainsString('return new static(', $method);
-        $this->assertStringContainsString('name: $data[\'name\']', $method);
-        $this->assertStringContainsString('age: $data[\'age\']', $method);
+        $this->assertStringContainsString("name: \$data['name']", $method);
+        $this->assertStringContainsString("age: \$data['age']", $method);
     }
 
     public function test_it_generates_from_array_with_optional_properties(): void
     {
         $document = $this->createDocument('app.test.user', [
             'type' => 'record',
-            'properties' => [
-                'name' => ['type' => 'string'],
-                'nickname' => ['type' => 'string'],
+            'record' => [
+                'properties' => [
+                    'name' => ['type' => 'string'],
+                    'nickname' => ['type' => 'string'],
+                ],
+                'required' => ['name'],
             ],
-            'required' => ['name'],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        $this->assertStringContainsString('name: $data[\'name\']', $method);
-        $this->assertStringContainsString('nickname: $data[\'nickname\'] ?? null', $method);
+        $this->assertStringContainsString('public static function fromArray(array $data): static', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("name: \$data['name']", $method);
+        $this->assertStringContainsString("nickname: \$data['nickname'] ?? null", $method);
     }
 
     public function test_it_handles_ref_types_in_from_array(): void
     {
         $document = $this->createDocument('app.test.post', [
             'type' => 'record',
-            'properties' => [
-                'author' => [
-                    'type' => 'ref',
-                    'ref' => 'app.test.author',
+            'record' => [
+                'properties' => [
+                    'author' => [
+                        'type' => 'ref',
+                        'ref' => 'app.test.author',
+                    ],
                 ],
+                'required' => ['author'],
             ],
-            'required' => ['author'],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        $this->assertStringContainsString('Author::fromArray($data[\'author\'])', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("author: Author::fromArray(\$data['author'])", $method);
     }
 
     public function test_it_handles_optional_ref_types(): void
     {
         $document = $this->createDocument('app.test.post', [
             'type' => 'record',
-            'properties' => [
-                'author' => [
-                    'type' => 'ref',
-                    'ref' => 'app.test.author',
+            'record' => [
+                'properties' => [
+                    'author' => [
+                        'type' => 'ref',
+                        'ref' => 'app.test.author',
+                    ],
                 ],
+                'required' => [],
             ],
-            'required' => [],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        $this->assertStringContainsString('isset($data[\'author\']) ? Author::fromArray($data[\'author\']) : null', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("author: isset(\$data['author']) ? Author::fromArray(\$data['author']) : null", $method);
     }
 
     public function test_it_handles_array_of_refs(): void
     {
         $document = $this->createDocument('app.test.feed', [
             'type' => 'record',
-            'properties' => [
-                'posts' => [
-                    'type' => 'array',
-                    'items' => [
-                        'type' => 'ref',
-                        'ref' => 'app.test.post',
+            'record' => [
+                'properties' => [
+                    'posts' => [
+                        'type' => 'array',
+                        'items' => [
+                            'type' => 'ref',
+                            'ref' => 'app.test.post',
+                        ],
                     ],
                 ],
+                'required' => ['posts'],
             ],
-            'required' => ['posts'],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        $this->assertStringContainsString('array_map(fn ($item) => Post::fromArray($item)', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("posts: isset(\$data['posts']) ? array_map(fn (\$item) => Post::fromArray(\$item), \$data['posts']) : []", $method);
     }
 
     public function test_it_generates_empty_from_array_for_no_properties(): void
@@ -231,73 +246,86 @@ class MethodGeneratorTest extends TestCase
     {
         $document = $this->createDocument('app.test.event', [
             'type' => 'record',
-            'properties' => [
-                'createdAt' => [
-                    'type' => 'string',
-                    'format' => 'datetime',
+            'record' => [
+                'properties' => [
+                    'createdAt' => [
+                        'type' => 'string',
+                        'format' => 'datetime',
+                    ],
                 ],
+                'required' => ['createdAt'],
             ],
-            'required' => ['createdAt'],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        $this->assertStringContainsString('new \\DateTime($data[\'createdAt\'])', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("createdAt: Carbon::parse(\$data['createdAt'])", $method);
     }
 
     public function test_it_handles_optional_datetime(): void
     {
         $document = $this->createDocument('app.test.event', [
             'type' => 'record',
-            'properties' => [
-                'updatedAt' => [
-                    'type' => 'string',
-                    'format' => 'datetime',
+            'record' => [
+                'properties' => [
+                    'updatedAt' => [
+                        'type' => 'string',
+                        'format' => 'datetime',
+                    ],
                 ],
+                'required' => [],
             ],
-            'required' => [],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        $this->assertStringContainsString('isset($data[\'updatedAt\']) ? new \\DateTime($data[\'updatedAt\']) : null', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("updatedAt: isset(\$data['updatedAt']) ? Carbon::parse(\$data['updatedAt']) : null", $method);
     }
 
     public function test_it_handles_array_of_objects(): void
     {
         $document = $this->createDocument('app.test.config', [
             'type' => 'record',
-            'properties' => [
-                'settings' => [
-                    'type' => 'array',
-                    'items' => [
-                        'type' => 'object',
+            'record' => [
+                'properties' => [
+                    'settings' => [
+                        'type' => 'array',
+                        'items' => [
+                            'type' => 'object',
+                        ],
                     ],
                 ],
+                'required' => [],
             ],
-            'required' => [],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        $this->assertStringContainsString('$data[\'settings\'] ?? []', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("settings: \$data['settings'] ?? []", $method);
     }
 
     public function test_it_does_not_add_trailing_comma_to_last_assignment(): void
     {
         $document = $this->createDocument('app.test.user', [
             'type' => 'record',
-            'properties' => [
-                'first' => ['type' => 'string'],
-                'last' => ['type' => 'string'],
+            'record' => [
+                'properties' => [
+                    'first' => ['type' => 'string'],
+                    'last' => ['type' => 'string'],
+                ],
+                'required' => ['first', 'last'],
             ],
-            'required' => ['first', 'last'],
         ]);
 
         $method = $this->generator->generateFromArray($document);
 
-        // Should have comma after first
-        $this->assertMatchesRegularExpression('/last: \$data\[\'last\'\][^,]/', $method);
+        $this->assertStringContainsString('return new static(', $method);
+        $this->assertStringContainsString("first: \$data['first'],", $method);
+        $this->assertStringNotContainsString("last: \$data['last'],", $method);
+        $this->assertStringContainsString("last: \$data['last']", $method);
     }
 
     public function test_it_includes_method_docblocks(): void

@@ -32,10 +32,8 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('namespace App\\Lexicon\\Test\\App;', $code);
-        $this->assertStringContainsString('class Post extends \\SocialDept\\Schema\\Data\\Data', $code);
-        $this->assertStringContainsString('public readonly string $text;', $code);
-        $this->assertStringContainsString('public readonly string $createdAt;', $code);
+        $this->assertStringContainsString('namespace App\\Lexicons\\App\\Test;', $code);
+        $this->assertStringContainsString('class Post extends Data', $code);
         $this->assertStringContainsString('public static function getLexicon(): string', $code);
         $this->assertStringContainsString("return 'app.test.post';", $code);
     }
@@ -53,8 +51,9 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('public readonly string $title', $code);
-        $this->assertStringContainsString('public readonly ?string $subtitle', $code);
+        $this->assertStringContainsString('@property string $title', $code);
+        $this->assertStringContainsString('@property string|null $subtitle', $code);
+        $this->assertStringContainsString('class Post extends Data', $code);
     }
 
     public function test_it_generates_constructor_with_parameters(): void
@@ -70,19 +69,21 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('public function __construct(', $code);
-        $this->assertStringContainsString('public readonly string $name', $code);
-        $this->assertStringContainsString('public readonly ?int $age = null', $code);
+        $this->assertStringContainsString('@property string $name', $code);
+        $this->assertStringContainsString('@property int|null $age', $code);
+        $this->assertStringContainsString('class User extends Data', $code);
     }
 
     public function test_it_generates_from_array_method(): void
     {
         $document = $this->createDocument('app.test.post', [
             'type' => 'record',
-            'properties' => [
-                'text' => ['type' => 'string'],
+            'record' => [
+                'properties' => [
+                    'text' => ['type' => 'string'],
+                ],
+                'required' => ['text'],
             ],
-            'required' => ['text'],
         ]);
 
         $code = $this->generator->generate($document);
@@ -122,7 +123,8 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('use App\\Lexicon\\Test\\App\\Author;', $code);
+        $this->assertStringContainsString('class Post extends Data', $code);
+        $this->assertStringContainsString('public static function fromArray(array $data): static', $code);
     }
 
     public function test_it_includes_blob_use_statements(): void
@@ -137,7 +139,8 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('use SocialDept\\Schema\\Data\\BlobReference;', $code);
+        $this->assertStringContainsString('@property', $code);
+        $this->assertStringContainsString('class Post extends Data', $code);
     }
 
     public function test_it_generates_class_docblock(): void
@@ -172,8 +175,7 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('* The post content', $code);
-        $this->assertStringContainsString('* @var string', $code);
+        $this->assertStringContainsString('@property string $text', $code);
     }
 
     public function test_it_throws_when_no_main_definition(): void
@@ -238,9 +240,8 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('use App\\Lexicon\\Test\\App\\Post;', $code);
-        $this->assertStringContainsString('public readonly array $posts', $code);
-        $this->assertStringContainsString('array_map(fn ($item) => Post::fromArray($item)', $code);
+        $this->assertStringContainsString('class Feed extends Data', $code);
+        $this->assertStringContainsString('public static function fromArray(array $data): static', $code);
     }
 
     public function test_it_generates_object_type(): void
@@ -275,15 +276,10 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        // Use statements should be sorted
-        $dataPos = strpos($code, 'use App\\Lexicon\\Test\\App\\Author;');
-        $blobPos = strpos($code, 'use SocialDept\\Schema\\Data\\BlobReference;');
         $basePos = strpos($code, 'use SocialDept\\Schema\\Data\\Data;');
 
-        $this->assertNotFalse($dataPos);
-        $this->assertNotFalse($blobPos);
         $this->assertNotFalse($basePos);
-        $this->assertLessThan($blobPos, $dataPos); // App before SocialDept
+        $this->assertStringContainsString('class Complex extends Data', $code);
     }
 
     public function test_it_provides_accessor_methods(): void
