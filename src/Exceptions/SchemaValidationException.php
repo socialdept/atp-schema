@@ -9,7 +9,7 @@ class SchemaValidationException extends SchemaException
      */
     public static function invalidStructure(string $nsid, array $errors): self
     {
-        $message = "Schema validation failed for {$nsid}:\n" . implode("\n", $errors);
+        $message = "Schema validation failed for {$nsid}:\n".implode("\n", $errors);
 
         return static::withContext($message, [
             'nsid' => $nsid,

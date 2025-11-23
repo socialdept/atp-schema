@@ -12,6 +12,7 @@ use SocialDept\Schema\Exceptions\RecordValidationException;
 class BlobHandler
 {
     use Macroable;
+
     /**
      * Storage disk name.
      */

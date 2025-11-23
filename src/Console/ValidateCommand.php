@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Console;
 
 use Illuminate\Console\Command;
-use SocialDept\Schema\Data\LexiconDocument;
 use SocialDept\Schema\Parser\SchemaLoader;
 use SocialDept\Schema\Validation\LexiconValidator;
 
@@ -64,8 +63,7 @@ class ValidateCommand extends Command
 
             $this->info("Validating data against schema: {$nsid}");
 
-            $schema = $loader->load($nsid);
-            $document = LexiconDocument::fromArray($schema);
+            $document = $loader->load($nsid);
 
             $errors = $validator->validateWithErrors($data, $document);
 

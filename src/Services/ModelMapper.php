@@ -9,6 +9,7 @@ use SocialDept\Schema\Exceptions\SchemaException;
 class ModelMapper
 {
     use Macroable;
+
     /**
      * Registered transformers.
      *

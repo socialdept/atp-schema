@@ -40,9 +40,27 @@ class SchemaManager
     /**
      * Load a schema by NSID.
      */
-    public function load(string $nsid): array
+    public function load(string $nsid): LexiconDocument
     {
         return $this->loader->load($nsid);
+    }
+
+    /**
+     * Find a schema by NSID (nullable).
+     */
+    public function find(string $nsid): ?LexiconDocument
+    {
+        return $this->loader->find($nsid);
+    }
+
+    /**
+     * Get all available schemas.
+     *
+     * @return array<string>
+     */
+    public function all(): array
+    {
+        return $this->loader->all();
     }
 
     /**
@@ -54,21 +72,11 @@ class SchemaManager
     }
 
     /**
-     * Parse a schema into a LexiconDocument.
-     */
-    public function parse(string $nsid): LexiconDocument
-    {
-        $schema = $this->loader->load($nsid);
-
-        return LexiconDocument::fromArray($schema);
-    }
-
-    /**
      * Validate data against a schema.
      */
     public function validate(string $nsid, array $data): bool
     {
-        $document = $this->parse($nsid);
+        $document = $this->load($nsid);
 
         return $this->validator->validate($data, $document);
     }
@@ -80,7 +88,7 @@ class SchemaManager
      */
     public function validateWithErrors(string $nsid, array $data): array
     {
-        $document = $this->parse($nsid);
+        $document = $this->load($nsid);
 
         return $this->validator->validateWithErrors($data, $document);
     }
@@ -88,13 +96,13 @@ class SchemaManager
     /**
      * Generate DTO code from a schema.
      */
-    public function generate(string $nsid, array $options = []): string
+    public function generate(string $nsid, ?string $outputPath = null): string
     {
         if ($this->generator === null) {
             throw new \RuntimeException('Generator not available');
         }
 
-        $document = $this->parse($nsid);
+        $document = $this->load($nsid);
 
         return $this->generator->generate($document);
     }

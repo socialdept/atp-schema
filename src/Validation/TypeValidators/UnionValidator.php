@@ -3,9 +3,19 @@
 namespace SocialDept\Schema\Validation\TypeValidators;
 
 use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\Schema\Services\UnionResolver;
 
 class UnionValidator
 {
+    /**
+     * Create a new UnionValidator.
+     */
+    public function __construct(
+        protected ?UnionResolver $resolver = null
+    ) {
+        $this->resolver = $resolver ?? new UnionResolver;
+    }
+
     /**
      * Validate a union value against constraints.
      *
@@ -23,7 +33,7 @@ class UnionValidator
         $closed = $definition['closed'] ?? false;
 
         if ($closed) {
-            $this->validateDiscriminatedUnion($value, $refs, $path);
+            $this->validateDiscriminatedUnion($value, $refs, $path, $definition);
         } else {
             $this->validateOpenUnion($value, $refs, $path);
         }
@@ -33,30 +43,18 @@ class UnionValidator
      * Validate discriminated (closed) union.
      *
      * @param  array<string>  $refs
+     * @param  array<string, mixed>  $definition
      */
-    protected function validateDiscriminatedUnion(mixed $value, array $refs, string $path): void
+    protected function validateDiscriminatedUnion(mixed $value, array $refs, string $path, array $definition): void
     {
-        if (! is_array($value)) {
-            throw RecordValidationException::invalidType($path, 'object', gettype($value));
-        }
-
-        // Check for $type discriminator
-        if (! isset($value['$type'])) {
+        // Delegate validation to UnionResolver which handles all the logic
+        try {
+            $this->resolver->resolve($value, $definition);
+        } catch (RecordValidationException $e) {
+            // Re-throw with path context
             throw RecordValidationException::invalidValue(
                 $path,
-                'Discriminated union must have $type field'
-            );
-        }
-
-        $type = $value['$type'];
-
-        // Validate that $type is one of the allowed refs
-        if (! in_array($type, $refs, true)) {
-            $allowed = implode(', ', $refs);
-
-            throw RecordValidationException::invalidValue(
-                $path,
-                "Union type '{$type}' not allowed. Must be one of: {$allowed}"
+                $e->getMessage()
             );
         }
     }

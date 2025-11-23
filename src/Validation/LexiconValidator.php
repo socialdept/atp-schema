@@ -115,8 +115,7 @@ class LexiconValidator implements LexiconValidatorContract
      */
     public function validateByNsid(string $nsid, array $record): void
     {
-        $schema = $this->schemaLoader->load($nsid);
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->schemaLoader->load($nsid);
 
         $this->validateRecord($document, $record);
     }

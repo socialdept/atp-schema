@@ -32,7 +32,7 @@ class BlobException extends SchemaException
     public static function invalidMimeType(string $mimeType, array $accepted): self
     {
         return static::withContext(
-            "Invalid MIME type {$mimeType}. Accepted: " . implode(', ', $accepted),
+            "Invalid MIME type {$mimeType}. Accepted: ".implode(', ', $accepted),
             ['mimeType' => $mimeType, 'accepted' => $accepted]
         );
     }

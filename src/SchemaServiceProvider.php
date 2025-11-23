@@ -46,6 +46,50 @@ class SchemaServiceProvider extends ServiceProvider
             );
         });
 
+        // Register UnionResolver
+        $this->app->singleton(Services\UnionResolver::class);
+
+        // Register ExtensionManager
+        $this->app->singleton(Support\ExtensionManager::class);
+
+        // Register DefaultLexiconParser
+        $this->app->singleton(Parser\DefaultLexiconParser::class);
+
+        // Register InMemoryLexiconRegistry
+        $this->app->singleton(Parser\InMemoryLexiconRegistry::class);
+
+        // Register DnsLexiconResolver
+        $this->app->singleton(Parser\DnsLexiconResolver::class, function ($app) {
+            return new Parser\DnsLexiconResolver(
+                enabled: config('schema.dns_resolution.enabled', true),
+                httpTimeout: config('schema.http.timeout', 10),
+                parser: $app->make(Parser\DefaultLexiconParser::class)
+            );
+        });
+
+        // Register DefaultBlobHandler
+        $this->app->singleton(Support\DefaultBlobHandler::class, function ($app) {
+            return new Support\DefaultBlobHandler(
+                disk: config('schema.blobs.disk'),
+                path: config('schema.blobs.path', 'blobs')
+            );
+        });
+
+        // Bind BlobHandler contract to DefaultBlobHandler
+        $this->app->bind(Contracts\BlobHandler::class, Support\DefaultBlobHandler::class);
+
+        // Bind LexiconParser contract to DefaultLexiconParser
+        $this->app->bind(Contracts\LexiconParser::class, Parser\DefaultLexiconParser::class);
+
+        // Bind LexiconRegistry contract to InMemoryLexiconRegistry
+        $this->app->bind(Contracts\LexiconRegistry::class, Parser\InMemoryLexiconRegistry::class);
+
+        // Bind LexiconResolver contract to DnsLexiconResolver
+        $this->app->bind(Contracts\LexiconResolver::class, Parser\DnsLexiconResolver::class);
+
+        // Bind SchemaRepository contract to SchemaLoader
+        $this->app->bind(Contracts\SchemaRepository::class, Parser\SchemaLoader::class);
+
         // Register DTOGenerator
         $this->app->singleton(Generator\DTOGenerator::class, function ($app) {
             return new Generator\DTOGenerator(
@@ -88,7 +132,7 @@ class SchemaServiceProvider extends ServiceProvider
 
         // Register AT Protocol validation rules
         $validator->extend('nsid', function ($attribute, $value) {
-            $rule = new Validation\Rules\Nsid();
+            $rule = new Validation\Rules\Nsid;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -98,7 +142,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid NSID.');
 
         $validator->extend('did', function ($attribute, $value) {
-            $rule = new Validation\Rules\Did();
+            $rule = new Validation\Rules\Did;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -108,7 +152,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid DID.');
 
         $validator->extend('handle', function ($attribute, $value) {
-            $rule = new Validation\Rules\Handle();
+            $rule = new Validation\Rules\Handle;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -118,7 +162,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid handle.');
 
         $validator->extend('at_uri', function ($attribute, $value) {
-            $rule = new Validation\Rules\AtUri();
+            $rule = new Validation\Rules\AtUri;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -128,7 +172,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid AT URI.');
 
         $validator->extend('at_datetime', function ($attribute, $value) {
-            $rule = new Validation\Rules\AtDatetime();
+            $rule = new Validation\Rules\AtDatetime;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -138,7 +182,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute is not a valid AT Protocol datetime.');
 
         $validator->extend('cid', function ($attribute, $value) {
-            $rule = new Validation\Rules\Cid();
+            $rule = new Validation\Rules\Cid;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;
@@ -174,7 +218,7 @@ class SchemaServiceProvider extends ServiceProvider
         }, 'The :attribute must be at least :min_graphemes graphemes.');
 
         $validator->extend('language', function ($attribute, $value) {
-            $rule = new Validation\Rules\Language();
+            $rule = new Validation\Rules\Language;
             $failed = false;
             $rule->validate($attribute, $value, function () use (&$failed) {
                 $failed = true;

@@ -50,7 +50,7 @@ class Nsid implements Stringable
 
         if (strlen($this->nsid) > self::MAX_LENGTH) {
             throw SchemaException::withContext(
-                "NSID exceeds maximum length of " . self::MAX_LENGTH . " characters",
+                'NSID exceeds maximum length of '.self::MAX_LENGTH.' characters',
                 ['nsid' => $this->nsid, 'length' => strlen($this->nsid)]
             );
         }
@@ -65,7 +65,7 @@ class Nsid implements Stringable
         $segments = explode('.', $this->nsid);
         if (count($segments) < self::MIN_SEGMENTS) {
             throw SchemaException::withContext(
-                'NSID must have at least ' . self::MIN_SEGMENTS . ' segments',
+                'NSID must have at least '.self::MIN_SEGMENTS.' segments',
                 ['nsid' => $this->nsid, 'segments' => count($segments)]
             );
         }

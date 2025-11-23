@@ -13,6 +13,7 @@ use SocialDept\Schema\Parser\TypeParser;
 class Validator implements LexiconValidatorContract
 {
     use Macroable;
+
     /**
      * Validation mode constants.
      */
@@ -165,7 +166,7 @@ class Validator implements LexiconValidatorContract
         if ($type !== 'record' && $type !== 'object') {
             throw SchemaValidationException::invalidStructure(
                 $schema->getNsid(),
-                ['Schema must be a record or object type, got: ' . ($type ?? 'unknown')]
+                ['Schema must be a record or object type, got: '.($type ?? 'unknown')]
             );
         }
 

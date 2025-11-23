@@ -7,8 +7,7 @@ if (! function_exists('schema')) {
     /**
      * Get the SchemaManager instance or load a schema.
      *
-     * @param  string|null  $nsid
-     * @return \SocialDept\Schema\SchemaManager|array
+     * @return \SocialDept\Schema\SchemaManager|LexiconDocument
      */
     function schema(?string $nsid = null)
     {
@@ -17,6 +16,26 @@ if (! function_exists('schema')) {
         }
 
         return Schema::load($nsid);
+    }
+}
+
+if (! function_exists('schema_find')) {
+    /**
+     * Find a schema by NSID (nullable version).
+     */
+    function schema_find(string $nsid): ?LexiconDocument
+    {
+        return Schema::find($nsid);
+    }
+}
+
+if (! function_exists('schema_exists')) {
+    /**
+     * Check if a schema exists.
+     */
+    function schema_exists(string $nsid): bool
+    {
+        return Schema::exists($nsid);
     }
 }
 
@@ -30,22 +49,12 @@ if (! function_exists('schema_validate')) {
     }
 }
 
-if (! function_exists('schema_parse')) {
-    /**
-     * Parse a schema into a LexiconDocument.
-     */
-    function schema_parse(string $nsid): LexiconDocument
-    {
-        return Schema::parse($nsid);
-    }
-}
-
 if (! function_exists('schema_generate')) {
     /**
      * Generate DTO code from a schema.
      */
-    function schema_generate(string $nsid, array $options = []): string
+    function schema_generate(string $nsid, ?string $outputPath = null): string
     {
-        return Schema::generate($nsid, $options);
+        return Schema::generate($nsid, $outputPath);
     }
 }

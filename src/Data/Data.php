@@ -5,14 +5,25 @@ namespace SocialDept\Schema\Data;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use JsonSerializable;
+use SocialDept\Schema\Contracts\DiscriminatedUnion;
 use Stringable;
 
-abstract class Data implements Arrayable, Jsonable, JsonSerializable, Stringable
+abstract class Data implements Arrayable, DiscriminatedUnion, Jsonable, JsonSerializable, Stringable
 {
     /**
      * Get the lexicon NSID for this data type.
      */
     abstract public static function getLexicon(): string;
+
+    /**
+     * Get the lexicon NSID that identifies this union variant.
+     *
+     * This is an alias for getLexicon() to satisfy the DiscriminatedUnion contract.
+     */
+    public static function getDiscriminator(): string
+    {
+        return static::getLexicon();
+    }
 
     /**
      * Convert the data to an array.
@@ -22,10 +33,13 @@ abstract class Data implements Arrayable, Jsonable, JsonSerializable, Stringable
         $result = [];
 
         foreach (get_object_vars($this) as $property => $value) {
-            $result[$property] = $this->serializeValue($value);
+            // Skip null values to exclude optional fields that aren't set
+            if ($value !== null) {
+                $result[$property] = $this->serializeValue($value);
+            }
         }
 
-        return $result;
+        return array_filter($result);
     }
 
     /**
@@ -57,14 +71,16 @@ abstract class Data implements Arrayable, Jsonable, JsonSerializable, Stringable
      */
     protected function serializeValue(mixed $value): mixed
     {
+        // Union variants must include $type for discrimination
         if ($value instanceof self) {
-            return $value->toArray();
+            return $value->toRecord();
         }
 
         if ($value instanceof Arrayable) {
             return $value->toArray();
         }
 
+        // Preserve arrays with $type (open union data)
         if (is_array($value)) {
             return array_map(fn ($item) => $this->serializeValue($item), $value);
         }
@@ -103,7 +119,7 @@ abstract class Data implements Arrayable, Jsonable, JsonSerializable, Stringable
      */
     public static function fromRecord(array $record): static
     {
-        return static::fromArray($record);
+        return static::fromArray($record['value'] ?? $record);
     }
 
     /**
@@ -114,7 +130,10 @@ abstract class Data implements Arrayable, Jsonable, JsonSerializable, Stringable
      */
     public function toRecord(): array
     {
-        return $this->toArray();
+        return [
+            ...$this->toArray(),
+            '$type' => $this->getLexicon(),
+        ];
     }
 
     /**

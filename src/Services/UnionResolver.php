@@ -10,13 +10,13 @@ use SocialDept\Schema\Exceptions\RecordValidationException;
 class UnionResolver
 {
     use Macroable;
+
     /**
      * Create a new UnionResolver.
      */
     public function __construct(
         protected ?LexiconRegistry $registry = null
-    ) {
-    }
+    ) {}
 
     /**
      * Resolve union type from data.

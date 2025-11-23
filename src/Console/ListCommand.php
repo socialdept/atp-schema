@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Console;
 
 use Illuminate\Console\Command;
-use SocialDept\Schema\Data\LexiconDocument;
 use SocialDept\Schema\Parser\SchemaLoader;
 
 class ListCommand extends Command
@@ -55,8 +54,7 @@ class ListCommand extends Command
 
             foreach ($schemas as $nsid) {
                 try {
-                    $schema = $loader->load($nsid);
-                    $document = LexiconDocument::fromArray($schema);
+                    $document = $loader->load($nsid);
 
                     $schemaType = 'unknown';
                     if ($document->isRecord()) {
@@ -173,8 +171,7 @@ class ListCommand extends Command
     {
         return array_filter($schemas, function ($nsid) use ($type, $loader) {
             try {
-                $schema = $loader->load($nsid);
-                $document = LexiconDocument::fromArray($schema);
+                $document = $loader->load($nsid);
 
                 return match ($type) {
                     'record' => $document->isRecord(),

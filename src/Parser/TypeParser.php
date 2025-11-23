@@ -45,7 +45,7 @@ class TypeParser
         ?ComplexTypeParser $complexParser = null,
         ?SchemaLoader $schemaLoader = null
     ) {
-        $this->primitiveParser = $primitiveParser ?? new PrimitiveParser();
+        $this->primitiveParser = $primitiveParser ?? new PrimitiveParser;
         $this->complexParser = $complexParser ?? new ComplexTypeParser($this->primitiveParser);
         $this->schemaLoader = $schemaLoader;
     }
