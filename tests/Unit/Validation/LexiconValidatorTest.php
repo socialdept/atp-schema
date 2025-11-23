@@ -128,8 +128,7 @@ class LexiconValidatorTest extends TestCase
 
     public function test_it_validates_with_contract_method(): void
     {
-        $schema = $this->loader->load('app.bsky.feed.post');
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->loader->load('app.bsky.feed.post');
 
         $record = [
             'text' => 'Hello, World!',
@@ -141,8 +140,7 @@ class LexiconValidatorTest extends TestCase
 
     public function test_it_returns_false_for_invalid_record(): void
     {
-        $schema = $this->loader->load('app.bsky.feed.post');
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->loader->load('app.bsky.feed.post');
 
         $record = [
             'text' => 'Hello, World!',
@@ -154,8 +152,7 @@ class LexiconValidatorTest extends TestCase
 
     public function test_it_validates_with_errors(): void
     {
-        $schema = $this->loader->load('app.bsky.feed.post');
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->loader->load('app.bsky.feed.post');
 
         $record = [
             'text' => 'Hello, World!',
@@ -169,8 +166,7 @@ class LexiconValidatorTest extends TestCase
 
     public function test_it_returns_errors_for_invalid_record(): void
     {
-        $schema = $this->loader->load('app.bsky.feed.post');
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->loader->load('app.bsky.feed.post');
 
         $record = [
             'text' => 'Hello, World!',
@@ -185,8 +181,7 @@ class LexiconValidatorTest extends TestCase
 
     public function test_it_validates_specific_field(): void
     {
-        $schema = $this->loader->load('app.bsky.feed.post');
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->loader->load('app.bsky.feed.post');
 
         $this->assertTrue($this->validator->validateField('Hello, World!', 'text', $document));
         $this->assertFalse($this->validator->validateField(123, 'text', $document));

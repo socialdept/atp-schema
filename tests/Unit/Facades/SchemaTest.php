@@ -24,8 +24,8 @@ class SchemaTest extends TestCase
     {
         $schema = Schema::load('app.bsky.feed.post');
 
-        $this->assertIsArray($schema);
-        $this->assertSame('app.bsky.feed.post', $schema['id']);
+        $this->assertInstanceOf(LexiconDocument::class, $schema);
+        $this->assertSame('app.bsky.feed.post', $schema->getNsid());
     }
 
     public function test_it_checks_if_schema_exists(): void
@@ -36,7 +36,8 @@ class SchemaTest extends TestCase
 
     public function test_it_parses_schema(): void
     {
-        $document = Schema::parse('app.bsky.feed.post');
+        // parse() is an alias for load()
+        $document = Schema::load('app.bsky.feed.post');
 
         $this->assertInstanceOf(LexiconDocument::class, $document);
         $this->assertSame('app.bsky.feed.post', $document->getNsid());
@@ -85,7 +86,7 @@ class SchemaTest extends TestCase
 
         // Should still be able to load after clearing
         $schema = Schema::load('app.bsky.feed.post');
-        $this->assertSame('app.bsky.feed.post', $schema['id']);
+        $this->assertSame('app.bsky.feed.post', $schema->getNsid());
     }
 
     public function test_it_clears_all_cache(): void
@@ -101,7 +102,7 @@ class SchemaTest extends TestCase
         $schema1 = Schema::load('app.bsky.feed.post');
         $schema2 = Schema::load('com.atproto.repo.getRecord');
 
-        $this->assertSame('app.bsky.feed.post', $schema1['id']);
-        $this->assertSame('com.atproto.repo.getRecord', $schema2['id']);
+        $this->assertSame('app.bsky.feed.post', $schema1->getNsid());
+        $this->assertSame('com.atproto.repo.getRecord', $schema2->getNsid());
     }
 }

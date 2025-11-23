@@ -4,6 +4,7 @@ namespace SocialDept\Schema\Tests\Unit\Parser;
 
 use Illuminate\Support\Facades\Cache;
 use Orchestra\Testbench\TestCase;
+use SocialDept\Schema\Data\LexiconDocument;
 use SocialDept\Schema\Exceptions\SchemaNotFoundException;
 use SocialDept\Schema\Exceptions\SchemaParseException;
 use SocialDept\Schema\Parser\SchemaLoader;
@@ -28,9 +29,9 @@ class SchemaLoaderTest extends TestCase
 
         $schema = $loader->load('app.bsky.feed.post');
 
-        $this->assertIsArray($schema);
-        $this->assertSame(1, $schema['lexicon']);
-        $this->assertSame('app.bsky.feed.post', $schema['id']);
+        $this->assertInstanceOf(LexiconDocument::class, $schema);
+        $this->assertSame(1, $schema->lexicon);
+        $this->assertSame('app.bsky.feed.post', $schema->getNsid());
     }
 
     public function test_it_loads_schema_from_flat_php(): void
@@ -39,9 +40,9 @@ class SchemaLoaderTest extends TestCase
 
         $schema = $loader->load('com.atproto.repo.getRecord');
 
-        $this->assertIsArray($schema);
-        $this->assertSame(1, $schema['lexicon']);
-        $this->assertSame('com.atproto.repo.getRecord', $schema['id']);
+        $this->assertInstanceOf(LexiconDocument::class, $schema);
+        $this->assertSame(1, $schema->lexicon);
+        $this->assertSame('com.atproto.repo.getRecord', $schema->getNsid());
     }
 
     public function test_it_checks_if_schema_exists(): void
@@ -87,13 +88,14 @@ class SchemaLoaderTest extends TestCase
         // Clear memory cache to force Laravel cache lookup
         $loader->clearCache('app.bsky.feed.post');
 
-        // Manually put it back in Laravel cache
-        Cache::put('schema:parsed:app.bsky.feed.post', $schema, 3600);
+        // Manually put raw array back in Laravel cache
+        Cache::put('schema:parsed:app.bsky.feed.post', $schema->toArray(), 3600);
 
         // This should retrieve from Laravel cache
         $cached = $loader->load('app.bsky.feed.post');
 
-        $this->assertSame($schema, $cached);
+        // The schemas should be equivalent (different object instances but same data)
+        $this->assertEquals($schema->toArray(), $cached->toArray());
     }
 
     public function test_it_retrieves_from_laravel_cache(): void
@@ -109,8 +111,8 @@ class SchemaLoaderTest extends TestCase
         // Second load should come from Laravel cache
         $cachedSchema = $loader->load('app.bsky.feed.post');
 
-        $this->assertSame($originalSchema, $cachedSchema);
-        $this->assertSame('app.bsky.feed.post', $cachedSchema['id']);
+        $this->assertEquals($originalSchema->toArray(), $cachedSchema->toArray());
+        $this->assertSame('app.bsky.feed.post', $cachedSchema->getNsid());
     }
 
     public function test_it_clears_specific_schema_cache(): void
@@ -158,7 +160,7 @@ class SchemaLoaderTest extends TestCase
 
         $schema = $loader->load('app.bsky.feed.post');
 
-        $this->assertSame('app.bsky.feed.post', $schema['id']);
+        $this->assertSame('app.bsky.feed.post', $schema->getNsid());
     }
 
     public function test_it_throws_on_invalid_json(): void

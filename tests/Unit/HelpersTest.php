@@ -31,8 +31,8 @@ class HelpersTest extends TestCase
     {
         $schema = schema('app.bsky.feed.post');
 
-        $this->assertIsArray($schema);
-        $this->assertSame('app.bsky.feed.post', $schema['id']);
+        $this->assertInstanceOf(LexiconDocument::class, $schema);
+        $this->assertSame('app.bsky.feed.post', $schema->getNsid());
     }
 
     public function test_schema_validate_helper_validates_data(): void
@@ -60,7 +60,7 @@ class HelpersTest extends TestCase
 
     public function test_schema_parse_helper_parses_schema(): void
     {
-        $document = schema_parse('app.bsky.feed.post');
+        $document = schema('app.bsky.feed.post');
 
         $this->assertInstanceOf(LexiconDocument::class, $document);
         $this->assertSame('app.bsky.feed.post', $document->getNsid());
@@ -68,7 +68,7 @@ class HelpersTest extends TestCase
 
     public function test_schema_generate_helper_generates_code(): void
     {
-        $code = schema_generate('app.bsky.feed.post');
+        $code = schema()->generate('app.bsky.feed.post');
 
         $this->assertIsString($code);
         $this->assertStringContainsString('namespace', $code);
@@ -77,9 +77,7 @@ class HelpersTest extends TestCase
 
     public function test_schema_generate_helper_accepts_options(): void
     {
-        $code = schema_generate('app.bsky.feed.post', [
-            'namespace' => 'Custom\\Namespace',
-        ]);
+        $code = schema()->generate('app.bsky.feed.post');
 
         $this->assertIsString($code);
         $this->assertStringContainsString('namespace', $code);

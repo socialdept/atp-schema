@@ -44,8 +44,8 @@ class SchemaManagerTest extends TestCase
     {
         $schema = $this->manager->load('app.bsky.feed.post');
 
-        $this->assertIsArray($schema);
-        $this->assertSame('app.bsky.feed.post', $schema['id']);
+        $this->assertInstanceOf(LexiconDocument::class, $schema);
+        $this->assertSame('app.bsky.feed.post', $schema->getNsid());
     }
 
     public function test_it_checks_if_schema_exists(): void
@@ -56,7 +56,7 @@ class SchemaManagerTest extends TestCase
 
     public function test_it_parses_schema_into_document(): void
     {
-        $document = $this->manager->parse('app.bsky.feed.post');
+        $document = $this->manager->load('app.bsky.feed.post');
 
         $this->assertInstanceOf(LexiconDocument::class, $document);
         $this->assertSame('app.bsky.feed.post', $document->getNsid());

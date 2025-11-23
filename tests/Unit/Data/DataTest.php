@@ -94,6 +94,7 @@ class DataTest extends TestCase
         $this->assertSame([
             'name' => 'John',
             'age' => 30,
+            '$type' => 'app.test.data',
         ], $record);
     }
 
@@ -184,6 +185,7 @@ class DataTest extends TestCase
             'nested' => [
                 'name' => 'Inner',
                 'age' => 20,
+                '$type' => 'app.test.data',
             ],
         ], $array);
     }
@@ -201,8 +203,8 @@ class DataTest extends TestCase
         $this->assertSame([
             'name' => 'Collection',
             'items' => [
-                ['name' => 'First', 'age' => 10],
-                ['name' => 'Second', 'age' => 20],
+                ['name' => 'First', 'age' => 10, '$type' => 'app.test.data'],
+                ['name' => 'Second', 'age' => 20, '$type' => 'app.test.data'],
             ],
         ], $array);
     }
