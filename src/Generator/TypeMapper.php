@@ -2,6 +2,8 @@
 
 namespace SocialDept\Schema\Generator;
 
+use SocialDept\Schema\Support\ExtensionManager;
+
 class TypeMapper
 {
     /**
@@ -10,11 +12,34 @@ class TypeMapper
     protected NamingConverter $naming;
 
     /**
+     * Local definition map for resolving #refs.
+     *
+     * @var array<string, string>
+     */
+    protected array $localDefinitions = [];
+
+    /**
+     * Extension manager instance.
+     */
+    protected ExtensionManager $extensions;
+
+    /**
      * Create a new TypeMapper.
      */
-    public function __construct(?NamingConverter $naming = null)
+    public function __construct(?NamingConverter $naming = null, ?ExtensionManager $extensions = null)
     {
-        $this->naming = $naming ?? new NamingConverter();
+        $this->naming = $naming ?? new NamingConverter;
+        $this->extensions = $extensions ?? new ExtensionManager;
+    }
+
+    /**
+     * Set local definitions for resolving local references.
+     *
+     * @param  array<string, string>  $localDefinitions  Map of #ref => class name
+     */
+    public function setLocalDefinitions(array $localDefinitions): void
+    {
+        $this->localDefinitions = $localDefinitions;
     }
 
     /**
@@ -27,13 +52,13 @@ class TypeMapper
         $type = $definition['type'] ?? 'unknown';
 
         $phpType = match ($type) {
-            'string' => 'string',
+            'string' => $this->mapStringType($definition),
             'integer' => 'int',
             'boolean' => 'bool',
             'number' => 'float',
             'array' => $this->mapArrayType($definition),
             'object' => $this->mapObjectType($definition),
-            'blob' => '\\SocialDept\\Schema\\Data\\BlobReference',
+            'blob' => 'BlobReference',
             'bytes' => 'string',
             'cid-link' => 'string',
             'unknown' => 'mixed',
@@ -43,10 +68,10 @@ class TypeMapper
         };
 
         if ($nullable && $phpType !== 'mixed') {
-            return '?'.$phpType;
+            $phpType = '?'.$phpType;
         }
 
-        return $phpType;
+        return $this->extensions->filter('filter:type:phpType', $phpType, $definition, $nullable);
     }
 
     /**
@@ -59,13 +84,13 @@ class TypeMapper
         $type = $definition['type'] ?? 'unknown';
 
         $docType = match ($type) {
-            'string' => 'string',
+            'string' => $this->mapStringType($definition),
             'integer' => 'int',
             'boolean' => 'bool',
             'number' => 'float',
             'array' => $this->mapArrayDocType($definition),
             'object' => $this->mapObjectDocType($definition),
-            'blob' => '\\SocialDept\\Schema\\Data\\BlobReference',
+            'blob' => 'BlobReference',
             'bytes' => 'string',
             'cid-link' => 'string',
             'unknown' => 'mixed',
@@ -75,10 +100,25 @@ class TypeMapper
         };
 
         if ($nullable && $docType !== 'mixed') {
-            return $docType.'|null';
+            $docType = $docType.'|null';
         }
 
-        return $docType;
+        return $this->extensions->filter('filter:type:phpDocType', $docType, $definition, $nullable);
+    }
+
+    /**
+     * Map string type.
+     *
+     * @param  array<string, mixed>  $definition
+     */
+    protected function mapStringType(array $definition): string
+    {
+        // Check for datetime format
+        if (isset($definition['format']) && $definition['format'] === 'datetime') {
+            return 'Carbon';
+        }
+
+        return 'string';
     }
 
     /**
@@ -103,6 +143,11 @@ class TypeMapper
         }
 
         $itemType = $this->toPhpDocType($definition['items']);
+
+        // array<mixed> is redundant, just use array
+        if ($itemType === 'mixed') {
+            return 'array';
+        }
 
         return "array<{$itemType}>";
     }
@@ -153,8 +198,26 @@ class TypeMapper
             return 'mixed';
         }
 
-        // Convert NSID reference to class name
-        return '\\'.$this->naming->nsidToClassName($definition['ref']);
+        $ref = $definition['ref'];
+
+        // Resolve local references using the local definitions map
+        if (str_starts_with($ref, '#')) {
+            return $this->localDefinitions[$ref] ?? 'mixed';
+        }
+
+        // Handle NSID fragments (e.g., com.atproto.label.defs#selfLabels)
+        // Extract just the NSID part for class resolution
+        if (str_contains($ref, '#')) {
+            $ref = explode('#', $ref)[0];
+        }
+
+        // Convert NSID reference to fully qualified class name
+        $fqcn = $this->naming->nsidToClassName($ref);
+
+        // Extract short class name (last part after final backslash)
+        $parts = explode('\\', $fqcn);
+
+        return end($parts);
     }
 
     /**
@@ -174,8 +237,38 @@ class TypeMapper
      */
     protected function mapUnionType(array $definition): string
     {
-        // For runtime type hints, unions of different types must be 'mixed'
-        return 'mixed';
+        // Open unions (closed=false or not set) should always be mixed
+        // because future schema versions could add more types
+        $isClosed = $definition['closed'] ?? false;
+
+        if (! $isClosed) {
+            return 'mixed';
+        }
+
+        // For closed unions, extract external refs
+        $refs = $definition['refs'] ?? [];
+        $externalRefs = array_values(array_filter($refs, fn ($ref) => ! str_starts_with($ref, '#')));
+
+        if (empty($externalRefs)) {
+            return 'mixed';
+        }
+
+        // Build union type with all variants
+        $types = [];
+        foreach ($externalRefs as $ref) {
+            // Handle NSID fragments - extract just the NSID part
+            if (str_contains($ref, '#')) {
+                $ref = explode('#', $ref)[0];
+            }
+
+            // Convert to fully qualified class name, then extract short name
+            $fqcn = $this->naming->nsidToClassName($ref);
+            $parts = explode('\\', $fqcn);
+            $types[] = end($parts);
+        }
+
+        // Return union type (e.g., "Theme|ThemeV2" or just "Theme" for single ref)
+        return implode('|', $types);
     }
 
     /**
@@ -189,10 +282,32 @@ class TypeMapper
             return 'mixed';
         }
 
-        $types = array_map(
-            fn ($ref) => '\\'.$this->naming->nsidToClassName($ref),
-            $definition['refs']
-        );
+        // Open unions should be typed as mixed since future types could be added
+        $isClosed = $definition['closed'] ?? false;
+        if (! $isClosed) {
+            return 'mixed';
+        }
+
+        // For closed unions, list all the specific types
+        $types = [];
+        foreach ($definition['refs'] as $ref) {
+            // Resolve local references using the local definitions map
+            if (str_starts_with($ref, '#')) {
+                $types[] = $this->localDefinitions[$ref] ?? 'mixed';
+
+                continue;
+            }
+
+            // Handle NSID fragments - extract just the NSID part
+            if (str_contains($ref, '#')) {
+                $ref = explode('#', $ref)[0];
+            }
+
+            // Convert to fully qualified class name, then extract short name
+            $fqcn = $this->naming->nsidToClassName($ref);
+            $parts = explode('\\', $fqcn);
+            $types[] = end($parts);
+        }
 
         return implode('|', $types);
     }
@@ -263,6 +378,11 @@ class TypeMapper
     {
         $type = $definition['type'] ?? 'unknown';
 
+        // Check for datetime format on strings
+        if ($type === 'string' && isset($definition['format']) && $definition['format'] === 'datetime') {
+            return true;
+        }
+
         return in_array($type, ['ref', 'blob']);
     }
 
@@ -276,21 +396,67 @@ class TypeMapper
     {
         $type = $definition['type'] ?? 'unknown';
 
+        if ($type === 'string' && isset($definition['format']) && $definition['format'] === 'datetime') {
+            return ['Carbon\\Carbon'];
+        }
+
         if ($type === 'blob') {
             return ['SocialDept\\Schema\\Data\\BlobReference'];
         }
 
         if ($type === 'ref' && isset($definition['ref'])) {
-            return [$this->naming->nsidToClassName($definition['ref'])];
+            $ref = $definition['ref'];
+
+            // Skip local references (starting with #)
+            if (str_starts_with($ref, '#')) {
+                return [];
+            }
+
+            // Handle NSID fragments - extract just the NSID part
+            if (str_contains($ref, '#')) {
+                $ref = explode('#', $ref)[0];
+            }
+
+            return [$this->naming->nsidToClassName($ref)];
         }
 
         if ($type === 'union' && isset($definition['refs'])) {
-            return array_map(
-                fn ($ref) => $this->naming->nsidToClassName($ref),
-                $definition['refs']
-            );
+            // Open unions don't need use statements since they're typed as mixed
+            $isClosed = $definition['closed'] ?? false;
+            if (! $isClosed) {
+                return [];
+            }
+
+            // For closed unions, import the referenced classes
+            $classes = [];
+
+            foreach ($definition['refs'] as $ref) {
+                // Skip local references
+                if (str_starts_with($ref, '#')) {
+                    continue;
+                }
+
+                // Handle NSID fragments - extract just the NSID part
+                if (str_contains($ref, '#')) {
+                    $ref = explode('#', $ref)[0];
+                }
+
+                $classes[] = $this->naming->nsidToClassName($ref);
+            }
+
+            return $classes;
         }
 
-        return [];
+        $uses = [];
+
+        return $this->extensions->filter('filter:type:useStatements', $uses, $definition);
+    }
+
+    /**
+     * Get the extension manager.
+     */
+    public function getExtensions(): ExtensionManager
+    {
+        return $this->extensions;
     }
 }

@@ -38,8 +38,8 @@ class NamingConverter
     {
         $nsid = Nsid::parse($nsidString);
 
-        // Split authority into parts (e.g., "app.bsky" -> ["app", "bsky"])
-        $authorityParts = array_reverse(explode('.', $nsid->getAuthority()));
+        // Split authority into parts (e.g., "blog.pckt" -> ["blog", "pckt"])
+        $authorityParts = explode('.', $nsid->getAuthority());
 
         // Convert each part to PascalCase
         $namespaceParts = array_map(

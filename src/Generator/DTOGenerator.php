@@ -35,6 +35,11 @@ class DTOGenerator implements DataGenerator
     protected FileWriter $fileWriter;
 
     /**
+     * Class generator for generating PHP classes.
+     */
+    protected ClassGenerator $classGenerator;
+
+    /**
      * Base namespace for generated classes.
      */
     protected string $baseNamespace;
@@ -54,15 +59,20 @@ class DTOGenerator implements DataGenerator
         ?TypeParser $typeParser = null,
         ?NamespaceResolver $namespaceResolver = null,
         ?TemplateRenderer $templateRenderer = null,
-        ?FileWriter $fileWriter = null
+        ?FileWriter $fileWriter = null,
+        ?ClassGenerator $classGenerator = null
     ) {
         $this->schemaLoader = $schemaLoader;
         $this->baseNamespace = rtrim($baseNamespace, '\\');
         $this->outputDirectory = rtrim($outputDirectory, '/');
         $this->typeParser = $typeParser ?? new TypeParser(schemaLoader: $schemaLoader);
         $this->namespaceResolver = $namespaceResolver ?? new NamespaceResolver($baseNamespace);
-        $this->templateRenderer = $templateRenderer ?? new TemplateRenderer();
-        $this->fileWriter = $fileWriter ?? new FileWriter();
+        $this->templateRenderer = $templateRenderer ?? new TemplateRenderer;
+        $this->fileWriter = $fileWriter ?? new FileWriter;
+
+        // Initialize ClassGenerator with proper naming converter
+        $naming = new NamingConverter($this->baseNamespace);
+        $this->classGenerator = $classGenerator ?? new ClassGenerator($naming);
     }
 
     /**
@@ -70,7 +80,7 @@ class DTOGenerator implements DataGenerator
      */
     public function generate(LexiconDocument $schema): string
     {
-        return $this->generateRecordCode($schema);
+        return $this->classGenerator->generate($schema);
     }
 
     /**
@@ -114,8 +124,7 @@ class DTOGenerator implements DataGenerator
      */
     public function generateByNsid(string $nsid, array $options = []): array
     {
-        $schema = $this->schemaLoader->load($nsid);
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->schemaLoader->load($nsid);
 
         return $this->generateFromDocument($document, $options);
     }
@@ -177,22 +186,12 @@ class DTOGenerator implements DataGenerator
      */
     protected function generateRecordClass(LexiconDocument $document, array $options = []): string
     {
-        $namespace = $this->namespaceResolver->resolveNamespace($document->getNsid());
-        $className = $this->namespaceResolver->resolveClassName($document->getNsid());
+        // Use ClassGenerator for proper code generation
+        $code = $this->classGenerator->generate($document);
 
-        $mainDef = $document->getMainDefinition();
-        $recordSchema = $mainDef['record'] ?? [];
-
-        $properties = $this->extractProperties($recordSchema, $document);
-
-        $code = $this->templateRenderer->render('record', [
-            'namespace' => $namespace,
-            'className' => $className,
-            'nsid' => $document->getNsid(),
-            'description' => $document->description,
-            'properties' => $properties,
-        ]);
-
+        $naming = $this->classGenerator->getNaming();
+        $namespace = $naming->nsidToNamespace($document->getNsid());
+        $className = $naming->toClassName($document->id->getName());
         $filePath = $this->getFilePath($namespace, $className);
 
         if (! ($options['dryRun'] ?? false)) {
@@ -207,19 +206,33 @@ class DTOGenerator implements DataGenerator
      */
     protected function generateDefinitionClass(LexiconDocument $document, string $defName, array $options = []): string
     {
-        $namespace = $this->namespaceResolver->resolveNamespace($document->getNsid());
-        $className = $this->namespaceResolver->resolveClassName($document->getNsid(), $defName);
-
+        // Create a temporary document for this specific definition
         $definition = $document->getDefinition($defName);
-        $properties = $this->extractProperties($definition, $document);
 
-        $code = $this->templateRenderer->render('object', [
-            'namespace' => $namespace,
-            'className' => $className,
+        // Build a temporary lexicon document for the object definition
+        $objectNsid = $document->getNsid().'.'.$defName;
+        $tempSchema = [
+            'id' => $objectNsid,
+            'lexicon' => 1,
             'description' => $definition['description'] ?? null,
-            'properties' => $properties,
-        ]);
+            'defs' => [
+                'main' => [
+                    'type' => 'object',
+                    'properties' => $definition['properties'] ?? [],
+                    'required' => $definition['required'] ?? [],
+                    'description' => $definition['description'] ?? null,
+                ],
+            ],
+        ];
 
+        $tempDocument = \SocialDept\Schema\Data\LexiconDocument::fromArray($tempSchema);
+
+        // Use ClassGenerator for proper code generation
+        $code = $this->classGenerator->generate($tempDocument);
+
+        $naming = $this->classGenerator->getNaming();
+        $namespace = $naming->nsidToNamespace($objectNsid);
+        $className = $naming->toClassName($defName);
         $filePath = $this->getFilePath($namespace, $className);
 
         if (! ($options['dryRun'] ?? false)) {
@@ -301,8 +314,7 @@ class DTOGenerator implements DataGenerator
      */
     public function getMetadata(string $nsid): array
     {
-        $schema = $this->schemaLoader->load($nsid);
-        $document = LexiconDocument::fromArray($schema);
+        $document = $this->schemaLoader->load($nsid);
 
         $namespace = $this->namespaceResolver->resolveNamespace($document->getNsid());
         $className = $this->namespaceResolver->resolveClassName($document->getNsid());

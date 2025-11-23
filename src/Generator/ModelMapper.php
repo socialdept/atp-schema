@@ -19,7 +19,7 @@ class ModelMapper
      */
     public function __construct(?NamingConverter $naming = null, ?TypeMapper $typeMapper = null)
     {
-        $this->naming = $naming ?? new NamingConverter();
+        $this->naming = $naming ?? new NamingConverter;
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
     }
 
@@ -27,7 +27,6 @@ class ModelMapper
      * Generate toModel method body.
      *
      * @param  array<string, array<string, mixed>>  $properties
-     * @param  string  $modelClass
      */
     public function generateToModelBody(array $properties, string $modelClass = 'Model'): string
     {

@@ -100,7 +100,7 @@ class TemplateRenderer
             }
 
             $propertiesCode[] = sprintf(
-                "%s    public readonly %s $%s;",
+                '%s    public readonly %s $%s;',
                 $docComment,
                 $typeHint,
                 $prop['name']

@@ -21,8 +21,8 @@ class ConstructorGenerator
         ?PropertyGenerator $propertyGenerator = null,
         ?StubRenderer $renderer = null
     ) {
-        $this->propertyGenerator = $propertyGenerator ?? new PropertyGenerator();
-        $this->renderer = $renderer ?? new StubRenderer();
+        $this->propertyGenerator = $propertyGenerator ?? new PropertyGenerator;
+        $this->renderer = $renderer ?? new StubRenderer;
     }
 
     /**
@@ -162,7 +162,7 @@ class ConstructorGenerator
                $params."\n".
                "    ) {\n".
                $body."\n".
-               "    }";
+               '    }';
     }
 
     /**

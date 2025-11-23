@@ -3,6 +3,7 @@
 namespace SocialDept\Schema\Generator;
 
 use SocialDept\Schema\Data\LexiconDocument;
+use SocialDept\Schema\Support\ExtensionManager;
 
 class MethodGenerator
 {
@@ -27,18 +28,25 @@ class MethodGenerator
     protected ModelMapper $modelMapper;
 
     /**
+     * Extension manager instance.
+     */
+    protected ExtensionManager $extensions;
+
+    /**
      * Create a new MethodGenerator.
      */
     public function __construct(
         ?NamingConverter $naming = null,
         ?TypeMapper $typeMapper = null,
         ?StubRenderer $renderer = null,
-        ?ModelMapper $modelMapper = null
+        ?ModelMapper $modelMapper = null,
+        ?ExtensionManager $extensions = null
     ) {
-        $this->naming = $naming ?? new NamingConverter();
+        $this->naming = $naming ?? new NamingConverter;
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
-        $this->renderer = $renderer ?? new StubRenderer();
+        $this->renderer = $renderer ?? new StubRenderer;
         $this->modelMapper = $modelMapper ?? new ModelMapper($this->naming, $this->typeMapper);
+        $this->extensions = $extensions ?? new ExtensionManager;
     }
 
     /**
@@ -61,7 +69,7 @@ class MethodGenerator
     {
         $nsid = $document->getNsid();
 
-        return $this->renderer->render('method', [
+        $method = $this->renderer->render('method', [
             'docBlock' => $this->generateDocBlock('Get the lexicon NSID for this data type.', 'string'),
             'visibility' => 'public ',
             'static' => 'static ',
@@ -70,6 +78,8 @@ class MethodGenerator
             'returnType' => ': string',
             'body' => "        return '{$nsid}';",
         ]);
+
+        return $this->extensions->filter('filter:method:getLexicon', $method, $document);
     }
 
     /**
@@ -78,8 +88,18 @@ class MethodGenerator
     public function generateFromArray(LexiconDocument $document): string
     {
         $mainDef = $document->getMainDefinition();
-        $properties = $mainDef['properties'] ?? [];
-        $required = $mainDef['required'] ?? [];
+
+        // For record types, properties are nested under 'record'
+        $type = $mainDef['type'] ?? null;
+        if ($type === 'record') {
+            $recordDef = $mainDef['record'] ?? [];
+            $properties = $recordDef['properties'] ?? [];
+            $required = $recordDef['required'] ?? [];
+        } else {
+            // For object types, properties are at the top level
+            $properties = $mainDef['properties'] ?? [];
+            $required = $mainDef['required'] ?? [];
+        }
 
         if (empty($properties)) {
             return $this->generateEmptyFromArray();
@@ -88,7 +108,7 @@ class MethodGenerator
         $assignments = $this->generateFromArrayAssignments($properties, $required);
         $body = "        return new static(\n".$assignments."\n        );";
 
-        return $this->renderer->render('method', [
+        $method = $this->renderer->render('method', [
             'docBlock' => $this->generateDocBlock('Create an instance from an array.', 'static', [
                 ['name' => 'data', 'type' => 'array', 'description' => 'The data array'],
             ]),
@@ -99,6 +119,8 @@ class MethodGenerator
             'returnType' => ': static',
             'body' => $body,
         ]);
+
+        return $this->extensions->filter('filter:method:fromArray', $method, $document, $properties, $required);
     }
 
     /**
@@ -129,10 +151,22 @@ class MethodGenerator
     {
         $lines = [];
 
+        // Generate required parameters first
         foreach ($properties as $name => $definition) {
-            $type = $definition['type'] ?? 'unknown';
-            $assignment = $this->generatePropertyAssignment($name, $definition, $type, $required);
-            $lines[] = '            '.$name.': '.$assignment.',';
+            if (in_array($name, $required)) {
+                $type = $definition['type'] ?? 'unknown';
+                $assignment = $this->generatePropertyAssignment($name, $definition, $type, $required);
+                $lines[] = '            '.$name.': '.$assignment.',';
+            }
+        }
+
+        // Then generate optional parameters
+        foreach ($properties as $name => $definition) {
+            if (! in_array($name, $required)) {
+                $type = $definition['type'] ?? 'unknown';
+                $assignment = $this->generatePropertyAssignment($name, $definition, $type, $required);
+                $lines[] = '            '.$name.': '.$assignment.',';
+            }
         }
 
         // Remove trailing comma from last line
@@ -152,10 +186,41 @@ class MethodGenerator
     protected function generatePropertyAssignment(string $name, array $definition, string $type, array $required): string
     {
         $isRequired = in_array($name, $required);
+        $assignment = $this->generatePropertyAssignmentInternal($name, $definition, $type, $required);
+
+        return $this->extensions->filter('filter:method:propertyAssignment', $assignment, $name, $definition, $type, $required);
+    }
+
+    /**
+     * Internal property assignment generation logic.
+     *
+     * @param  array<string, mixed>  $definition
+     * @param  array<string>  $required
+     */
+    protected function generatePropertyAssignmentInternal(string $name, array $definition, string $type, array $required): string
+    {
+        $isRequired = in_array($name, $required);
 
         // Handle reference types
         if ($type === 'ref' && isset($definition['ref'])) {
-            $refClass = $this->naming->nsidToClassName($definition['ref']);
+            $ref = $definition['ref'];
+
+            // Skip local references (starting with #) - treat as mixed
+            if (str_starts_with($ref, '#')) {
+                // Local references don't need conversion, just return the data
+                if ($isRequired) {
+                    return "\$data['{$name}']";
+                }
+
+                return "\$data['{$name}'] ?? null";
+            }
+
+            // Handle NSID fragments - extract just the NSID part
+            if (str_contains($ref, '#')) {
+                $ref = explode('#', $ref)[0];
+            }
+
+            $refClass = $this->naming->nsidToClassName($ref);
             $className = basename(str_replace('\\', '/', $refClass));
 
             if ($isRequired) {
@@ -167,7 +232,19 @@ class MethodGenerator
 
         // Handle arrays of references
         if ($type === 'array' && isset($definition['items']['type']) && $definition['items']['type'] === 'ref') {
-            $refClass = $this->naming->nsidToClassName($definition['items']['ref']);
+            $ref = $definition['items']['ref'];
+
+            // Skip local references - treat array as mixed
+            if (str_starts_with($ref, '#')) {
+                return "\$data['{$name}'] ?? []";
+            }
+
+            // Handle NSID fragments
+            if (str_contains($ref, '#')) {
+                $ref = explode('#', $ref)[0];
+            }
+
+            $refClass = $this->naming->nsidToClassName($ref);
             $className = basename(str_replace('\\', '/', $refClass));
 
             return "isset(\$data['{$name}']) ? array_map(fn (\$item) => {$className}::fromArray(\$item), \$data['{$name}']) : []";
@@ -181,10 +258,68 @@ class MethodGenerator
         // Handle DateTime types (if string format matches ISO8601)
         if ($type === 'string' && isset($definition['format']) && $definition['format'] === 'datetime') {
             if ($isRequired) {
-                return "new \\DateTime(\$data['{$name}'])";
+                return "Carbon::parse(\$data['{$name}'])";
             }
 
-            return "isset(\$data['{$name}']) ? new \\DateTime(\$data['{$name}']) : null";
+            return "isset(\$data['{$name}']) ? Carbon::parse(\$data['{$name}']) : null";
+        }
+
+        // Handle union types with refs
+        if ($type === 'union' && isset($definition['refs']) && is_array($definition['refs'])) {
+            $refs = $definition['refs'];
+            $isClosed = $definition['closed'] ?? false;
+
+            // Filter out local references
+            $externalRefs = array_values(array_filter($refs, fn ($ref) => ! str_starts_with($ref, '#')));
+
+            // Handle closed unions - use UnionHelper for discrimination
+            if ($isClosed && ! empty($externalRefs)) {
+                // Build array of variant class names
+                $variantClasses = [];
+                foreach ($externalRefs as $ref) {
+                    // Handle NSID fragments
+                    if (str_contains($ref, '#')) {
+                        $ref = explode('#', $ref)[0];
+                    }
+
+                    $refClass = $this->naming->nsidToClassName($ref);
+                    $className = basename(str_replace('\\', '/', $refClass));
+                    $variantClasses[] = "{$className}::class";
+                }
+
+                $variantsArray = '['.implode(', ', $variantClasses).']';
+
+                if ($isRequired) {
+                    return "\\SocialDept\\Schema\\Support\\UnionHelper::resolveClosedUnion(\$data['{$name}'], {$variantsArray})";
+                }
+
+                return "isset(\$data['{$name}']) ? \\SocialDept\\Schema\\Support\\UnionHelper::resolveClosedUnion(\$data['{$name}'], {$variantsArray}) : null";
+            }
+
+            // Open unions - validate $type presence using UnionHelper
+            if (! $isClosed) {
+                if ($isRequired) {
+                    return "\\SocialDept\\Schema\\Support\\UnionHelper::validateOpenUnion(\$data['{$name}'])";
+                }
+
+                return "isset(\$data['{$name}']) ? \\SocialDept\\Schema\\Support\\UnionHelper::validateOpenUnion(\$data['{$name}']) : null";
+            }
+
+            // Fallback for unions with only local refs
+            if ($isRequired) {
+                return "\$data['{$name}']";
+            }
+
+            return "\$data['{$name}'] ?? null";
+        }
+
+        // Handle blob types (already converted to BlobReference by the protocol)
+        if ($type === 'blob') {
+            if ($isRequired) {
+                return "\$data['{$name}']";
+            }
+
+            return "\$data['{$name}'] ?? null";
         }
 
         // Default: simple property access
@@ -333,5 +468,13 @@ class MethodGenerator
     public function getModelMapper(): ModelMapper
     {
         return $this->modelMapper;
+    }
+
+    /**
+     * Get the extension manager.
+     */
+    public function getExtensions(): ExtensionManager
+    {
+        return $this->extensions;
     }
 }
