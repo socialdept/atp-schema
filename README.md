@@ -189,7 +189,9 @@ $data = [
 $type = $resolver->extractType($data);
 // "app.bsky.embed.images"
 
-$isValid = $resolver->validate($data, $unionDef);
+// Validate discriminated union
+$refs = ['app.bsky.embed.images', 'app.bsky.embed.video'];
+$resolver->validateDiscriminated($data, $refs);
 ```
 
 ## Complete Workflow Example
@@ -306,7 +308,8 @@ LexiconDocument::fromArray(array $data): self
 LexiconDocument::fromJson(string $json): self
 $document->getNsid(): string
 $document->getVersion(): int
-$document->getDefinition(string $name = 'main'): array
+$document->getDefinition(string $name): ?array
+$document->getMainDefinition(): ?array
 ```
 
 **Validator**
@@ -336,7 +339,7 @@ $mapper->fromArrayMany(string $type, array $items): array
 **UnionResolver**
 ```php
 $resolver->extractType(array $data): ?string
-$resolver->validate(array $data, array $definition): bool
+$resolver->validateDiscriminated(mixed $data, array $refs): void
 $resolver->getTypeDefinition(array $data, array $definition): ?LexiconDocument
 ```
 
