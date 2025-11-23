@@ -1,0 +1,51 @@
+<?php
+
+namespace SocialDept\Schema\Data\Types;
+
+use SocialDept\Schema\Data\TypeDefinition;
+use SocialDept\Schema\Exceptions\RecordValidationException;
+
+class NullType extends TypeDefinition
+{
+    /**
+     * Create a new NullType.
+     */
+    public function __construct(?string $description = null)
+    {
+        parent::__construct('null', $description);
+    }
+
+    /**
+     * Create from array data.
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            description: $data['description'] ?? null
+        );
+    }
+
+    /**
+     * Convert to array.
+     */
+    public function toArray(): array
+    {
+        $array = ['type' => $this->type];
+
+        if ($this->description !== null) {
+            $array['description'] = $this->description;
+        }
+
+        return $array;
+    }
+
+    /**
+     * Validate a value against this type definition.
+     */
+    public function validate(mixed $value, string $path = ''): void
+    {
+        if ($value !== null) {
+            throw RecordValidationException::invalidType($path, 'null', gettype($value));
+        }
+    }
+}

@@ -1,28 +1,35 @@
 {
     "name": "socialdept/atp-schema",
-    "description": ":package_description",
+    "description": "ATProto Lexicon parser and validator with DTO generation for Laravel",
+    "type": "library",
     "license": "MIT",
-    "homepage": "https://github.com/socialdept/atp-schema",
-    "keywords": ["Laravel", "Schema"],
     "require": {
         "php": "^8.2",
+        "ext-gmp": "*",
         "illuminate/support": "^11.0|^12.0",
         "illuminate/console": "^11.0|^12.0",
-        "illuminate/database": "^11.0|^12.0"
+        "illuminate/cache": "^11.0|^12.0",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^11.0",
         "orchestra/testbench": "^9.0",
+        "phpunit/phpunit": "^11.0",
         "friendsofphp/php-cs-fixer": "^3.89"
+    },
+    "suggest": {
+        "socialdept/atp-resolver": "Required for DID resolution during DNS-based lexicon lookup"
     },
     "autoload": {
         "psr-4": {
             "SocialDept\\Schema\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "SocialDept\\Schema\\Tests\\": "tests"
+            "SocialDept\\Schema\\Tests\\": "tests/"
         }
     },
     "extra": {
