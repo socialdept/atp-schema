@@ -134,6 +134,9 @@ return [
         // Storage disk for blobs
         'disk' => env('SCHEMA_BLOB_DISK', 'local'),
 
+        // Storage path prefix for blobs
+        'path' => env('SCHEMA_BLOB_PATH', 'blobs'),
+
         // Lazy load blob content (don't download until accessed)
         'lazy_load' => env('SCHEMA_BLOB_LAZY_LOAD', true),
 
