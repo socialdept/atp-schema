@@ -4,10 +4,12 @@ namespace SocialDept\Schema\Parser;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use SocialDept\Schema\Contracts\SchemaRepository;
+use SocialDept\Schema\Data\LexiconDocument;
 use SocialDept\Schema\Exceptions\SchemaNotFoundException;
 use SocialDept\Schema\Exceptions\SchemaParseException;
 
-class SchemaLoader
+class SchemaLoader implements SchemaRepository
 {
     /**
      * In-memory cache of loaded schemas for current request.
@@ -81,9 +83,21 @@ class SchemaLoader
     }
 
     /**
+     * Find schema by NSID (nullable version).
+     */
+    public function find(string $nsid): ?LexiconDocument
+    {
+        try {
+            return $this->load($nsid);
+        } catch (SchemaNotFoundException) {
+            return null;
+        }
+    }
+
+    /**
      * Load schema by NSID.
      */
-    public function load(string $nsid): array
+    public function load(string $nsid): LexiconDocument
     {
         // Check memory cache first
         if (isset($this->memoryCache[$nsid])) {
@@ -96,23 +110,79 @@ class SchemaLoader
             $cached = Cache::get($cacheKey);
 
             if ($cached !== null) {
-                $this->memoryCache[$nsid] = $cached;
+                // Cache stores raw arrays, convert to LexiconDocument
+                $document = LexiconDocument::fromArray($cached);
+                $this->memoryCache[$nsid] = $document;
 
-                return $cached;
+                return $document;
             }
         }
 
-        // Load from sources
-        $schema = $this->loadFromSources($nsid);
+        // Load raw array data from sources
+        $data = $this->loadFromSources($nsid);
 
-        // Cache the result
-        $this->memoryCache[$nsid] = $schema;
+        // Parse into LexiconDocument
+        $document = LexiconDocument::fromArray($data);
+
+        // Cache both in memory (as object) and Laravel cache (as array)
+        $this->memoryCache[$nsid] = $document;
 
         if ($this->useCache) {
-            Cache::put($this->getCacheKey($nsid), $schema, $this->cacheTtl);
+            Cache::put($this->getCacheKey($nsid), $data, $this->cacheTtl);
         }
 
-        return $schema;
+        return $document;
+    }
+
+    /**
+     * Load raw schema array by NSID.
+     */
+    protected function loadRaw(string $nsid): array
+    {
+        $document = $this->load($nsid);
+
+        return $document->toArray();
+    }
+
+    /**
+     * Get all available schema NSIDs.
+     *
+     * @return array<string>
+     */
+    public function all(): array
+    {
+        $nsids = [];
+
+        // Scan all source directories for lexicon files
+        foreach ($this->sources as $source) {
+            if (! is_dir($source)) {
+                continue;
+            }
+
+            // Recursively scan for .json files
+            $files = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator($source, \RecursiveDirectoryIterator::SKIP_DOTS)
+            );
+
+            foreach ($files as $file) {
+                if ($file->isFile() && $file->getExtension() === 'json') {
+                    // Try to parse the NSID from the file
+                    try {
+                        $contents = file_get_contents($file->getPathname());
+                        $data = json_decode($contents, true);
+
+                        if (isset($data['id'])) {
+                            $nsids[] = $data['id'];
+                        }
+                    } catch (\Exception $e) {
+                        // Skip invalid files
+                        continue;
+                    }
+                }
+            }
+        }
+
+        return array_unique($nsids);
     }
 
     /**
