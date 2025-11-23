@@ -49,12 +49,12 @@ class ClassGenerator
         ?DocBlockGenerator $docBlockGenerator = null,
         ?ExtensionManager $extensions = null
     ) {
-        $this->naming = $naming ?? new NamingConverter;
+        $this->naming = $naming ?? new NamingConverter();
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
-        $this->renderer = $renderer ?? new StubRenderer;
+        $this->renderer = $renderer ?? new StubRenderer();
         $this->methodGenerator = $methodGenerator ?? new MethodGenerator($this->naming, $this->typeMapper, $this->renderer);
         $this->docBlockGenerator = $docBlockGenerator ?? new DocBlockGenerator($this->typeMapper);
-        $this->extensions = $extensions ?? new ExtensionManager;
+        $this->extensions = $extensions ?? new ExtensionManager();
     }
 
     /**

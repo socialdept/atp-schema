@@ -28,8 +28,8 @@ class TypeMapper
      */
     public function __construct(?NamingConverter $naming = null, ?ExtensionManager $extensions = null)
     {
-        $this->naming = $naming ?? new NamingConverter;
-        $this->extensions = $extensions ?? new ExtensionManager;
+        $this->naming = $naming ?? new NamingConverter();
+        $this->extensions = $extensions ?? new ExtensionManager();
     }
 
     /**

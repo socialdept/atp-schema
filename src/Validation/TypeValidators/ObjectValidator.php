@@ -48,11 +48,11 @@ class ObjectValidator
         $type = $definition['type'] ?? null;
 
         $validator = match ($type) {
-            'string' => new StringValidator,
-            'integer' => new IntegerValidator,
-            'boolean' => new BooleanValidator,
-            'object' => new ObjectValidator,
-            'array' => new ArrayValidator,
+            'string' => new StringValidator(),
+            'integer' => new IntegerValidator(),
+            'boolean' => new BooleanValidator(),
+            'object' => new ObjectValidator(),
+            'array' => new ArrayValidator(),
             default => null,
         };
 

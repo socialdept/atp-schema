@@ -45,7 +45,7 @@ class DnsLexiconResolver implements LexiconResolver
     ) {
         $this->enabled = $enabled;
         $this->httpTimeout = $httpTimeout;
-        $this->parser = $parser ?? new DefaultLexiconParser;
+        $this->parser = $parser ?? new DefaultLexiconParser();
         $this->hasResolver = class_exists('SocialDept\\Resolver\\Resolver');
     }
 
@@ -60,6 +60,7 @@ class DnsLexiconResolver implements LexiconResolver
 
         if (! $this->hasResolver) {
             $this->showResolverWarning();
+
             throw SchemaNotFoundException::forNsid($nsid);
         }
 

@@ -49,8 +49,8 @@ class AtUri implements ValidationRule
         $authority = $parts[0];
 
         // Validate authority (DID or handle)
-        $didRule = new Did;
-        $handleRule = new Handle;
+        $didRule = new Did();
+        $handleRule = new Handle();
 
         $isValidDid = true;
         $isValidHandle = true;

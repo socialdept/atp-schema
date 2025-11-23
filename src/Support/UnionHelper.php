@@ -40,6 +40,7 @@ class UnionHelper
         // Check if type is known
         if (! isset($typeMap[$type])) {
             $knownTypes = implode(', ', array_keys($typeMap));
+
             throw new InvalidArgumentException(
                 "Unknown union type '{$type}'. Expected one of: {$knownTypes}"
             );

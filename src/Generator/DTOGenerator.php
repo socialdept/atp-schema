@@ -67,8 +67,8 @@ class DTOGenerator implements DataGenerator
         $this->outputDirectory = rtrim($outputDirectory, '/');
         $this->typeParser = $typeParser ?? new TypeParser(schemaLoader: $schemaLoader);
         $this->namespaceResolver = $namespaceResolver ?? new NamespaceResolver($baseNamespace);
-        $this->templateRenderer = $templateRenderer ?? new TemplateRenderer;
-        $this->fileWriter = $fileWriter ?? new FileWriter;
+        $this->templateRenderer = $templateRenderer ?? new TemplateRenderer();
+        $this->fileWriter = $fileWriter ?? new FileWriter();
 
         // Initialize ClassGenerator with proper naming converter
         $naming = new NamingConverter($this->baseNamespace);

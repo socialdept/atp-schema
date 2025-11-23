@@ -13,7 +13,7 @@ class UnionValidator
     public function __construct(
         protected ?UnionResolver $resolver = null
     ) {
-        $this->resolver = $resolver ?? new UnionResolver;
+        $this->resolver = $resolver ?? new UnionResolver();
     }
 
     /**

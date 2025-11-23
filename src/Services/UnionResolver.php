@@ -16,7 +16,8 @@ class UnionResolver
      */
     public function __construct(
         protected ?LexiconRegistry $registry = null
-    ) {}
+    ) {
+    }
 
     /**
      * Resolve union type from data.

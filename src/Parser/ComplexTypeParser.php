@@ -27,7 +27,7 @@ class ComplexTypeParser
      */
     public function __construct(?PrimitiveParser $primitiveParser = null)
     {
-        $this->primitiveParser = $primitiveParser ?? new PrimitiveParser;
+        $this->primitiveParser = $primitiveParser ?? new PrimitiveParser();
     }
 
     /**

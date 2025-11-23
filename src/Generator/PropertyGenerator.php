@@ -19,8 +19,8 @@ class PropertyGenerator
      */
     public function __construct(?TypeMapper $typeMapper = null, ?StubRenderer $renderer = null)
     {
-        $this->typeMapper = $typeMapper ?? new TypeMapper;
-        $this->renderer = $renderer ?? new StubRenderer;
+        $this->typeMapper = $typeMapper ?? new TypeMapper();
+        $this->renderer = $renderer ?? new StubRenderer();
     }
 
     /**

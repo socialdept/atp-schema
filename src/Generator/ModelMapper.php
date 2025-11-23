@@ -19,7 +19,7 @@ class ModelMapper
      */
     public function __construct(?NamingConverter $naming = null, ?TypeMapper $typeMapper = null)
     {
-        $this->naming = $naming ?? new NamingConverter;
+        $this->naming = $naming ?? new NamingConverter();
         $this->typeMapper = $typeMapper ?? new TypeMapper($this->naming);
     }
 
