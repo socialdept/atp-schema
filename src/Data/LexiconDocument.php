@@ -93,6 +93,24 @@ class LexiconDocument
     }
 
     /**
+     * Create from JSON string.
+     */
+    public static function fromJson(string $json, ?string $source = null): self
+    {
+        $data = json_decode($json, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \InvalidArgumentException('Invalid JSON: '.json_last_error_msg());
+        }
+
+        if (! is_array($data)) {
+            throw new \InvalidArgumentException('JSON must decode to an array');
+        }
+
+        return self::fromArray($data, $source);
+    }
+
+    /**
      * Get a definition by name.
      */
     public function getDefinition(string $name): ?array
@@ -132,6 +150,14 @@ class LexiconDocument
     public function getNsid(): string
     {
         return $this->id->toString();
+    }
+
+    /**
+     * Get lexicon version.
+     */
+    public function getVersion(): int
+    {
+        return $this->lexicon;
     }
 
     /**
