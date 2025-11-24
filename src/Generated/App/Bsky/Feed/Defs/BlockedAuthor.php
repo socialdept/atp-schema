@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ViewerState;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ViewerState;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -47,7 +47,7 @@ class BlockedAuthor extends Data
     {
         return new static(
             did: $data['did'],
-            viewer: isset($data['viewer']) ? Defs::fromArray($data['viewer']) : null
+            viewer: isset($data['viewer']) ? ViewerState::fromArray($data['viewer']) : null
         );
     }
 

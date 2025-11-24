@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\Com\Atproto\Sync\ListHosts;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Sync\HostStatus;
+use SocialDept\Schema\Generated\Com\Atproto\Sync\Defs\HostStatus;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -56,7 +56,7 @@ class Host extends Data
             hostname: $data['hostname'],
             seq: $data['seq'] ?? null,
             accountCount: $data['accountCount'] ?? null,
-            status: isset($data['status']) ? Defs::fromArray($data['status']) : null
+            status: isset($data['status']) ? HostStatus::fromArray($data['status']) : null
         );
     }
 

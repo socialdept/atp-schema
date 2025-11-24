@@ -4,6 +4,7 @@ namespace SocialDept\Schema\Generated\App\Bsky\Embed;
 
 use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Data\Data;
+use SocialDept\Schema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -61,7 +62,7 @@ class Video extends Data
             video: $data['video'],
             captions: $data['captions'] ?? [],
             alt: $data['alt'] ?? null,
-            aspectRatio: isset($data['aspectRatio']) ? Defs::fromArray($data['aspectRatio']) : null
+            aspectRatio: isset($data['aspectRatio']) ? AspectRatio::fromArray($data['aspectRatio']) : null
         );
     }
 

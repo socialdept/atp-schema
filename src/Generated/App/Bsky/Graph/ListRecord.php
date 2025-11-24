@@ -5,6 +5,7 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Data\Data;
+use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\ListPurpose;
 use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Support\UnionHelper;
 
@@ -51,7 +52,7 @@ class ListRecord extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            purpose: Defs::fromArray($data['purpose']),
+            purpose: ListPurpose::fromArray($data['purpose']),
             name: $data['name'],
             createdAt: Carbon::parse($data['createdAt']),
             description: $data['description'] ?? null,

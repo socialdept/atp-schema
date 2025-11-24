@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Embed\RecordWithMedia;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\View;
+use SocialDept\Schema\Generated\App\Bsky\Embed\Record\View;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -46,7 +46,7 @@ class View extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            record: Record::fromArray($data['record']),
+            record: View::fromArray($data['record']),
             media: UnionHelper::validateOpenUnion($data['media'])
         );
     }

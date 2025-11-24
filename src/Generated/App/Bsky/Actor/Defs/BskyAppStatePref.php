@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Nux;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -57,7 +56,7 @@ class BskyAppStatePref extends Data
         return new static(
             activeProgressGuide: $data['activeProgressGuide'] ?? null,
             queuedNudges: $data['queuedNudges'] ?? null,
-            nuxs: isset($data['nuxs']) ? array_map(fn ($item) => Defs::fromArray($item), $data['nuxs']) : []
+            nuxs: isset($data['nuxs']) ? array_map(fn ($item) => Nux::fromArray($item), $data['nuxs']) : []
         );
     }
 

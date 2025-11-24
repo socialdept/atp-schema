@@ -4,7 +4,7 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -53,7 +53,7 @@ class ReasonRepost extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            by: Defs::fromArray($data['by']),
+            by: ProfileViewBasic::fromArray($data['by']),
             indexedAt: Carbon::parse($data['indexedAt']),
             uri: $data['uri'] ?? null,
             cid: $data['cid'] ?? null

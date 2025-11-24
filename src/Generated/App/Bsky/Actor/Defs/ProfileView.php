@@ -4,7 +4,7 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -92,7 +92,7 @@ class ProfileView extends Data
             indexedAt: isset($data['indexedAt']) ? Carbon::parse($data['indexedAt']) : null,
             createdAt: isset($data['createdAt']) ? Carbon::parse($data['createdAt']) : null,
             viewer: $data['viewer'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             verification: $data['verification'] ?? null,
             status: $data['status'] ?? null,
             debug: $data['debug'] ?? null

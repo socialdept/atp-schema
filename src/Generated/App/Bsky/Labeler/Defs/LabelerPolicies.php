@@ -3,8 +3,8 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\LabelValue;
-use SocialDept\Schema\Generated\Com\Atproto\Label\LabelValueDefinition;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\LabelValue;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\LabelValueDefinition;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -50,8 +50,8 @@ class LabelerPolicies extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            labelValues: isset($data['labelValues']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labelValues']) : [],
-            labelValueDefinitions: isset($data['labelValueDefinitions']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labelValueDefinitions']) : []
+            labelValues: isset($data['labelValues']) ? array_map(fn ($item) => LabelValue::fromArray($item), $data['labelValues']) : [],
+            labelValueDefinitions: isset($data['labelValueDefinitions']) ? array_map(fn ($item) => LabelValueDefinition::fromArray($item), $data['labelValueDefinitions']) : []
         );
     }
 

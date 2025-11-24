@@ -4,11 +4,10 @@ namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
-use SocialDept\Schema\Generated\App\Bsky\Labeler\LabelerPolicies;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\ReasonType;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\SubjectType;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\ReasonType;
+use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -79,14 +78,14 @@ class LabelerViewDetailed extends Data
         return new static(
             uri: $data['uri'],
             cid: $data['cid'],
-            creator: Defs::fromArray($data['creator']),
-            policies: Defs::fromArray($data['policies']),
+            creator: ProfileView::fromArray($data['creator']),
+            policies: LabelerPolicies::fromArray($data['policies']),
             indexedAt: Carbon::parse($data['indexedAt']),
             likeCount: $data['likeCount'] ?? null,
             viewer: $data['viewer'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
-            reasonTypes: isset($data['reasonTypes']) ? array_map(fn ($item) => Defs::fromArray($item), $data['reasonTypes']) : [],
-            subjectTypes: isset($data['subjectTypes']) ? array_map(fn ($item) => Defs::fromArray($item), $data['subjectTypes']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
+            reasonTypes: isset($data['reasonTypes']) ? array_map(fn ($item) => ReasonType::fromArray($item), $data['reasonTypes']) : [],
+            subjectTypes: isset($data['subjectTypes']) ? array_map(fn ($item) => SubjectType::fromArray($item), $data['subjectTypes']) : [],
             subjectCollections: $data['subjectCollections'] ?? null
         );
     }

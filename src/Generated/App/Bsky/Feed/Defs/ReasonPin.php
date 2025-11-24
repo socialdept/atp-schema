@@ -12,6 +12,8 @@ use SocialDept\Schema\Data\Data;
  */
 class ReasonPin extends Data
 {
+
+
     /**
      * Get the lexicon NSID for this data type.
      *

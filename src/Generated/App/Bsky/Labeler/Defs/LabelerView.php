@@ -4,8 +4,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -63,11 +63,11 @@ class LabelerView extends Data
         return new static(
             uri: $data['uri'],
             cid: $data['cid'],
-            creator: Defs::fromArray($data['creator']),
+            creator: ProfileView::fromArray($data['creator']),
             indexedAt: Carbon::parse($data['indexedAt']),
             likeCount: $data['likeCount'] ?? null,
             viewer: $data['viewer'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : []
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }
 

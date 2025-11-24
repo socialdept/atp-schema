@@ -4,8 +4,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -70,12 +70,12 @@ class StarterPackViewBasic extends Data
             uri: $data['uri'],
             cid: $data['cid'],
             record: $data['record'],
-            creator: Defs::fromArray($data['creator']),
+            creator: ProfileViewBasic::fromArray($data['creator']),
             indexedAt: Carbon::parse($data['indexedAt']),
             listItemCount: $data['listItemCount'] ?? null,
             joinedWeekCount: $data['joinedWeekCount'] ?? null,
             joinedAllTimeCount: $data['joinedAllTimeCount'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : []
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }
 

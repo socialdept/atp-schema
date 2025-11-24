@@ -4,9 +4,9 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
 use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -83,7 +83,7 @@ class GeneratorView extends Data
             uri: $data['uri'],
             cid: $data['cid'],
             did: $data['did'],
-            creator: Defs::fromArray($data['creator']),
+            creator: ProfileView::fromArray($data['creator']),
             displayName: $data['displayName'],
             indexedAt: Carbon::parse($data['indexedAt']),
             description: $data['description'] ?? null,
@@ -91,7 +91,7 @@ class GeneratorView extends Data
             avatar: $data['avatar'] ?? null,
             likeCount: $data['likeCount'] ?? null,
             acceptsInteractions: $data['acceptsInteractions'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             viewer: $data['viewer'] ?? null,
             contentMode: $data['contentMode'] ?? null
         );

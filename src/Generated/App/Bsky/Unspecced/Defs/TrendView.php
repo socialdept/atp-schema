@@ -4,7 +4,7 @@ namespace SocialDept\Schema\Generated\App\Bsky\Unspecced\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -64,7 +64,7 @@ class TrendView extends Data
             link: $data['link'],
             startedAt: Carbon::parse($data['startedAt']),
             postCount: $data['postCount'],
-            actors: isset($data['actors']) ? array_map(fn ($item) => Defs::fromArray($item), $data['actors']) : [],
+            actors: isset($data['actors']) ? array_map(fn ($item) => ProfileViewBasic::fromArray($item), $data['actors']) : [],
             status: $data['status'] ?? null,
             category: $data['category'] ?? null
         );

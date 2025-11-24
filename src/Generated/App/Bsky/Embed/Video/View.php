@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Embed\Video;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
+use SocialDept\Schema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -60,7 +60,7 @@ class View extends Data
             playlist: $data['playlist'],
             thumbnail: $data['thumbnail'] ?? null,
             alt: $data['alt'] ?? null,
-            aspectRatio: isset($data['aspectRatio']) ? Defs::fromArray($data['aspectRatio']) : null
+            aspectRatio: isset($data['aspectRatio']) ? AspectRatio::fromArray($data['aspectRatio']) : null
         );
     }
 

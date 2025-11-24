@@ -4,9 +4,9 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Admin\ThreatSignature;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
-use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
+use SocialDept\Schema\Generated\Com\Atproto\Admin\Defs\ThreatSignature;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Server\Defs\InviteCode;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -83,14 +83,14 @@ class RepoViewDetail extends Data
             indexedAt: Carbon::parse($data['indexedAt']),
             moderation: $data['moderation'],
             email: $data['email'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
-            invitedBy: isset($data['invitedBy']) ? Defs::fromArray($data['invitedBy']) : null,
-            invites: isset($data['invites']) ? array_map(fn ($item) => Defs::fromArray($item), $data['invites']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
+            invitedBy: isset($data['invitedBy']) ? InviteCode::fromArray($data['invitedBy']) : null,
+            invites: isset($data['invites']) ? array_map(fn ($item) => InviteCode::fromArray($item), $data['invites']) : [],
             invitesDisabled: $data['invitesDisabled'] ?? null,
             inviteNote: $data['inviteNote'] ?? null,
             emailConfirmedAt: isset($data['emailConfirmedAt']) ? Carbon::parse($data['emailConfirmedAt']) : null,
             deactivatedAt: isset($data['deactivatedAt']) ? Carbon::parse($data['deactivatedAt']) : null,
-            threatSignatures: isset($data['threatSignatures']) ? array_map(fn ($item) => Defs::fromArray($item), $data['threatSignatures']) : []
+            threatSignatures: isset($data['threatSignatures']) ? array_map(fn ($item) => ThreatSignature::fromArray($item), $data['threatSignatures']) : []
         );
     }
 

@@ -4,7 +4,7 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Admin\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
+use SocialDept\Schema\Generated\Com\Atproto\Server\Defs\InviteCode;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -76,8 +76,8 @@ class AccountView extends Data
             indexedAt: Carbon::parse($data['indexedAt']),
             email: $data['email'] ?? null,
             relatedRecords: $data['relatedRecords'] ?? null,
-            invitedBy: isset($data['invitedBy']) ? Defs::fromArray($data['invitedBy']) : null,
-            invites: isset($data['invites']) ? array_map(fn ($item) => Defs::fromArray($item), $data['invites']) : [],
+            invitedBy: isset($data['invitedBy']) ? InviteCode::fromArray($data['invitedBy']) : null,
+            invites: isset($data['invites']) ? array_map(fn ($item) => InviteCode::fromArray($item), $data['invites']) : [],
             invitesDisabled: $data['invitesDisabled'] ?? null,
             emailConfirmedAt: isset($data['emailConfirmedAt']) ? Carbon::parse($data['emailConfirmedAt']) : null,
             inviteNote: $data['inviteNote'] ?? null,

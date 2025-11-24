@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -53,7 +53,7 @@ class ReplyRef extends Data
         return new static(
             root: UnionHelper::validateOpenUnion($data['root']),
             parent: UnionHelper::validateOpenUnion($data['parent']),
-            grandparentAuthor: isset($data['grandparentAuthor']) ? Defs::fromArray($data['grandparentAuthor']) : null
+            grandparentAuthor: isset($data['grandparentAuthor']) ? ProfileViewBasic::fromArray($data['grandparentAuthor']) : null
         );
     }
 

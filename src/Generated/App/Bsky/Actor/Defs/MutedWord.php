@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\MutedWordTarget;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -64,7 +63,7 @@ class MutedWord extends Data
     {
         return new static(
             value: $data['value'],
-            targets: isset($data['targets']) ? array_map(fn ($item) => Defs::fromArray($item), $data['targets']) : [],
+            targets: isset($data['targets']) ? array_map(fn ($item) => MutedWordTarget::fromArray($item), $data['targets']) : [],
             id: $data['id'] ?? null,
             actorTarget: $data['actorTarget'] ?? null,
             expiresAt: isset($data['expiresAt']) ? Carbon::parse($data['expiresAt']) : null

@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Unspecced\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
+use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -43,7 +43,7 @@ class ThreadItemBlocked extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            author: Defs::fromArray($data['author'])
+            author: BlockedAuthor::fromArray($data['author'])
         );
     }
 

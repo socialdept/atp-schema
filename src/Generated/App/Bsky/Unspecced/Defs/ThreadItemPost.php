@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Unspecced\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\PostView;
+use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\PostView;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -60,7 +60,7 @@ class ThreadItemPost extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            post: Defs::fromArray($data['post']),
+            post: PostView::fromArray($data['post']),
             moreParents: $data['moreParents'],
             moreReplies: $data['moreReplies'],
             opThread: $data['opThread'],

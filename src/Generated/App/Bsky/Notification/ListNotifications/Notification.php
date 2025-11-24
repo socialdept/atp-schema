@@ -4,8 +4,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Notification\ListNotifications;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -70,13 +70,13 @@ class Notification extends Data
         return new static(
             uri: $data['uri'],
             cid: $data['cid'],
-            author: Defs::fromArray($data['author']),
+            author: ProfileView::fromArray($data['author']),
             reason: $data['reason'],
             record: $data['record'],
             isRead: $data['isRead'],
             indexedAt: Carbon::parse($data['indexedAt']),
             reasonSubject: $data['reasonSubject'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : []
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }
 
