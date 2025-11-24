@@ -88,7 +88,7 @@ class ClassGenerator
         // Get class components
         $namespace = $this->extensions->filter('filter:class:namespace', $this->naming->nsidToNamespace($nsid), $document);
         $className = $this->extensions->filter('filter:class:className', $this->naming->toClassName($document->id->getName()), $document);
-        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace), $document, $recordDef);
+        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace, $className), $document, $recordDef);
         $properties = $this->extensions->filter('filter:class:properties', $this->generateProperties($recordDef), $document, $recordDef);
         $constructor = $this->extensions->filter('filter:class:constructor', $this->generateConstructor($recordDef), $document, $recordDef);
         $methods = $this->extensions->filter('filter:class:methods', $this->generateMethods($document), $document);
@@ -213,20 +213,56 @@ class ClassGenerator
      * @param  array<string, mixed>  $definition
      * @return array<string>
      */
-    protected function collectUseStatements(array $definition, string $currentNamespace = ''): array
+    protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = ''): array
     {
         $uses = ['SocialDept\\Schema\\Data\\Data'];
         $properties = $definition['properties'] ?? [];
+        $hasUnions = false;
+        $localRefs = [];
 
         foreach ($properties as $propDef) {
             $propUses = $this->typeMapper->getUseStatements($propDef);
             $uses = array_merge($uses, $propUses);
 
+            // Check if this property uses unions
+            if (isset($propDef['type']) && $propDef['type'] === 'union') {
+                $hasUnions = true;
+            }
+
+            // Collect local references for import
+            if (isset($propDef['type']) && $propDef['type'] === 'ref' && isset($propDef['ref'])) {
+                $ref = $propDef['ref'];
+                if (str_starts_with($ref, '#')) {
+                    $localRefs[] = ltrim($ref, '#');
+                }
+            }
+
             // Handle array items
             if (isset($propDef['items'])) {
                 $itemUses = $this->typeMapper->getUseStatements($propDef['items']);
                 $uses = array_merge($uses, $itemUses);
+
+                // Check for local refs in array items
+                if (isset($propDef['items']['type']) && $propDef['items']['type'] === 'ref' && isset($propDef['items']['ref'])) {
+                    $ref = $propDef['items']['ref'];
+                    if (str_starts_with($ref, '#')) {
+                        $localRefs[] = ltrim($ref, '#');
+                    }
+                }
             }
+        }
+
+        // Add local ref imports from nested namespace
+        if (!empty($localRefs) && $currentNamespace && $currentClassName) {
+            foreach ($localRefs as $localRef) {
+                $refClassName = $this->naming->toClassName($localRef);
+                $uses[] = $currentNamespace . '\\' . $currentClassName . '\\' . $refClassName;
+            }
+        }
+
+        // Add UnionHelper if unions are used
+        if ($hasUnions) {
+            $uses[] = 'SocialDept\\Schema\\Support\\UnionHelper';
         }
 
         // Remove duplicates and sort

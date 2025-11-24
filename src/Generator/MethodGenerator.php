@@ -290,19 +290,19 @@ class MethodGenerator
                 $variantsArray = '['.implode(', ', $variantClasses).']';
 
                 if ($isRequired) {
-                    return "\\SocialDept\\Schema\\Support\\UnionHelper::resolveClosedUnion(\$data['{$name}'], {$variantsArray})";
+                    return "UnionHelper::resolveClosedUnion(\$data['{$name}'], {$variantsArray})";
                 }
 
-                return "isset(\$data['{$name}']) ? \\SocialDept\\Schema\\Support\\UnionHelper::resolveClosedUnion(\$data['{$name}'], {$variantsArray}) : null";
+                return "isset(\$data['{$name}']) ? UnionHelper::resolveClosedUnion(\$data['{$name}'], {$variantsArray}) : null";
             }
 
             // Open unions - validate $type presence using UnionHelper
             if (! $isClosed) {
                 if ($isRequired) {
-                    return "\\SocialDept\\Schema\\Support\\UnionHelper::validateOpenUnion(\$data['{$name}'])";
+                    return "UnionHelper::validateOpenUnion(\$data['{$name}'])";
                 }
 
-                return "isset(\$data['{$name}']) ? \\SocialDept\\Schema\\Support\\UnionHelper::validateOpenUnion(\$data['{$name}']) : null";
+                return "isset(\$data['{$name}']) ? UnionHelper::validateOpenUnion(\$data['{$name}']) : null";
             }
 
             // Fallback for unions with only local refs
