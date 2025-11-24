@@ -4,7 +4,7 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -73,7 +73,7 @@ class ListViewBasic extends Data
             purpose: $data['purpose'],
             avatar: $data['avatar'] ?? null,
             listItemCount: $data['listItemCount'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             viewer: $data['viewer'] ?? null,
             indexedAt: isset($data['indexedAt']) ? Carbon::parse($data['indexedAt']) : null
         );

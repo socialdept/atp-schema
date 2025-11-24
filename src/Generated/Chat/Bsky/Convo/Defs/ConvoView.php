@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Chat\Bsky\Actor\ProfileViewBasic;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -60,7 +60,7 @@ class ConvoView extends Data
         return new static(
             id: $data['id'],
             rev: $data['rev'],
-            members: isset($data['members']) ? array_map(fn ($item) => Defs::fromArray($item), $data['members']) : [],
+            members: isset($data['members']) ? array_map(fn ($item) => ProfileViewBasic::fromArray($item), $data['members']) : [],
             muted: $data['muted'],
             unreadCount: $data['unreadCount'],
             lastMessage: isset($data['lastMessage']) ? UnionHelper::validateOpenUnion($data['lastMessage']) : null,

@@ -4,9 +4,9 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
 use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -79,7 +79,7 @@ class ListView extends Data
         return new static(
             uri: $data['uri'],
             cid: $data['cid'],
-            creator: Defs::fromArray($data['creator']),
+            creator: ProfileView::fromArray($data['creator']),
             name: $data['name'],
             purpose: $data['purpose'],
             indexedAt: Carbon::parse($data['indexedAt']),
@@ -87,7 +87,7 @@ class ListView extends Data
             descriptionFacets: isset($data['descriptionFacets']) ? array_map(fn ($item) => Facet::fromArray($item), $data['descriptionFacets']) : [],
             avatar: $data['avatar'] ?? null,
             listItemCount: $data['listItemCount'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             viewer: $data['viewer'] ?? null
         );
     }

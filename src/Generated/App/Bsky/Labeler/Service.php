@@ -4,8 +4,9 @@ namespace SocialDept\Schema\Generated\App\Bsky\Labeler;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\ReasonType;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\SubjectType;
+use SocialDept\Schema\Generated\App\Bsky\Labeler\Defs\LabelerPolicies;
+use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\ReasonType;
+use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -51,11 +52,11 @@ class Service extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            policies: Defs::fromArray($data['policies']),
+            policies: LabelerPolicies::fromArray($data['policies']),
             createdAt: Carbon::parse($data['createdAt']),
             labels: isset($data['labels']) ? UnionHelper::validateOpenUnion($data['labels']) : null,
-            reasonTypes: isset($data['reasonTypes']) ? array_map(fn ($item) => Defs::fromArray($item), $data['reasonTypes']) : [],
-            subjectTypes: isset($data['subjectTypes']) ? array_map(fn ($item) => Defs::fromArray($item), $data['subjectTypes']) : [],
+            reasonTypes: isset($data['reasonTypes']) ? array_map(fn ($item) => ReasonType::fromArray($item), $data['reasonTypes']) : [],
+            subjectTypes: isset($data['subjectTypes']) ? array_map(fn ($item) => SubjectType::fromArray($item), $data['subjectTypes']) : [],
             subjectCollections: $data['subjectCollections'] ?? null
         );
     }

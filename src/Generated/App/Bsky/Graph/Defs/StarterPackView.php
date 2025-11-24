@@ -4,9 +4,9 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
-use SocialDept\Schema\Generated\App\Bsky\Feed\GeneratorView;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
+use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\GeneratorView;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -76,14 +76,14 @@ class StarterPackView extends Data
             uri: $data['uri'],
             cid: $data['cid'],
             record: $data['record'],
-            creator: Defs::fromArray($data['creator']),
+            creator: ProfileViewBasic::fromArray($data['creator']),
             indexedAt: Carbon::parse($data['indexedAt']),
             list: $data['list'] ?? null,
             listItemsSample: $data['listItemsSample'] ?? [],
-            feeds: isset($data['feeds']) ? array_map(fn ($item) => Defs::fromArray($item), $data['feeds']) : [],
+            feeds: isset($data['feeds']) ? array_map(fn ($item) => GeneratorView::fromArray($item), $data['feeds']) : [],
             joinedWeekCount: $data['joinedWeekCount'] ?? null,
             joinedAllTimeCount: $data['joinedAllTimeCount'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : []
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }
 

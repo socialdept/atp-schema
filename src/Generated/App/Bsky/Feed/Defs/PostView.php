@@ -4,8 +4,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -82,7 +82,7 @@ class PostView extends Data
         return new static(
             uri: $data['uri'],
             cid: $data['cid'],
-            author: Defs::fromArray($data['author']),
+            author: ProfileViewBasic::fromArray($data['author']),
             record: $data['record'],
             indexedAt: Carbon::parse($data['indexedAt']),
             embed: isset($data['embed']) ? UnionHelper::validateOpenUnion($data['embed']) : null,
@@ -92,7 +92,7 @@ class PostView extends Data
             likeCount: $data['likeCount'] ?? null,
             quoteCount: $data['quoteCount'] ?? null,
             viewer: $data['viewer'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             threadgate: $data['threadgate'] ?? null,
             debug: $data['debug'] ?? null
         );

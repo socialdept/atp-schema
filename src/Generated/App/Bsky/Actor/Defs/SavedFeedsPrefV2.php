@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\SavedFeed;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -43,7 +42,7 @@ class SavedFeedsPrefV2 extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            items: isset($data['items']) ? array_map(fn ($item) => Defs::fromArray($item), $data['items']) : []
+            items: isset($data['items']) ? array_map(fn ($item) => SavedFeed::fromArray($item), $data['items']) : []
         );
     }
 

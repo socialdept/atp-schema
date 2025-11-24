@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\MutedWord;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -46,7 +45,7 @@ class MutedWordsPref extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            items: isset($data['items']) ? array_map(fn ($item) => Defs::fromArray($item), $data['items']) : []
+            items: isset($data['items']) ? array_map(fn ($item) => MutedWord::fromArray($item), $data['items']) : []
         );
     }
 

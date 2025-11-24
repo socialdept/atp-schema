@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\SubjectType;
+use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -57,7 +57,7 @@ class SubjectView extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            type: Defs::fromArray($data['type']),
+            type: SubjectType::fromArray($data['type']),
             subject: $data['subject'],
             status: $data['status'] ?? null,
             repo: $data['repo'] ?? null,

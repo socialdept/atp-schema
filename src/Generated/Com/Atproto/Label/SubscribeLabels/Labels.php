@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\Com\Atproto\Label\SubscribeLabels;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -46,7 +46,7 @@ class Labels extends Data
     {
         return new static(
             seq: $data['seq'],
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : []
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }
 

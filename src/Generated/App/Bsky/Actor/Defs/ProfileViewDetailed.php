@@ -4,8 +4,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Graph\StarterPackViewBasic;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\StarterPackViewBasic;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
@@ -112,11 +112,11 @@ class ProfileViewDetailed extends Data
             followsCount: $data['followsCount'] ?? null,
             postsCount: $data['postsCount'] ?? null,
             associated: $data['associated'] ?? null,
-            joinedViaStarterPack: isset($data['joinedViaStarterPack']) ? Defs::fromArray($data['joinedViaStarterPack']) : null,
+            joinedViaStarterPack: isset($data['joinedViaStarterPack']) ? StarterPackViewBasic::fromArray($data['joinedViaStarterPack']) : null,
             indexedAt: isset($data['indexedAt']) ? Carbon::parse($data['indexedAt']) : null,
             createdAt: isset($data['createdAt']) ? Carbon::parse($data['createdAt']) : null,
             viewer: $data['viewer'] ?? null,
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : [],
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             pinnedPost: isset($data['pinnedPost']) ? StrongRef::fromArray($data['pinnedPost']) : null,
             verification: $data['verification'] ?? null,
             status: $data['status'] ?? null,

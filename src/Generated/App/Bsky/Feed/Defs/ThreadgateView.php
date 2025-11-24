@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Graph\ListViewBasic;
+use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -53,7 +53,7 @@ class ThreadgateView extends Data
             uri: $data['uri'] ?? null,
             cid: $data['cid'] ?? null,
             record: $data['record'] ?? null,
-            lists: isset($data['lists']) ? array_map(fn ($item) => Defs::fromArray($item), $data['lists']) : []
+            lists: isset($data['lists']) ? array_map(fn ($item) => ListViewBasic::fromArray($item), $data['lists']) : []
         );
     }
 

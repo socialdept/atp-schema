@@ -3,8 +3,8 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Graph\ListViewBasic;
-use SocialDept\Schema\Generated\App\Bsky\Notification\ActivitySubscription;
+use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
+use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\ActivitySubscription;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -70,14 +70,14 @@ class ViewerState extends Data
     {
         return new static(
             muted: $data['muted'] ?? null,
-            mutedByList: isset($data['mutedByList']) ? Defs::fromArray($data['mutedByList']) : null,
+            mutedByList: isset($data['mutedByList']) ? ListViewBasic::fromArray($data['mutedByList']) : null,
             blockedBy: $data['blockedBy'] ?? null,
             blocking: $data['blocking'] ?? null,
-            blockingByList: isset($data['blockingByList']) ? Defs::fromArray($data['blockingByList']) : null,
+            blockingByList: isset($data['blockingByList']) ? ListViewBasic::fromArray($data['blockingByList']) : null,
             following: $data['following'] ?? null,
             followedBy: $data['followedBy'] ?? null,
             knownFollowers: $data['knownFollowers'] ?? null,
-            activitySubscription: isset($data['activitySubscription']) ? Defs::fromArray($data['activitySubscription']) : null
+            activitySubscription: isset($data['activitySubscription']) ? ActivitySubscription::fromArray($data['activitySubscription']) : null
         );
     }
 

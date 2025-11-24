@@ -4,7 +4,7 @@ namespace SocialDept\Schema\Generated\App\Bsky\Embed\Images;
 
 use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
+use SocialDept\Schema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -53,7 +53,7 @@ class Image extends Data
         return new static(
             image: $data['image'],
             alt: $data['alt'],
-            aspectRatio: isset($data['aspectRatio']) ? Defs::fromArray($data['aspectRatio']) : null
+            aspectRatio: isset($data['aspectRatio']) ? AspectRatio::fromArray($data['aspectRatio']) : null
         );
     }
 

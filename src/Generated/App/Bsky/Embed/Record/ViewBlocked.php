@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Embed\Record;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
+use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -51,7 +51,7 @@ class ViewBlocked extends Data
         return new static(
             uri: $data['uri'],
             blocked: $data['blocked'],
-            author: Defs::fromArray($data['author'])
+            author: BlockedAuthor::fromArray($data['author'])
         );
     }
 

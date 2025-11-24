@@ -4,7 +4,7 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
+use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -68,7 +68,7 @@ class RecordViewDetail extends Data
             indexedAt: Carbon::parse($data['indexedAt']),
             moderation: $data['moderation'],
             repo: $data['repo'],
-            labels: isset($data['labels']) ? array_map(fn ($item) => Defs::fromArray($item), $data['labels']) : []
+            labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }
 

@@ -421,7 +421,15 @@ class TypeMapper
             // Handle NSID fragments - convert fragment to class name
             if (str_contains($ref, '#')) {
                 [$baseNsid, $fragment] = explode('#', $ref, 2);
-                $namespace = $this->naming->nsidToNamespace($baseNsid);
+                // For fragments, we need to include ALL segments of the base NSID
+                // Parse the NSID and convert each segment to PascalCase
+                $nsid = \SocialDept\Schema\Parser\Nsid::parse($baseNsid);
+                $segments = $nsid->getSegments();
+                $namespaceParts = array_map(
+                    fn ($part) => $this->naming->toPascalCase($part),
+                    $segments
+                );
+                $namespace = $this->naming->getBaseNamespace() . '\\' . implode('\\', $namespaceParts);
                 $className = $this->naming->toClassName($fragment);
 
                 return [$namespace . '\\' . $className];
@@ -449,7 +457,14 @@ class TypeMapper
                 // Handle NSID fragments - convert fragment to class name
                 if (str_contains($ref, '#')) {
                     [$baseNsid, $fragment] = explode('#', $ref, 2);
-                    $namespace = $this->naming->nsidToNamespace($baseNsid);
+                    // For fragments, we need to include ALL segments of the base NSID
+                    $nsid = \SocialDept\Schema\Parser\Nsid::parse($baseNsid);
+                    $segments = $nsid->getSegments();
+                    $namespaceParts = array_map(
+                        fn ($part) => $this->naming->toPascalCase($part),
+                        $segments
+                    );
+                    $namespace = $this->naming->getBaseNamespace() . '\\' . implode('\\', $namespaceParts);
                     $className = $this->naming->toClassName($fragment);
                     $classes[] = $namespace . '\\' . $className;
                 } else {

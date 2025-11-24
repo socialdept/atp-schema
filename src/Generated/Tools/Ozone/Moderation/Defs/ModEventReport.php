@@ -3,7 +3,7 @@
 namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\ReasonType;
+use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\ReasonType;
 
 /**
  * GENERATED CODE - DO NOT EDIT
@@ -52,7 +52,7 @@ class ModEventReport extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            reportType: Defs::fromArray($data['reportType']),
+            reportType: ReasonType::fromArray($data['reportType']),
             comment: $data['comment'] ?? null,
             isReporterMuted: $data['isReporterMuted'] ?? null
         );
