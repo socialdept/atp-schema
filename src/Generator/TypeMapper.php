@@ -206,9 +206,11 @@ class TypeMapper
         }
 
         // Handle NSID fragments (e.g., com.atproto.label.defs#selfLabels)
-        // Extract just the NSID part for class resolution
+        // Convert fragment to class name
         if (str_contains($ref, '#')) {
-            $ref = explode('#', $ref)[0];
+            [$baseNsid, $fragment] = explode('#', $ref, 2);
+
+            return $this->naming->toClassName($fragment);
         }
 
         // Convert NSID reference to fully qualified class name
@@ -256,15 +258,16 @@ class TypeMapper
         // Build union type with all variants
         $types = [];
         foreach ($externalRefs as $ref) {
-            // Handle NSID fragments - extract just the NSID part
+            // Handle NSID fragments - convert fragment to class name
             if (str_contains($ref, '#')) {
-                $ref = explode('#', $ref)[0];
+                [$baseNsid, $fragment] = explode('#', $ref, 2);
+                $types[] = $this->naming->toClassName($fragment);
+            } else {
+                // Convert to fully qualified class name, then extract short name
+                $fqcn = $this->naming->nsidToClassName($ref);
+                $parts = explode('\\', $fqcn);
+                $types[] = end($parts);
             }
-
-            // Convert to fully qualified class name, then extract short name
-            $fqcn = $this->naming->nsidToClassName($ref);
-            $parts = explode('\\', $fqcn);
-            $types[] = end($parts);
         }
 
         // Return union type (e.g., "Theme|ThemeV2" or just "Theme" for single ref)
@@ -298,9 +301,12 @@ class TypeMapper
                 continue;
             }
 
-            // Handle NSID fragments - extract just the NSID part
+            // Handle NSID fragments - convert fragment to class name
             if (str_contains($ref, '#')) {
-                $ref = explode('#', $ref)[0];
+                [$baseNsid, $fragment] = explode('#', $ref, 2);
+                $types[] = $this->naming->toClassName($fragment);
+
+                continue;
             }
 
             // Convert to fully qualified class name, then extract short name
@@ -412,9 +418,13 @@ class TypeMapper
                 return [];
             }
 
-            // Handle NSID fragments - extract just the NSID part
+            // Handle NSID fragments - convert fragment to class name
             if (str_contains($ref, '#')) {
-                $ref = explode('#', $ref)[0];
+                [$baseNsid, $fragment] = explode('#', $ref, 2);
+                $namespace = $this->naming->nsidToNamespace($baseNsid);
+                $className = $this->naming->toClassName($fragment);
+
+                return [$namespace . '\\' . $className];
             }
 
             return [$this->naming->nsidToClassName($ref)];
@@ -436,12 +446,15 @@ class TypeMapper
                     continue;
                 }
 
-                // Handle NSID fragments - extract just the NSID part
+                // Handle NSID fragments - convert fragment to class name
                 if (str_contains($ref, '#')) {
-                    $ref = explode('#', $ref)[0];
+                    [$baseNsid, $fragment] = explode('#', $ref, 2);
+                    $namespace = $this->naming->nsidToNamespace($baseNsid);
+                    $className = $this->naming->toClassName($fragment);
+                    $classes[] = $namespace . '\\' . $className;
+                } else {
+                    $classes[] = $this->naming->nsidToClassName($ref);
                 }
-
-                $classes[] = $this->naming->nsidToClassName($ref);
             }
 
             return $classes;

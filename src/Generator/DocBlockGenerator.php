@@ -30,6 +30,10 @@ class DocBlockGenerator
     ): string {
         $lines = ['/**'];
 
+        // Add generated code warning
+        $lines[] = ' * GENERATED CODE - DO NOT EDIT';
+        $lines[] = ' *';
+
         // Add description
         if ($document->description) {
             $lines = array_merge($lines, $this->wrapDescription($document->description));

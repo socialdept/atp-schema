@@ -262,6 +262,11 @@ class SchemaServiceProvider extends ServiceProvider
             __DIR__.'/../stubs' => base_path('stubs/schema'),
         ], 'schema-stubs');
 
+        // Publish lexicon JSON files
+        $this->publishes([
+            __DIR__.'/../resources/lexicons' => resource_path('lexicons'),
+        ], 'atp-lexicons');
+
         // Register commands
         $this->commands([
             Console\GenerateCommand::class,

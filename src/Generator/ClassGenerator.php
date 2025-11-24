@@ -88,7 +88,7 @@ class ClassGenerator
         // Get class components
         $namespace = $this->extensions->filter('filter:class:namespace', $this->naming->nsidToNamespace($nsid), $document);
         $className = $this->extensions->filter('filter:class:className', $this->naming->toClassName($document->id->getName()), $document);
-        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace), $document, $recordDef);
+        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace, $className), $document, $recordDef);
         $properties = $this->extensions->filter('filter:class:properties', $this->generateProperties($recordDef), $document, $recordDef);
         $constructor = $this->extensions->filter('filter:class:constructor', $this->generateConstructor($recordDef), $document, $recordDef);
         $methods = $this->extensions->filter('filter:class:methods', $this->generateMethods($document), $document);
@@ -177,14 +177,18 @@ class ClassGenerator
 
         // Build constructor DocBlock with parameter descriptions in the correct order
         $docParams = array_merge($requiredDocParams, $optionalDocParams);
-        $docLines = ['    /**'];
-        if (! empty($docParams)) {
-            $docLines = array_merge($docLines, $docParams);
-        }
-        $docLines[] = '     */';
-        $docBlock = implode("\n", $docLines);
 
-        return "\n".$docBlock."\n    public function __construct(\n".implode("\n", $params)."\n    ) {}";
+        // Only add docblock if there are parameter descriptions
+        if (! empty($docParams)) {
+            $docLines = ['    /**'];
+            $docLines = array_merge($docLines, $docParams);
+            $docLines[] = '     */';
+            $docBlock = implode("\n", $docLines)."\n";
+        } else {
+            $docBlock = '';
+        }
+
+        return $docBlock."    public function __construct(\n".implode("\n", $params)."\n    ) {\n    }";
     }
 
     /**
@@ -213,20 +217,65 @@ class ClassGenerator
      * @param  array<string, mixed>  $definition
      * @return array<string>
      */
-    protected function collectUseStatements(array $definition, string $currentNamespace = ''): array
+    protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = ''): array
     {
         $uses = ['SocialDept\\Schema\\Data\\Data'];
         $properties = $definition['properties'] ?? [];
+        $hasUnions = false;
+        $localRefs = [];
 
         foreach ($properties as $propDef) {
             $propUses = $this->typeMapper->getUseStatements($propDef);
             $uses = array_merge($uses, $propUses);
 
+            // Check if this property uses unions
+            if (isset($propDef['type']) && $propDef['type'] === 'union') {
+                $hasUnions = true;
+            }
+
+            // Collect local references for import
+            if (isset($propDef['type']) && $propDef['type'] === 'ref' && isset($propDef['ref'])) {
+                $ref = $propDef['ref'];
+                if (str_starts_with($ref, '#')) {
+                    $localRefs[] = ltrim($ref, '#');
+                }
+            }
+
             // Handle array items
             if (isset($propDef['items'])) {
                 $itemUses = $this->typeMapper->getUseStatements($propDef['items']);
                 $uses = array_merge($uses, $itemUses);
+
+                // Check for local refs in array items
+                if (isset($propDef['items']['type']) && $propDef['items']['type'] === 'ref' && isset($propDef['items']['ref'])) {
+                    $ref = $propDef['items']['ref'];
+                    if (str_starts_with($ref, '#')) {
+                        $localRefs[] = ltrim($ref, '#');
+                    }
+                }
             }
+        }
+
+        // Add local ref imports
+        // For local refs, check if they should be nested or siblings
+        if (! empty($localRefs) && $currentNamespace) {
+            foreach ($localRefs as $localRef) {
+                $refClassName = $this->naming->toClassName($localRef);
+
+                // If this is a nested definition (has currentClassName) and it's a record type,
+                // then local refs are nested under the record
+                if ($currentClassName && $definition['type'] === 'record') {
+                    $uses[] = $currentNamespace . '\\' . $currentClassName . '\\' . $refClassName;
+                } else {
+                    // For object definitions or defs lexicons, local refs are siblings
+                    $uses[] = $currentNamespace . '\\' . $refClassName;
+                }
+            }
+        }
+
+        // Add UnionHelper if unions are used
+        if ($hasUnions) {
+            $uses[] = 'SocialDept\\Schema\\Support\\UnionHelper';
         }
 
         // Remove duplicates and sort

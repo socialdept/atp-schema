@@ -1,0 +1,50 @@
+<?php
+
+namespace SocialDept\Schema\Generated\App\Bsky\Feed;
+
+use Carbon\Carbon;
+use SocialDept\Schema\Data\Data;
+use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
+
+/**
+ * GENERATED CODE - DO NOT EDIT
+ *
+ * Lexicon: app.bsky.feed.repost
+ * Type: record
+ */
+class Repost extends Data
+{
+    public function __construct(
+        public readonly StrongRef $subject,
+        public readonly Carbon $createdAt,
+        public readonly ?StrongRef $via = null
+    ) {
+    }
+
+    /**
+     * Get the lexicon NSID for this data type.
+     *
+     * @return string
+     */
+    public static function getLexicon(): string
+    {
+        return 'app.bsky.feed.repost';
+    }
+
+
+    /**
+     * Create an instance from an array.
+     *
+     * @param  array  $data  The data array
+     * @return static
+     */
+    public static function fromArray(array $data): static
+    {
+        return new static(
+            subject: StrongRef::fromArray($data['subject']),
+            createdAt: Carbon::parse($data['createdAt']),
+            via: isset($data['via']) ? StrongRef::fromArray($data['via']) : null
+        );
+    }
+
+}

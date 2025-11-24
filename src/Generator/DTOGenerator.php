@@ -136,8 +136,15 @@ class DTOGenerator implements DataGenerator
     {
         $generatedFiles = [];
 
-        // Generate main class if it's a record
+        // Generate main class if it's a record or object
+        $mainDef = $document->getMainDefinition();
+        $mainType = $mainDef['type'] ?? null;
+
         if ($document->isRecord()) {
+            $file = $this->generateRecordClass($document, $options);
+            $generatedFiles[] = $file;
+        } elseif ($mainType === 'object') {
+            // Generate for standalone object types (like strongRef)
             $file = $this->generateRecordClass($document, $options);
             $generatedFiles[] = $file;
         }
