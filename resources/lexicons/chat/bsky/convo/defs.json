@@ -111,7 +111,7 @@
           "type": "array",
           "items": {
             "type": "ref",
-            "ref": "chat.bsky.actor.defs#profileViewBasic"
+            "ref": "app.bsky.actor.defs#profileViewBasic"
           }
         },
         "lastMessage": {
