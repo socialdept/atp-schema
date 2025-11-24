@@ -15,8 +15,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ServiceConfig extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?string $url = null
     ) {

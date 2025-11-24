@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ActivitySubscription extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly bool $post,
         public readonly bool $reply

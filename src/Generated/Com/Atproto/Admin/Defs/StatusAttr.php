@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class StatusAttr extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly bool $applied,
         public readonly ?string $ref = null

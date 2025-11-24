@@ -18,6 +18,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventMute extends Data
 {
+
     /**
      * @param  int  $durationInHours  Indicates how long the subject should remain muted.
      */

@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Info extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $name,
         public readonly ?string $message = null

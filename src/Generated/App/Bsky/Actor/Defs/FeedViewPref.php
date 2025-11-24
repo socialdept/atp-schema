@@ -20,6 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class FeedViewPref extends Data
 {
+
     /**
      * @param  string  $feed  The URI of the feed, or an identifier which describes the feed.
      * @param  bool|null  $hideReplies  Hide replies in the feed.

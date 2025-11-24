@@ -27,8 +27,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Preferences extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly mixed $chat,
         public readonly mixed $follow,

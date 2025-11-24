@@ -23,8 +23,7 @@ use SocialDept\Schema\Data\Data;
  */
 class InviteCode extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $code,
         public readonly int $available,

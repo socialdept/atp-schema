@@ -20,8 +20,7 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
  */
 class ViewBlocked extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $uri,
         public readonly bool $blocked,

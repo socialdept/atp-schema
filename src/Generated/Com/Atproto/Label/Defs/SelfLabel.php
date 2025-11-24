@@ -19,6 +19,7 @@ use SocialDept\Schema\Data\Data;
  */
 class SelfLabel extends Data
 {
+
     /**
      * @param  string  $val  The short string name of the value or type of this label.
      */

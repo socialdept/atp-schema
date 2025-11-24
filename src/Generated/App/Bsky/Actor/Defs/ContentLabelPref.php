@@ -18,6 +18,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ContentLabelPref extends Data
 {
+
     /**
      * @param  string|null  $labelerDid  Which labeler does this preference apply to? If undefined, applies globally.
      */

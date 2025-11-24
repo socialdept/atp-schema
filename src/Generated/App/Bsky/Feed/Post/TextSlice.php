@@ -21,8 +21,7 @@ use SocialDept\Schema\Data\Data;
  */
 class TextSlice extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly int $start,
         public readonly int $end

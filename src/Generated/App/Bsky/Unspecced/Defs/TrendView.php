@@ -25,8 +25,7 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
  */
 class TrendView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $topic,
         public readonly string $displayName,

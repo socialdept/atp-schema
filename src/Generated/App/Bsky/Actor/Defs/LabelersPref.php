@@ -15,8 +15,7 @@ use SocialDept\Schema\Data\Data;
  */
 class LabelersPref extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly array $labelers
     ) {

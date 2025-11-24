@@ -26,8 +26,7 @@ use SocialDept\Schema\Data\Data;
  */
 class IdentityEvent extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly Carbon $timestamp,
         public readonly ?string $comment = null,

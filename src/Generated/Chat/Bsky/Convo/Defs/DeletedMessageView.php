@@ -20,8 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class DeletedMessageView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $id,
         public readonly string $rev,

@@ -12,8 +12,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewerConfig extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?string $role = null
     ) {

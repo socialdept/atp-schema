@@ -37,6 +37,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Commit extends Data
 {
+
     /**
      * @param  int  $seq  The stream sequence number of this message.
      * @param  bool  $rebase  DEPRECATED -- unused

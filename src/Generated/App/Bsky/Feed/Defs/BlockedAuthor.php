@@ -18,8 +18,7 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ViewerState;
  */
 class BlockedAuthor extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $did,
         public readonly ?ViewerState $viewer = null

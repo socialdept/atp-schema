@@ -16,6 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventComment extends Data
 {
+
     /**
      * @param  bool|null  $sticky  Make the comment persistent on the subject
      */

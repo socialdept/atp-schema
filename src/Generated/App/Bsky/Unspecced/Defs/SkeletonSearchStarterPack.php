@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class SkeletonSearchStarterPack extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $uri
     ) {

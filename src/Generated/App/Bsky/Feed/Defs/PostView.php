@@ -36,6 +36,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class PostView extends Data
 {
+
     /**
      * @param  mixed  $debug  Debug information for internal development
      */

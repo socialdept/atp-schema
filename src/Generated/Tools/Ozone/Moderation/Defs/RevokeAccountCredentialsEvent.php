@@ -17,6 +17,7 @@ use SocialDept\Schema\Data\Data;
  */
 class RevokeAccountCredentialsEvent extends Data
 {
+
     /**
      * @param  string  $comment  Comment describing the reason for the revocation.
      */

@@ -15,8 +15,7 @@ use SocialDept\Schema\Data\Data;
  */
 class GeneratorViewerState extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?string $like = null
     ) {

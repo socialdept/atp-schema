@@ -19,6 +19,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ReplyRef extends Data
 {
+
     /**
      * @param  ProfileViewBasic|null  $grandparentAuthor  When parent is a reply to another post, this is the author of that post.
      */

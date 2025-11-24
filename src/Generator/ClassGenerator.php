@@ -177,14 +177,18 @@ class ClassGenerator
 
         // Build constructor DocBlock with parameter descriptions in the correct order
         $docParams = array_merge($requiredDocParams, $optionalDocParams);
-        $docLines = ['    /**'];
-        if (! empty($docParams)) {
-            $docLines = array_merge($docLines, $docParams);
-        }
-        $docLines[] = '     */';
-        $docBlock = implode("\n", $docLines);
 
-        return "\n    ".$docBlock."\n    public function __construct(\n".implode("\n", $params)."\n    ) {\n    }";
+        // Only add docblock if there are parameter descriptions
+        if (! empty($docParams)) {
+            $docLines = ['    /**'];
+            $docLines = array_merge($docLines, $docParams);
+            $docLines[] = '     */';
+            $docBlock = "\n".implode("\n", $docLines);
+        } else {
+            $docBlock = '';
+        }
+
+        return $docBlock."\n    public function __construct(\n".implode("\n", $params)."\n    ) {\n    }";
     }
 
     /**
@@ -252,11 +256,20 @@ class ClassGenerator
             }
         }
 
-        // Add local ref imports from nested namespace
-        if (! empty($localRefs) && $currentNamespace && $currentClassName) {
+        // Add local ref imports
+        // For local refs, check if they should be nested or siblings
+        if (! empty($localRefs) && $currentNamespace) {
             foreach ($localRefs as $localRef) {
                 $refClassName = $this->naming->toClassName($localRef);
-                $uses[] = $currentNamespace . '\\' . $currentClassName . '\\' . $refClassName;
+
+                // If this is a nested definition (has currentClassName) and it's a record type,
+                // then local refs are nested under the record
+                if ($currentClassName && $definition['type'] === 'record') {
+                    $uses[] = $currentNamespace . '\\' . $currentClassName . '\\' . $refClassName;
+                } else {
+                    // For object definitions or defs lexicons, local refs are siblings
+                    $uses[] = $currentNamespace . '\\' . $refClassName;
+                }
             }
         }
 

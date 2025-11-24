@@ -16,6 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class PersonalDetailsPref extends Data
 {
+
     /**
      * @param  Carbon|null  $birthDate  The birth date of account owner.
      */

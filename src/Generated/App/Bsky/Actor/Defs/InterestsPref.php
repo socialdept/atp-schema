@@ -16,6 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class InterestsPref extends Data
 {
+
     /**
      * @param  array<string>  $tags  A list of tags which describe the account owner's interests gathered during onboarding.
      */

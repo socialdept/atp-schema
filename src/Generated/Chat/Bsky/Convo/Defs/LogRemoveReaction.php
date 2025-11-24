@@ -19,8 +19,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class LogRemoveReaction extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $rev,
         public readonly string $convoId,

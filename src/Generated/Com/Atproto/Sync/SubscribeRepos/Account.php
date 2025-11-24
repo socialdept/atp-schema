@@ -27,6 +27,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Account extends Data
 {
+
     /**
      * @param  bool  $active  Indicates that the account has a repository which can be fetched from the host that emitted this event.
      * @param  string|null  $status  If active=false, this optional field indicates a reason for why the account is not active.

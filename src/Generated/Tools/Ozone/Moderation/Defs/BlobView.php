@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\BlobView\Moderation;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -25,8 +24,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class BlobView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $cid,
         public readonly string $mimeType,

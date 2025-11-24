@@ -22,6 +22,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class StatusView extends Data
 {
+
     /**
      * @param  string  $status  The status for the account.
      * @param  mixed  $embed  An optional embed associated with the status.

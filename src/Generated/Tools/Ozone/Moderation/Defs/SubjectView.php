@@ -25,8 +25,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SubjectView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly SubjectType $type,
         public readonly string $subject,

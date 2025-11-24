@@ -24,8 +24,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ConvoView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $id,
         public readonly string $rev,

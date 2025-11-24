@@ -12,7 +12,7 @@ use SocialDept\Schema\Support\UnionHelper;
  * Lexicon: app.bsky.graph.list
  * Type: record
  */
-class List extends Data
+class ListRecord extends Data
 {
 
     /**

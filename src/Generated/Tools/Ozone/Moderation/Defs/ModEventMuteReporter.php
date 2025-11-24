@@ -15,6 +15,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventMuteReporter extends Data
 {
+
     /**
      * @param  int|null  $durationInHours  Indicates how long the account should remain muted. Falsy value here means a permanent mute.
      */

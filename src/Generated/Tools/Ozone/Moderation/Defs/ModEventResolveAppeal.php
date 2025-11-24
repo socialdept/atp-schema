@@ -14,6 +14,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventResolveAppeal extends Data
 {
+
     /**
      * @param  string|null  $comment  Describe resolution.
      */

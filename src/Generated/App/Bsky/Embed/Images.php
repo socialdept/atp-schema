@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Embed;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\Images\Image;
 
 /**
  * A set of images embedded in a Bluesky record (eg, a post).
@@ -19,8 +18,7 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\Images\Image;
  */
 class Images extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly array $images
     ) {

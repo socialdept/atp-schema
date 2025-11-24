@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class View extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly array $images
     ) {

@@ -22,6 +22,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Create extends Data
 {
+
     /**
      * @param  string|null  $rkey  NOTE: maxLength is redundant with record-key format. Keeping it temporarily to ensure backwards compatibility.
      */

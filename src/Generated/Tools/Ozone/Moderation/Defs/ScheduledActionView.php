@@ -40,6 +40,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ScheduledActionView extends Data
 {
+
     /**
      * @param  int  $id  Auto-incrementing row ID
      * @param  string  $action  Type of action to be executed

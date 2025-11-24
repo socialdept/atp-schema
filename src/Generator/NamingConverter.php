@@ -12,6 +12,22 @@ class NamingConverter
     protected string $baseNamespace;
 
     /**
+     * PHP reserved keywords that cannot be used as class names.
+     */
+    protected const RESERVED_KEYWORDS = [
+        'abstract', 'and', 'array', 'as', 'break', 'callable', 'case', 'catch',
+        'class', 'clone', 'const', 'continue', 'declare', 'default', 'die', 'do',
+        'echo', 'else', 'elseif', 'empty', 'enddeclare', 'endfor', 'endforeach',
+        'endif', 'endswitch', 'endwhile', 'eval', 'exit', 'extends', 'final',
+        'finally', 'fn', 'for', 'foreach', 'function', 'global', 'goto', 'if',
+        'implements', 'include', 'include_once', 'instanceof', 'insteadof',
+        'interface', 'isset', 'list', 'match', 'namespace', 'new', 'or', 'print',
+        'private', 'protected', 'public', 'readonly', 'require', 'require_once',
+        'return', 'static', 'switch', 'throw', 'trait', 'try', 'unset', 'use',
+        'var', 'while', 'xor', 'yield', '__halt_compiler',
+    ];
+
+    /**
      * Create a new NamingConverter.
      */
     public function __construct(string $baseNamespace = 'App\\Lexicons')
@@ -63,7 +79,20 @@ class NamingConverter
             $parts
         ));
 
+        // Check if the class name is a reserved keyword and add suffix
+        if ($this->isReservedKeyword($className)) {
+            $className .= 'Record';
+        }
+
         return $className;
+    }
+
+    /**
+     * Check if a name is a PHP reserved keyword.
+     */
+    protected function isReservedKeyword(string $name): bool
+    {
+        return in_array(strtolower($name), self::RESERVED_KEYWORDS, true);
     }
 
     /**

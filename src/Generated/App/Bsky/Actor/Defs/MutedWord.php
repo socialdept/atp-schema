@@ -26,6 +26,7 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\MutedWordTarget;
  */
 class MutedWord extends Data
 {
+
     /**
      * @param  string  $value  The muted word itself.
      * @param  array<MutedWordTarget>  $targets  The intended targets of the muted word.

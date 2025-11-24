@@ -28,6 +28,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class MessageView extends Data
 {
+
     /**
      * @param  array<Facet>|null  $facets  Annotations of text (mentions, URLs, hashtags, etc)
      * @param  array|null  $reactions  Reactions to this message, in ascending order of creation time.

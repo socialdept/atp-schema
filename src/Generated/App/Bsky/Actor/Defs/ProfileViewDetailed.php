@@ -50,6 +50,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class ProfileViewDetailed extends Data
 {
+
     /**
      * @param  mixed  $debug  Debug information for internal development
      */

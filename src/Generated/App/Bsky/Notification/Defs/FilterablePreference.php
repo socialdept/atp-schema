@@ -17,8 +17,7 @@ use SocialDept\Schema\Data\Data;
  */
 class FilterablePreference extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $include,
         public readonly bool $list,

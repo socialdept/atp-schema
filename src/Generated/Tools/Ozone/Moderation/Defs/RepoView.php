@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Admin\ThreatSignature;
 use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RepoView\Moderation;
 
 /**
  * Lexicon: tools.ozone.moderation.defs.repoView
@@ -33,8 +32,7 @@ use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RepoView\Moderation;
  */
 class RepoView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $did,
         public readonly string $handle,

@@ -25,8 +25,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewerState extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?string $repost = null,
         public readonly ?string $like = null,

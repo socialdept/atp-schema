@@ -11,6 +11,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Listitem extends Data
 {
+
     /**
      * @param  string  $subject  The account which is included on the list.
      * @param  string  $list  Reference (AT-URI) to the list record (app.bsky.graph.list).

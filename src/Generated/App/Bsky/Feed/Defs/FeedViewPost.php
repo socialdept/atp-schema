@@ -22,6 +22,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class FeedViewPost extends Data
 {
+
     /**
      * @param  string|null  $feedContext  Context provided by feed generator that may be passed back alongside interactions.
      * @param  string|null  $reqId  Unique identifier per request that may be passed back alongside interactions.

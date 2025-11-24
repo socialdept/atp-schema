@@ -23,6 +23,7 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountEvent extends Data
 {
+
     /**
      * @param  bool  $active  Indicates that the account has a repository which can be fetched from the host that emitted this event.
      */

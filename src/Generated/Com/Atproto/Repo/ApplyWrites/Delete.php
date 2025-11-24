@@ -20,8 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Delete extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $collection,
         public readonly string $rkey

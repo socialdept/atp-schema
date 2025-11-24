@@ -16,8 +16,7 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\SavedFeed;
  */
 class SavedFeedsPrefV2 extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly array $items
     ) {

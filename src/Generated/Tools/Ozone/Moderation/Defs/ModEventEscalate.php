@@ -12,8 +12,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventEscalate extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?string $comment = null
     ) {

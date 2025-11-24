@@ -28,8 +28,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class LabelerView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

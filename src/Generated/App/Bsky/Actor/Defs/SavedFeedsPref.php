@@ -17,8 +17,7 @@ use SocialDept\Schema\Data\Data;
  */
 class SavedFeedsPref extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly array $pinned,
         public readonly array $saved,

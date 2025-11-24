@@ -18,8 +18,7 @@ use SocialDept\Schema\Data\Data;
  */
 class TrendingTopic extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $topic,
         public readonly string $link,

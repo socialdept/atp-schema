@@ -20,8 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventPriorityScore extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly int $score,
         public readonly ?string $comment = null

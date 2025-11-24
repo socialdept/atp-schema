@@ -28,6 +28,7 @@ use SocialDept\Schema\Data\Data;
  */
 class TemplateView extends Data
 {
+
     /**
      * @param  string  $name  Name of the template.
      * @param  string  $contentMarkdown  Subject of the message, used in emails.

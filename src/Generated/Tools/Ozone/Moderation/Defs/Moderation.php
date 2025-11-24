@@ -12,8 +12,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Moderation extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly mixed $subjectStatus = null
     ) {

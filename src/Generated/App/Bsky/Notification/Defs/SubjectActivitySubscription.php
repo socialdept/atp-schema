@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Notification\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\SubjectActivitySubscription\ActivitySubscription;
 
 /**
  * Object used to store activity subscription data in stash.
@@ -20,8 +19,7 @@ use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\SubjectActivitySubscr
  */
 class SubjectActivitySubscription extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $subject,
         public readonly mixed $activitySubscription

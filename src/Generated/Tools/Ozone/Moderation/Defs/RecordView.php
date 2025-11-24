@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordView\Moderation;
 
 /**
  * Lexicon: tools.ozone.moderation.defs.recordView
@@ -26,8 +25,7 @@ use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordView\Moderatio
  */
 class RecordView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

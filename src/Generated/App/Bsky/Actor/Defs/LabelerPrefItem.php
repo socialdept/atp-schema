@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class LabelerPrefItem extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $did
     ) {

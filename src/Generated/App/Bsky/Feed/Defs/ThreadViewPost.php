@@ -19,8 +19,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ThreadViewPost extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly mixed $post,
         public readonly mixed $parent = null,

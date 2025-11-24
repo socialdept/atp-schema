@@ -16,8 +16,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class View extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly mixed $record
     ) {

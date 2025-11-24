@@ -19,6 +19,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Entity extends Data
 {
+
     /**
      * @param  string  $type  Expected values are 'mention' and 'link'.
      */

@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Embed;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\External\External;
 
 /**
  * Lexicon: app.bsky.embed.external
@@ -16,8 +15,7 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\External\External;
  */
 class External extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly External $external
     ) {

@@ -19,6 +19,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Sync\HostStatus;
  */
 class Host extends Data
 {
+
     /**
      * @param  string  $hostname  hostname of server; not a URL (no scheme)
      * @param  int|null  $seq  Recent repo stream event sequence number. May be delayed from actual stream processing (eg, persisted cursor not in-memory cursor).

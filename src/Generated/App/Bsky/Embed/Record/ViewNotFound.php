@@ -18,8 +18,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewNotFound extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $uri,
         public readonly bool $notFound

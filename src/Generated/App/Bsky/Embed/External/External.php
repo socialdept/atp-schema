@@ -20,8 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class External extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $uri,
         public readonly string $title,

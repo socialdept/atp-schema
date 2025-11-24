@@ -18,8 +18,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class LogReadMessage extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $rev,
         public readonly string $convoId,

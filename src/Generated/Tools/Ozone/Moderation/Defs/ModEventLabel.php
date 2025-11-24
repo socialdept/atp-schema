@@ -20,6 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventLabel extends Data
 {
+
     /**
      * @param  int|null  $durationInHours  Indicates how long the label will remain on the subject. Only applies on labels that are being added.
      */

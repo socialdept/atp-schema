@@ -24,6 +24,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ReporterStats extends Data
 {
+
     /**
      * @param  int  $accountReportCount  The total number of reports made by the user on accounts.
      * @param  int  $recordReportCount  The total number of reports made by the user on records.

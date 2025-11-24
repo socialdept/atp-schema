@@ -21,6 +21,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class MessageInput extends Data
 {
+
     /**
      * @param  array<Facet>|null  $facets  Annotations of text (mentions, URLs, hashtags, etc)
      */

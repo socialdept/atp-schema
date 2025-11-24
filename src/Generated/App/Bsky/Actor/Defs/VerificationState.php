@@ -20,6 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class VerificationState extends Data
 {
+
     /**
      * @param  array  $verifications  All verifications issued by trusted verifiers on behalf of this user. Verifications by untrusted verifiers are not included.
      * @param  string  $verifiedStatus  The user's status as a verified account.

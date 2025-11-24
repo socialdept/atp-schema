@@ -15,6 +15,7 @@ use SocialDept\Schema\Data\Data;
  */
 class HiddenPostsPref extends Data
 {
+
     /**
      * @param  array<string>  $items  A list of URIs of posts the account owner has hidden.
      */

@@ -34,6 +34,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class ProfileViewBasic extends Data
 {
+
     /**
      * @param  mixed  $debug  Debug information for internal development
      */

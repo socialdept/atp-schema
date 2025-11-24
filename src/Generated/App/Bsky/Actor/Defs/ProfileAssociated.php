@@ -17,8 +17,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ProfileAssociated extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?int $lists = null,
         public readonly ?int $feedgens = null,

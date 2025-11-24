@@ -20,6 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventReverseTakedown extends Data
 {
+
     /**
      * @param  string|null  $comment  Describe reasoning behind the reversal.
      * @param  array<string>|null  $policies  Names/Keywords of the policy infraction for which takedown is being reversed.

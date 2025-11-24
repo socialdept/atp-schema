@@ -22,6 +22,7 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountStrike extends Data
 {
+
     /**
      * @param  int|null  $activeStrikeCount  Current number of active strikes (excluding expired strikes)
      * @param  int|null  $totalStrikeCount  Total number of strikes ever received (including expired strikes)

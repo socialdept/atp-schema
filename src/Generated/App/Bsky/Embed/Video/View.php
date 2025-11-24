@@ -25,8 +25,7 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
  */
 class View extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $cid,
         public readonly string $playlist,

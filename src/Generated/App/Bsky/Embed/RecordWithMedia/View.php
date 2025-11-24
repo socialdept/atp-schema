@@ -18,8 +18,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class View extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly View $record,
         public readonly mixed $media

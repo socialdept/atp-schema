@@ -27,6 +27,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventEmail extends Data
 {
+
     /**
      * @param  string  $subjectLine  The subject line of the email sent to the user.
      * @param  string|null  $content  The content of the email sent to the user.

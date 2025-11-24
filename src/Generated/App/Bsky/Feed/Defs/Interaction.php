@@ -20,6 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Interaction extends Data
 {
+
     /**
      * @param  string|null  $feedContext  Context on a feed item that was originally supplied by the feed generator on getFeedSkeleton.
      * @param  string|null  $reqId  Unique identifier per request that may be passed back alongside interactions.

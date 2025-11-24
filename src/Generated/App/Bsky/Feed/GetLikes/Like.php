@@ -21,8 +21,7 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
  */
 class Like extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly Carbon $indexedAt,
         public readonly Carbon $createdAt,

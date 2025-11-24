@@ -18,8 +18,7 @@ use SocialDept\Schema\Data\Data;
  */
 class MessageRef extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $did,
         public readonly string $convoId,

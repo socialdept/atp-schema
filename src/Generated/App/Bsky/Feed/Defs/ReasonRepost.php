@@ -23,8 +23,7 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
  */
 class ReasonRepost extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ProfileViewBasic $by,
         public readonly Carbon $indexedAt,

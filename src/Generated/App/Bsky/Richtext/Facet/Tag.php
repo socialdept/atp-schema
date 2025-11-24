@@ -20,8 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Tag extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $tag
     ) {

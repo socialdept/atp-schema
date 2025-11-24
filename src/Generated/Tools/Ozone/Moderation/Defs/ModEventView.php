@@ -27,8 +27,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ModEventView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly int $id,
         public readonly mixed $event,

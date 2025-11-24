@@ -37,8 +37,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
  */
 class RepoViewDetail extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $did,
         public readonly string $handle,

@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ThreatSignature extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $property,
         public readonly string $value

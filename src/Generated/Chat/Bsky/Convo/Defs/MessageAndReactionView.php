@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class MessageAndReactionView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly mixed $message,
         public readonly mixed $reaction

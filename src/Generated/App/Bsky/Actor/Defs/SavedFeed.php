@@ -18,8 +18,7 @@ use SocialDept\Schema\Data\Data;
  */
 class SavedFeed extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $id,
         public readonly string $type,

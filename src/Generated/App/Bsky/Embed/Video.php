@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Embed;
 
 use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\Video\Caption;
 
 /**
  * A video embedded in a Bluesky record (eg, a post).
@@ -25,6 +24,7 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\Video\Caption;
  */
 class Video extends Data
 {
+
     /**
      * @param  BlobReference  $video  The mp4 video file. May be up to 100mb, formerly limited to 50mb.
      * @param  string|null  $alt  Alt text description of the video, for accessibility.

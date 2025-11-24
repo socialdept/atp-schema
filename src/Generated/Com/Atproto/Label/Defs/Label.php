@@ -32,6 +32,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Label extends Data
 {
+
     /**
      * @param  string  $src  DID of the actor who created this label.
      * @param  string  $uri  AT URI of the record, repository (account), or other resource that this label applies to.

@@ -26,6 +26,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventTakedown extends Data
 {
+
     /**
      * @param  int|null  $durationInHours  Indicates how long the takedown should be in effect before automatically expiring.
      * @param  bool|null  $acknowledgeAccountSubjects  If true, all other reports on content authored by this account will be resolved (acknowledged).

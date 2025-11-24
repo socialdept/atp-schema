@@ -14,6 +14,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventUnmute extends Data
 {
+
     /**
      * @param  string|null  $comment  Describe reasoning behind the reversal.
      */

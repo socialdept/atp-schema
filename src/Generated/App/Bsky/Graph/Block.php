@@ -11,6 +11,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Block extends Data
 {
+
     /**
      * @param  string  $subject  DID of the account to be blocked.
      */

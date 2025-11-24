@@ -31,6 +31,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class ViewRecord extends Data
 {
+
     /**
      * @param  mixed  $value  The record data itself.
      */

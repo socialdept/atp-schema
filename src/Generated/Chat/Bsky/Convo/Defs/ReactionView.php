@@ -19,8 +19,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ReactionView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $value,
         public readonly mixed $sender,

@@ -25,6 +25,7 @@ use SocialDept\Schema\Data\Data;
  */
 class AgeAssuranceEvent extends Data
 {
+
     /**
      * @param  Carbon  $createdAt  The date and time of this write operation.
      * @param  string  $status  The status of the age assurance process.

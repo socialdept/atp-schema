@@ -33,8 +33,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
  */
 class AccountView extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $did,
         public readonly string $handle,

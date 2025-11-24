@@ -21,8 +21,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class RecordWithMedia extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly Record $record,
         public readonly mixed $media

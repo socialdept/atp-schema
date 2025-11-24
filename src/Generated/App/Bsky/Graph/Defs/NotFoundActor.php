@@ -20,8 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class NotFoundActor extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $actor,
         public readonly bool $notFound

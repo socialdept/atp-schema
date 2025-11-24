@@ -12,6 +12,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ThreadViewPref extends Data
 {
+
     /**
      * @param  string|null  $sort  Sorting mode for threads.
      */

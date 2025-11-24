@@ -20,6 +20,7 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SkeletonFeedPost extends Data
 {
+
     /**
      * @param  string|null  $feedContext  Context that will be passed through to client and may be passed to feed generator back alongside interactions.
      */

@@ -24,8 +24,7 @@ use SocialDept\Schema\Data\Data;
  */
 class SkeletonTrend extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $topic,
         public readonly string $displayName,

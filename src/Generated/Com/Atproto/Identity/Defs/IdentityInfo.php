@@ -19,6 +19,7 @@ use SocialDept\Schema\Data\Data;
  */
 class IdentityInfo extends Data
 {
+
     /**
      * @param  string  $handle  The validated handle of the account; or 'handle.invalid' if the handle did not bi-directionally match the DID document.
      * @param  mixed  $didDoc  The complete DID document for the identity.

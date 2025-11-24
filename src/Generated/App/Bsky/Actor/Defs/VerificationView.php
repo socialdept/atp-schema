@@ -24,6 +24,7 @@ use SocialDept\Schema\Data\Data;
  */
 class VerificationView extends Data
 {
+
     /**
      * @param  string  $issuer  The user who issued this verification.
      * @param  string  $uri  The AT-URI of the verification record.

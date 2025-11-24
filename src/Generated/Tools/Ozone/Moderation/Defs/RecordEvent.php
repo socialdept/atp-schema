@@ -24,8 +24,7 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordEvent extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $op,
         public readonly Carbon $timestamp,

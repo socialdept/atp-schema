@@ -20,8 +20,7 @@ use SocialDept\Schema\Data\Data;
  */
 class KnownFollowers extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly int $count,
         public readonly array $followers

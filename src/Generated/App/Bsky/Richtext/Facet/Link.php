@@ -19,8 +19,7 @@ use SocialDept\Schema\Data\Data;
  */
 class Link extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $uri
     ) {

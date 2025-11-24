@@ -13,6 +13,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventAcknowledge extends Data
 {
+
     /**
      * @param  bool|null  $acknowledgeAccountSubjects  If true, all other reports on content authored by this account will be resolved (acknowledged).
      */

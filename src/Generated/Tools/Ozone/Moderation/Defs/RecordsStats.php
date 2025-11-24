@@ -21,6 +21,7 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordsStats extends Data
 {
+
     /**
      * @param  int|null  $totalReports  Cumulative sum of the number of reports on the items in the set
      * @param  int|null  $reportedCount  Number of items that were reported at least once

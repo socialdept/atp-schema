@@ -17,8 +17,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class Labels extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly int $seq,
         public readonly array $labels

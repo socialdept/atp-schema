@@ -12,8 +12,7 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class Repost extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly StrongRef $subject,
         public readonly Carbon $createdAt,

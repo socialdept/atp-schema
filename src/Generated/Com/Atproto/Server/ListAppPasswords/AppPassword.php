@@ -19,8 +19,7 @@ use SocialDept\Schema\Data\Data;
  */
 class AppPassword extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly string $name,
         public readonly Carbon $createdAt,

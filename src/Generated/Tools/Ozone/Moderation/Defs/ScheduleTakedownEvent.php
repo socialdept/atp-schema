@@ -23,8 +23,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ScheduleTakedownEvent extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?string $comment = null,
         public readonly ?Carbon $executeAt = null,

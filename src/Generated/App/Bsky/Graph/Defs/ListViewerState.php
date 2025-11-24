@@ -16,8 +16,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ListViewerState extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?bool $muted = null,
         public readonly ?string $blocked = null

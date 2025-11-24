@@ -14,8 +14,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventDivert extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly ?string $comment = null
     ) {

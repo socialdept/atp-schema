@@ -19,6 +19,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventTag extends Data
 {
+
     /**
      * @param  array<string>  $add  Tags to be added to the subject. If already exists, won't be duplicated.
      * @param  array<string>  $remove  Tags to be removed to the subject. Ignores a tag If it doesn't exist, won't be duplicated.

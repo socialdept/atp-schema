@@ -16,8 +16,7 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
  */
 class ThreadItemBlocked extends Data
 {
-    /**
-     */
+
     public function __construct(
         public readonly BlockedAuthor $author
     ) {

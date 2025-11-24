@@ -18,6 +18,7 @@ use SocialDept\Schema\Data\Data;
  */
 class ModTool extends Data
 {
+
     /**
      * @param  string  $name  Name/identifier of the source (e.g., 'automod', 'ozone/workspace')
      * @param  mixed  $meta  Additional arbitrary metadata about the source
