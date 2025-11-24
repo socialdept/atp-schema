@@ -184,7 +184,7 @@ class ClassGenerator
         $docLines[] = '     */';
         $docBlock = implode("\n", $docLines);
 
-        return "\n".$docBlock."\n    public function __construct(\n".implode("\n", $params)."\n    ) {}";
+        return "\n    ".$docBlock."\n    public function __construct(\n".implode("\n", $params)."\n    ) {\n    }";
     }
 
     /**
@@ -253,7 +253,7 @@ class ClassGenerator
         }
 
         // Add local ref imports from nested namespace
-        if (!empty($localRefs) && $currentNamespace && $currentClassName) {
+        if (! empty($localRefs) && $currentNamespace && $currentClassName) {
             foreach ($localRefs as $localRef) {
                 $refClassName = $this->naming->toClassName($localRef);
                 $uses[] = $currentNamespace . '\\' . $currentClassName . '\\' . $refClassName;

@@ -2,8 +2,6 @@
 
 namespace SocialDept\Schema\Generator;
 
-use SocialDept\Schema\Data\LexiconDocument;
-
 class EnumGenerator
 {
     /**
@@ -52,7 +50,7 @@ class EnumGenerator
     {
         $type = $definition['type'] ?? null;
 
-        if ($type !== 'string' || !isset($definition['knownValues'])) {
+        if ($type !== 'string' || ! isset($definition['knownValues'])) {
             throw new \InvalidArgumentException("Definition must be a string type with knownValues");
         }
 
@@ -80,6 +78,7 @@ class EnumGenerator
     {
         if (str_contains($nsid, '#')) {
             [$baseNsid, $defName] = explode('#', $nsid, 2);
+
             return [$baseNsid, $defName];
         }
 

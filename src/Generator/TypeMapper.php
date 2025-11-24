@@ -209,6 +209,7 @@ class TypeMapper
         // Convert fragment to class name
         if (str_contains($ref, '#')) {
             [$baseNsid, $fragment] = explode('#', $ref, 2);
+
             return $this->naming->toClassName($fragment);
         }
 
@@ -304,6 +305,7 @@ class TypeMapper
             if (str_contains($ref, '#')) {
                 [$baseNsid, $fragment] = explode('#', $ref, 2);
                 $types[] = $this->naming->toClassName($fragment);
+
                 continue;
             }
 
@@ -421,6 +423,7 @@ class TypeMapper
                 [$baseNsid, $fragment] = explode('#', $ref, 2);
                 $namespace = $this->naming->nsidToNamespace($baseNsid);
                 $className = $this->naming->toClassName($fragment);
+
                 return [$namespace . '\\' . $className];
             }
 
