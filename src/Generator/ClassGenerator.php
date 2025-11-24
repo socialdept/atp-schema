@@ -107,6 +107,12 @@ class ClassGenerator
             'methods' => $methods,
         ]);
 
+        // Fix blank lines when there's no constructor or properties
+        if (empty($properties) && empty($constructor)) {
+            // Remove double blank lines after class opening brace
+            $rendered = preg_replace('/\{\n\n\n/', "{\n", $rendered);
+        }
+
         // Execute post-generation hooks
         $this->extensions->execute('action:class:generated', $rendered, $document);
 
