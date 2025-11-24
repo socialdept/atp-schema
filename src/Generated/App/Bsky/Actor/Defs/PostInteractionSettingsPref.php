@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Default post interaction settings for the account. These values should be
  * applied as default values when creating new posts. These refs should mirror
  * the threadgate and postgate records exactly.
@@ -21,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class PostInteractionSettingsPref extends Data
 {
-
     /**
      * @param  array|null  $threadgateAllowRules  Matches threadgate record. List of rules defining who can reply to this users posts. If value is an empty array, no one can reply. If value is undefined, anyone can reply.
      * @param  array|null  $postgateEmbeddingRules  Matches postgate record. List of rules defining who can embed this users posts. If value is an empty array or is undefined, no particular rules apply and anyone can embed.

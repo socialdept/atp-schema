@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.messageAndReactionView
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class MessageAndReactionView extends Data
 {
-
     public function __construct(
         public readonly mixed $message,
         public readonly mixed $reaction

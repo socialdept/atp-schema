@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.subjectStatusView
  * Type: object
  *
@@ -52,7 +54,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SubjectStatusView extends Data
 {
-
     /**
      * @param  Carbon  $updatedAt  Timestamp referencing when the last update was made to the moderation status of the subject
      * @param  Carbon  $createdAt  Timestamp referencing the first moderation status impacting event was emitted on the subject

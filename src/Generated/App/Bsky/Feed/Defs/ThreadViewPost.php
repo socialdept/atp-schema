@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.threadViewPost
  * Type: object
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ThreadViewPost extends Data
 {
-
     public function __construct(
         public readonly mixed $post,
         public readonly mixed $parent = null,

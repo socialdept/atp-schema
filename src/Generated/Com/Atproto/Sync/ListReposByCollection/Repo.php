@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Sync\ListReposByCollection;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.sync.listReposByCollection.repo
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Repo extends Data
 {
-
     public function __construct(
         public readonly string $did
     ) {

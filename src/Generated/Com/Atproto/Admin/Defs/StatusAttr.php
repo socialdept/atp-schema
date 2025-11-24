@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Admin\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.admin.defs.statusAttr
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class StatusAttr extends Data
 {
-
     public function __construct(
         public readonly bool $applied,
         public readonly ?string $ref = null

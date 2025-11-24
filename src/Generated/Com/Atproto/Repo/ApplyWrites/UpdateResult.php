@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Repo\ApplyWrites;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.repo.applyWrites.updateResult
  * Type: object
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class UpdateResult extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

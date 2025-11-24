@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Account credentials revocation by moderators. Only works on DID subjects.
  *
  * Lexicon: tools.ozone.moderation.defs.revokeAccountCredentialsEvent
@@ -17,7 +19,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RevokeAccountCredentialsEvent extends Data
 {
-
     /**
      * @param  string  $comment  Comment describing the reason for the revocation.
      */

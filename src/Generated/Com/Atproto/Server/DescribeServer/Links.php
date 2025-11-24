@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Server\DescribeServer;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.server.describeServer.links
  * Type: object
  *
@@ -17,7 +19,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Links extends Data
 {
-
     public function __construct(
         public readonly ?string $privacyPolicy = null,
         public readonly ?string $termsOfService = null

@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.blobView
  * Type: object
  *
@@ -24,7 +26,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class BlobView extends Data
 {
-
     public function __construct(
         public readonly string $cid,
         public readonly string $mimeType,

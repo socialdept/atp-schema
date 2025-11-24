@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Specifies the sub-string range a facet feature applies to. Start index is
  * inclusive, end index is exclusive. Indices are zero-indexed, counting bytes
  * of the UTF-8 encoded text. NOTE: some languages, like Javascript, use UTF-16
@@ -24,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ByteSlice extends Data
 {
-
     public function __construct(
         public readonly int $byteStart,
         public readonly int $byteEnd

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Repo\ListMissingBlobs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.repo.listMissingBlobs.recordBlob
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordBlob extends Data
 {
-
     public function __construct(
         public readonly string $cid,
         public readonly string $recordUri

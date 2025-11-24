@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.profileAssociated
  * Type: object
  *
@@ -17,7 +19,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ProfileAssociated extends Data
 {
-
     public function __construct(
         public readonly ?int $lists = null,
         public readonly ?int $feedgens = null,

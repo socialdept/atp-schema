@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.logDeleteMessage
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class LogDeleteMessage extends Data
 {
-
     public function __construct(
         public readonly string $rev,
         public readonly string $convoId,

@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.recordView
  * Type: object
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordView extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

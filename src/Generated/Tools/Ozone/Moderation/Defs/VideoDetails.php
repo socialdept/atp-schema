@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.videoDetails
  * Type: object
  *
@@ -17,7 +19,6 @@ use SocialDept\Schema\Data\Data;
  */
 class VideoDetails extends Data
 {
-
     public function __construct(
         public readonly int $width,
         public readonly int $height,

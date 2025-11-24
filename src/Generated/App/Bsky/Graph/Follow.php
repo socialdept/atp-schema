@@ -7,12 +7,13 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.graph.follow
  * Type: record
  */
 class Follow extends Data
 {
-
     public function __construct(
         public readonly string $subject,
         public readonly Carbon $createdAt,

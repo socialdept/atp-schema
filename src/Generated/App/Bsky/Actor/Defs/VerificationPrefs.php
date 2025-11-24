@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Preferences for how verified accounts appear in the app.
  *
  * Lexicon: app.bsky.actor.defs.verificationPrefs
@@ -14,7 +16,6 @@ use SocialDept\Schema\Data\Data;
  */
 class VerificationPrefs extends Data
 {
-
     /**
      * @param  bool|null  $hideBadges  Hide the blue check badges for verified accounts and trusted verifiers.
      */

@@ -7,12 +7,13 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.repost
  * Type: record
  */
 class Repost extends Data
 {
-
     public function __construct(
         public readonly StrongRef $subject,
         public readonly Carbon $createdAt,

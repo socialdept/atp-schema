@@ -7,6 +7,8 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\LabelValue;
 use SocialDept\Schema\Generated\Com\Atproto\Label\LabelValueDefinition;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.labeler.defs.labelerPolicies
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\LabelValueDefinition;
  */
 class LabelerPolicies extends Data
 {
-
     /**
      * @param  array<LabelValue>  $labelValues  The label values which this labeler publishes. May include global or custom labels.
      * @param  array<LabelValueDefinition>|null  $labelValueDefinitions  Label values created by this labeler and scoped exclusively to it. Labels defined here will override global label definitions for this labeler.

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Represents the verification information about the user this object is
  * attached to.
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class VerificationState extends Data
 {
-
     /**
      * @param  array  $verifications  All verifications issued by trusted verifiers on behalf of this user. Verifications by untrusted verifiers are not included.
      * @param  string  $verifiedStatus  The user's status as a verified account.

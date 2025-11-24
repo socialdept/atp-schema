@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Metadata tag on an atproto resource (eg, repo or record).
  *
  * Lexicon: com.atproto.label.defs.label
@@ -32,7 +34,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Label extends Data
 {
-
     /**
      * @param  string  $src  DID of the actor who created this label.
      * @param  string  $uri  AT URI of the record, repository (account), or other resource that this label applies to.

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.recordViewNotFound
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordViewNotFound extends Data
 {
-
     public function __construct(
         public readonly string $uri
     ) {

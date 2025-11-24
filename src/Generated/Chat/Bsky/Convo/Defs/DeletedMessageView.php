@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.deletedMessageView
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class DeletedMessageView extends Data
 {
-
     public function __construct(
         public readonly string $id,
         public readonly string $rev,

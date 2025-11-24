@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.video.defs.jobStatus
  * Type: object
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Data\Data;
  */
 class JobStatus extends Data
 {
-
     /**
      * @param  string  $state  The state of the video processing job. All values not listed as a known value indicate that the job is in process.
      * @param  int|null  $progress  Progress within the current processing state.

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.interestsPref
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class InterestsPref extends Data
 {
-
     /**
      * @param  array<string>  $tags  A list of tags which describe the account owner's interests gathered during onboarding.
      */

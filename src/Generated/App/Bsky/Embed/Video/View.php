@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.video.view
  * Type: object
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
  */
 class View extends Data
 {
-
     public function __construct(
         public readonly string $cid,
         public readonly string $playlist,

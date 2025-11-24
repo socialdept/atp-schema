@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.graph.defs.listViewerState
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ListViewerState extends Data
 {
-
     public function __construct(
         public readonly ?bool $muted = null,
         public readonly ?string $blocked = null

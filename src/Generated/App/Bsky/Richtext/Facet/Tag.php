@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Facet feature for a hashtag. The text usually includes a '#' prefix, but the
  * facet reference should not (except in the case of 'double hash tags').
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Tag extends Data
 {
-
     public function __construct(
         public readonly string $tag
     ) {

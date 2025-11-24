@@ -9,6 +9,8 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\GeneratorView;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.graph.defs.starterPackView
  * Type: object
  *
@@ -36,7 +38,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class StarterPackView extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Logs identity related events on a repo subject. Normally captured by automod
  * from the firehose and emitted to ozone for historical tracking.
  *
@@ -26,7 +28,6 @@ use SocialDept\Schema\Data\Data;
  */
 class IdentityEvent extends Data
 {
-
     public function __construct(
         public readonly Carbon $timestamp,
         public readonly ?string $comment = null,

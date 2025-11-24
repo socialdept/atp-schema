@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.feedViewPost
  * Type: object
  *
@@ -22,7 +24,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class FeedViewPost extends Data
 {
-
     /**
      * @param  string|null  $feedContext  Context provided by feed generator that may be passed back alongside interactions.
      * @param  string|null  $reqId  Unique identifier per request that may be passed back alongside interactions.

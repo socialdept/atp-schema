@@ -8,12 +8,13 @@ use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.post
  * Type: record
  */
 class Post extends Data
 {
-
     /**
      * @param  string  $text  The primary post content. May be an empty string, if there are embeds.
      * @param  Carbon  $createdAt  Client-declared timestamp when this post was originally created.

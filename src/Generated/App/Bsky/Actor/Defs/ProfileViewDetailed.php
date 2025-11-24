@@ -9,6 +9,8 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.profileViewDetailed
  * Type: object
  *
@@ -50,7 +52,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class ProfileViewDetailed extends Data
 {
-
     /**
      * @param  mixed  $debug  Debug information for internal development
      */

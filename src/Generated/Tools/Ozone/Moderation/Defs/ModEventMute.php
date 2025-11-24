@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Mute incoming reports on a subject
  *
  * Lexicon: tools.ozone.moderation.defs.modEventMute
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventMute extends Data
 {
-
     /**
      * @param  int  $durationInHours  Indicates how long the subject should remain muted.
      */

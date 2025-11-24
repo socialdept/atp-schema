@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Embed\External;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.external.viewExternal
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewExternal extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $title,

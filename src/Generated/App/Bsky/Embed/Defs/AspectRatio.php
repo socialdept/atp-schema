@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Embed\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * width:height represents an aspect ratio. It may be approximate, and may not
  * correspond to absolute dimensions in any given unit.
  *
@@ -21,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AspectRatio extends Data
 {
-
     public function __construct(
         public readonly int $width,
         public readonly int $height

@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.server.defs.inviteCode
  * Type: object
  *
@@ -23,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class InviteCode extends Data
 {
-
     public function __construct(
         public readonly string $code,
         public readonly int $available,

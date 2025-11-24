@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Keep a log of outgoing email to a user
  *
  * Lexicon: tools.ozone.moderation.defs.modEventEmail
@@ -27,7 +29,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventEmail extends Data
 {
-
     /**
      * @param  string  $subjectLine  The subject line of the email sent to the user.
      * @param  string|null  $content  The content of the email sent to the user.

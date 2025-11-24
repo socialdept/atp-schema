@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Represents a change to an account's identity. Could be an updated handle,
  * signing key, or pds hosting endpoint. Serves as a prod to all downstream
  * services to refresh their identity cache.
@@ -26,7 +28,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Identity extends Data
 {
-
     /**
      * @param  string|null  $handle  The current handle for the account, or 'handle.invalid' if validation fails. This field is optional, might have been validated or passed-through from an upstream source. Semantics and behaviors for PDS vs Relay may evolve in the future; see atproto specs for more details.
      */

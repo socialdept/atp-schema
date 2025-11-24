@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.modEventViewDetail
  * Type: object
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ModEventViewDetail extends Data
 {
-
     public function __construct(
         public readonly int $id,
         public readonly mixed $event,

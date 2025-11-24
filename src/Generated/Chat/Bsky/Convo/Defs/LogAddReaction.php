@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.logAddReaction
  * Type: object
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class LogAddReaction extends Data
 {
-
     public function __construct(
         public readonly string $rev,
         public readonly string $convoId,

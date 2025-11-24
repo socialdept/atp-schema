@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Metadata about the requesting account's relationship with the subject
  * content. Only has meaningful content for authed requests.
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewerState extends Data
 {
-
     public function __construct(
         public readonly ?string $repost = null,
         public readonly ?string $like = null,

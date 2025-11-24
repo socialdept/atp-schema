@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Logs cancellation of a scheduled takedown action for an account.
  *
  * Lexicon: tools.ozone.moderation.defs.cancelScheduledTakedownEvent
@@ -14,7 +16,6 @@ use SocialDept\Schema\Data\Data;
  */
 class CancelScheduledTakedownEvent extends Data
 {
-
     public function __construct(
         public readonly ?string $comment = null
     ) {

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Notification\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.notification.defs.chatPreference
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ChatPreference extends Data
 {
-
     public function __construct(
         public readonly string $include,
         public readonly bool $push

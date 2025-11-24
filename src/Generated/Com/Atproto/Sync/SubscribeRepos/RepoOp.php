@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Sync\SubscribeRepos;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * A repo operation, ie a mutation of a single record.
  *
  * Lexicon: com.atproto.sync.subscribeRepos.repoOp
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RepoOp extends Data
 {
-
     /**
      * @param  string  $cid  For creates and updates, the new record CID. For deletions, null.
      * @param  string|null  $prev  For updates and deletes, the previous record CID (required for inductive firehose). For creations, field should not be defined.

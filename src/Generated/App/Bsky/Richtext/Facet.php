@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Richtext;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.richtext.facet
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Facet extends Data
 {
-
     public function __construct(
         public readonly ByteSlice $index,
         public readonly array $features

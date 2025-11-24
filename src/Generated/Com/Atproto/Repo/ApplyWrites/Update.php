@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Repo\ApplyWrites;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Operation which updates an existing record.
  *
  * Lexicon: com.atproto.repo.applyWrites.update
@@ -21,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Update extends Data
 {
-
     public function __construct(
         public readonly string $collection,
         public readonly string $rkey,

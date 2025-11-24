@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Facet feature for a URL. The text URL may have been simplified or truncated,
  * but the facet reference should be a complete URL.
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Link extends Data
 {
-
     public function __construct(
         public readonly string $uri
     ) {

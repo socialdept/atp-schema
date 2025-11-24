@@ -8,6 +8,8 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.record.viewRecord
  * Type: object
  *
@@ -31,7 +33,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class ViewRecord extends Data
 {
-
     /**
      * @param  mixed  $value  The record data itself.
      */

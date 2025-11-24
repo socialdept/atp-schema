@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.images.image
  * Type: object
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
  */
 class Image extends Data
 {
-
     /**
      * @param  string  $alt  Alt text description of the image, for accessibility.
      */

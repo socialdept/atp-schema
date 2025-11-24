@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Moderation\ReasonType;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Report a subject
  *
  * Lexicon: tools.ozone.moderation.defs.modEventReport
@@ -20,7 +22,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Moderation\ReasonType;
  */
 class ModEventReport extends Data
 {
-
     /**
      * @param  bool|null  $isReporterMuted  Set to true if the reporter was muted from reporting at the time of the event. These reports won't impact the reviewState of the subject.
      */

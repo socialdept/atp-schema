@@ -5,13 +5,13 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.reasonPin
  * Type: object
  */
 class ReasonPin extends Data
 {
-
-
     /**
      * Get the lexicon NSID for this data type.
      *

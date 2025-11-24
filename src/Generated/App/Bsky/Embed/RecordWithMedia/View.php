@@ -7,6 +7,8 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\View;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.recordWithMedia.view
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class View extends Data
 {
-
     public function __construct(
         public readonly View $record,
         public readonly mixed $media

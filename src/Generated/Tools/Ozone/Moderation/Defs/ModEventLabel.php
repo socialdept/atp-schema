@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Apply/Negate labels on a subject
  *
  * Lexicon: tools.ozone.moderation.defs.modEventLabel
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventLabel extends Data
 {
-
     /**
      * @param  int|null  $durationInHours  Indicates how long the label will remain on the subject. Only applies on labels that are being added.
      */

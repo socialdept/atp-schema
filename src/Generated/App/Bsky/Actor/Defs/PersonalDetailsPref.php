@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.personalDetailsPref
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class PersonalDetailsPref extends Data
 {
-
     /**
      * @param  Carbon|null  $birthDate  The birth date of account owner.
      */

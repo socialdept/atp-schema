@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Facet feature for mention of another account. The text is usually a handle,
  * including a '@' prefix, but the facet reference is a DID.
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Mention extends Data
 {
-
     public function __construct(
         public readonly string $did
     ) {

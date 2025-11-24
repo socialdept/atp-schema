@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Post;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Deprecated: use facets instead.
  *
  * Lexicon: app.bsky.feed.post.entity
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Entity extends Data
 {
-
     /**
      * @param  string  $type  Expected values are 'mention' and 'link'.
      */

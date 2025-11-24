@@ -9,12 +9,13 @@ use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.graph.list
  * Type: record
  */
 class ListRecord extends Data
 {
-
     /**
      * @param  ListPurpose  $purpose  Defines the purpose of the list (aka, moderation-oriented or curration-oriented)
      * @param  string  $name  Display name for list; can not be empty.

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Unspecced\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.unspecced.defs.trendingTopic
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class TrendingTopic extends Data
 {
-
     public function __construct(
         public readonly string $topic,
         public readonly string $link,

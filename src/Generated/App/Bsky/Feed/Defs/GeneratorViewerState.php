@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.generatorViewerState
  * Type: object
  *
@@ -15,7 +17,6 @@ use SocialDept\Schema\Data\Data;
  */
 class GeneratorViewerState extends Data
 {
-
     public function __construct(
         public readonly ?string $like = null
     ) {

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Label\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Declares a label value and its expected interpretations and behaviors.
  *
  * Lexicon: com.atproto.label.defs.labelValueDefinition
@@ -24,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class LabelValueDefinition extends Data
 {
-
     /**
      * @param  string  $identifier  The value of the label being defined. Must only include lowercase ascii and the '-' character ([a-z-]+).
      * @param  string  $severity  How should a client visually convey this label? 'inform' means neutral and informational; 'alert' means negative and warning; 'none' means show nothing.

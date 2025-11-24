@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.graph.defs.listItemView
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
  */
 class ListItemView extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly ProfileView $subject

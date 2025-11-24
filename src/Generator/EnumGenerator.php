@@ -161,11 +161,15 @@ class EnumGenerator
         $code = "<?php\n\n";
         $code .= "namespace {$namespace};\n\n";
 
+        $code .= "/**\n";
+        $code .= " * GENERATED CODE - DO NOT EDIT\n";
+
         if ($description) {
-            $code .= "/**\n";
+            $code .= " *\n";
             $code .= " * " . str_replace("\n", "\n * ", $description) . "\n";
-            $code .= " */\n";
         }
+
+        $code .= " */\n";
 
         $code .= "enum {$enumName}: string\n";
         $code .= "{\n";

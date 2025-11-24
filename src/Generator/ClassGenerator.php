@@ -183,12 +183,12 @@ class ClassGenerator
             $docLines = ['    /**'];
             $docLines = array_merge($docLines, $docParams);
             $docLines[] = '     */';
-            $docBlock = "\n".implode("\n", $docLines);
+            $docBlock = implode("\n", $docLines)."\n";
         } else {
             $docBlock = '';
         }
 
-        return $docBlock."\n    public function __construct(\n".implode("\n", $params)."\n    ) {\n    }";
+        return $docBlock."    public function __construct(\n".implode("\n", $params)."\n    ) {\n    }";
     }
 
     /**

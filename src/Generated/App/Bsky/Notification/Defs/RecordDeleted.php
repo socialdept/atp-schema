@@ -5,13 +5,13 @@ namespace SocialDept\Schema\Generated\App\Bsky\Notification\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.notification.defs.recordDeleted
  * Type: object
  */
 class RecordDeleted extends Data
 {
-
-
     /**
      * Get the lexicon NSID for this data type.
      *

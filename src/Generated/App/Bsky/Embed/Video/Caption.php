@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.video.caption
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Caption extends Data
 {
-
     public function __construct(
         public readonly string $lang,
         public readonly BlobReference $file

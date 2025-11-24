@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Age assurance info coming directly from users. Only works on DID subjects.
  *
  * Lexicon: tools.ozone.moderation.defs.ageAssuranceEvent
@@ -25,7 +27,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AgeAssuranceEvent extends Data
 {
-
     /**
      * @param  Carbon  $createdAt  The date and time of this write operation.
      * @param  string  $status  The status of the age assurance process.

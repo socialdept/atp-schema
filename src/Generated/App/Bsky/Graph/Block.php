@@ -6,12 +6,13 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.graph.block
  * Type: record
  */
 class Block extends Data
 {
-
     /**
      * @param  string  $subject  DID of the account to be blocked.
      */

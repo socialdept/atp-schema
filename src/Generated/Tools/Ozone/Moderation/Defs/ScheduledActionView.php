@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * View of a scheduled moderation action
  *
  * Lexicon: tools.ozone.moderation.defs.scheduledActionView
@@ -40,7 +42,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ScheduledActionView extends Data
 {
-
     /**
      * @param  int  $id  Auto-incrementing row ID
      * @param  string  $action  Type of action to be executed

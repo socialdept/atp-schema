@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.hiddenPostsPref
  * Type: object
  *
@@ -15,7 +17,6 @@ use SocialDept\Schema\Data\Data;
  */
 class HiddenPostsPref extends Data
 {
-
     /**
      * @param  array<string>  $items  A list of URIs of posts the account owner has hidden.
      */

@@ -7,6 +7,8 @@ use SocialDept\Schema\Generated\Com\Atproto\Moderation\SubjectType;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Detailed view of a subject. For record subjects, the author's repo and
  * profile will be returned.
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SubjectView extends Data
 {
-
     public function __construct(
         public readonly SubjectType $type,
         public readonly string $subject,

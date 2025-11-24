@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.profileViewBasic
  * Type: object
  *
@@ -34,7 +36,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class ProfileViewBasic extends Data
 {
-
     /**
      * @param  mixed  $debug  Debug information for internal development
      */

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.adultContentPref
  * Type: object
  *
@@ -15,7 +17,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AdultContentPref extends Data
 {
-
     public function __construct(
         public readonly bool $enabled
     ) {

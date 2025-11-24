@@ -7,6 +7,8 @@ use SocialDept\Schema\Generated\App\Bsky\Graph\ListViewBasic;
 use SocialDept\Schema\Generated\App\Bsky\Notification\ActivitySubscription;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Metadata about the requesting account's relationship with the subject
  * account. Only has meaningful content for authed requests.
  *
@@ -30,7 +32,6 @@ use SocialDept\Schema\Generated\App\Bsky\Notification\ActivitySubscription;
  */
 class ViewerState extends Data
 {
-
     /**
      * @param  mixed  $knownFollowers  This property is present only in selected cases, as an optimization.
      * @param  ActivitySubscription|null  $activitySubscription  This property is present only in selected cases, as an optimization.

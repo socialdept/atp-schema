@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Embed\External;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.external.view
  * Type: object
  *
@@ -15,7 +17,6 @@ use SocialDept\Schema\Data\Data;
  */
 class View extends Data
 {
-
     public function __construct(
         public readonly mixed $external
     ) {

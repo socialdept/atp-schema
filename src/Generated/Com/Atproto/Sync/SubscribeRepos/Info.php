@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Sync\SubscribeRepos;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.sync.subscribeRepos.info
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Info extends Data
 {
-
     public function __construct(
         public readonly string $name,
         public readonly ?string $message = null

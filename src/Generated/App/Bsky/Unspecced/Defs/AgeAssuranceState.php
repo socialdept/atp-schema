@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * The computed state of the age assurance process, returned to the user in
  * question on certain authenticated requests.
  *
@@ -21,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AgeAssuranceState extends Data
 {
-
     /**
      * @param  string  $status  The status of the age assurance process.
      * @param  Carbon|null  $lastInitiatedAt  The timestamp when this state was last updated.

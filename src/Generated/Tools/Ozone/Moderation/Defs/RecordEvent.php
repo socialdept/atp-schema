@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Logs lifecycle event on a record subject. Normally captured by automod from
  * the firehose and emitted to ozone for historical tracking.
  *
@@ -24,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordEvent extends Data
 {
-
     public function __construct(
         public readonly string $op,
         public readonly Carbon $timestamp,

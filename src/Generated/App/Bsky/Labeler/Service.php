@@ -9,12 +9,13 @@ use SocialDept\Schema\Generated\Com\Atproto\Moderation\SubjectType;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.labeler.service
  * Type: record
  */
 class Service extends Data
 {
-
     /**
      * @param  array<ReasonType>|null  $reasonTypes  The set of report reason 'codes' which are in-scope for this service to review and action. These usually align to policy categories. If not defined (distinct from empty array), all reason types are allowed.
      * @param  array<SubjectType>|null  $subjectTypes  The set of subject types (account, record, etc) this service accepts reports on.

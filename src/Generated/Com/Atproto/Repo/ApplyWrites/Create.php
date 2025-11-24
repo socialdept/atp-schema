@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Repo\ApplyWrites;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Operation which creates a new record.
  *
  * Lexicon: com.atproto.repo.applyWrites.create
@@ -22,7 +24,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Create extends Data
 {
-
     /**
      * @param  string|null  $rkey  NOTE: maxLength is redundant with record-key format. Keeping it temporarily to ensure backwards compatibility.
      */

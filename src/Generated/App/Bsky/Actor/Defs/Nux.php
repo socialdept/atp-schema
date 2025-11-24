@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * A new user experiences (NUX) storage object
  *
  * Lexicon: app.bsky.actor.defs.nux
@@ -25,7 +27,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Nux extends Data
 {
-
     /**
      * @param  string|null  $data  Arbitrary data for the NUX. The structure is defined by the NUX itself. Limited to 300 characters.
      * @param  Carbon|null  $expiresAt  The date and time at which the NUX will expire and should be considered completed.

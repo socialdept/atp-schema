@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Represents a change to an account's status on a host (eg, PDS or Relay). The
  * semantics of this event are that the status is at the host which emitted the
  * event, not necessarily that at the currently active PDS. Eg, a Relay takedown
@@ -27,7 +29,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Account extends Data
 {
-
     /**
      * @param  bool  $active  Indicates that the account has a repository which can be fetched from the host that emitted this event.
      * @param  string|null  $status  If active=false, this optional field indicates a reason for why the account is not active.

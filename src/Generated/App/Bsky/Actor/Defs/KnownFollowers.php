@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * The subject's followers whom you also follow
  *
  * Lexicon: app.bsky.actor.defs.knownFollowers
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class KnownFollowers extends Data
 {
-
     public function __construct(
         public readonly int $count,
         public readonly array $followers

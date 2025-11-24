@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.unspecced.defs.threadItemBlocked
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
  */
 class ThreadItemBlocked extends Data
 {
-
     public function __construct(
         public readonly BlockedAuthor $author
     ) {

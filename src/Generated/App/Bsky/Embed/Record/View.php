@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.record.view
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class View extends Data
 {
-
     public function __construct(
         public readonly mixed $record
     ) {

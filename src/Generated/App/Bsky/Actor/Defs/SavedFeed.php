@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.savedFeed
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class SavedFeed extends Data
 {
-
     public function __construct(
         public readonly string $id,
         public readonly string $type,

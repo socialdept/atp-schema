@@ -9,6 +9,8 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.postView
  * Type: object
  *
@@ -36,7 +38,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class PostView extends Data
 {
-
     /**
      * @param  mixed  $debug  Debug information for internal development
      */

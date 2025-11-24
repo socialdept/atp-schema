@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Object used to store age assurance data in stash.
  *
  * Lexicon: app.bsky.unspecced.defs.ageAssuranceEvent
@@ -26,7 +28,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AgeAssuranceEvent extends Data
 {
-
     /**
      * @param  Carbon  $createdAt  The date and time of this write operation.
      * @param  string  $status  The status of the age assurance process.

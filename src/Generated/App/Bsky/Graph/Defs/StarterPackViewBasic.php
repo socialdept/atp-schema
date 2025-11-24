@@ -8,6 +8,8 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.graph.defs.starterPackViewBasic
  * Type: object
  *
@@ -32,7 +34,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class StarterPackViewBasic extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

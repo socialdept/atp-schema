@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Strike information for an account
  *
  * Lexicon: tools.ozone.moderation.defs.accountStrike
@@ -22,7 +24,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountStrike extends Data
 {
-
     /**
      * @param  int|null  $activeStrikeCount  Current number of active strikes (excluding expired strikes)
      * @param  int|null  $totalStrikeCount  Total number of strikes ever received (including expired strikes)

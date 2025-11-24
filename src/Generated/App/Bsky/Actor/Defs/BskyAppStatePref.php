@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\Nux;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * A grab bag of state that's specific to the bsky.app program. Third-party apps
  * shouldn't use this.
  *
@@ -22,7 +24,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\Nux;
  */
 class BskyAppStatePref extends Data
 {
-
     /**
      * @param  array<string>|null  $queuedNudges  An array of tokens which identify nudges (modals, popups, tours, highlight dots) that should be shown to the user.
      * @param  array<Nux>|null  $nuxs  Storage for NUXs the user has encountered.

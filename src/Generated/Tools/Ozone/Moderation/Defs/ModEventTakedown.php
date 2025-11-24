@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Take down a subject permanently or temporarily
  *
  * Lexicon: tools.ozone.moderation.defs.modEventTakedown
@@ -26,7 +28,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventTakedown extends Data
 {
-
     /**
      * @param  int|null  $durationInHours  Indicates how long the takedown should be in effect before automatically expiring.
      * @param  bool|null  $acknowledgeAccountSubjects  If true, all other reports on content authored by this account will be resolved (acknowledged).

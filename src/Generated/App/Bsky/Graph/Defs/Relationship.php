@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * lists the bi-directional graph relationships between one actor (not indicated
  * in the object), and the target actors (the DID included in the object)
  *
@@ -23,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Relationship extends Data
 {
-
     /**
      * @param  string|null  $following  if the actor follows this DID, this is the AT-URI of the follow record
      * @param  string|null  $followedBy  if the actor is followed by this DID, contains the AT-URI of the follow record

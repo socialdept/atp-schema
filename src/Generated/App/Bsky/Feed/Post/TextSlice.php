@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Post;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Deprecated. Use app.bsky.richtext instead -- A text segment. Start is
  * inclusive, end is exclusive. Indices are for utf16-encoded strings.
  *
@@ -21,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class TextSlice extends Data
 {
-
     public function __construct(
         public readonly int $start,
         public readonly int $end

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Server\GetConfig;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.server.getConfig.viewerConfig
  * Type: object
  *
@@ -12,7 +14,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewerConfig extends Data
 {
-
     public function __construct(
         public readonly ?string $role = null
     ) {

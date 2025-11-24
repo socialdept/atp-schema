@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * A representation of a record embedded in a Bluesky record (eg, a post),
  * alongside other compatible embeds. For example, a quote post and image, or a
  * quote post and external URL card.
@@ -21,7 +23,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class RecordWithMedia extends Data
 {
-
     public function __construct(
         public readonly Record $record,
         public readonly mixed $media

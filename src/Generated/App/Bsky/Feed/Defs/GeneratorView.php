@@ -9,6 +9,8 @@ use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.generatorView
  * Type: object
  *
@@ -40,7 +42,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class GeneratorView extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

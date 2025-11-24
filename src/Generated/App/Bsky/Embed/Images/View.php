@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Embed\Images;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.images.view
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class View extends Data
 {
-
     public function __construct(
         public readonly array $images
     ) {

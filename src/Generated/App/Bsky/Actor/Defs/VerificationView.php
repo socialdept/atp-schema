@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * An individual verification for an associated subject.
  *
  * Lexicon: app.bsky.actor.defs.verificationView
@@ -24,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class VerificationView extends Data
 {
-
     /**
      * @param  string  $issuer  The user who issued this verification.
      * @param  string  $uri  The AT-URI of the verification record.

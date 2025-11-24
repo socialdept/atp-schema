@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.accountHosting
  * Type: object
  *
@@ -26,7 +28,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountHosting extends Data
 {
-
     public function __construct(
         public readonly string $status,
         public readonly ?Carbon $updatedAt = null,

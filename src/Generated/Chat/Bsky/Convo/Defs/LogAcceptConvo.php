@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.logAcceptConvo
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class LogAcceptConvo extends Data
 {
-
     public function __construct(
         public readonly string $rev,
         public readonly string $convoId

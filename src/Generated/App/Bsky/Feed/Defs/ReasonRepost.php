@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.reasonRepost
  * Type: object
  *
@@ -23,7 +25,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
  */
 class ReasonRepost extends Data
 {
-
     public function __construct(
         public readonly ProfileViewBasic $by,
         public readonly Carbon $indexedAt,

@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * A representation of a record embedded in a Bluesky record (eg, a post). For
  * example, a quote-post, or sharing a feed generator record.
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class Record extends Data
 {
-
     public function __construct(
         public readonly StrongRef $record
     ) {

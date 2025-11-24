@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.unspecced.defs.trendView
  * Type: object
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
  */
 class TrendView extends Data
 {
-
     public function __construct(
         public readonly string $topic,
         public readonly string $displayName,

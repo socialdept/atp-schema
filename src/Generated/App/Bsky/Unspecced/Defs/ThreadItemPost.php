@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Feed\PostView;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.unspecced.defs.threadItemPost
  * Type: object
  *
@@ -21,7 +23,6 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\PostView;
  */
 class ThreadItemPost extends Data
 {
-
     /**
      * @param  bool  $moreParents  This post has more parents that were not present in the response. This is just a boolean, without the number of parents.
      * @param  int  $moreReplies  This post has more replies that were not present in the response. This is a numeric value, which is best-effort and might not be accurate.

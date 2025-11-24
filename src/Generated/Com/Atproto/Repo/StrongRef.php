@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Repo;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * A URI with a content-hash fingerprint.
  *
  * Lexicon: com.atproto.repo.strongRef
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class StrongRef extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid

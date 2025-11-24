@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.skeletonFeedPost
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SkeletonFeedPost extends Data
 {
-
     /**
      * @param  string|null  $feedContext  Context that will be passed through to client and may be passed to feed generator back alongside interactions.
      */

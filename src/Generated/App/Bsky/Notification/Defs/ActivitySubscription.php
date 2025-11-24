@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Notification\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.notification.defs.activitySubscription
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ActivitySubscription extends Data
 {
-
     public function __construct(
         public readonly bool $post,
         public readonly bool $reply

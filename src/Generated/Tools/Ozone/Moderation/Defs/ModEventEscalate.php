@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.modEventEscalate
  * Type: object
  *
@@ -12,7 +14,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventEscalate extends Data
 {
-
     public function __construct(
         public readonly ?string $comment = null
     ) {

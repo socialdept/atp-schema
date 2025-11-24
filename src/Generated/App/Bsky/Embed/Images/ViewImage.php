@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.images.viewImage
  * Type: object
  *
@@ -21,7 +23,6 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
  */
 class ViewImage extends Data
 {
-
     /**
      * @param  string  $thumb  Fully-qualified URL where a thumbnail of the image can be fetched. For example, CDN location provided by the App View.
      * @param  string  $fullsize  Fully-qualified URL where a large version of the image can be fetched. May or may not be the exact original blob. For example, CDN location provided by the App View.

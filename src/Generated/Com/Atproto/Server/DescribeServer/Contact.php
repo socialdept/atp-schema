@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Server\DescribeServer;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.server.describeServer.contact
  * Type: object
  *
@@ -12,7 +14,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Contact extends Data
 {
-
     public function __construct(
         public readonly ?string $email = null
     ) {

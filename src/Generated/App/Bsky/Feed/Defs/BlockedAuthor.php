@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ViewerState;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.blockedAuthor
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ViewerState;
  */
 class BlockedAuthor extends Data
 {
-
     public function __construct(
         public readonly string $did,
         public readonly ?ViewerState $viewer = null

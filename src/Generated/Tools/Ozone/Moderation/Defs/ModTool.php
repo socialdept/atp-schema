@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Moderation tool information for tracing the source of the action
  *
  * Lexicon: tools.ozone.moderation.defs.modTool
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModTool extends Data
 {
-
     /**
      * @param  string  $name  Name/identifier of the source (e.g., 'automod', 'ozone/workspace')
      * @param  mixed  $meta  Additional arbitrary metadata about the source

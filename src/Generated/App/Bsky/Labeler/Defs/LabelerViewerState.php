@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.labeler.defs.labelerViewerState
  * Type: object
  *
@@ -15,7 +17,6 @@ use SocialDept\Schema\Data\Data;
  */
 class LabelerViewerState extends Data
 {
-
     public function __construct(
         public readonly ?string $like = null
     ) {

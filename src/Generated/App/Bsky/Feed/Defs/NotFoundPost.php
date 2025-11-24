@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.notFoundPost
  * Type: object
  *
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class NotFoundPost extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly bool $notFound

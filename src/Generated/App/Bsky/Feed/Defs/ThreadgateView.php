@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Graph\ListViewBasic;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.threadgateView
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Generated\App\Bsky\Graph\ListViewBasic;
  */
 class ThreadgateView extends Data
 {
-
     public function __construct(
         public readonly ?string $uri = null,
         public readonly ?string $cid = null,

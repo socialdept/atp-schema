@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Server\CreateInviteCodes;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.server.createInviteCodes.accountCodes
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountCodes extends Data
 {
-
     public function __construct(
         public readonly string $account,
         public readonly array $codes

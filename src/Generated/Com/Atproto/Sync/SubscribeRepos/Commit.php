@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Represents an update of repository state. Note that empty commits are
  * allowed, which include no repo data changes, but an update to rev and
  * signature.
@@ -37,7 +39,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Commit extends Data
 {
-
     /**
      * @param  int  $seq  The stream sequence number of this message.
      * @param  bool  $rebase  DEPRECATED -- unused

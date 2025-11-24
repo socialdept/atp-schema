@@ -2,6 +2,9 @@
 
 namespace SocialDept\Schema\Generated\Com\Atproto\Moderation;
 
+/**
+ * GENERATED CODE - DO NOT EDIT
+ */
 enum ReasonType: string
 {
     case ReasonSpam = 'com.atproto.moderation.defs#reasonSpam';

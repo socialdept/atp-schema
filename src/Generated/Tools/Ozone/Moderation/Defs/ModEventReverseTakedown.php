@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Revert take down action on a subject
  *
  * Lexicon: tools.ozone.moderation.defs.modEventReverseTakedown
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventReverseTakedown extends Data
 {
-
     /**
      * @param  string|null  $comment  Describe reasoning behind the reversal.
      * @param  array<string>|null  $policies  Names/Keywords of the policy infraction for which takedown is being reversed.

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.reporterStats
  * Type: object
  *
@@ -24,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ReporterStats extends Data
 {
-
     /**
      * @param  int  $accountReportCount  The total number of reports made by the user on accounts.
      * @param  int  $recordReportCount  The total number of reports made by the user on records.

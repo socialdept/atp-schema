@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.server.listAppPasswords.appPassword
  * Type: object
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AppPassword extends Data
 {
-
     public function __construct(
         public readonly string $name,
         public readonly Carbon $createdAt,

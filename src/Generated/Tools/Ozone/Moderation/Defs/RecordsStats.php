@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Statistics about a set of record subject items
  *
  * Lexicon: tools.ozone.moderation.defs.recordsStats
@@ -21,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordsStats extends Data
 {
-
     /**
      * @param  int|null  $totalReports  Cumulative sum of the number of reports on the items in the set
      * @param  int|null  $reportedCount  Number of items that were reported at least once

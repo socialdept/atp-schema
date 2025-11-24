@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.modEventAcknowledge
  * Type: object
  *
@@ -13,7 +15,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventAcknowledge extends Data
 {
-
     /**
      * @param  bool|null  $acknowledgeAccountSubjects  If true, all other reports on content authored by this account will be resolved (acknowledged).
      */

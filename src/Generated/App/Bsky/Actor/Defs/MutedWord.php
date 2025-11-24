@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\MutedWordTarget;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * A word that the account owner has muted.
  *
  * Lexicon: app.bsky.actor.defs.mutedWord
@@ -26,7 +28,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\MutedWordTarget;
  */
 class MutedWord extends Data
 {
-
     /**
      * @param  string  $value  The muted word itself.
      * @param  array<MutedWordTarget>  $targets  The intended targets of the muted word.

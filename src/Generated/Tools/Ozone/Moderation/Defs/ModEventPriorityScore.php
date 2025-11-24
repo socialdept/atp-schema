@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Set priority score of the subject. Higher score means higher priority.
  *
  * Lexicon: tools.ozone.moderation.defs.modEventPriorityScore
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventPriorityScore extends Data
 {
-
     public function __construct(
         public readonly int $score,
         public readonly ?string $comment = null

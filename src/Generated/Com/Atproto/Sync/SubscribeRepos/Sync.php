@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Updates the repo to a new state, without necessarily including that state on
  * the firehose. Used to recover from broken commit streams, data loss
  * incidents, or in situations where upstream host does not know recent state of
@@ -28,7 +30,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Sync extends Data
 {
-
     /**
      * @param  int  $seq  The stream sequence number of this message.
      * @param  string  $did  The account this repo event corresponds to. Must match that in the commit object.

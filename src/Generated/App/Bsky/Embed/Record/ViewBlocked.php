@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.record.viewBlocked
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
  */
 class ViewBlocked extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly bool $blocked,

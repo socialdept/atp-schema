@@ -8,6 +8,8 @@ use SocialDept\Schema\Generated\Com\Atproto\Admin\ThreatSignature;
 use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.repoView
  * Type: object
  *
@@ -32,7 +34,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
  */
 class RepoView extends Data
 {
-
     public function __construct(
         public readonly string $did,
         public readonly string $handle,

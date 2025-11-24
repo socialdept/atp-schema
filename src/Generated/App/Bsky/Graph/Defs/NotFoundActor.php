@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * indicates that a handle or DID could not be resolved
  *
  * Lexicon: app.bsky.graph.defs.notFoundActor
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class NotFoundActor extends Data
 {
-
     public function __construct(
         public readonly string $actor,
         public readonly bool $notFound

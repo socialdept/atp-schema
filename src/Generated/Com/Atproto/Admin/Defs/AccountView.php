@@ -7,6 +7,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.admin.defs.accountView
  * Type: object
  *
@@ -33,7 +35,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
  */
 class AccountView extends Data
 {
-
     public function __construct(
         public readonly string $did,
         public readonly string $handle,

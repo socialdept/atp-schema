@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Label\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Metadata tags on an atproto record, published by the author within the
  * record.
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class SelfLabels extends Data
 {
-
     public function __construct(
         public readonly array $values
     ) {

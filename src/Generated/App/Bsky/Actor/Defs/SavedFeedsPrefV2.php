@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\SavedFeed;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.savedFeedsPrefV2
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\SavedFeed;
  */
 class SavedFeedsPrefV2 extends Data
 {
-
     public function __construct(
         public readonly array $items
     ) {

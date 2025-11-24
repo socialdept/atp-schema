@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Label\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Strings which describe the label in the UI, localized into a specific
  * language.
  *
@@ -25,7 +27,6 @@ use SocialDept\Schema\Data\Data;
  */
 class LabelValueDefinitionStrings extends Data
 {
-
     /**
      * @param  string  $lang  The code of the language these strings are written in.
      * @param  string  $name  A short human-readable name for the label.

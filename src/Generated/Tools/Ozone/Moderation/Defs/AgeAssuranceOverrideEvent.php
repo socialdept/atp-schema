@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Age assurance status override by moderators. Only works on DID subjects.
  *
  * Lexicon: tools.ozone.moderation.defs.ageAssuranceOverrideEvent
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AgeAssuranceOverrideEvent extends Data
 {
-
     /**
      * @param  string  $status  The status to be set for the user decided by a moderator, overriding whatever value the user had previously. Use reset to default to original state.
      * @param  string  $comment  Comment describing the reason for the override.

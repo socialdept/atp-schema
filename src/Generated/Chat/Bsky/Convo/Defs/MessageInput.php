@@ -7,6 +7,8 @@ use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.messageInput
  * Type: object
  *
@@ -21,7 +23,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class MessageInput extends Data
 {
-
     /**
      * @param  array<Facet>|null  $facets  Annotations of text (mentions, URLs, hashtags, etc)
      */

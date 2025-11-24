@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.post.replyRef
  * Type: object
  *
@@ -17,7 +19,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class ReplyRef extends Data
 {
-
     public function __construct(
         public readonly StrongRef $root,
         public readonly StrongRef $parent

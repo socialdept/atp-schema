@@ -6,6 +6,8 @@ use SocialDept\Schema\Data\BlobReference;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.embed.external.external
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class External extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $title,

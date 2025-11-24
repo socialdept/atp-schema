@@ -2,6 +2,9 @@
 
 namespace SocialDept\Schema\Generated\App\Bsky\Graph;
 
+/**
+ * GENERATED CODE - DO NOT EDIT
+ */
 enum ListPurpose: string
 {
     case Modlist = 'app.bsky.graph.defs#modlist';

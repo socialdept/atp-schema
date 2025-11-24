@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Unmute action on a subject
  *
  * Lexicon: tools.ozone.moderation.defs.modEventUnmute
@@ -14,7 +16,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventUnmute extends Data
 {
-
     /**
      * @param  string|null  $comment  Describe reasoning behind the reversal.
      */

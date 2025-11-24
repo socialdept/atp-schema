@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * If set, an active progress guide. Once completed, can be set to undefined.
  * Should have unspecced fields tracking progress.
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class BskyAppProgressGuide extends Data
 {
-
     public function __construct(
         public readonly string $guide
     ) {

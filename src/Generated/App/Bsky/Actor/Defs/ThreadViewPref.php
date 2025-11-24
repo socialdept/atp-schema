@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.threadViewPref
  * Type: object
  *
@@ -12,7 +14,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ThreadViewPref extends Data
 {
-
     /**
      * @param  string|null  $sort  Sorting mode for threads.
      */

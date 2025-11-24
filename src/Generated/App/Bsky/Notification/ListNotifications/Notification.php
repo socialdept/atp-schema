@@ -8,6 +8,8 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.notification.listNotifications.notification
  * Type: object
  *
@@ -30,7 +32,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class Notification extends Data
 {
-
     /**
      * @param  string  $reason  The reason why this notification was delivered - e.g. your post was liked, or you received a new follower.
      */

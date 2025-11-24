@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Logs account status related events on a repo subject. Normally captured by
  * automod from the firehose and emitted to ozone for historical tracking.
  *
@@ -23,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountEvent extends Data
 {
-
     /**
      * @param  bool  $active  Indicates that the account has a repository which can be fetched from the host that emitted this event.
      */

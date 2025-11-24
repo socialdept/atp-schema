@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Repo\ApplyWrites;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Operation which deletes an existing record.
  *
  * Lexicon: com.atproto.repo.applyWrites.delete
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Delete extends Data
 {
-
     public function __construct(
         public readonly string $collection,
         public readonly string $rkey

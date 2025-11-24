@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Metadata about this post within the context of the thread it is in.
  *
  * Lexicon: app.bsky.feed.defs.threadContext
@@ -17,7 +19,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ThreadContext extends Data
 {
-
     public function __construct(
         public readonly ?string $rootAuthorLike = null
     ) {

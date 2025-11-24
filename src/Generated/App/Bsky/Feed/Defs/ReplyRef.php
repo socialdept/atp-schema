@@ -7,6 +7,8 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.replyRef
  * Type: object
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ReplyRef extends Data
 {
-
     /**
      * @param  ProfileViewBasic|null  $grandparentAuthor  When parent is a reply to another post, this is the author of that post.
      */

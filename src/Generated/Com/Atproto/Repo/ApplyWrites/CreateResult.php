@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Repo\ApplyWrites;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: com.atproto.repo.applyWrites.createResult
  * Type: object
  *
@@ -19,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class CreateResult extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Add a comment to a subject. An empty comment will clear any previously set
  * sticky comment.
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventComment extends Data
 {
-
     /**
      * @param  bool|null  $sticky  Make the comment persistent on the subject
      */

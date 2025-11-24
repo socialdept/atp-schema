@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Logs a scheduled takedown action for an account.
  *
  * Lexicon: tools.ozone.moderation.defs.scheduleTakedownEvent
@@ -23,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ScheduleTakedownEvent extends Data
 {
-
     public function __construct(
         public readonly ?string $comment = null,
         public readonly ?Carbon $executeAt = null,

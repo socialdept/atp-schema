@@ -9,6 +9,8 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: tools.ozone.moderation.defs.repoViewDetail
  * Type: object
  *
@@ -37,7 +39,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
  */
 class RepoViewDetail extends Data
 {
-
     public function __construct(
         public readonly string $did,
         public readonly string $handle,

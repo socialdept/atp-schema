@@ -2,6 +2,9 @@
 
 namespace SocialDept\Schema\Generated\Com\Atproto\Label;
 
+/**
+ * GENERATED CODE - DO NOT EDIT
+ */
 enum LabelValue: string
 {
     case Hide = '!hide';

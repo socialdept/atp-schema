@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.actor.defs.feedViewPref
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class FeedViewPref extends Data
 {
-
     /**
      * @param  string  $feed  The URI of the feed, or an identifier which describes the feed.
      * @param  bool|null  $hideReplies  Hide replies in the feed.

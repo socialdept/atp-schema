@@ -8,6 +8,8 @@ use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.messageView
  * Type: object
  *
@@ -28,7 +30,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class MessageView extends Data
 {
-
     /**
      * @param  array<Facet>|null  $facets  Annotations of text (mentions, URLs, hashtags, etc)
      * @param  array|null  $reactions  Reactions to this message, in ascending order of creation time.

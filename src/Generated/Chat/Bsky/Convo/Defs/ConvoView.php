@@ -7,6 +7,8 @@ use SocialDept\Schema\Generated\Chat\Bsky\Actor\ProfileViewBasic;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: chat.bsky.convo.defs.convoView
  * Type: object
  *
@@ -24,7 +26,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ConvoView extends Data
 {
-
     public function __construct(
         public readonly string $id,
         public readonly string $rev,

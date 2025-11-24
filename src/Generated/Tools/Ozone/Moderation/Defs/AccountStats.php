@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Statistics about a particular account subject
  *
  * Lexicon: tools.ozone.moderation.defs.accountStats
@@ -18,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountStats extends Data
 {
-
     /**
      * @param  int|null  $reportCount  Total number of reports on the account
      * @param  int|null  $appealCount  Total number of appeals against a moderation action on the account

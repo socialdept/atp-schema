@@ -8,6 +8,8 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.labeler.defs.labelerView
  * Type: object
  *
@@ -28,7 +30,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class LabelerView extends Data
 {
-
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,

@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.feed.defs.interaction
  * Type: object
  *
@@ -20,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Interaction extends Data
 {
-
     /**
      * @param  string|null  $feedContext  Context on a feed item that was originally supplied by the feed generator on getFeedSkeleton.
      * @param  string|null  $reqId  Unique identifier per request that may be passed back alongside interactions.

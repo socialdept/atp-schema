@@ -5,6 +5,8 @@ namespace SocialDept\Schema\Generated\App\Bsky\Unspecced\Defs;
 use SocialDept\Schema\Data\Data;
 
 /**
+ * GENERATED CODE - DO NOT EDIT
+ *
  * Lexicon: app.bsky.unspecced.defs.skeletonSearchPost
  * Type: object
  *
@@ -16,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class SkeletonSearchPost extends Data
 {
-
     public function __construct(
         public readonly string $uri
     ) {
