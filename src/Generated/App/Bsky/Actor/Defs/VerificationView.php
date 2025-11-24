@@ -24,7 +24,6 @@ use SocialDept\Schema\Data\Data;
  */
 class VerificationView extends Data
 {
-
     /**
      * @param  string  $issuer  The user who issued this verification.
      * @param  string  $uri  The AT-URI of the verification record.
@@ -36,7 +35,8 @@ class VerificationView extends Data
         public readonly string $uri,
         public readonly bool $isValid,
         public readonly Carbon $createdAt
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

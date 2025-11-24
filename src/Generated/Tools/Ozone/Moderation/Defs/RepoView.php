@@ -33,7 +33,6 @@ use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RepoView\Moderation;
  */
 class RepoView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -48,7 +47,8 @@ class RepoView extends Data
         public readonly ?string $inviteNote = null,
         public readonly ?Carbon $deactivatedAt = null,
         public readonly ?array $threatSignatures = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\Com\Atproto\Label\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\LabelValueDefinition\LabelValueDefinitionStrings;
 
 /**
  * Declares a label value and its expected interpretations and behaviors.
@@ -25,7 +24,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\LabelValueDefinition\Labe
  */
 class LabelValueDefinition extends Data
 {
-
     /**
      * @param  string  $identifier  The value of the label being defined. Must only include lowercase ascii and the '-' character ([a-z-]+).
      * @param  string  $severity  How should a client visually convey this label? 'inform' means neutral and informational; 'alert' means negative and warning; 'none' means show nothing.
@@ -40,7 +38,8 @@ class LabelValueDefinition extends Data
         public readonly array $locales,
         public readonly ?string $defaultSetting = null,
         public readonly ?bool $adultOnly = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -28,7 +28,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Sync extends Data
 {
-
     /**
      * @param  int  $seq  The stream sequence number of this message.
      * @param  string  $did  The account this repo event corresponds to. Must match that in the commit object.
@@ -42,7 +41,8 @@ class Sync extends Data
         public readonly string $blocks,
         public readonly string $rev,
         public readonly Carbon $time
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -4,10 +4,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic\ProfileAssociated;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic\StatusView;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic\VerificationState;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic\ViewerState;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
@@ -38,7 +34,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class ProfileViewBasic extends Data
 {
-
     /**
      * @param  mixed  $debug  Debug information for internal development
      */
@@ -55,7 +50,8 @@ class ProfileViewBasic extends Data
         public readonly mixed $verification = null,
         public readonly mixed $status = null,
         public readonly mixed $debug = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

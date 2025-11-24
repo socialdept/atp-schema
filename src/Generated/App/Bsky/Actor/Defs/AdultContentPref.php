@@ -15,12 +15,12 @@ use SocialDept\Schema\Data\Data;
  */
 class AdultContentPref extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly bool $enabled
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

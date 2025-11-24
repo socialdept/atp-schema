@@ -19,7 +19,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ReplyRef extends Data
 {
-
     /**
      * @param  ProfileViewBasic|null  $grandparentAuthor  When parent is a reply to another post, this is the author of that post.
      */
@@ -27,7 +26,8 @@ class ReplyRef extends Data
         public readonly mixed $root,
         public readonly mixed $parent,
         public readonly ?ProfileViewBasic $grandparentAuthor = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -16,13 +16,13 @@ use SocialDept\Schema\Data\Data;
  */
 class PersonalDetailsPref extends Data
 {
-
     /**
      * @param  Carbon|null  $birthDate  The birth date of account owner.
      */
     public function __construct(
         public readonly ?Carbon $birthDate = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -18,14 +18,14 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventMute extends Data
 {
-
     /**
      * @param  int  $durationInHours  Indicates how long the subject should remain muted.
      */
     public function __construct(
         public readonly int $durationInHours,
         public readonly ?string $comment = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

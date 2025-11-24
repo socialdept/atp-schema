@@ -25,7 +25,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class BlobView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -35,7 +34,8 @@ class BlobView extends Data
         public readonly Carbon $createdAt,
         public readonly mixed $details = null,
         public readonly mixed $moderation = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

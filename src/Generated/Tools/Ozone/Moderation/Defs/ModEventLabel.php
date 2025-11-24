@@ -20,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventLabel extends Data
 {
-
     /**
      * @param  int|null  $durationInHours  Indicates how long the label will remain on the subject. Only applies on labels that are being added.
      */
@@ -29,7 +28,8 @@ class ModEventLabel extends Data
         public readonly array $negateLabelVals,
         public readonly ?string $comment = null,
         public readonly ?int $durationInHours = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

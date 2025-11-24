@@ -16,13 +16,13 @@ use SocialDept\Schema\Data\Data;
  */
 class InterestsPref extends Data
 {
-
     /**
      * @param  array<string>  $tags  A list of tags which describe the account owner's interests gathered during onboarding.
      */
     public function __construct(
         public readonly array $tags
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

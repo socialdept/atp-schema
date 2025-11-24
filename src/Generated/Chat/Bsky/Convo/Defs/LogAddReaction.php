@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\LogAddReaction\ReactionView;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -20,7 +19,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class LogAddReaction extends Data
 {
-
     /**
      */
     public function __construct(
@@ -28,7 +26,8 @@ class LogAddReaction extends Data
         public readonly string $convoId,
         public readonly mixed $message,
         public readonly mixed $reaction
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

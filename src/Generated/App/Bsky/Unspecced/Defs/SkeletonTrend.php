@@ -24,7 +24,6 @@ use SocialDept\Schema\Data\Data;
  */
 class SkeletonTrend extends Data
 {
-
     /**
      */
     public function __construct(
@@ -36,7 +35,8 @@ class SkeletonTrend extends Data
         public readonly array $dids,
         public readonly ?string $status = null,
         public readonly ?string $category = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

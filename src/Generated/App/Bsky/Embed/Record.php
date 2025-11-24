@@ -19,12 +19,12 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class Record extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly StrongRef $record
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

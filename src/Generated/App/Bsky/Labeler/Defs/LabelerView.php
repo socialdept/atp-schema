@@ -5,7 +5,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
-use SocialDept\Schema\Generated\App\Bsky\Labeler\Defs\LabelerView\LabelerViewerState;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
@@ -29,7 +28,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class LabelerView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -40,7 +38,8 @@ class LabelerView extends Data
         public readonly ?int $likeCount = null,
         public readonly mixed $viewer = null,
         public readonly ?array $labels = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

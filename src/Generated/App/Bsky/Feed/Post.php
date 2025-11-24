@@ -15,7 +15,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class Post extends Data
 {
-
     /**
      * @param  string  $text  The primary post content. May be an empty string, if there are embeds.
      * @param  Carbon  $createdAt  Client-declared timestamp when this post was originally created.
@@ -35,7 +34,8 @@ class Post extends Data
         public readonly ?array $langs = null,
         public readonly mixed $labels = null,
         public readonly ?array $tags = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

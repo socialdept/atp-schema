@@ -20,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RepoOp extends Data
 {
-
     /**
      * @param  string  $cid  For creates and updates, the new record CID. For deletions, null.
      * @param  string|null  $prev  For updates and deletes, the previous record CID (required for inductive firehose). For creations, field should not be defined.
@@ -30,7 +29,8 @@ class RepoOp extends Data
         public readonly string $path,
         public readonly string $cid,
         public readonly ?string $prev = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\ReactionView\ReactionViewSender;
 
 /**
  * Lexicon: chat.bsky.convo.defs.reactionView
@@ -20,14 +19,14 @@ use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\ReactionView\ReactionViewSe
  */
 class ReactionView extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $value,
         public readonly mixed $sender,
         public readonly Carbon $createdAt
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

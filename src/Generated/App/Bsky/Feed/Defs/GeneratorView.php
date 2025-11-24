@@ -5,7 +5,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\GeneratorView\GeneratorViewerState;
 use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
@@ -41,7 +40,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class GeneratorView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -59,7 +57,8 @@ class GeneratorView extends Data
         public readonly ?array $labels = null,
         public readonly mixed $viewer = null,
         public readonly ?string $contentMode = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

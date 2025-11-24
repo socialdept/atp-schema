@@ -19,14 +19,14 @@ use SocialDept\Schema\Data\Data;
  */
 class Record extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $uri,
         public readonly string $cid,
         public readonly mixed $value
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

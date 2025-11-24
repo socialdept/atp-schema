@@ -19,12 +19,12 @@ use SocialDept\Schema\Data\Data;
  */
 class Mention extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $did
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

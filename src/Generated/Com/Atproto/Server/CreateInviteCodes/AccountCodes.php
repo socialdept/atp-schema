@@ -16,13 +16,13 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountCodes extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $account,
         public readonly array $codes
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

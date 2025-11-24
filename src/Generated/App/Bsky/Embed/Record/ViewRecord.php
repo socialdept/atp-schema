@@ -31,7 +31,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class ViewRecord extends Data
 {
-
     /**
      * @param  mixed  $value  The record data itself.
      */
@@ -47,7 +46,8 @@ class ViewRecord extends Data
         public readonly ?int $likeCount = null,
         public readonly ?int $quoteCount = null,
         public readonly ?array $embeds = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

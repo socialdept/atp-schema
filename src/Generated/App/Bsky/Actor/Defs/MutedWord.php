@@ -26,7 +26,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\MutedWordTarget;
  */
 class MutedWord extends Data
 {
-
     /**
      * @param  string  $value  The muted word itself.
      * @param  array<MutedWordTarget>  $targets  The intended targets of the muted word.
@@ -39,7 +38,8 @@ class MutedWord extends Data
         public readonly ?string $id = null,
         public readonly ?string $actorTarget = null,
         public readonly ?Carbon $expiresAt = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

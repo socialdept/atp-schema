@@ -40,7 +40,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ScheduledActionView extends Data
 {
-
     /**
      * @param  int  $id  Auto-incrementing row ID
      * @param  string  $action  Type of action to be executed
@@ -74,7 +73,8 @@ class ScheduledActionView extends Data
         public readonly ?Carbon $lastExecutedAt = null,
         public readonly ?string $lastFailureReason = null,
         public readonly ?int $executionEventId = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

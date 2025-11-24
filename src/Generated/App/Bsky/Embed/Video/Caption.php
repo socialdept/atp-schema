@@ -18,13 +18,13 @@ use SocialDept\Schema\Data\Data;
  */
 class Caption extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $lang,
         public readonly BlobReference $file
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

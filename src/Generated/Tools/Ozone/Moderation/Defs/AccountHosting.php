@@ -26,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountHosting extends Data
 {
-
     /**
      */
     public function __construct(
@@ -36,7 +35,8 @@ class AccountHosting extends Data
         public readonly ?Carbon $deletedAt = null,
         public readonly ?Carbon $deactivatedAt = null,
         public readonly ?Carbon $reactivatedAt = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

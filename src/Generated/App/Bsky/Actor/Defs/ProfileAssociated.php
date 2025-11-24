@@ -3,8 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileAssociated\ProfileAssociatedActivitySubscription;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileAssociated\ProfileAssociatedChat;
 
 /**
  * Lexicon: app.bsky.actor.defs.profileAssociated
@@ -19,7 +17,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileAssociated\ProfileAss
  */
 class ProfileAssociated extends Data
 {
-
     /**
      */
     public function __construct(
@@ -29,7 +26,8 @@ class ProfileAssociated extends Data
         public readonly ?bool $labeler = null,
         public readonly mixed $chat = null,
         public readonly mixed $activitySubscription = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

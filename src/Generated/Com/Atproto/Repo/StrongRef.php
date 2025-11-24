@@ -20,13 +20,13 @@ use SocialDept\Schema\Data\Data;
  */
 class StrongRef extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $uri,
         public readonly string $cid
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

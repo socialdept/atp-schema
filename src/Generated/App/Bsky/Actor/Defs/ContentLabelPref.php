@@ -18,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ContentLabelPref extends Data
 {
-
     /**
      * @param  string|null  $labelerDid  Which labeler does this preference apply to? If undefined, applies globally.
      */
@@ -26,7 +25,8 @@ class ContentLabelPref extends Data
         public readonly string $label,
         public readonly string $visibility,
         public readonly ?string $labelerDid = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

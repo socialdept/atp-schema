@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ViewerState\KnownFollowers;
 use SocialDept\Schema\Generated\App\Bsky\Graph\ListViewBasic;
 use SocialDept\Schema\Generated\App\Bsky\Notification\ActivitySubscription;
 
@@ -31,7 +30,6 @@ use SocialDept\Schema\Generated\App\Bsky\Notification\ActivitySubscription;
  */
 class ViewerState extends Data
 {
-
     /**
      * @param  mixed  $knownFollowers  This property is present only in selected cases, as an optimization.
      * @param  ActivitySubscription|null  $activitySubscription  This property is present only in selected cases, as an optimization.
@@ -46,7 +44,8 @@ class ViewerState extends Data
         public readonly ?string $followedBy = null,
         public readonly mixed $knownFollowers = null,
         public readonly ?ActivitySubscription $activitySubscription = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

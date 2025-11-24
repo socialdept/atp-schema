@@ -3,8 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\ThreadViewPost\PostView;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\ThreadViewPost\ThreadContext;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -21,7 +19,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ThreadViewPost extends Data
 {
-
     /**
      */
     public function __construct(
@@ -29,7 +26,8 @@ class ThreadViewPost extends Data
         public readonly mixed $parent = null,
         public readonly ?array $replies = null,
         public readonly mixed $threadContext = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

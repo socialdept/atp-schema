@@ -5,8 +5,6 @@ namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
-use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\MessageView\MessageViewSender;
-use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\MessageView\ReactionView;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -30,7 +28,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class MessageView extends Data
 {
-
     /**
      * @param  array<Facet>|null  $facets  Annotations of text (mentions, URLs, hashtags, etc)
      * @param  array|null  $reactions  Reactions to this message, in ascending order of creation time.
@@ -44,7 +41,8 @@ class MessageView extends Data
         public readonly ?array $facets = null,
         public readonly mixed $embed = null,
         public readonly ?array $reactions = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

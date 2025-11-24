@@ -17,14 +17,14 @@ use SocialDept\Schema\Data\Data;
  */
 class SavedFeedsPref extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly array $pinned,
         public readonly array $saved,
         public readonly ?int $timelineIndex = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

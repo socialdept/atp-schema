@@ -19,14 +19,14 @@ use SocialDept\Schema\Data\Data;
  */
 class AppPassword extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $name,
         public readonly Carbon $createdAt,
         public readonly ?bool $privileged = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -17,13 +17,13 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class ReplyRef extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly StrongRef $root,
         public readonly StrongRef $parent
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

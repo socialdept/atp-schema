@@ -3,8 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\FeedViewPost\PostView;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\FeedViewPost\ReplyRef;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -24,7 +22,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class FeedViewPost extends Data
 {
-
     /**
      * @param  string|null  $feedContext  Context provided by feed generator that may be passed back alongside interactions.
      * @param  string|null  $reqId  Unique identifier per request that may be passed back alongside interactions.
@@ -35,7 +32,8 @@ class FeedViewPost extends Data
         public readonly mixed $reason = null,
         public readonly ?string $feedContext = null,
         public readonly ?string $reqId = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

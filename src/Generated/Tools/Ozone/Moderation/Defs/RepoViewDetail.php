@@ -7,7 +7,6 @@ use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Admin\ThreatSignature;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RepoViewDetail\ModerationDetail;
 
 /**
  * Lexicon: tools.ozone.moderation.defs.repoViewDetail
@@ -38,7 +37,6 @@ use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RepoViewDetail\Moder
  */
 class RepoViewDetail extends Data
 {
-
     /**
      */
     public function __construct(
@@ -56,7 +54,8 @@ class RepoViewDetail extends Data
         public readonly ?Carbon $emailConfirmedAt = null,
         public readonly ?Carbon $deactivatedAt = null,
         public readonly ?array $threatSignatures = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

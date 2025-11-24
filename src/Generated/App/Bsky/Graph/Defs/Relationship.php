@@ -23,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Relationship extends Data
 {
-
     /**
      * @param  string|null  $following  if the actor follows this DID, this is the AT-URI of the follow record
      * @param  string|null  $followedBy  if the actor is followed by this DID, contains the AT-URI of the follow record
@@ -32,7 +31,8 @@ class Relationship extends Data
         public readonly string $did,
         public readonly ?string $following = null,
         public readonly ?string $followedBy = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

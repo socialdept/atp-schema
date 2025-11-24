@@ -11,14 +11,14 @@ use SocialDept\Schema\Data\Data;
  */
 class Block extends Data
 {
-
     /**
      * @param  string  $subject  DID of the account to be blocked.
      */
     public function __construct(
         public readonly string $subject,
         public readonly Carbon $createdAt
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

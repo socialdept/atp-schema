@@ -18,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class SavedFeed extends Data
 {
-
     /**
      */
     public function __construct(
@@ -26,7 +25,8 @@ class SavedFeed extends Data
         public readonly string $type,
         public readonly string $value,
         public readonly bool $pinned
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

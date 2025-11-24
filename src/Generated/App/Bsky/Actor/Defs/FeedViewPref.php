@@ -20,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class FeedViewPref extends Data
 {
-
     /**
      * @param  string  $feed  The URI of the feed, or an identifier which describes the feed.
      * @param  bool|null  $hideReplies  Hide replies in the feed.
@@ -36,7 +35,8 @@ class FeedViewPref extends Data
         public readonly ?int $hideRepliesByLikeCount = null,
         public readonly ?bool $hideReposts = null,
         public readonly ?bool $hideQuotePosts = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

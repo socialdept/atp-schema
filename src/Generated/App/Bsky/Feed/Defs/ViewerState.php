@@ -25,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewerState extends Data
 {
-
     /**
      */
     public function __construct(
@@ -36,7 +35,8 @@ class ViewerState extends Data
         public readonly ?bool $replyDisabled = null,
         public readonly ?bool $embeddingDisabled = null,
         public readonly ?bool $pinned = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

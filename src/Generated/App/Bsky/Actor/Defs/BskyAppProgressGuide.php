@@ -19,12 +19,12 @@ use SocialDept\Schema\Data\Data;
  */
 class BskyAppProgressGuide extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $guide
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

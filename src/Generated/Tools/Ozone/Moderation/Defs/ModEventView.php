@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\ModEventView\ModTool;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -28,7 +27,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ModEventView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -41,7 +39,8 @@ class ModEventView extends Data
         public readonly ?string $creatorHandle = null,
         public readonly ?string $subjectHandle = null,
         public readonly mixed $modTool = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

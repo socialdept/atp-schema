@@ -32,7 +32,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class StarterPackViewBasic extends Data
 {
-
     /**
      */
     public function __construct(
@@ -45,7 +44,8 @@ class StarterPackViewBasic extends Data
         public readonly ?int $joinedWeekCount = null,
         public readonly ?int $joinedAllTimeCount = null,
         public readonly ?array $labels = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

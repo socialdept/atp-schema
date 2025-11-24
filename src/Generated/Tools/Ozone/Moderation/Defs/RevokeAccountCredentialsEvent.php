@@ -17,13 +17,13 @@ use SocialDept\Schema\Data\Data;
  */
 class RevokeAccountCredentialsEvent extends Data
 {
-
     /**
      * @param  string  $comment  Comment describing the reason for the revocation.
      */
     public function __construct(
         public readonly string $comment
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Admin\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Admin\Defs\AccountView\ThreatSignature;
 use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
 
 /**
@@ -34,7 +33,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Server\InviteCode;
  */
 class AccountView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -50,7 +48,8 @@ class AccountView extends Data
         public readonly ?string $inviteNote = null,
         public readonly ?Carbon $deactivatedAt = null,
         public readonly ?array $threatSignatures = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

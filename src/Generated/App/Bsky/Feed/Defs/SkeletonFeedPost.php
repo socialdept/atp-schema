@@ -20,7 +20,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SkeletonFeedPost extends Data
 {
-
     /**
      * @param  string|null  $feedContext  Context that will be passed through to client and may be passed to feed generator back alongside interactions.
      */
@@ -28,7 +27,8 @@ class SkeletonFeedPost extends Data
         public readonly string $post,
         public readonly mixed $reason = null,
         public readonly ?string $feedContext = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

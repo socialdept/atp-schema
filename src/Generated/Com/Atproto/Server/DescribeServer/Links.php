@@ -17,13 +17,13 @@ use SocialDept\Schema\Data\Data;
  */
 class Links extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly ?string $privacyPolicy = null,
         public readonly ?string $termsOfService = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

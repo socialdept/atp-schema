@@ -3,8 +3,6 @@
 namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\MessageAndReactionView\MessageView;
-use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\MessageAndReactionView\ReactionView;
 
 /**
  * Lexicon: chat.bsky.convo.defs.messageAndReactionView
@@ -18,13 +16,13 @@ use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\MessageAndReactionView\Reac
  */
 class MessageAndReactionView extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly mixed $message,
         public readonly mixed $reaction
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

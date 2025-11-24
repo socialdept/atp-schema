@@ -24,13 +24,13 @@ use SocialDept\Schema\Data\Data;
  */
 class ByteSlice extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly int $byteStart,
         public readonly int $byteEnd
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

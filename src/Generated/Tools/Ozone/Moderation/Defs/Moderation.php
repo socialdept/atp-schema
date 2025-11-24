@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\Moderation\SubjectStatusView;
 
 /**
  * Lexicon: tools.ozone.moderation.defs.moderation
@@ -13,12 +12,12 @@ use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\Moderation\SubjectSt
  */
 class Moderation extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly mixed $subjectStatus = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

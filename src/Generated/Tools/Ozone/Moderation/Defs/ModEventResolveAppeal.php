@@ -14,13 +14,13 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventResolveAppeal extends Data
 {
-
     /**
      * @param  string|null  $comment  Describe resolution.
      */
     public function __construct(
         public readonly ?string $comment = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

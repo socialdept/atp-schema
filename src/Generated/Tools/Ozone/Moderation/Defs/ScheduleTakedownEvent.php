@@ -23,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ScheduleTakedownEvent extends Data
 {
-
     /**
      */
     public function __construct(
@@ -31,7 +30,8 @@ class ScheduleTakedownEvent extends Data
         public readonly ?Carbon $executeAt = null,
         public readonly ?Carbon $executeAfter = null,
         public readonly ?Carbon $executeUntil = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

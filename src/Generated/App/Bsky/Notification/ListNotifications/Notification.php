@@ -30,7 +30,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class Notification extends Data
 {
-
     /**
      * @param  string  $reason  The reason why this notification was delivered - e.g. your post was liked, or you received a new follower.
      */
@@ -44,7 +43,8 @@ class Notification extends Data
         public readonly Carbon $indexedAt,
         public readonly ?string $reasonSubject = null,
         public readonly ?array $labels = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

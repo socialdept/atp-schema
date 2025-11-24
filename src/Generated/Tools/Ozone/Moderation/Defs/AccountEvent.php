@@ -23,7 +23,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountEvent extends Data
 {
-
     /**
      * @param  bool  $active  Indicates that the account has a repository which can be fetched from the host that emitted this event.
      */
@@ -32,7 +31,8 @@ class AccountEvent extends Data
         public readonly Carbon $timestamp,
         public readonly ?string $comment = null,
         public readonly ?string $status = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

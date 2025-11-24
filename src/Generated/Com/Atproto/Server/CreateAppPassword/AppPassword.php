@@ -20,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AppPassword extends Data
 {
-
     /**
      */
     public function __construct(
@@ -28,7 +27,8 @@ class AppPassword extends Data
         public readonly string $password,
         public readonly Carbon $createdAt,
         public readonly ?bool $privileged = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

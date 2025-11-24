@@ -6,8 +6,6 @@ use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
 use SocialDept\Schema\Generated\App\Bsky\Feed\GeneratorView;
-use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\StarterPackView\ListItemView;
-use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\StarterPackView\ListViewBasic;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
 /**
@@ -38,7 +36,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class StarterPackView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -53,7 +50,8 @@ class StarterPackView extends Data
         public readonly ?int $joinedWeekCount = null,
         public readonly ?int $joinedAllTimeCount = null,
         public readonly ?array $labels = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

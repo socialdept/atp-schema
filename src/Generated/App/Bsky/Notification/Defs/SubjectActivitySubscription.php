@@ -20,13 +20,13 @@ use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\SubjectActivitySubscr
  */
 class SubjectActivitySubscription extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $subject,
         public readonly mixed $activitySubscription
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

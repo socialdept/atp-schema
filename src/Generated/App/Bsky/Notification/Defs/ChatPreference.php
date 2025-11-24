@@ -16,13 +16,13 @@ use SocialDept\Schema\Data\Data;
  */
 class ChatPreference extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $include,
         public readonly bool $push
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

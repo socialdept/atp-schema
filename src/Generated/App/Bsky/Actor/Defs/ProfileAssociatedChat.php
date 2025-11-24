@@ -15,12 +15,12 @@ use SocialDept\Schema\Data\Data;
  */
 class ProfileAssociatedChat extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $allowIncoming
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

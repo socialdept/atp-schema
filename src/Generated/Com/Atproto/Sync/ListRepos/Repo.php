@@ -22,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Repo extends Data
 {
-
     /**
      * @param  string  $head  Current repo commit CID
      * @param  string|null  $status  If active=false, this optional field indicates a possible reason for why the account is not active. If active=false and no status is supplied, then the host makes no claim for why the repository is no longer being hosted.
@@ -33,7 +32,8 @@ class Repo extends Data
         public readonly string $rev,
         public readonly ?bool $active = null,
         public readonly ?string $status = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

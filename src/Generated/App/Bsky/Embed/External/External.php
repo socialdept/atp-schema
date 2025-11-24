@@ -20,7 +20,6 @@ use SocialDept\Schema\Data\Data;
  */
 class External extends Data
 {
-
     /**
      */
     public function __construct(
@@ -28,7 +27,8 @@ class External extends Data
         public readonly string $title,
         public readonly string $description,
         public readonly ?BlobReference $thumb = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -5,9 +5,6 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordViewDetail\BlobView;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordViewDetail\ModerationDetail;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordViewDetail\RepoView;
 
 /**
  * Lexicon: tools.ozone.moderation.defs.recordViewDetail
@@ -30,7 +27,6 @@ use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordViewDetail\Rep
  */
 class RecordViewDetail extends Data
 {
-
     /**
      */
     public function __construct(
@@ -42,7 +38,8 @@ class RecordViewDetail extends Data
         public readonly mixed $moderation,
         public readonly mixed $repo,
         public readonly ?array $labels = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

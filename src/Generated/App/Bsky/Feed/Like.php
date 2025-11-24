@@ -12,14 +12,14 @@ use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
  */
 class Like extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly StrongRef $subject,
         public readonly Carbon $createdAt,
         public readonly ?StrongRef $via = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

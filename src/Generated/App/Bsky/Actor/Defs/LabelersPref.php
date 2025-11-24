@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\LabelersPref\LabelerPrefItem;
 
 /**
  * Lexicon: app.bsky.actor.defs.labelersPref
@@ -16,12 +15,12 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\LabelersPref\LabelerPrefItem
  */
 class LabelersPref extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly array $labelers
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

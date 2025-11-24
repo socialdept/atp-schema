@@ -21,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AgeAssuranceState extends Data
 {
-
     /**
      * @param  string  $status  The status of the age assurance process.
      * @param  Carbon|null  $lastInitiatedAt  The timestamp when this state was last updated.
@@ -29,7 +28,8 @@ class AgeAssuranceState extends Data
     public function __construct(
         public readonly string $status,
         public readonly ?Carbon $lastInitiatedAt = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

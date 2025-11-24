@@ -10,8 +10,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordDeleted extends Data
 {
-
-
     /**
      * Get the lexicon NSID for this data type.
      *

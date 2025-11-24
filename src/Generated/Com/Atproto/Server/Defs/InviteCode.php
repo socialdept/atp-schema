@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Server\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Server\Defs\InviteCode\InviteCodeUse;
 
 /**
  * Lexicon: com.atproto.server.defs.inviteCode
@@ -24,7 +23,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Server\Defs\InviteCode\InviteCodeUse
  */
 class InviteCode extends Data
 {
-
     /**
      */
     public function __construct(
@@ -35,7 +33,8 @@ class InviteCode extends Data
         public readonly string $createdBy,
         public readonly Carbon $createdAt,
         public readonly array $uses
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

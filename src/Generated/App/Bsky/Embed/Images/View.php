@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Embed\Images;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\Images\View\ViewImage;
 
 /**
  * Lexicon: app.bsky.embed.images.view
@@ -17,12 +16,12 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\Images\View\ViewImage;
  */
 class View extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly array $images
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -15,13 +15,13 @@ use SocialDept\Schema\Data\Data;
  */
 class HiddenPostsPref extends Data
 {
-
     /**
      * @param  array<string>  $items  A list of URIs of posts the account owner has hidden.
      */
     public function __construct(
         public readonly array $items
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

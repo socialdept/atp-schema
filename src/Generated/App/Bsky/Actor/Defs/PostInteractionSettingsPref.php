@@ -21,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class PostInteractionSettingsPref extends Data
 {
-
     /**
      * @param  array|null  $threadgateAllowRules  Matches threadgate record. List of rules defining who can reply to this users posts. If value is an empty array, no one can reply. If value is undefined, anyone can reply.
      * @param  array|null  $postgateEmbeddingRules  Matches postgate record. List of rules defining who can embed this users posts. If value is an empty array or is undefined, no particular rules apply and anyone can embed.
@@ -29,7 +28,8 @@ class PostInteractionSettingsPref extends Data
     public function __construct(
         public readonly ?array $threadgateAllowRules = null,
         public readonly ?array $postgateEmbeddingRules = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

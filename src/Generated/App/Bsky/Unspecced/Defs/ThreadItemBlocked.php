@@ -16,12 +16,12 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\BlockedAuthor;
  */
 class ThreadItemBlocked extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly BlockedAuthor $author
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

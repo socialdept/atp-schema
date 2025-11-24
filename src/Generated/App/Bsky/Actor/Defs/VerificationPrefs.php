@@ -14,13 +14,13 @@ use SocialDept\Schema\Data\Data;
  */
 class VerificationPrefs extends Data
 {
-
     /**
      * @param  bool|null  $hideBadges  Hide the blue check badges for verified accounts and trusted verifiers.
      */
     public function __construct(
         public readonly ?bool $hideBadges = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

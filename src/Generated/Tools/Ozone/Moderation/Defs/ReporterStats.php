@@ -24,7 +24,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ReporterStats extends Data
 {
-
     /**
      * @param  int  $accountReportCount  The total number of reports made by the user on accounts.
      * @param  int  $recordReportCount  The total number of reports made by the user on records.
@@ -45,7 +44,8 @@ class ReporterStats extends Data
         public readonly int $takendownRecordCount,
         public readonly int $labeledAccountCount,
         public readonly int $labeledRecordCount
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

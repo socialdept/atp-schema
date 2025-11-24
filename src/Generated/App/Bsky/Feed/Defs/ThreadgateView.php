@@ -20,7 +20,6 @@ use SocialDept\Schema\Generated\App\Bsky\Graph\ListViewBasic;
  */
 class ThreadgateView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -28,7 +27,8 @@ class ThreadgateView extends Data
         public readonly ?string $cid = null,
         public readonly mixed $record = null,
         public readonly ?array $lists = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

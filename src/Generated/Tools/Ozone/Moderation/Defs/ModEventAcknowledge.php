@@ -13,14 +13,14 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventAcknowledge extends Data
 {
-
     /**
      * @param  bool|null  $acknowledgeAccountSubjects  If true, all other reports on content authored by this account will be resolved (acknowledged).
      */
     public function __construct(
         public readonly ?string $comment = null,
         public readonly ?bool $acknowledgeAccountSubjects = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

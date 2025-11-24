@@ -16,13 +16,13 @@ use SocialDept\Schema\Data\Data;
  */
 class ImageDetails extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly int $width,
         public readonly int $height
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

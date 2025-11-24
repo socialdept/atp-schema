@@ -26,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class IdentityEvent extends Data
 {
-
     /**
      */
     public function __construct(
@@ -35,7 +34,8 @@ class IdentityEvent extends Data
         public readonly ?string $handle = null,
         public readonly ?string $pdsHost = null,
         public readonly ?bool $tombstone = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

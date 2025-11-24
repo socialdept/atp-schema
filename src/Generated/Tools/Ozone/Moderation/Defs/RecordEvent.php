@@ -24,7 +24,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordEvent extends Data
 {
-
     /**
      */
     public function __construct(
@@ -32,7 +31,8 @@ class RecordEvent extends Data
         public readonly Carbon $timestamp,
         public readonly ?string $comment = null,
         public readonly ?string $cid = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

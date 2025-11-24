@@ -19,12 +19,12 @@ use SocialDept\Schema\Data\Data;
  */
 class Link extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $uri
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

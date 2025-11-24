@@ -24,7 +24,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class ConvoView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -36,7 +35,8 @@ class ConvoView extends Data
         public readonly mixed $lastMessage = null,
         public readonly mixed $lastReaction = null,
         public readonly ?string $status = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

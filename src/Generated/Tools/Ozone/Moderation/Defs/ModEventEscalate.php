@@ -12,12 +12,12 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventEscalate extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly ?string $comment = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

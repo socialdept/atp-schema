@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\DeletedMessageView\MessageViewSender;
 
 /**
  * Lexicon: chat.bsky.convo.defs.deletedMessageView
@@ -21,7 +20,6 @@ use SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs\DeletedMessageView\MessageV
  */
 class DeletedMessageView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -29,7 +27,8 @@ class DeletedMessageView extends Data
         public readonly string $rev,
         public readonly mixed $sender,
         public readonly Carbon $sentAt
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

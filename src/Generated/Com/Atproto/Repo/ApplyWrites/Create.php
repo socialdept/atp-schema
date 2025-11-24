@@ -22,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Create extends Data
 {
-
     /**
      * @param  string|null  $rkey  NOTE: maxLength is redundant with record-key format. Keeping it temporarily to ensure backwards compatibility.
      */
@@ -30,7 +29,8 @@ class Create extends Data
         public readonly string $collection,
         public readonly mixed $value,
         public readonly ?string $rkey = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

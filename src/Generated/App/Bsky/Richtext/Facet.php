@@ -17,13 +17,13 @@ use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet\ByteSlice;
  */
 class Facet extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly ByteSlice $index,
         public readonly array $features
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

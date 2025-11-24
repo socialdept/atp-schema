@@ -16,13 +16,13 @@ use SocialDept\Schema\Data\Data;
  */
 class LogMuteConvo extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $rev,
         public readonly string $convoId
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

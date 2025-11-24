@@ -22,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordHosting extends Data
 {
-
     /**
      */
     public function __construct(
@@ -30,7 +29,8 @@ class RecordHosting extends Data
         public readonly ?Carbon $updatedAt = null,
         public readonly ?Carbon $createdAt = null,
         public readonly ?Carbon $deletedAt = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

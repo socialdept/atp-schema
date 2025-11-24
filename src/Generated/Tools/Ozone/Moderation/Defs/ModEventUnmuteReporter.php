@@ -14,13 +14,13 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventUnmuteReporter extends Data
 {
-
     /**
      * @param  string|null  $comment  Describe reasoning behind the reversal.
      */
     public function __construct(
         public readonly ?string $comment = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

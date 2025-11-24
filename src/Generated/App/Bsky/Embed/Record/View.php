@@ -16,12 +16,12 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class View extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly mixed $record
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

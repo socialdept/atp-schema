@@ -5,8 +5,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\PostView\ThreadgateView;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\PostView\ViewerState;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 use SocialDept\Schema\Support\UnionHelper;
 
@@ -38,7 +36,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class PostView extends Data
 {
-
     /**
      * @param  mixed  $debug  Debug information for internal development
      */
@@ -58,7 +55,8 @@ class PostView extends Data
         public readonly ?array $labels = null,
         public readonly mixed $threadgate = null,
         public readonly mixed $debug = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

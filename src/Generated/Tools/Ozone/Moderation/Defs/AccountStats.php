@@ -18,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountStats extends Data
 {
-
     /**
      * @param  int|null  $reportCount  Total number of reports on the account
      * @param  int|null  $appealCount  Total number of appeals against a moderation action on the account
@@ -32,7 +31,8 @@ class AccountStats extends Data
         public readonly ?int $suspendCount = null,
         public readonly ?int $escalateCount = null,
         public readonly ?int $takedownCount = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\VerificationState\VerificationView;
 
 /**
  * Represents the verification information about the user this object is
@@ -21,7 +20,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\VerificationState\Verificati
  */
 class VerificationState extends Data
 {
-
     /**
      * @param  array  $verifications  All verifications issued by trusted verifiers on behalf of this user. Verifications by untrusted verifiers are not included.
      * @param  string  $verifiedStatus  The user's status as a verified account.
@@ -31,7 +29,8 @@ class VerificationState extends Data
         public readonly array $verifications,
         public readonly string $verifiedStatus,
         public readonly string $trustedVerifierStatus
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

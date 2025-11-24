@@ -12,12 +12,12 @@ use SocialDept\Schema\Data\Data;
  */
 class Contact extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly ?string $email = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

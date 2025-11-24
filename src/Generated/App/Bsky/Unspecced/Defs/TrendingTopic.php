@@ -18,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class TrendingTopic extends Data
 {
-
     /**
      */
     public function __construct(
@@ -26,7 +25,8 @@ class TrendingTopic extends Data
         public readonly string $link,
         public readonly ?string $displayName = null,
         public readonly ?string $description = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

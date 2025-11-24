@@ -22,7 +22,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AccountStrike extends Data
 {
-
     /**
      * @param  int|null  $activeStrikeCount  Current number of active strikes (excluding expired strikes)
      * @param  int|null  $totalStrikeCount  Total number of strikes ever received (including expired strikes)
@@ -34,7 +33,8 @@ class AccountStrike extends Data
         public readonly ?int $totalStrikeCount = null,
         public readonly ?Carbon $firstStrikeAt = null,
         public readonly ?Carbon $lastStrikeAt = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

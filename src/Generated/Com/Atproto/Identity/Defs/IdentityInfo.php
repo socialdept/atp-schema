@@ -19,7 +19,6 @@ use SocialDept\Schema\Data\Data;
  */
 class IdentityInfo extends Data
 {
-
     /**
      * @param  string  $handle  The validated handle of the account; or 'handle.invalid' if the handle did not bi-directionally match the DID document.
      * @param  mixed  $didDoc  The complete DID document for the identity.
@@ -28,7 +27,8 @@ class IdentityInfo extends Data
         public readonly string $did,
         public readonly string $handle,
         public readonly mixed $didDoc
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

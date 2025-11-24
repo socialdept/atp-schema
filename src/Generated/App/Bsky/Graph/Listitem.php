@@ -11,7 +11,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Listitem extends Data
 {
-
     /**
      * @param  string  $subject  The account which is included on the list.
      * @param  string  $list  Reference (AT-URI) to the list record (app.bsky.graph.list).
@@ -20,7 +19,8 @@ class Listitem extends Data
         public readonly string $subject,
         public readonly string $list,
         public readonly Carbon $createdAt
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

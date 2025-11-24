@@ -18,14 +18,14 @@ use SocialDept\Schema\Data\Data;
  */
 class MessageRef extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $did,
         public readonly string $convoId,
         public readonly string $messageId
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

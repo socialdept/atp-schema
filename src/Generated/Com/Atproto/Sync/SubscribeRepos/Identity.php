@@ -26,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Identity extends Data
 {
-
     /**
      * @param  string|null  $handle  The current handle for the account, or 'handle.invalid' if validation fails. This field is optional, might have been validated or passed-through from an upstream source. Semantics and behaviors for PDS vs Relay may evolve in the future; see atproto specs for more details.
      */
@@ -35,7 +34,8 @@ class Identity extends Data
         public readonly string $did,
         public readonly Carbon $time,
         public readonly ?string $handle = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

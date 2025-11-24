@@ -21,7 +21,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class MessageInput extends Data
 {
-
     /**
      * @param  array<Facet>|null  $facets  Annotations of text (mentions, URLs, hashtags, etc)
      */
@@ -29,7 +28,8 @@ class MessageInput extends Data
         public readonly string $text,
         public readonly ?array $facets = null,
         public readonly mixed $embed = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

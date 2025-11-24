@@ -5,7 +5,6 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordView\Moderation;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordView\RepoView;
 
 /**
  * Lexicon: tools.ozone.moderation.defs.recordView
@@ -27,7 +26,6 @@ use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\RecordView\RepoView;
  */
 class RecordView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -38,7 +36,8 @@ class RecordView extends Data
         public readonly Carbon $indexedAt,
         public readonly mixed $moderation,
         public readonly mixed $repo
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

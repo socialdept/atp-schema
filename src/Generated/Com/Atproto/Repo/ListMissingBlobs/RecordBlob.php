@@ -18,13 +18,13 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordBlob extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $cid,
         public readonly string $recordUri
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

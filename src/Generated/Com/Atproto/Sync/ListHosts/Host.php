@@ -19,7 +19,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Sync\HostStatus;
  */
 class Host extends Data
 {
-
     /**
      * @param  string  $hostname  hostname of server; not a URL (no scheme)
      * @param  int|null  $seq  Recent repo stream event sequence number. May be delayed from actual stream processing (eg, persisted cursor not in-memory cursor).
@@ -29,7 +28,8 @@ class Host extends Data
         public readonly ?int $seq = null,
         public readonly ?int $accountCount = null,
         public readonly ?HostStatus $status = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

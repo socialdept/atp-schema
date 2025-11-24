@@ -19,13 +19,13 @@ use SocialDept\Schema\Data\Data;
  */
 class InviteCodeUse extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $usedBy,
         public readonly Carbon $usedAt
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

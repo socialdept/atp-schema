@@ -19,7 +19,6 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
  */
 class Image extends Data
 {
-
     /**
      * @param  string  $alt  Alt text description of the image, for accessibility.
      */
@@ -27,7 +26,8 @@ class Image extends Data
         public readonly BlobReference $image,
         public readonly string $alt,
         public readonly ?AspectRatio $aspectRatio = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

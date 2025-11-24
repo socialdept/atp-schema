@@ -18,13 +18,13 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewDetached extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $uri,
         public readonly bool $detached
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

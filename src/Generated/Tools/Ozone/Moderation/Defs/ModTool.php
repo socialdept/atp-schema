@@ -18,7 +18,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModTool extends Data
 {
-
     /**
      * @param  string  $name  Name/identifier of the source (e.g., 'automod', 'ozone/workspace')
      * @param  mixed  $meta  Additional arbitrary metadata about the source
@@ -26,7 +25,8 @@ class ModTool extends Data
     public function __construct(
         public readonly string $name,
         public readonly mixed $meta = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -4,10 +4,6 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\SubjectStatusView\AccountStats;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\SubjectStatusView\AccountStrike;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\SubjectStatusView\RecordsStats;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\SubjectStatusView\SubjectReviewState;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -56,7 +52,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SubjectStatusView extends Data
 {
-
     /**
      * @param  Carbon  $updatedAt  Timestamp referencing when the last update was made to the moderation status of the subject
      * @param  Carbon  $createdAt  Timestamp referencing the first moderation status impacting event was emitted on the subject
@@ -96,7 +91,8 @@ class SubjectStatusView extends Data
         public readonly mixed $accountStrike = null,
         public readonly ?string $ageAssuranceState = null,
         public readonly ?string $ageAssuranceUpdatedBy = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

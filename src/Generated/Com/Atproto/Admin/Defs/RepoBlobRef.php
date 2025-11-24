@@ -20,14 +20,14 @@ use SocialDept\Schema\Data\Data;
  */
 class RepoBlobRef extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $did,
         public readonly string $cid,
         public readonly ?string $recordUri = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

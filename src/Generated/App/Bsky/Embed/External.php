@@ -16,12 +16,12 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\External\External;
  */
 class External extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly External $external
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

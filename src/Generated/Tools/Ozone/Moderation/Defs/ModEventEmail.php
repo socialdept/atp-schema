@@ -27,7 +27,6 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventEmail extends Data
 {
-
     /**
      * @param  string  $subjectLine  The subject line of the email sent to the user.
      * @param  string|null  $content  The content of the email sent to the user.
@@ -47,7 +46,8 @@ class ModEventEmail extends Data
         public readonly ?int $strikeCount = null,
         public readonly ?Carbon $strikeExpiresAt = null,
         public readonly ?bool $isDelivered = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

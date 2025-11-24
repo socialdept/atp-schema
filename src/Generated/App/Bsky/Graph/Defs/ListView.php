@@ -5,8 +5,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
-use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\ListView\ListPurpose;
-use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\ListView\ListViewerState;
 use SocialDept\Schema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 
@@ -41,7 +39,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
  */
 class ListView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -57,7 +54,8 @@ class ListView extends Data
         public readonly ?int $listItemCount = null,
         public readonly ?array $labels = null,
         public readonly mixed $viewer = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

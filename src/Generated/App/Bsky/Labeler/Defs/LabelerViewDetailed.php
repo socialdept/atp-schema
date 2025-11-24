@@ -5,7 +5,6 @@ namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
-use SocialDept\Schema\Generated\App\Bsky\Labeler\Defs\LabelerViewDetailed\LabelerViewerState;
 use SocialDept\Schema\Generated\App\Bsky\Labeler\LabelerPolicies;
 use SocialDept\Schema\Generated\Com\Atproto\Label\Label;
 use SocialDept\Schema\Generated\Com\Atproto\Moderation\ReasonType;
@@ -36,7 +35,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Moderation\SubjectType;
  */
 class LabelerViewDetailed extends Data
 {
-
     /**
      * @param  array<ReasonType>|null  $reasonTypes  The set of report reason 'codes' which are in-scope for this service to review and action. These usually align to policy categories. If not defined (distinct from empty array), all reason types are allowed.
      * @param  array<SubjectType>|null  $subjectTypes  The set of subject types (account, record, etc) this service accepts reports on.
@@ -54,7 +52,8 @@ class LabelerViewDetailed extends Data
         public readonly ?array $reasonTypes = null,
         public readonly ?array $subjectTypes = null,
         public readonly ?array $subjectCollections = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

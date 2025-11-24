@@ -19,12 +19,12 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\Images\Image;
  */
 class Images extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly array $images
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

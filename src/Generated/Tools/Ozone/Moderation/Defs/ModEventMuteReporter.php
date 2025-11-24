@@ -15,14 +15,14 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventMuteReporter extends Data
 {
-
     /**
      * @param  int|null  $durationInHours  Indicates how long the account should remain muted. Falsy value here means a permanent mute.
      */
     public function __construct(
         public readonly ?string $comment = null,
         public readonly ?int $durationInHours = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

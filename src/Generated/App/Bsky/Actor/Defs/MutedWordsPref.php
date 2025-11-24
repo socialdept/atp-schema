@@ -16,13 +16,13 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\MutedWord;
  */
 class MutedWordsPref extends Data
 {
-
     /**
      * @param  array<MutedWord>  $items  A list of words the account owner has muted.
      */
     public function __construct(
         public readonly array $items
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

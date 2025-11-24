@@ -21,7 +21,6 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordsStats extends Data
 {
-
     /**
      * @param  int|null  $totalReports  Cumulative sum of the number of reports on the items in the set
      * @param  int|null  $reportedCount  Number of items that were reported at least once
@@ -41,7 +40,8 @@ class RecordsStats extends Data
         public readonly ?int $pendingCount = null,
         public readonly ?int $processedCount = null,
         public readonly ?int $takendownCount = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

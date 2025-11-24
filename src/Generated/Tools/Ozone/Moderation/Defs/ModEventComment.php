@@ -16,14 +16,14 @@ use SocialDept\Schema\Data\Data;
  */
 class ModEventComment extends Data
 {
-
     /**
      * @param  bool|null  $sticky  Make the comment persistent on the subject
      */
     public function __construct(
         public readonly ?string $comment = null,
         public readonly ?bool $sticky = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

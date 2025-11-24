@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\BskyAppStatePref\BskyAppProgressGuide;
 use SocialDept\Schema\Generated\App\Bsky\Actor\Nux;
 
 /**
@@ -23,7 +22,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\Nux;
  */
 class BskyAppStatePref extends Data
 {
-
     /**
      * @param  array<string>|null  $queuedNudges  An array of tokens which identify nudges (modals, popups, tours, highlight dots) that should be shown to the user.
      * @param  array<Nux>|null  $nuxs  Storage for NUXs the user has encountered.
@@ -32,7 +30,8 @@ class BskyAppStatePref extends Data
         public readonly mixed $activeProgressGuide = null,
         public readonly ?array $queuedNudges = null,
         public readonly ?array $nuxs = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

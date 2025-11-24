@@ -16,13 +16,13 @@ use SocialDept\Schema\Data\Data;
  */
 class StatusAttr extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly bool $applied,
         public readonly ?string $ref = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

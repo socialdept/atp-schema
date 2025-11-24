@@ -25,7 +25,6 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\AspectRatio;
  */
 class View extends Data
 {
-
     /**
      */
     public function __construct(
@@ -34,7 +33,8 @@ class View extends Data
         public readonly ?string $thumbnail = null,
         public readonly ?string $alt = null,
         public readonly ?AspectRatio $aspectRatio = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

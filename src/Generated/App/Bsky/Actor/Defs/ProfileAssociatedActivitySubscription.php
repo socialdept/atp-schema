@@ -15,12 +15,12 @@ use SocialDept\Schema\Data\Data;
  */
 class ProfileAssociatedActivitySubscription extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $allowSubscriptions
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

@@ -4,9 +4,6 @@ namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
 
 use SocialDept\Schema\Data\Data;
 use SocialDept\Schema\Generated\Com\Atproto\Moderation\SubjectType;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\SubjectView\RecordViewDetail;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\SubjectView\RepoViewDetail;
-use SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs\SubjectView\SubjectStatusView;
 use SocialDept\Schema\Support\UnionHelper;
 
 /**
@@ -28,7 +25,6 @@ use SocialDept\Schema\Support\UnionHelper;
  */
 class SubjectView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -38,7 +34,8 @@ class SubjectView extends Data
         public readonly mixed $repo = null,
         public readonly mixed $profile = null,
         public readonly mixed $record = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

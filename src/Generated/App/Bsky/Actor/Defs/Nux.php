@@ -25,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class Nux extends Data
 {
-
     /**
      * @param  string|null  $data  Arbitrary data for the NUX. The structure is defined by the NUX itself. Limited to 300 characters.
      * @param  Carbon|null  $expiresAt  The date and time at which the NUX will expire and should be considered completed.
@@ -35,7 +34,8 @@ class Nux extends Data
         public readonly bool $completed,
         public readonly ?string $data = null,
         public readonly ?Carbon $expiresAt = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

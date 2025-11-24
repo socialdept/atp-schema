@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Embed\External;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\External\View\ViewExternal;
 
 /**
  * Lexicon: app.bsky.embed.external.view
@@ -16,12 +15,12 @@ use SocialDept\Schema\Generated\App\Bsky\Embed\External\View\ViewExternal;
  */
 class View extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly mixed $external
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

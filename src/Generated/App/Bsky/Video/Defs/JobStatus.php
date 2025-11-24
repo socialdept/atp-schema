@@ -25,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class JobStatus extends Data
 {
-
     /**
      * @param  string  $state  The state of the video processing job. All values not listed as a known value indicate that the job is in process.
      * @param  int|null  $progress  Progress within the current processing state.
@@ -38,7 +37,8 @@ class JobStatus extends Data
         public readonly ?BlobReference $blob = null,
         public readonly ?string $error = null,
         public readonly ?string $message = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

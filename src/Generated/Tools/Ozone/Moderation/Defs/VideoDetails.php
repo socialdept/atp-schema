@@ -17,14 +17,14 @@ use SocialDept\Schema\Data\Data;
  */
 class VideoDetails extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly int $width,
         public readonly int $height,
         public readonly int $length
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

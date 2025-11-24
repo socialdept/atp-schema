@@ -3,9 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Notification\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\Preferences\ChatPreference;
-use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\Preferences\FilterablePreference;
-use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\Preferences\Preference;
 
 /**
  * Lexicon: app.bsky.notification.defs.preferences
@@ -30,7 +27,6 @@ use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\Preferences\Preferenc
  */
 class Preferences extends Data
 {
-
     /**
      */
     public function __construct(
@@ -47,7 +43,8 @@ class Preferences extends Data
         public readonly mixed $subscribedPost,
         public readonly mixed $unverified,
         public readonly mixed $verified
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

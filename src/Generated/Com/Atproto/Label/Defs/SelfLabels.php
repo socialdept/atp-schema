@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\Com\Atproto\Label\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\SelfLabels\SelfLabel;
 
 /**
  * Metadata tags on an atproto record, published by the author within the
@@ -20,12 +19,12 @@ use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\SelfLabels\SelfLabel;
  */
 class SelfLabels extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly array $values
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

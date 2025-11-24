@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\KnownFollowers\ProfileViewBasic;
 
 /**
  * The subject's followers whom you also follow
@@ -21,13 +20,13 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\KnownFollowers\ProfileViewBa
  */
 class KnownFollowers extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly int $count,
         public readonly array $followers
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

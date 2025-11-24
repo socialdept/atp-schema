@@ -18,13 +18,13 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileView;
  */
 class ListItemView extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $uri,
         public readonly ProfileView $subject
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

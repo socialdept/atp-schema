@@ -12,12 +12,12 @@ use SocialDept\Schema\Data\Data;
  */
 class ViewerConfig extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly ?string $role = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

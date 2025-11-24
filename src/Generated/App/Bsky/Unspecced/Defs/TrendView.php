@@ -25,7 +25,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
  */
 class TrendView extends Data
 {
-
     /**
      */
     public function __construct(
@@ -37,7 +36,8 @@ class TrendView extends Data
         public readonly array $actors,
         public readonly ?string $status = null,
         public readonly ?string $category = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

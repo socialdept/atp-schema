@@ -26,7 +26,6 @@ use SocialDept\Schema\Data\Data;
  */
 class AgeAssuranceEvent extends Data
 {
-
     /**
      * @param  Carbon  $createdAt  The date and time of this write operation.
      * @param  string  $status  The status of the age assurance process.
@@ -46,7 +45,8 @@ class AgeAssuranceEvent extends Data
         public readonly ?string $initUa = null,
         public readonly ?string $completeIp = null,
         public readonly ?string $completeUa = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

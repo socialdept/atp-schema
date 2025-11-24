@@ -25,7 +25,6 @@ use SocialDept\Schema\Data\Data;
  */
 class LabelValueDefinitionStrings extends Data
 {
-
     /**
      * @param  string  $lang  The code of the language these strings are written in.
      * @param  string  $name  A short human-readable name for the label.
@@ -35,7 +34,8 @@ class LabelValueDefinitionStrings extends Data
         public readonly string $lang,
         public readonly string $name,
         public readonly string $description
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

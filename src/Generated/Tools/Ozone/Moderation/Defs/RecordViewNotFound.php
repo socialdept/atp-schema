@@ -16,12 +16,12 @@ use SocialDept\Schema\Data\Data;
  */
 class RecordViewNotFound extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly string $uri
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

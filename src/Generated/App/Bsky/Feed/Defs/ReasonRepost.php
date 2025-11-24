@@ -23,7 +23,6 @@ use SocialDept\Schema\Generated\App\Bsky\Actor\ProfileViewBasic;
  */
 class ReasonRepost extends Data
 {
-
     /**
      */
     public function __construct(
@@ -31,7 +30,8 @@ class ReasonRepost extends Data
         public readonly Carbon $indexedAt,
         public readonly ?string $uri = null,
         public readonly ?string $cid = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

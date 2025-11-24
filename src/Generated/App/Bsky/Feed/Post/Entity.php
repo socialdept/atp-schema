@@ -3,7 +3,6 @@
 namespace SocialDept\Schema\Generated\App\Bsky\Feed\Post;
 
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Post\Entity\TextSlice;
 
 /**
  * Deprecated: use facets instead.
@@ -20,7 +19,6 @@ use SocialDept\Schema\Generated\App\Bsky\Feed\Post\Entity\TextSlice;
  */
 class Entity extends Data
 {
-
     /**
      * @param  string  $type  Expected values are 'mention' and 'link'.
      */
@@ -28,7 +26,8 @@ class Entity extends Data
         public readonly mixed $index,
         public readonly string $type,
         public readonly string $value
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

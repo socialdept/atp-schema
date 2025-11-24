@@ -4,7 +4,6 @@ namespace SocialDept\Schema\Generated\Com\Atproto\Sync\SubscribeRepos;
 
 use Carbon\Carbon;
 use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Sync\SubscribeRepos\Commit\RepoOp;
 
 /**
  * Represents an update of repository state. Note that empty commits are
@@ -38,7 +37,6 @@ use SocialDept\Schema\Generated\Com\Atproto\Sync\SubscribeRepos\Commit\RepoOp;
  */
 class Commit extends Data
 {
-
     /**
      * @param  int  $seq  The stream sequence number of this message.
      * @param  bool  $rebase  DEPRECATED -- unused
@@ -64,7 +62,8 @@ class Commit extends Data
         public readonly array $blobs,
         public readonly Carbon $time,
         public readonly ?string $prevData = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.

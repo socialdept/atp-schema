@@ -15,12 +15,12 @@ use SocialDept\Schema\Data\Data;
  */
 class LabelerViewerState extends Data
 {
-
     /**
      */
     public function __construct(
         public readonly ?string $like = null
-    ) {}
+    ) {
+    }
 
     /**
      * Get the lexicon NSID for this data type.
