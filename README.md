@@ -29,6 +29,119 @@ Think of it as your complete toolkit for building AT Protocol applications that 
 - **Union types** - Full support for discriminated unions with `$type` fields
 - **Extensible** - Macros and hooks let you customize behavior
 - **Production ready** - 818 passing tests with comprehensive coverage
+- **Pre-generated classes** - Includes type-safe PHP classes for all standard AT Protocol & Bluesky lexicons
+
+## Pre-Generated Lexicon Classes
+
+Schema ships with pre-generated PHP classes for all standard AT Protocol and Bluesky lexicons, providing immediate type-safe access without any generation step:
+
+```php
+use SocialDept\Schema\Generated\App\Bsky\Feed\Post;
+use SocialDept\Schema\Generated\App\Bsky\Graph\Follow;
+use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
+
+// Create type-safe records
+$post = new Post(
+    text: 'Hello ATP!',
+    createdAt: now()
+);
+
+// Create references
+$ref = new StrongRef(
+    uri: 'at://did:plc:example/app.bsky.feed.post/123',
+    cid: 'bafyreic3...'
+);
+
+// Validate and use
+Schema::validate('app.bsky.feed.post', $post); // true
+```
+
+### Available Pre-Generated Classes
+
+Schema includes **220+ pre-generated classes** covering all standard AT Protocol and Bluesky lexicons:
+
+**Record Types (`SocialDept\Schema\Generated\App\Bsky\*`)**
+- `Feed\Post` - Social media posts
+- `Feed\Like` - Like records
+- `Feed\Repost` - Repost records
+- `Graph\Follow` - Follow relationships
+- `Graph\Block` - Block records
+- `Graph\List` - User lists
+- `Graph\Listitem` - List items
+- `Labeler\Service` - Labeler service records
+
+**Embed Types**
+- `Embed\Images` - Image embeds
+- `Embed\External` - External link embeds
+- `Embed\Record` - Record embeds
+- `Embed\RecordWithMedia` - Record with media embeds
+- `Embed\Video` - Video embeds
+
+**Feed & Post Views (`App\Bsky\Feed\Defs\*`)**
+- `PostView` - Post with engagement metrics
+- `FeedViewPost` - Post in feed context
+- `ThreadViewPost` - Post in thread context
+- `ReplyRef` - Reply references
+- `ViewerState` - User's interaction state
+
+**Actor & Profile Views (`App\Bsky\Actor\Defs\*`)**
+- `ProfileView` - Full profile view
+- `ProfileViewBasic` - Basic profile view
+- `ProfileViewDetailed` - Detailed profile view
+- `ViewerState` - Viewer's relationship to profile
+- Plus 25+ preference and state classes
+
+**Graph & Social Views (`App\Bsky\Graph\Defs\*`)**
+- `ListView` - List views
+- `ListItemView` - List item views
+- `Relationship` - User relationships
+- `StarterPackView` - Starter pack views
+
+**Rich Text (`App\Bsky\Richtext\Facet\*`)**
+- `Facet` - Text annotations (mentions, URLs, hashtags)
+- `Mention` - User mention facets
+- `Link` - URL link facets
+- `Tag` - Hashtag facets
+
+**AT Protocol Core (`Com\Atproto\*`)**
+- `Repo\StrongRef` - Content-addressed record references
+- `Repo\Defs\CommitMeta` - Repository commit metadata
+- `Label\Defs\Label` - Content labels
+- `Admin\Defs\*` - Administrative tools (20+ classes)
+- `Sync\SubscribeRepos\*` - Repository sync events (6+ classes)
+- `Server\Defs\*` - Server definitions
+
+**Moderation (`Tools\Ozone\*`)**
+- `Moderation\Defs\*` - Moderation definitions
+- `Communication\Defs\*` - Moderation communication
+
+### Generated Enums
+
+Schema also generates PHP 8.1+ enums for string types with known values:
+
+**Moderation**
+- `Com\Atproto\Moderation\ReasonType` - Report reason types (spam, violation, etc.)
+- `Com\Atproto\Moderation\SubjectType` - Report subject types (account, record, chat)
+
+**Labels & Content**
+- `Com\Atproto\Label\LabelValue` - Content label values
+
+**Graph & Social**
+- `App\Bsky\Graph\ListPurpose` - List purpose types (modlist, curatelist)
+- `App\Bsky\Actor\MutedWordTarget` - Muted word target types
+
+**Moderation Tools**
+- `Tools\Ozone\Moderation\SubjectReviewState` - Review state values
+
+### Publishing Source Lexicons
+
+Developers can optionally publish the source JSON lexicons to their project for reference or custom generation:
+
+```bash
+php artisan vendor:publish --tag=atp-lexicons
+```
+
+This copies all lexicon JSON files to `resources/lexicons/`.
 
 ## Quick Example
 
