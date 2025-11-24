@@ -215,13 +215,14 @@ class MethodGenerator
                 return "\$data['{$name}'] ?? null";
             }
 
-            // Handle NSID fragments - extract just the NSID part
+            // Handle NSID fragments
             if (str_contains($ref, '#')) {
-                $ref = explode('#', $ref)[0];
+                [$baseNsid, $fragment] = explode('#', $ref, 2);
+                $className = $this->naming->toClassName($fragment);
+            } else {
+                $refClass = $this->naming->nsidToClassName($ref);
+                $className = basename(str_replace('\\', '/', $refClass));
             }
-
-            $refClass = $this->naming->nsidToClassName($ref);
-            $className = basename(str_replace('\\', '/', $refClass));
 
             if ($isRequired) {
                 return "{$className}::fromArray(\$data['{$name}'])";
@@ -241,11 +242,12 @@ class MethodGenerator
 
             // Handle NSID fragments
             if (str_contains($ref, '#')) {
-                $ref = explode('#', $ref)[0];
+                [$baseNsid, $fragment] = explode('#', $ref, 2);
+                $className = $this->naming->toClassName($fragment);
+            } else {
+                $refClass = $this->naming->nsidToClassName($ref);
+                $className = basename(str_replace('\\', '/', $refClass));
             }
-
-            $refClass = $this->naming->nsidToClassName($ref);
-            $className = basename(str_replace('\\', '/', $refClass));
 
             return "isset(\$data['{$name}']) ? array_map(fn (\$item) => {$className}::fromArray(\$item), \$data['{$name}']) : []";
         }
@@ -279,11 +281,12 @@ class MethodGenerator
                 foreach ($externalRefs as $ref) {
                     // Handle NSID fragments
                     if (str_contains($ref, '#')) {
-                        $ref = explode('#', $ref)[0];
+                        [$baseNsid, $fragment] = explode('#', $ref, 2);
+                        $className = $this->naming->toClassName($fragment);
+                    } else {
+                        $refClass = $this->naming->nsidToClassName($ref);
+                        $className = basename(str_replace('\\', '/', $refClass));
                     }
-
-                    $refClass = $this->naming->nsidToClassName($ref);
-                    $className = basename(str_replace('\\', '/', $refClass));
                     $variantClasses[] = "{$className}::class";
                 }
 
