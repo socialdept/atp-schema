@@ -12,8 +12,6 @@ use SocialDept\Schema\Data\Data;
  */
 class DeleteResult extends Data
 {
-
-
     /**
      * Get the lexicon NSID for this data type.
      *
