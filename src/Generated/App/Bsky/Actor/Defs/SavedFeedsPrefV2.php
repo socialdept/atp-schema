@@ -1,0 +1,50 @@
+<?php
+
+namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
+
+use SocialDept\Schema\Data\Data;
+use SocialDept\Schema\Generated\App\Bsky\Actor\SavedFeed;
+
+/**
+ * Lexicon: app.bsky.actor.defs.savedFeedsPrefV2
+ * Type: object
+ *
+ * @property array<SavedFeed> $items
+ *
+ * Constraints:
+ * - Required: items
+ */
+class SavedFeedsPrefV2 extends Data
+{
+
+    /**
+     */
+    public function __construct(
+        public readonly array $items
+    ) {}
+
+    /**
+     * Get the lexicon NSID for this data type.
+     *
+     * @return string
+     */
+    public static function getLexicon(): string
+    {
+        return 'app.bsky.actor.defs.savedFeedsPrefV2';
+    }
+
+
+    /**
+     * Create an instance from an array.
+     *
+     * @param  array  $data  The data array
+     * @return static
+     */
+    public static function fromArray(array $data): static
+    {
+        return new static(
+            items: isset($data['items']) ? array_map(fn ($item) => Defs::fromArray($item), $data['items']) : []
+        );
+    }
+
+}
