@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Graph\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
 
 /**
  * GENERATED CODE - DO NOT EDIT

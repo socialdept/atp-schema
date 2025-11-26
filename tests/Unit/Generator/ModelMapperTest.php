@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Generator\ModelMapper;
+use SocialDept\AtpSchema\Generator\ModelMapper;
 
 class ModelMapperTest extends TestCase
 {
@@ -79,7 +79,7 @@ class ModelMapperTest extends TestCase
             'image' => ['type' => 'blob'],
         ]);
 
-        $this->assertStringContainsString('\\SocialDept\\Schema\\Data\\BlobReference::fromArray', $body);
+        $this->assertStringContainsString('\\SocialDept\\AtpSchema\\Data\\BlobReference::fromArray', $body);
     }
 
     public function test_it_handles_ref_in_to_model(): void

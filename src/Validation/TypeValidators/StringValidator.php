@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Validation\TypeValidators;
+namespace SocialDept\AtpSchema\Validation\TypeValidators;
 
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class StringValidator
 {
@@ -180,7 +180,7 @@ class StringValidator
     protected function validateNsid(string $value): bool
     {
         try {
-            \SocialDept\Schema\Parser\Nsid::parse($value);
+            \SocialDept\AtpSchema\Parser\Nsid::parse($value);
 
             return true;
         } catch (\Exception) {

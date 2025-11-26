@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Embed\Video;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Video;
 
-use SocialDept\Schema\Data\BlobReference;
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\BlobReference;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * GENERATED CODE - DO NOT EDIT

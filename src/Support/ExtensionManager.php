@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Support;
+namespace SocialDept\AtpSchema\Support;
 
 use Closure;
 

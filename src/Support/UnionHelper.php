@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Support;
+namespace SocialDept\AtpSchema\Support;
 
 use InvalidArgumentException;
-use SocialDept\Schema\Contracts\DiscriminatedUnion;
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Contracts\DiscriminatedUnion;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * Helper for resolving discriminated unions based on $type field.

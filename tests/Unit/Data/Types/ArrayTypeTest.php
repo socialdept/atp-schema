@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data\Types;
+namespace SocialDept\AtpSchema\Tests\Unit\Data\Types;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Types\ArrayType;
-use SocialDept\Schema\Data\Types\StringType;
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Data\Types\ArrayType;
+use SocialDept\AtpSchema\Data\Types\StringType;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class ArrayTypeTest extends TestCase
 {

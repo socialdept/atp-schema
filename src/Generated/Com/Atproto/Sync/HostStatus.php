@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Com\Atproto\Sync;
+namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync;
 
 /**
  * GENERATED CODE - DO NOT EDIT

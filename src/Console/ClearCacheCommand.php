@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Console;
+namespace SocialDept\AtpSchema\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;

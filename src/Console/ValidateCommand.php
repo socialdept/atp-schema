@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Console;
+namespace SocialDept\AtpSchema\Console;
 
 use Illuminate\Console\Command;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Validation\LexiconValidator;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Validation\LexiconValidator;
 
 class ValidateCommand extends Command
 {

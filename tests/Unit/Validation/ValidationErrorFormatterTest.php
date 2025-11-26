@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Validation;
+namespace SocialDept\AtpSchema\Tests\Unit\Validation;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Validation\ValidationError;
-use SocialDept\Schema\Validation\ValidationErrorFormatter;
+use SocialDept\AtpSchema\Validation\ValidationError;
+use SocialDept\AtpSchema\Validation\ValidationErrorFormatter;
 
 class ValidationErrorFormatterTest extends TestCase
 {

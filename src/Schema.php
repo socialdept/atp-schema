@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema;
+namespace SocialDept\AtpSchema;
 
 class Schema
 {

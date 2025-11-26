@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Validation;
+namespace SocialDept\AtpSchema\Tests\Unit\Validation;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Validation\ValidationError;
+use SocialDept\AtpSchema\Validation\ValidationError;
 
 class ValidationErrorTest extends TestCase
 {

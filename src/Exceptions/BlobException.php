@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Exceptions;
+namespace SocialDept\AtpSchema\Exceptions;
 
 class BlobException extends SchemaException
 {

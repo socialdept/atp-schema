@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Validation\Rules;
+namespace SocialDept\AtpSchema\Validation\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -19,8 +19,8 @@ class Did implements ValidationRule
         }
 
         // Check if Resolver package is available
-        if (class_exists('SocialDept\Resolver\Support\Identity')) {
-            if (! \SocialDept\Resolver\Support\Identity::isDid($value)) {
+        if (class_exists('SocialDept\AtpResolver\Support\Identity')) {
+            if (! \SocialDept\AtpResolver\Support\Identity::isDid($value)) {
                 $fail("The {$attribute} is not a valid DID.");
             }
 

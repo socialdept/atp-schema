@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\GenerationException;
-use SocialDept\Schema\Support\ExtensionManager;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\GenerationException;
+use SocialDept\AtpSchema\Support\ExtensionManager;
 
 class ClassGenerator
 {
@@ -225,7 +225,7 @@ class ClassGenerator
      */
     protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = ''): array
     {
-        $uses = ['SocialDept\\Schema\\Data\\Data'];
+        $uses = ['SocialDept\\AtpSchema\\Data\\Data'];
         $properties = $definition['properties'] ?? [];
         $hasUnions = false;
         $localRefs = [];
@@ -281,7 +281,7 @@ class ClassGenerator
 
         // Add UnionHelper if unions are used
         if ($hasUnions) {
-            $uses[] = 'SocialDept\\Schema\\Support\\UnionHelper';
+            $uses[] = 'SocialDept\\AtpSchema\\Support\\UnionHelper';
         }
 
         // Remove duplicates and sort

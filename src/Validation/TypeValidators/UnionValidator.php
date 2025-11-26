@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Validation\TypeValidators;
+namespace SocialDept\AtpSchema\Validation\TypeValidators;
 
-use SocialDept\Schema\Exceptions\RecordValidationException;
-use SocialDept\Schema\Services\UnionResolver;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Services\UnionResolver;
 
 class UnionValidator
 {

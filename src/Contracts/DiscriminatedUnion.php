@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Contracts;
+namespace SocialDept\AtpSchema\Contracts;
 
 /**
  * Contract for Data classes that can participate in AT Protocol discriminated unions.

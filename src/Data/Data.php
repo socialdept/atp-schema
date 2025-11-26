@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Data;
+namespace SocialDept\AtpSchema\Data;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use JsonSerializable;
-use SocialDept\Schema\Contracts\DiscriminatedUnion;
+use SocialDept\AtpSchema\Contracts\DiscriminatedUnion;
 use Stringable;
 
 abstract class Data implements Arrayable, DiscriminatedUnion, Jsonable, JsonSerializable, Stringable
@@ -179,7 +179,7 @@ abstract class Data implements Arrayable, DiscriminatedUnion, Jsonable, JsonSeri
      */
     public function validateWithErrors(): array
     {
-        if (! function_exists('SocialDept\Schema\schema')) {
+        if (! function_exists('SocialDept\AtpSchema\schema')) {
             return [];
         }
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ViewerState;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ViewerState;
 
 /**
  * GENERATED CODE - DO NOT EDIT

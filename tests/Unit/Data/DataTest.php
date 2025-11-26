@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data;
+namespace SocialDept\AtpSchema\Tests\Unit\Data;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\Data;
 
 class DataTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Embed\Video;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Video;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\Defs\AspectRatio;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
 /**
  * GENERATED CODE - DO NOT EDIT

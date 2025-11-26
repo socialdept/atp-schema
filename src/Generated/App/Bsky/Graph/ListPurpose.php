@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Graph;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph;
 
 /**
  * GENERATED CODE - DO NOT EDIT

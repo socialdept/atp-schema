@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Console;
+namespace SocialDept\AtpSchema\Console;
 
 use Illuminate\Console\Command;
-use SocialDept\Schema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
 
 class ListCommand extends Command
 {

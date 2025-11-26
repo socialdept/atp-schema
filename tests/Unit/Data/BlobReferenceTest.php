@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data;
+namespace SocialDept\AtpSchema\Tests\Unit\Data;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\BlobReference;
-use SocialDept\Schema\Exceptions\SchemaValidationException;
+use SocialDept\AtpSchema\Data\BlobReference;
+use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
 
 class BlobReferenceTest extends TestCase
 {

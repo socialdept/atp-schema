@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
-use SocialDept\Schema\Generated\App\Bsky\Notification\Defs\ActivitySubscription;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
+use SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs\ActivitySubscription;
 
 /**
  * GENERATED CODE - DO NOT EDIT

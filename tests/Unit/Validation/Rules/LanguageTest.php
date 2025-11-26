@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Validation\Rules;
+namespace SocialDept\AtpSchema\Tests\Unit\Validation\Rules;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Validation\Rules\Language;
+use SocialDept\AtpSchema\Validation\Rules\Language;
 
 class LanguageTest extends TestCase
 {

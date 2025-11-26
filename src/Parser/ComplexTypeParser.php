@@ -1,14 +1,14 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
-use SocialDept\Schema\Data\TypeDefinition;
-use SocialDept\Schema\Data\Types\ArrayType;
-use SocialDept\Schema\Data\Types\BlobType;
-use SocialDept\Schema\Data\Types\ObjectType;
-use SocialDept\Schema\Data\Types\RefType;
-use SocialDept\Schema\Data\Types\UnionType;
-use SocialDept\Schema\Exceptions\TypeResolutionException;
+use SocialDept\AtpSchema\Data\TypeDefinition;
+use SocialDept\AtpSchema\Data\Types\ArrayType;
+use SocialDept\AtpSchema\Data\Types\BlobType;
+use SocialDept\AtpSchema\Data\Types\ObjectType;
+use SocialDept\AtpSchema\Data\Types\RefType;
+use SocialDept\AtpSchema\Data\Types\UnionType;
+use SocialDept\AtpSchema\Exceptions\TypeResolutionException;
 
 class ComplexTypeParser
 {

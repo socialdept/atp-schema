@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Exceptions\GenerationException;
-use SocialDept\Schema\Generator\StubRenderer;
+use SocialDept\AtpSchema\Exceptions\GenerationException;
+use SocialDept\AtpSchema\Generator\StubRenderer;
 
 class StubRendererTest extends TestCase
 {

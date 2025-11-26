@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Generator\DTOGenerator;
-use SocialDept\Schema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Generator\DTOGenerator;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
 
 class DTOGeneratorTest extends TestCase
 {

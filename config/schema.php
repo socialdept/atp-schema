@@ -83,14 +83,14 @@ return [
     |--------------------------------------------------------------------------
     |
     | The package includes pre-generated PHP classes for all standard
-    | AT Protocol and Bluesky lexicons in the SocialDept\Schema\Generated
+    | AT Protocol and Bluesky lexicons in the SocialDept\AtpSchema\Generated
     | namespace. These provide immediate type-safe access to records.
     |
     */
 
     'generated' => [
         // Namespace for bundled pre-generated classes
-        'namespace' => 'SocialDept\\Schema\\Generated',
+        'namespace' => 'SocialDept\\AtpSchema\\Generated',
 
         // Enable usage of bundled generated classes
         'enabled' => env('SCHEMA_USE_GENERATED', true),

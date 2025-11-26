@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
-use SocialDept\Schema\Parser\Nsid;
+use SocialDept\AtpSchema\Parser\Nsid;
 
 class NamingConverter
 {

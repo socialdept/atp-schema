@@ -36,9 +36,9 @@ Think of it as your complete toolkit for building AT Protocol applications that 
 Schema ships with pre-generated PHP classes for all standard AT Protocol and Bluesky lexicons, providing immediate type-safe access without any generation step:
 
 ```php
-use SocialDept\Schema\Generated\App\Bsky\Feed\Post;
-use SocialDept\Schema\Generated\App\Bsky\Graph\Follow;
-use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
+use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post;
+use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Follow;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
 
 // Create type-safe records
 $post = new Post(
@@ -60,7 +60,7 @@ Schema::validate('app.bsky.feed.post', $post); // true
 
 Schema includes **220+ pre-generated classes** covering all standard AT Protocol and Bluesky lexicons:
 
-**Record Types (`SocialDept\Schema\Generated\App\Bsky\*`)**
+**Record Types (`SocialDept\AtpSchema\Generated\App\Bsky\*`)**
 - `Feed\Post` - Social media posts
 - `Feed\Like` - Like records
 - `Feed\Repost` - Repost records
@@ -146,9 +146,9 @@ This copies all lexicon JSON files to `resources/lexicons/`.
 ## Quick Example
 
 ```php
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Validation\Validator;
-use SocialDept\Schema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Validation\Validator;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
 
 // Load a schema
 $schema = LexiconDocument::fromArray([
@@ -205,7 +205,7 @@ php artisan vendor:publish --tag=schema-config
 Choose the validation strictness that fits your use case:
 
 ```php
-use SocialDept\Schema\Validation\Validator;
+use SocialDept\AtpSchema\Validation\Validator;
 
 // STRICT - Rejects unknown fields
 $validator->setMode(Validator::MODE_STRICT);
@@ -222,7 +222,7 @@ $validator->setMode(Validator::MODE_LENIENT);
 Upload and validate files with built-in constraints:
 
 ```php
-use SocialDept\Schema\Services\BlobHandler;
+use SocialDept\AtpSchema\Services\BlobHandler;
 
 $blobHandler = new BlobHandler('local');
 
@@ -242,8 +242,8 @@ $data = [
 Transform between raw arrays and domain objects:
 
 ```php
-use SocialDept\Schema\Services\ModelMapper;
-use SocialDept\Schema\Contracts\Transformer;
+use SocialDept\AtpSchema\Services\ModelMapper;
+use SocialDept\AtpSchema\Contracts\Transformer;
 
 class Post
 {
@@ -290,7 +290,7 @@ $array = $mapper->toArray('app.bsky.feed.post', $post);
 Work with discriminated unions using the `$type` field:
 
 ```php
-use SocialDept\Schema\Services\UnionResolver;
+use SocialDept\AtpSchema\Services\UnionResolver;
 
 $resolver = new UnionResolver();
 
@@ -312,9 +312,9 @@ $resolver->validateDiscriminated($data, $refs);
 Here's how to validate a post with an image upload:
 
 ```php
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Validation\Validator;
-use SocialDept\Schema\Services\BlobHandler;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Validation\Validator;
+use SocialDept\AtpSchema\Services\BlobHandler;
 
 // Load schema
 $schema = LexiconDocument::fromArray([/* ... */]);
@@ -381,7 +381,7 @@ Built-in validators for AT Protocol formats:
 Add custom logic at key points in the validation lifecycle:
 
 ```php
-use SocialDept\Schema\Support\ExtensionManager;
+use SocialDept\AtpSchema\Support\ExtensionManager;
 
 $extensions = new ExtensionManager();
 
@@ -398,7 +398,7 @@ $transformed = $extensions->filter('before:validate', $data);
 Extend core services with custom methods:
 
 ```php
-use SocialDept\Schema\Services\ModelMapper;
+use SocialDept\AtpSchema\Services\ModelMapper;
 
 ModelMapper::macro('validateAndTransform', function ($type, $data, $schema) {
     if (!$this->validator->validate($data, $schema)) {

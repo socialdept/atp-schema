@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Data;
+namespace SocialDept\AtpSchema\Data;
 
 abstract class TypeDefinition
 {
@@ -38,7 +38,7 @@ abstract class TypeDefinition
     /**
      * Validate a value against this type definition.
      *
-     * @throws \SocialDept\Schema\Exceptions\RecordValidationException
+     * @throws \SocialDept\AtpSchema\Exceptions\RecordValidationException
      */
     abstract public function validate(mixed $value, string $path = ''): void;
 

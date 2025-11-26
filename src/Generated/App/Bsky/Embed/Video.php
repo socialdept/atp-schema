@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Embed;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed;
 
-use SocialDept\Schema\Data\BlobReference;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\Defs\AspectRatio;
+use SocialDept\AtpSchema\Data\BlobReference;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
 /**
  * GENERATED CODE - DO NOT EDIT

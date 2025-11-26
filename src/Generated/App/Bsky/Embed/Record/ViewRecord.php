@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Embed\Record;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Record;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT

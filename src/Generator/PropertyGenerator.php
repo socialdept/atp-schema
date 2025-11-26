@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
 class PropertyGenerator
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Parser;
+namespace SocialDept\AtpSchema\Tests\Unit\Parser;
 
 use Illuminate\Support\Facades\Cache;
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\SchemaNotFoundException;
-use SocialDept\Schema\Exceptions\SchemaParseException;
-use SocialDept\Schema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\SchemaNotFoundException;
+use SocialDept\AtpSchema\Exceptions\SchemaParseException;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
 
 class SchemaLoaderTest extends TestCase
 {

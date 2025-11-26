@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Com\Atproto\Sync\ListHosts;
+namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\ListHosts;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Sync\Defs\HostStatus;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Sync\Defs\HostStatus;
 
 /**
  * GENERATED CODE - DO NOT EDIT

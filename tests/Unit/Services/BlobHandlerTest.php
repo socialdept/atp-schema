@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Services;
+namespace SocialDept\AtpSchema\Tests\Unit\Services;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\BlobReference;
-use SocialDept\Schema\Exceptions\RecordValidationException;
-use SocialDept\Schema\Services\BlobHandler;
+use SocialDept\AtpSchema\Data\BlobReference;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Services\BlobHandler;
 
 class BlobHandlerTest extends TestCase
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
 use Illuminate\Support\Facades\Http;
-use SocialDept\Schema\Contracts\LexiconParser;
-use SocialDept\Schema\Contracts\LexiconResolver;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\SchemaNotFoundException;
+use SocialDept\AtpSchema\Contracts\LexiconParser;
+use SocialDept\AtpSchema\Contracts\LexiconResolver;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\SchemaNotFoundException;
 
 class DnsLexiconResolver implements LexiconResolver
 {
@@ -46,7 +46,7 @@ class DnsLexiconResolver implements LexiconResolver
         $this->enabled = $enabled;
         $this->httpTimeout = $httpTimeout;
         $this->parser = $parser ?? new DefaultLexiconParser();
-        $this->hasResolver = class_exists('SocialDept\\Resolver\\Resolver');
+        $this->hasResolver = class_exists('SocialDept\\AtpResolver\\Resolver');
     }
 
     /**
@@ -171,8 +171,8 @@ class DnsLexiconResolver implements LexiconResolver
 
         try {
             // Get resolver from Laravel container if available
-            if (function_exists('app') && app()->has(\SocialDept\Resolver\Resolver::class)) {
-                $resolver = app(\SocialDept\Resolver\Resolver::class);
+            if (function_exists('app') && app()->has(\SocialDept\AtpResolver\Resolver::class)) {
+                $resolver = app(\SocialDept\AtpResolver\Resolver::class);
             } else {
                 // Can't instantiate without dependencies
                 return null;

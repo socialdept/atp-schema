@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data\Types;
+namespace SocialDept\AtpSchema\Tests\Unit\Data\Types;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Types\UnknownType;
+use SocialDept\AtpSchema\Data\Types\UnknownType;
 
 class UnknownTypeTest extends TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Console;
+namespace SocialDept\AtpSchema\Console;
 
 use Illuminate\Console\Command;
-use SocialDept\Schema\Generator\DTOGenerator;
-use SocialDept\Schema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Generator\DTOGenerator;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
 
 class GenerateCommand extends Command
 {
@@ -164,7 +164,7 @@ class GenerateCommand extends Command
     /**
      * Extract all NSID dependencies from a schema.
      */
-    protected function extractDependencies(\SocialDept\Schema\Data\LexiconDocument $schema): array
+    protected function extractDependencies(\SocialDept\AtpSchema\Data\LexiconDocument $schema): array
     {
         $dependencies = [];
         $currentNsid = $schema->getNsid();

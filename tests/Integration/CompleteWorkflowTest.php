@@ -1,17 +1,17 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Integration;
+namespace SocialDept\AtpSchema\Tests\Integration;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Contracts\LexiconRegistry;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Services\BlobHandler;
-use SocialDept\Schema\Services\UnionResolver;
-use SocialDept\Schema\Support\ExtensionManager;
-use SocialDept\Schema\Validation\Validator;
+use SocialDept\AtpSchema\Contracts\LexiconRegistry;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Services\BlobHandler;
+use SocialDept\AtpSchema\Services\UnionResolver;
+use SocialDept\AtpSchema\Support\ExtensionManager;
+use SocialDept\AtpSchema\Validation\Validator;
 
 class CompleteWorkflowTest extends TestCase
 {

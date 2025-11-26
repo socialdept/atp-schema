@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Data\Types;
+namespace SocialDept\AtpSchema\Data\Types;
 
-use SocialDept\Schema\Data\TypeDefinition;
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Data\TypeDefinition;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class ArrayType extends TypeDefinition
 {

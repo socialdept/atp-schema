@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data;
+namespace SocialDept\AtpSchema\Tests\Unit\Data;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\SchemaValidationException;
-use SocialDept\Schema\Parser\Nsid;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
+use SocialDept\AtpSchema\Parser\Nsid;
 
 class LexiconDocumentTest extends TestCase
 {

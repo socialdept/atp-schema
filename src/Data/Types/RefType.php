@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Data\Types;
+namespace SocialDept\AtpSchema\Data\Types;
 
-use SocialDept\Schema\Data\TypeDefinition;
+use SocialDept\AtpSchema\Data\TypeDefinition;
 
 class RefType extends TypeDefinition
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Integration;
+namespace SocialDept\AtpSchema\Tests\Integration;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Contracts\Transformer;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Services\ModelMapper;
-use SocialDept\Schema\Validation\Validator;
+use SocialDept\AtpSchema\Contracts\Transformer;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Services\ModelMapper;
+use SocialDept\AtpSchema\Validation\Validator;
 
 class ModelMappingIntegrationTest extends TestCase
 {

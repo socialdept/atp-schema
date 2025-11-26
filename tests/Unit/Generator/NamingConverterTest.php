@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Generator\NamingConverter;
+use SocialDept\AtpSchema\Generator\NamingConverter;
 
 class NamingConverterTest extends TestCase
 {

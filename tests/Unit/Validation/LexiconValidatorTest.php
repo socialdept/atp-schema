@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Validation;
+namespace SocialDept\AtpSchema\Tests\Unit\Validation;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\RecordValidationException;
-use SocialDept\Schema\Exceptions\SchemaValidationException;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Validation\LexiconValidator;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Validation\LexiconValidator;
 
 class LexiconValidatorTest extends TestCase
 {

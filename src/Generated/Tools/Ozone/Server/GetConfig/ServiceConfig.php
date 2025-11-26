@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Tools\Ozone\Server\GetConfig;
+namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Server\GetConfig;
 
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * GENERATED CODE - DO NOT EDIT

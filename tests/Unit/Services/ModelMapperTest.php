@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Services;
+namespace SocialDept\AtpSchema\Tests\Unit\Services;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Contracts\Transformer;
-use SocialDept\Schema\Exceptions\SchemaException;
-use SocialDept\Schema\Services\ModelMapper;
+use SocialDept\AtpSchema\Contracts\Transformer;
+use SocialDept\AtpSchema\Exceptions\SchemaException;
+use SocialDept\AtpSchema\Services\ModelMapper;
 
 class ModelMapperTest extends TestCase
 {

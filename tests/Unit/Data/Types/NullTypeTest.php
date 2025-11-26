@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data\Types;
+namespace SocialDept\AtpSchema\Tests\Unit\Data\Types;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Types\NullType;
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Data\Types\NullType;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class NullTypeTest extends TestCase
 {

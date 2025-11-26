@@ -1,12 +1,12 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Support;
+namespace SocialDept\AtpSchema\Tests\Unit\Support;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Services\BlobHandler;
-use SocialDept\Schema\Services\ModelMapper;
-use SocialDept\Schema\Services\UnionResolver;
-use SocialDept\Schema\Validation\Validator;
+use SocialDept\AtpSchema\Services\BlobHandler;
+use SocialDept\AtpSchema\Services\ModelMapper;
+use SocialDept\AtpSchema\Services\UnionResolver;
+use SocialDept\AtpSchema\Validation\Validator;
 
 class MacroableTest extends TestCase
 {
@@ -74,7 +74,7 @@ class MacroableTest extends TestCase
     {
         Validator::macro('customMethod', fn () => 'validator custom');
 
-        $schemaLoader = $this->createMock(\SocialDept\Schema\Parser\SchemaLoader::class);
+        $schemaLoader = $this->createMock(\SocialDept\AtpSchema\Parser\SchemaLoader::class);
         $validator = new Validator($schemaLoader);
 
         $this->assertEquals('validator custom', $validator->customMethod());

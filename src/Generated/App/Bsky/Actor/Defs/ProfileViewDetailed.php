@@ -1,12 +1,12 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Actor\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Graph\Defs\StarterPackViewBasic;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
-use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs\StarterPackViewBasic;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
  * GENERATED CODE - DO NOT EDIT

@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Exceptions;
+namespace SocialDept\AtpSchema\Exceptions;
 
 use Exception;
 

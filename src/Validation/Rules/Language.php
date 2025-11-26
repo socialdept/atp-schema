@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Validation\Rules;
+namespace SocialDept\AtpSchema\Validation\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;

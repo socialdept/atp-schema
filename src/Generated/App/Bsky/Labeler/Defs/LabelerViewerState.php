@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * GENERATED CODE - DO NOT EDIT

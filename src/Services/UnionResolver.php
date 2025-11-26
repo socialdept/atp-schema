@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Services;
+namespace SocialDept\AtpSchema\Services;
 
 use Illuminate\Support\Traits\Macroable;
-use SocialDept\Schema\Contracts\LexiconRegistry;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Contracts\LexiconRegistry;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class UnionResolver
 {

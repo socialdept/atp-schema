@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
+namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
-use SocialDept\Schema\Support\UnionHelper;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
+use SocialDept\AtpSchema\Support\UnionHelper;
 
 /**
  * GENERATED CODE - DO NOT EDIT

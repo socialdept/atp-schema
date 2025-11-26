@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Contracts;
+namespace SocialDept\AtpSchema\Contracts;
 
-use SocialDept\Schema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Data\LexiconDocument;
 
 interface LexiconRegistry
 {
