@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Parser;
+namespace SocialDept\AtpSchema\Tests\Unit\Parser;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Data\Types\ObjectType;
-use SocialDept\Schema\Data\Types\StringType;
-use SocialDept\Schema\Exceptions\TypeResolutionException;
-use SocialDept\Schema\Parser\TypeParser;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Data\Types\ObjectType;
+use SocialDept\AtpSchema\Data\Types\StringType;
+use SocialDept\AtpSchema\Exceptions\TypeResolutionException;
+use SocialDept\AtpSchema\Parser\TypeParser;
 
 class TypeParserTest extends TestCase
 {

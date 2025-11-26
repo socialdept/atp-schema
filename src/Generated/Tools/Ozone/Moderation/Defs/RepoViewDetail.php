@@ -1,12 +1,12 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation\Defs;
+namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Admin\Defs\ThreatSignature;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
-use SocialDept\Schema\Generated\Com\Atproto\Server\Defs\InviteCode;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Admin\Defs\ThreatSignature;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Server\Defs\InviteCode;
 
 /**
  * GENERATED CODE - DO NOT EDIT

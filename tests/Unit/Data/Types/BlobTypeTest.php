@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data\Types;
+namespace SocialDept\AtpSchema\Tests\Unit\Data\Types;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Types\BlobType;
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Data\Types\BlobType;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class BlobTypeTest extends TestCase
 {

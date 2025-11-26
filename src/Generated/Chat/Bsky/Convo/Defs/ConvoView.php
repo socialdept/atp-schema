@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Chat\Bsky\Convo\Defs;
+namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
-use SocialDept\Schema\Support\UnionHelper;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
+use SocialDept\AtpSchema\Support\UnionHelper;
 
 /**
  * GENERATED CODE - DO NOT EDIT

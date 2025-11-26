@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Support;
+namespace SocialDept\AtpSchema\Support;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use SocialDept\Schema\Contracts\BlobHandler;
-use SocialDept\Schema\Data\BlobReference;
+use SocialDept\AtpSchema\Contracts\BlobHandler;
+use SocialDept\AtpSchema\Data\BlobReference;
 
 class DefaultBlobHandler implements BlobHandler
 {

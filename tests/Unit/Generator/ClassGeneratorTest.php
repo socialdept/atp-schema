@@ -1,12 +1,12 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\GenerationException;
-use SocialDept\Schema\Generator\ClassGenerator;
-use SocialDept\Schema\Parser\Nsid;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\GenerationException;
+use SocialDept\AtpSchema\Generator\ClassGenerator;
+use SocialDept\AtpSchema\Parser\Nsid;
 
 class ClassGeneratorTest extends TestCase
 {
@@ -105,7 +105,7 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $this->assertStringContainsString('use SocialDept\\Schema\\Data\\Data;', $code);
+        $this->assertStringContainsString('use SocialDept\\AtpSchema\\Data\\Data;', $code);
     }
 
     public function test_it_includes_ref_use_statements(): void
@@ -276,7 +276,7 @@ class ClassGeneratorTest extends TestCase
 
         $code = $this->generator->generate($document);
 
-        $basePos = strpos($code, 'use SocialDept\\Schema\\Data\\Data;');
+        $basePos = strpos($code, 'use SocialDept\\AtpSchema\\Data\\Data;');
 
         $this->assertNotFalse($basePos);
         $this->assertStringContainsString('class Complex extends Data', $code);
@@ -288,9 +288,9 @@ class ClassGeneratorTest extends TestCase
         $typeMapper = $this->generator->getTypeMapper();
         $renderer = $this->generator->getRenderer();
 
-        $this->assertInstanceOf(\SocialDept\Schema\Generator\NamingConverter::class, $naming);
-        $this->assertInstanceOf(\SocialDept\Schema\Generator\TypeMapper::class, $typeMapper);
-        $this->assertInstanceOf(\SocialDept\Schema\Generator\StubRenderer::class, $renderer);
+        $this->assertInstanceOf(\SocialDept\AtpSchema\Generator\NamingConverter::class, $naming);
+        $this->assertInstanceOf(\SocialDept\AtpSchema\Generator\TypeMapper::class, $typeMapper);
+        $this->assertInstanceOf(\SocialDept\AtpSchema\Generator\StubRenderer::class, $renderer);
     }
 
     /**

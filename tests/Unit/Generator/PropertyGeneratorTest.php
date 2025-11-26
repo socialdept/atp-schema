@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Generator\PropertyGenerator;
+use SocialDept\AtpSchema\Generator\PropertyGenerator;
 
 class PropertyGeneratorTest extends TestCase
 {

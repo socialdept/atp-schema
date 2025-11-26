@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Support\ExtensionManager;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Support\ExtensionManager;
 
 class MethodGenerator
 {

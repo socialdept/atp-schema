@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Embed\External;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\External;
 
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * GENERATED CODE - DO NOT EDIT

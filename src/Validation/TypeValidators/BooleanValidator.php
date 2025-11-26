@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Validation\TypeValidators;
+namespace SocialDept\AtpSchema\Validation\TypeValidators;
 
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class BooleanValidator
 {

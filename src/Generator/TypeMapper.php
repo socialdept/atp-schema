@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
-use SocialDept\Schema\Support\ExtensionManager;
+use SocialDept\AtpSchema\Support\ExtensionManager;
 
 class TypeMapper
 {
@@ -407,7 +407,7 @@ class TypeMapper
         }
 
         if ($type === 'blob') {
-            return ['SocialDept\\Schema\\Data\\BlobReference'];
+            return ['SocialDept\\AtpSchema\\Data\\BlobReference'];
         }
 
         if ($type === 'ref' && isset($definition['ref'])) {
@@ -423,7 +423,7 @@ class TypeMapper
                 [$baseNsid, $fragment] = explode('#', $ref, 2);
                 // For fragments, we need to include ALL segments of the base NSID
                 // Parse the NSID and convert each segment to PascalCase
-                $nsid = \SocialDept\Schema\Parser\Nsid::parse($baseNsid);
+                $nsid = \SocialDept\AtpSchema\Parser\Nsid::parse($baseNsid);
                 $segments = $nsid->getSegments();
                 $namespaceParts = array_map(
                     fn ($part) => $this->naming->toPascalCase($part),
@@ -458,7 +458,7 @@ class TypeMapper
                 if (str_contains($ref, '#')) {
                     [$baseNsid, $fragment] = explode('#', $ref, 2);
                     // For fragments, we need to include ALL segments of the base NSID
-                    $nsid = \SocialDept\Schema\Parser\Nsid::parse($baseNsid);
+                    $nsid = \SocialDept\AtpSchema\Parser\Nsid::parse($baseNsid);
                     $segments = $nsid->getSegments();
                     $namespaceParts = array_map(
                         fn ($part) => $this->naming->toPascalCase($part),

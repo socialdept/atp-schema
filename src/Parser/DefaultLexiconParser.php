@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
-use SocialDept\Schema\Contracts\LexiconParser;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\SchemaParseException;
+use SocialDept\AtpSchema\Contracts\LexiconParser;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\SchemaParseException;
 
 class DefaultLexiconParser implements LexiconParser
 {

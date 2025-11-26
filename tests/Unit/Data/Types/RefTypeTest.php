@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Data\Types;
+namespace SocialDept\AtpSchema\Tests\Unit\Data\Types;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Types\RefType;
+use SocialDept\AtpSchema\Data\Types\RefType;
 
 class RefTypeTest extends TestCase
 {

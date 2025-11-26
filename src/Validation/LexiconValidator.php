@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Validation;
+namespace SocialDept\AtpSchema\Validation;
 
-use SocialDept\Schema\Contracts\LexiconValidator as LexiconValidatorContract;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\RecordValidationException;
-use SocialDept\Schema\Exceptions\SchemaValidationException;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Parser\TypeParser;
+use SocialDept\AtpSchema\Contracts\LexiconValidator as LexiconValidatorContract;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Parser\TypeParser;
 
 class LexiconValidator implements LexiconValidatorContract
 {

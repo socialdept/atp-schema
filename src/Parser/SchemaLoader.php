@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use SocialDept\Schema\Contracts\SchemaRepository;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\SchemaNotFoundException;
-use SocialDept\Schema\Exceptions\SchemaParseException;
+use SocialDept\AtpSchema\Contracts\SchemaRepository;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\SchemaNotFoundException;
+use SocialDept\AtpSchema\Exceptions\SchemaParseException;
 
 class SchemaLoader implements SchemaRepository
 {
@@ -79,7 +79,7 @@ class SchemaLoader implements SchemaRepository
         $this->cachePrefix = $cachePrefix;
         $this->dnsResolutionEnabled = $dnsResolutionEnabled;
         $this->httpTimeout = $httpTimeout;
-        $this->hasResolver = class_exists('SocialDept\\Resolver\\Resolver');
+        $this->hasResolver = class_exists('SocialDept\\AtpResolver\\Resolver');
     }
 
     /**
@@ -436,8 +436,8 @@ class SchemaLoader implements SchemaRepository
 
         try {
             // Get resolver from Laravel container if available
-            if (function_exists('app') && app()->has(\SocialDept\Resolver\Resolver::class)) {
-                $resolver = app(\SocialDept\Resolver\Resolver::class);
+            if (function_exists('app') && app()->has(\SocialDept\AtpResolver\Resolver::class)) {
+                $resolver = app(\SocialDept\AtpResolver\Resolver::class);
             } else {
                 // Can't instantiate without dependencies
                 return null;

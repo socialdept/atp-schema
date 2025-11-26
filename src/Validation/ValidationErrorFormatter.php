@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Validation;
+namespace SocialDept\AtpSchema\Validation;
 
 class ValidationErrorFormatter
 {

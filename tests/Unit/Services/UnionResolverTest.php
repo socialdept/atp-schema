@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Services;
+namespace SocialDept\AtpSchema\Tests\Unit\Services;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Contracts\LexiconRegistry;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Exceptions\RecordValidationException;
-use SocialDept\Schema\Parser\Nsid;
-use SocialDept\Schema\Services\UnionResolver;
+use SocialDept\AtpSchema\Contracts\LexiconRegistry;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSchema\Services\UnionResolver;
 
 class UnionResolverTest extends TestCase
 {

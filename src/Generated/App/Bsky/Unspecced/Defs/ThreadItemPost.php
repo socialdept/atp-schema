@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Unspecced\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\PostView;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\PostView;
 
 /**
  * GENERATED CODE - DO NOT EDIT

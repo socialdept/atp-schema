@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Console;
+namespace SocialDept\AtpSchema\Tests\Unit\Console;
 
 use Illuminate\Support\Facades\Cache;
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Console\ClearCacheCommand;
-use SocialDept\Schema\SchemaServiceProvider;
+use SocialDept\AtpSchema\Console\ClearCacheCommand;
+use SocialDept\AtpSchema\SchemaServiceProvider;
 
 class ClearCacheCommandTest extends TestCase
 {

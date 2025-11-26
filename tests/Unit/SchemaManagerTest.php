@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit;
+namespace SocialDept\AtpSchema\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Generator\DTOGenerator;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\SchemaManager;
-use SocialDept\Schema\Validation\LexiconValidator;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Generator\DTOGenerator;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\SchemaManager;
+use SocialDept\AtpSchema\Validation\LexiconValidator;
 
 class SchemaManagerTest extends TestCase
 {

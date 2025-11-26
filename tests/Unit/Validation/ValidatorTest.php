@@ -1,12 +1,12 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Validation;
+namespace SocialDept\AtpSchema\Tests\Unit\Validation;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Parser\Nsid;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Validation\Validator;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Validation\Validator;
 
 class ValidatorTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
 class ModelMapper
 {
@@ -129,7 +129,7 @@ class ModelMapper
 
         // Handle blob types
         if ($type === 'blob') {
-            return "\$model->{$name} ? \\SocialDept\\Schema\\Data\\BlobReference::fromArray(\$model->{$name}) : null";
+            return "\$model->{$name} ? \\SocialDept\\AtpSchema\\Data\\BlobReference::fromArray(\$model->{$name}) : null";
         }
 
         // Handle nested refs

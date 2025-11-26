@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Generator\NamingConverter;
-use SocialDept\Schema\Generator\TypeMapper;
+use SocialDept\AtpSchema\Generator\NamingConverter;
+use SocialDept\AtpSchema\Generator\TypeMapper;
 
 class TypeMapperTest extends TestCase
 {
@@ -234,7 +234,7 @@ class TypeMapperTest extends TestCase
     {
         $uses = $this->mapper->getUseStatements(['type' => 'blob']);
 
-        $this->assertContains('SocialDept\\Schema\\Data\\BlobReference', $uses);
+        $this->assertContains('SocialDept\\AtpSchema\\Data\\BlobReference', $uses);
     }
 
     public function test_it_gets_use_statements_for_ref(): void

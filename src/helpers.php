@@ -1,13 +1,13 @@
 <?php
 
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Facades\Schema;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Facades\Schema;
 
 if (! function_exists('schema')) {
     /**
      * Get the SchemaManager instance or load a schema.
      *
-     * @return \SocialDept\Schema\SchemaManager|LexiconDocument
+     * @return \SocialDept\AtpSchema\SchemaManager|LexiconDocument
      */
     function schema(?string $nsid = null)
     {

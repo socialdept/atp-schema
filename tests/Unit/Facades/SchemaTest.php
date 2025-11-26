@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Facades;
+namespace SocialDept\AtpSchema\Tests\Unit\Facades;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Facades\Schema;
-use SocialDept\Schema\SchemaServiceProvider;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Facades\Schema;
+use SocialDept\AtpSchema\SchemaServiceProvider;
 
 class SchemaTest extends TestCase
 {

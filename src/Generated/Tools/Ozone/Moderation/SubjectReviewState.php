@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Tools\Ozone\Moderation;
+namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation;
 
 /**
  * GENERATED CODE - DO NOT EDIT

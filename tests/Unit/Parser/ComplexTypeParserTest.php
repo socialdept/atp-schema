@@ -1,16 +1,16 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Parser;
+namespace SocialDept\AtpSchema\Tests\Unit\Parser;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Types\ArrayType;
-use SocialDept\Schema\Data\Types\BlobType;
-use SocialDept\Schema\Data\Types\ObjectType;
-use SocialDept\Schema\Data\Types\RefType;
-use SocialDept\Schema\Data\Types\StringType;
-use SocialDept\Schema\Data\Types\UnionType;
-use SocialDept\Schema\Exceptions\TypeResolutionException;
-use SocialDept\Schema\Parser\ComplexTypeParser;
+use SocialDept\AtpSchema\Data\Types\ArrayType;
+use SocialDept\AtpSchema\Data\Types\BlobType;
+use SocialDept\AtpSchema\Data\Types\ObjectType;
+use SocialDept\AtpSchema\Data\Types\RefType;
+use SocialDept\AtpSchema\Data\Types\StringType;
+use SocialDept\AtpSchema\Data\Types\UnionType;
+use SocialDept\AtpSchema\Exceptions\TypeResolutionException;
+use SocialDept\AtpSchema\Parser\ComplexTypeParser;
 
 class ComplexTypeParserTest extends TestCase
 {

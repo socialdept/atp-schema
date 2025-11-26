@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Console;
+namespace SocialDept\AtpSchema\Tests\Unit\Console;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Console\GenerateCommand;
-use SocialDept\Schema\SchemaServiceProvider;
+use SocialDept\AtpSchema\Console\GenerateCommand;
+use SocialDept\AtpSchema\SchemaServiceProvider;
 
 class GenerateCommandTest extends TestCase
 {

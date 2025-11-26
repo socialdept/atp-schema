@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
-use SocialDept\Schema\Contracts\LexiconRegistry;
-use SocialDept\Schema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Contracts\LexiconRegistry;
+use SocialDept\AtpSchema\Data\LexiconDocument;
 
 class InMemoryLexiconRegistry implements LexiconRegistry
 {

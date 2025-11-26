@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Generator\DocBlockGenerator;
-use SocialDept\Schema\Parser\Nsid;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Generator\DocBlockGenerator;
+use SocialDept\AtpSchema\Parser\Nsid;
 
 class DocBlockGeneratorTest extends TestCase
 {

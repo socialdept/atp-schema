@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Data\TypeDefinition;
-use SocialDept\Schema\Exceptions\TypeResolutionException;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Data\TypeDefinition;
+use SocialDept\AtpSchema\Exceptions\TypeResolutionException;
 
 class TypeParser
 {

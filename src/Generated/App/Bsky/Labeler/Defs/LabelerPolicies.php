@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\LabelValue;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\LabelValueDefinition;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\LabelValue;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\LabelValueDefinition;
 
 /**
  * GENERATED CODE - DO NOT EDIT

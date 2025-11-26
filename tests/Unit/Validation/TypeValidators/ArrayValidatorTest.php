@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Validation\TypeValidators;
+namespace SocialDept\AtpSchema\Tests\Unit\Validation\TypeValidators;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Exceptions\RecordValidationException;
-use SocialDept\Schema\Validation\TypeValidators\ArrayValidator;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Validation\TypeValidators\ArrayValidator;
 
 class ArrayValidatorTest extends TestCase
 {

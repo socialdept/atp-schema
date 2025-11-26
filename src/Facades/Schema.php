@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Facades;
+namespace SocialDept\AtpSchema\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use SocialDept\Schema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Data\LexiconDocument;
 
 /**
  * @method static LexiconDocument load(string $nsid)
@@ -15,7 +15,7 @@ use SocialDept\Schema\Data\LexiconDocument;
  * @method static bool validate(string $nsid, array $data)
  * @method static array validateWithErrors(string $nsid, array $data)
  *
- * @see \SocialDept\Schema\SchemaManager
+ * @see \SocialDept\AtpSchema\SchemaManager
  */
 class Schema extends Facade
 {

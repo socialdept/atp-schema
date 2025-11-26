@@ -1,17 +1,17 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Parser;
+namespace SocialDept\AtpSchema\Tests\Unit\Parser;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\Types\BooleanType;
-use SocialDept\Schema\Data\Types\BytesType;
-use SocialDept\Schema\Data\Types\CidLinkType;
-use SocialDept\Schema\Data\Types\IntegerType;
-use SocialDept\Schema\Data\Types\NullType;
-use SocialDept\Schema\Data\Types\StringType;
-use SocialDept\Schema\Data\Types\UnknownType;
-use SocialDept\Schema\Exceptions\TypeResolutionException;
-use SocialDept\Schema\Parser\PrimitiveParser;
+use SocialDept\AtpSchema\Data\Types\BooleanType;
+use SocialDept\AtpSchema\Data\Types\BytesType;
+use SocialDept\AtpSchema\Data\Types\CidLinkType;
+use SocialDept\AtpSchema\Data\Types\IntegerType;
+use SocialDept\AtpSchema\Data\Types\NullType;
+use SocialDept\AtpSchema\Data\Types\StringType;
+use SocialDept\AtpSchema\Data\Types\UnknownType;
+use SocialDept\AtpSchema\Exceptions\TypeResolutionException;
+use SocialDept\AtpSchema\Parser\PrimitiveParser;
 
 class PrimitiveParserTest extends TestCase
 {

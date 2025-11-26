@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SocialDept\\Schema\\": "src/"
+            "SocialDept\\AtpSchema\\": "src/"
         },
         "files": [
             "src/helpers.php"
@@ -29,16 +29,16 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "SocialDept\\Schema\\Tests\\": "tests/"
+            "SocialDept\\AtpSchema\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "SocialDept\\Schema\\SchemaServiceProvider"
+                "SocialDept\\AtpSchema\\SchemaServiceProvider"
             ],
             "aliases": {
-                "Schema": "SocialDept\\Schema\\Facades\\Schema"
+                "Schema": "SocialDept\\AtpSchema\\Facades\\Schema"
             }
         }
     }

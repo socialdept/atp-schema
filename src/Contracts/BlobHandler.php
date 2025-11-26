@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Contracts;
+namespace SocialDept\AtpSchema\Contracts;
 
 use Illuminate\Http\UploadedFile;
-use SocialDept\Schema\Data\BlobReference;
+use SocialDept\AtpSchema\Data\BlobReference;
 
 interface BlobHandler
 {

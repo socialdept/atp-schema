@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Com\Atproto\Sync\SubscribeRepos;
+namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\SubscribeRepos;
 
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * GENERATED CODE - DO NOT EDIT

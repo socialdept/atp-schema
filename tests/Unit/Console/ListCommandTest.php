@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Console;
+namespace SocialDept\AtpSchema\Tests\Unit\Console;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Console\ListCommand;
-use SocialDept\Schema\SchemaServiceProvider;
+use SocialDept\AtpSchema\Console\ListCommand;
+use SocialDept\AtpSchema\SchemaServiceProvider;
 
 class ListCommandTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Exceptions;
+namespace SocialDept\AtpSchema\Exceptions;
 
 class SchemaValidationException extends SchemaException
 {

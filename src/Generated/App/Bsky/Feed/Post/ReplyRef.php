@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Feed\Post;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Repo\StrongRef;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
 
 /**
  * GENERATED CODE - DO NOT EDIT

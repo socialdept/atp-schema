@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Contracts;
+namespace SocialDept\AtpSchema\Contracts;
 
 interface Transformer
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Generator;
+namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Generator\MethodGenerator;
-use SocialDept\Schema\Parser\Nsid;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Generator\MethodGenerator;
+use SocialDept\AtpSchema\Parser\Nsid;
 
 class MethodGeneratorTest extends TestCase
 {
@@ -379,7 +379,7 @@ class MethodGeneratorTest extends TestCase
     {
         $mapper = $this->generator->getModelMapper();
 
-        $this->assertInstanceOf(\SocialDept\Schema\Generator\ModelMapper::class, $mapper);
+        $this->assertInstanceOf(\SocialDept\AtpSchema\Generator\ModelMapper::class, $mapper);
     }
 
     /**

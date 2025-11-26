@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Embed\Images;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Images;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Embed\Defs\AspectRatio;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
 /**
  * GENERATED CODE - DO NOT EDIT

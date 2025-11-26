@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Integration;
+namespace SocialDept\AtpSchema\Tests\Integration;
 
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Services\BlobHandler;
-use SocialDept\Schema\Validation\Validator;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Services\BlobHandler;
+use SocialDept\AtpSchema\Validation\Validator;
 
 class ValidationIntegrationTest extends TestCase
 {

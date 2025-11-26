@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Com\Atproto\Label\SubscribeLabels;
+namespace SocialDept\AtpSchema\Generated\Com\Atproto\Label\SubscribeLabels;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT

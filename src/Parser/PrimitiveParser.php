@@ -1,16 +1,16 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
-use SocialDept\Schema\Data\TypeDefinition;
-use SocialDept\Schema\Data\Types\BooleanType;
-use SocialDept\Schema\Data\Types\BytesType;
-use SocialDept\Schema\Data\Types\CidLinkType;
-use SocialDept\Schema\Data\Types\IntegerType;
-use SocialDept\Schema\Data\Types\NullType;
-use SocialDept\Schema\Data\Types\StringType;
-use SocialDept\Schema\Data\Types\UnknownType;
-use SocialDept\Schema\Exceptions\TypeResolutionException;
+use SocialDept\AtpSchema\Data\TypeDefinition;
+use SocialDept\AtpSchema\Data\Types\BooleanType;
+use SocialDept\AtpSchema\Data\Types\BytesType;
+use SocialDept\AtpSchema\Data\Types\CidLinkType;
+use SocialDept\AtpSchema\Data\Types\IntegerType;
+use SocialDept\AtpSchema\Data\Types\NullType;
+use SocialDept\AtpSchema\Data\Types\StringType;
+use SocialDept\AtpSchema\Data\Types\UnknownType;
+use SocialDept\AtpSchema\Exceptions\TypeResolutionException;
 
 class PrimitiveParser
 {

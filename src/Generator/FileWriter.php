@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
-use SocialDept\Schema\Exceptions\GenerationException;
+use SocialDept\AtpSchema\Exceptions\GenerationException;
 
 class FileWriter
 {

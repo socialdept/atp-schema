@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema;
+namespace SocialDept\AtpSchema;
 
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Generator\DTOGenerator;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Validation\LexiconValidator;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Generator\DTOGenerator;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Validation\LexiconValidator;
 
 class SchemaManager
 {

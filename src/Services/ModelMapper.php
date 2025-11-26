@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Services;
+namespace SocialDept\AtpSchema\Services;
 
 use Illuminate\Support\Traits\Macroable;
-use SocialDept\Schema\Contracts\Transformer;
-use SocialDept\Schema\Exceptions\SchemaException;
+use SocialDept\AtpSchema\Contracts\Transformer;
+use SocialDept\AtpSchema\Exceptions\SchemaException;
 
 class ModelMapper
 {

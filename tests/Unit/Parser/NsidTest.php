@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Parser;
+namespace SocialDept\AtpSchema\Tests\Unit\Parser;
 
 use PHPUnit\Framework\TestCase;
-use SocialDept\Schema\Exceptions\SchemaException;
-use SocialDept\Schema\Parser\Nsid;
+use SocialDept\AtpSchema\Exceptions\SchemaException;
+use SocialDept\AtpSchema\Parser\Nsid;
 
 class NsidTest extends TestCase
 {

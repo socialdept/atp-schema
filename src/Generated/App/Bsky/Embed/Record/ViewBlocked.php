@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Embed\Record;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Record;
 
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
 
 /**
  * GENERATED CODE - DO NOT EDIT

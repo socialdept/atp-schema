@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Validation\Rules;
+namespace SocialDept\AtpSchema\Tests\Unit\Validation\Rules;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Validation\Rules\Nsid;
+use SocialDept\AtpSchema\Validation\Rules\Nsid;
 
 class NsidTest extends TestCase
 {

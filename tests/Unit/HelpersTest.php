@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit;
+namespace SocialDept\AtpSchema\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\SchemaManager;
-use SocialDept\Schema\SchemaServiceProvider;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\SchemaManager;
+use SocialDept\AtpSchema\SchemaServiceProvider;
 
 class HelpersTest extends TestCase
 {

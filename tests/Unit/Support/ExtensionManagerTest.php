@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Tests\Unit\Support;
+namespace SocialDept\AtpSchema\Tests\Unit\Support;
 
 use Orchestra\Testbench\TestCase;
-use SocialDept\Schema\Support\ExtensionManager;
+use SocialDept\AtpSchema\Support\ExtensionManager;
 
 class ExtensionManagerTest extends TestCase
 {

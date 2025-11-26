@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Com\Atproto\Moderation;
+namespace SocialDept\AtpSchema\Generated\Com\Atproto\Moderation;
 
 /**
  * GENERATED CODE - DO NOT EDIT

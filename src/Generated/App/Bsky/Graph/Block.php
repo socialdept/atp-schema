@@ -1,9 +1,9 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Graph;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * GENERATED CODE - DO NOT EDIT

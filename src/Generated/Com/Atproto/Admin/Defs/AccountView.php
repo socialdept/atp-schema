@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generated\Com\Atproto\Admin\Defs;
+namespace SocialDept\AtpSchema\Generated\Com\Atproto\Admin\Defs;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\Com\Atproto\Server\Defs\InviteCode;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Server\Defs\InviteCode;
 
 /**
  * GENERATED CODE - DO NOT EDIT

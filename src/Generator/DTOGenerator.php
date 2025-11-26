@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Generator;
+namespace SocialDept\AtpSchema\Generator;
 
-use SocialDept\Schema\Contracts\DataGenerator;
-use SocialDept\Schema\Data\LexiconDocument;
-use SocialDept\Schema\Parser\SchemaLoader;
-use SocialDept\Schema\Parser\TypeParser;
+use SocialDept\AtpSchema\Contracts\DataGenerator;
+use SocialDept\AtpSchema\Data\LexiconDocument;
+use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Parser\TypeParser;
 
 class DTOGenerator implements DataGenerator
 {
@@ -232,7 +232,7 @@ class DTOGenerator implements DataGenerator
             ],
         ];
 
-        $tempDocument = \SocialDept\Schema\Data\LexiconDocument::fromArray($tempSchema);
+        $tempDocument = \SocialDept\AtpSchema\Data\LexiconDocument::fromArray($tempSchema);
 
         // Use ClassGenerator for proper code generation
         $code = $this->classGenerator->generate($tempDocument);

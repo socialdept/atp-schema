@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Services;
+namespace SocialDept\AtpSchema\Services;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Traits\Macroable;
-use SocialDept\Schema\Data\BlobReference;
-use SocialDept\Schema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Data\BlobReference;
+use SocialDept\AtpSchema\Exceptions\RecordValidationException;
 
 class BlobHandler
 {

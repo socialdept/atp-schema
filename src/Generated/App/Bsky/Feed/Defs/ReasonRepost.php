@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Feed\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
 
 /**
  * GENERATED CODE - DO NOT EDIT

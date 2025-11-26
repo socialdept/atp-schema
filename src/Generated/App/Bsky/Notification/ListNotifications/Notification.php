@@ -1,11 +1,11 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Notification\ListNotifications;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Notification\ListNotifications;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
 
 /**
  * GENERATED CODE - DO NOT EDIT

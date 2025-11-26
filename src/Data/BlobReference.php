@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Data;
+namespace SocialDept\AtpSchema\Data;
 
-use SocialDept\Schema\Exceptions\SchemaValidationException;
+use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
 
 class BlobReference
 {

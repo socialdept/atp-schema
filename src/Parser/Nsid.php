@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Parser;
+namespace SocialDept\AtpSchema\Parser;
 
-use SocialDept\Schema\Exceptions\SchemaException;
+use SocialDept\AtpSchema\Exceptions\SchemaException;
 use Stringable;
 
 class Nsid implements Stringable

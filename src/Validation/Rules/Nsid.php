@@ -1,10 +1,10 @@
 <?php
 
-namespace SocialDept\Schema\Validation\Rules;
+namespace SocialDept\AtpSchema\Validation\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use SocialDept\Schema\Parser\Nsid as NsidParser;
+use SocialDept\AtpSchema\Parser\Nsid as NsidParser;
 
 class Nsid implements ValidationRule
 {

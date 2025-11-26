@@ -1,13 +1,13 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Labeler\Defs;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
 use Carbon\Carbon;
-use SocialDept\Schema\Data\Data;
-use SocialDept\Schema\Generated\App\Bsky\Actor\Defs\ProfileView;
-use SocialDept\Schema\Generated\Com\Atproto\Label\Defs\Label;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\ReasonType;
-use SocialDept\Schema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
+use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\Defs\ReasonType;
+use SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
 
 /**
  * GENERATED CODE - DO NOT EDIT

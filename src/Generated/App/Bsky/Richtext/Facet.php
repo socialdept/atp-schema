@@ -1,8 +1,8 @@
 <?php
 
-namespace SocialDept\Schema\Generated\App\Bsky\Richtext;
+namespace SocialDept\AtpSchema\Generated\App\Bsky\Richtext;
 
-use SocialDept\Schema\Data\Data;
+use SocialDept\AtpSchema\Data\Data;
 
 /**
  * GENERATED CODE - DO NOT EDIT
