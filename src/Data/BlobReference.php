@@ -2,9 +2,13 @@
 
 namespace SocialDept\AtpSchema\Data;
 
+use Illuminate\Contracts\Support\Arrayable;
 use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
 
-class BlobReference
+/**
+ * @implements Arrayable<string, mixed>
+ */
+class BlobReference implements Arrayable
 {
     /**
      * CID of the blob.
