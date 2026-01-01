@@ -88,7 +88,8 @@ class ClassGenerator
         // Get class components
         $namespace = $this->extensions->filter('filter:class:namespace', $this->naming->nsidToNamespace($nsid), $document);
         $className = $this->extensions->filter('filter:class:className', $this->naming->toClassName($document->id->getName()), $document);
-        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace, $className), $document, $recordDef);
+        $isRecordType = $type === 'record';
+        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace, $className, $isRecordType), $document, $recordDef);
         $properties = $this->extensions->filter('filter:class:properties', $this->generateProperties($recordDef), $document, $recordDef);
         $constructor = $this->extensions->filter('filter:class:constructor', $this->generateConstructor($recordDef), $document, $recordDef);
         $methods = $this->extensions->filter('filter:class:methods', $this->generateMethods($document), $document);
@@ -223,7 +224,7 @@ class ClassGenerator
      * @param  array<string, mixed>  $definition
      * @return array<string>
      */
-    protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = ''): array
+    protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = '', bool $isRecordType = false): array
     {
         $uses = ['SocialDept\\AtpSchema\\Data\\Data'];
         $properties = $definition['properties'] ?? [];
@@ -268,9 +269,9 @@ class ClassGenerator
             foreach ($localRefs as $localRef) {
                 $refClassName = $this->naming->toClassName($localRef);
 
-                // If this is a nested definition (has currentClassName) and it's a record type,
-                // then local refs are nested under the record
-                if ($currentClassName && $definition['type'] === 'record') {
+                // If this is a record type, local refs are nested under the record class
+                // e.g., Site\Standard\Publication\Preferences for #preferences in site.standard.publication
+                if ($isRecordType && $currentClassName) {
                     $uses[] = $currentNamespace . '\\' . $currentClassName . '\\' . $refClassName;
                 } else {
                     // For object definitions or defs lexicons, local refs are siblings
