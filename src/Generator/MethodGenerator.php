@@ -205,14 +205,15 @@ class MethodGenerator
         if ($type === 'ref' && isset($definition['ref'])) {
             $ref = $definition['ref'];
 
-            // Skip local references (starting with #) - treat as mixed
+            // Handle local references (starting with #) - use class from localDefinitions
             if (str_starts_with($ref, '#')) {
-                // Local references don't need conversion, just return the data
+                $className = $this->naming->toClassName(ltrim($ref, '#'));
+
                 if ($isRequired) {
-                    return "\$data['{$name}']";
+                    return "{$className}::fromArray(\$data['{$name}'])";
                 }
 
-                return "\$data['{$name}'] ?? null";
+                return "isset(\$data['{$name}']) ? {$className}::fromArray(\$data['{$name}']) : null";
             }
 
             // Handle NSID fragments
@@ -235,9 +236,11 @@ class MethodGenerator
         if ($type === 'array' && isset($definition['items']['type']) && $definition['items']['type'] === 'ref') {
             $ref = $definition['items']['ref'];
 
-            // Skip local references - treat array as mixed
+            // Handle local references - hydrate each item
             if (str_starts_with($ref, '#')) {
-                return "\$data['{$name}'] ?? []";
+                $className = $this->naming->toClassName(ltrim($ref, '#'));
+
+                return "isset(\$data['{$name}']) ? array_map(fn (\$item) => {$className}::fromArray(\$item), \$data['{$name}']) : []";
             }
 
             // Handle NSID fragments
