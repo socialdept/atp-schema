@@ -28,7 +28,7 @@ Think of it as your complete toolkit for building AT Protocol applications that 
 - **Model transformation** - Convert between arrays and domain objects
 - **Union types** - Full support for discriminated unions with `$type` fields
 - **Extensible** - Macros and hooks let you customize behavior
-- **Production ready** - 818 passing tests with comprehensive coverage
+- **Production ready** - 842 passing tests with comprehensive coverage
 - **Pre-generated classes** - Includes type-safe PHP classes for all standard AT Protocol & Bluesky lexicons
 
 ## Pre-Generated Lexicon Classes
@@ -142,6 +142,40 @@ php artisan vendor:publish --tag=atp-lexicons
 ```
 
 This copies all lexicon JSON files to `resources/lexicons/`.
+
+### Generating Custom DTOs
+
+Generate PHP classes from any lexicon schema:
+
+```bash
+# Generate a single lexicon
+php artisan schema:generate app.bsky.feed.post
+
+# Generate with all dependencies
+php artisan schema:generate app.bsky.feed.post --with-dependencies
+
+# Regenerate existing files
+php artisan schema:generate app.bsky.feed.post --force
+```
+
+Generated classes include a `#[Generated]` attribute that controls regeneration behavior:
+
+```php
+use SocialDept\AtpSchema\Attributes\Generated;
+
+#[Generated(regenerate: true)]  // Will be overwritten on next --force
+class Post extends Data
+{
+    // ...
+}
+```
+
+**Protecting customized files:** If you modify a generated class and want to prevent it from being overwritten:
+
+1. Change `regenerate: true` to `regenerate: false`, or
+2. Remove the `#[Generated]` attribute entirely
+
+Files without the attribute or with `regenerate: false` will be skipped when running `--force`, keeping your customizations safe.
 
 ## Quick Example
 
