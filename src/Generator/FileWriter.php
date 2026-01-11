@@ -6,6 +6,7 @@ use SocialDept\AtpSchema\Exceptions\GenerationException;
 
 class FileWriter
 {
+
     /**
      * Whether to overwrite existing files.
      */
@@ -17,22 +18,39 @@ class FileWriter
     protected bool $createDirectories = true;
 
     /**
+     * Whether to respect the @generated marker (skip files without it).
+     */
+    protected bool $respectMarker = false;
+
+    /**
      * Create a new FileWriter.
      */
-    public function __construct(bool $overwrite = false, bool $createDirectories = true)
+    public function __construct(bool $overwrite = false, bool $createDirectories = true, bool $respectMarker = false)
     {
         $this->overwrite = $overwrite;
         $this->createDirectories = $createDirectories;
+        $this->respectMarker = $respectMarker;
     }
 
     /**
      * Write content to a file.
+     *
+     * @return bool True if file was written, false if skipped (due to missing @generated marker)
      */
-    public function write(string $path, string $content): void
+    public function write(string $path, string $content): bool
     {
-        // Check if file exists and we're not allowed to overwrite
-        if (file_exists($path) && ! $this->overwrite) {
-            throw GenerationException::fileExists($path);
+        // Check if file exists
+        if (file_exists($path)) {
+            // If not allowed to overwrite at all, throw
+            if (! $this->overwrite) {
+                throw GenerationException::fileExists($path);
+            }
+
+            // If respecting marker, check if file is regeneratable
+            if ($this->respectMarker && ! $this->isRegenerable($path)) {
+                // File exists but marker was removed - skip
+                return false;
+            }
         }
 
         // Create directory if it doesn't exist
@@ -54,6 +72,8 @@ class FileWriter
         if ($result === false) {
             throw GenerationException::cannotWriteFile($path);
         }
+
+        return true;
     }
 
     /**
@@ -110,5 +130,58 @@ class FileWriter
     public function setCreateDirectories(bool $createDirectories): void
     {
         $this->createDirectories = $createDirectories;
+    }
+
+    /**
+     * Set whether to respect the @generated marker.
+     *
+     * When true, files without the @generated marker will not be overwritten.
+     */
+    public function setRespectMarker(bool $respectMarker): void
+    {
+        $this->respectMarker = $respectMarker;
+    }
+
+    /**
+     * Check if a file is regenerable (has the #[Generated] attribute).
+     *
+     * Returns true if:
+     * - File doesn't exist
+     * - File has #[Generated] attribute (with regenerate: true or default)
+     *
+     * Returns false if:
+     * - File exists but #[Generated] attribute was removed
+     * - File has #[Generated(regenerate: false)]
+     */
+    public function isRegenerable(string $path): bool
+    {
+        if (! file_exists($path)) {
+            return true;
+        }
+
+        $content = @file_get_contents($path);
+
+        if ($content === false) {
+            return false;
+        }
+
+        // Look for the Generated attribute in the file
+        // Check for #[Generated] or #[Generated(...)]
+        if (! preg_match('/#\[Generated(?:\s*\(([^)]*)\))?\s*\]/', $content, $matches)) {
+            // No Generated attribute found - file was modified
+            return false;
+        }
+
+        // If there are parameters, check for regenerate: false
+        if (isset($matches[1]) && $matches[1] !== '') {
+            $params = $matches[1];
+
+            // Check for regenerate: false (with various spacing)
+            if (preg_match('/regenerate\s*:\s*false/', $params)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
