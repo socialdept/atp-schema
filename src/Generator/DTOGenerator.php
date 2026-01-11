@@ -130,23 +130,50 @@ class DTOGenerator implements DataGenerator
     }
 
     /**
+     * Generate DTO classes from NSID with detailed results.
+     *
+     * @return array{generated: array<string>, skipped: array<string>}
+     */
+    public function generateByNsidWithDetails(string $nsid, array $options = []): array
+    {
+        $document = $this->schemaLoader->load($nsid);
+
+        return $this->generateFromDocumentWithDetails($document, $options);
+    }
+
+    /**
      * Generate DTO classes from a lexicon document.
+     *
+     * @return array<string> List of generated file paths (excludes skipped files)
      */
     public function generateFromDocument(LexiconDocument $document, array $options = []): array
     {
-        $generatedFiles = [];
+        $result = $this->generateFromDocumentWithDetails($document, $options);
+
+        return $result['generated'];
+    }
+
+    /**
+     * Generate DTO classes from a lexicon document with detailed results.
+     *
+     * @return array{generated: array<string>, skipped: array<string>}
+     */
+    public function generateFromDocumentWithDetails(LexiconDocument $document, array $options = []): array
+    {
+        $generated = [];
+        $skipped = [];
 
         // Generate main class if it's a record or object
         $mainDef = $document->getMainDefinition();
         $mainType = $mainDef['type'] ?? null;
 
-        if ($document->isRecord()) {
-            $file = $this->generateRecordClass($document, $options);
-            $generatedFiles[] = $file;
-        } elseif ($mainType === 'object') {
-            // Generate for standalone object types (like strongRef)
-            $file = $this->generateRecordClass($document, $options);
-            $generatedFiles[] = $file;
+        if ($document->isRecord() || $mainType === 'object') {
+            $result = $this->generateRecordClass($document, $options);
+            if ($result['written']) {
+                $generated[] = $result['path'];
+            } else {
+                $skipped[] = $result['path'];
+            }
         }
 
         // Generate classes for other definitions
@@ -158,12 +185,16 @@ class DTOGenerator implements DataGenerator
             $definition = $document->getDefinition($defName);
 
             if (isset($definition['type']) && $definition['type'] === 'object') {
-                $file = $this->generateDefinitionClass($document, $defName, $options);
-                $generatedFiles[] = $file;
+                $result = $this->generateDefinitionClass($document, $defName, $options);
+                if ($result['written']) {
+                    $generated[] = $result['path'];
+                } else {
+                    $skipped[] = $result['path'];
+                }
             }
         }
 
-        return $generatedFiles;
+        return ['generated' => $generated, 'skipped' => $skipped];
     }
 
     /**
@@ -190,8 +221,10 @@ class DTOGenerator implements DataGenerator
 
     /**
      * Generate a record class from a lexicon document.
+     *
+     * @return array{path: string, written: bool}
      */
-    protected function generateRecordClass(LexiconDocument $document, array $options = []): string
+    protected function generateRecordClass(LexiconDocument $document, array $options = []): array
     {
         // Use ClassGenerator for proper code generation
         $code = $this->classGenerator->generate($document);
@@ -201,17 +234,24 @@ class DTOGenerator implements DataGenerator
         $className = $naming->toClassName($document->id->getName());
         $filePath = $this->getFilePath($namespace, $className);
 
+        $written = true;
         if (! ($options['dryRun'] ?? false)) {
-            $this->fileWriter->write($filePath, $code);
+            // Configure FileWriter based on options
+            $this->fileWriter->setOverwrite($options['overwrite'] ?? false);
+            $this->fileWriter->setRespectMarker($options['overwrite'] ?? false);
+
+            $written = $this->fileWriter->write($filePath, $code);
         }
 
-        return $filePath;
+        return ['path' => $filePath, 'written' => $written];
     }
 
     /**
      * Generate a class for a specific definition.
+     *
+     * @return array{path: string, written: bool}
      */
-    protected function generateDefinitionClass(LexiconDocument $document, string $defName, array $options = []): string
+    protected function generateDefinitionClass(LexiconDocument $document, string $defName, array $options = []): array
     {
         // Create a temporary document for this specific definition
         $definition = $document->getDefinition($defName);
@@ -242,11 +282,16 @@ class DTOGenerator implements DataGenerator
         $className = $naming->toClassName($defName);
         $filePath = $this->getFilePath($namespace, $className);
 
+        $written = true;
         if (! ($options['dryRun'] ?? false)) {
-            $this->fileWriter->write($filePath, $code);
+            // Configure FileWriter based on options
+            $this->fileWriter->setOverwrite($options['overwrite'] ?? false);
+            $this->fileWriter->setRespectMarker($options['overwrite'] ?? false);
+
+            $written = $this->fileWriter->write($filePath, $code);
         }
 
-        return $filePath;
+        return ['path' => $filePath, 'written' => $written];
     }
 
     /**
