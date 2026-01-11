@@ -75,27 +75,47 @@ class GenerateCommand extends Command
                 return self::SUCCESS;
             }
 
-            $allFiles = [];
+            $allGenerated = [];
+            $allSkipped = [];
 
             if ($withDependencies) {
                 $this->info('Generating with dependencies...');
-                $allFiles = $this->generateWithDependencies($nsid, $loader, $generator, $force);
+                $result = $this->generateWithDependencies($nsid, $loader, $generator, $force);
+                $allGenerated = $result['generated'];
+                $allSkipped = $result['skipped'];
             } else {
-                $allFiles = $generator->generateByNsid($nsid, [
+                $result = $generator->generateByNsidWithDetails($nsid, [
                     'dryRun' => false,
                     'overwrite' => $force,
                 ]);
+                $allGenerated = $result['generated'];
+                $allSkipped = $result['skipped'];
             }
 
             $this->newLine();
-            $this->info('Generated '.count($allFiles).' file(s):');
 
-            foreach ($allFiles as $file) {
-                $this->line("  - {$file}");
+            if (count($allGenerated) > 0) {
+                $this->info('Generated '.count($allGenerated).' file(s):');
+                foreach ($allGenerated as $file) {
+                    $this->line("  <fg=green>✓</> {$file}");
+                }
+            }
+
+            if (count($allSkipped) > 0) {
+                $this->newLine();
+                $this->warn('Skipped '.count($allSkipped).' file(s) (missing @generated marker):');
+                foreach ($allSkipped as $file) {
+                    $this->line("  <fg=yellow>⊘</> {$file}");
+                }
             }
 
             $this->newLine();
-            $this->info('✓ Generation completed successfully');
+
+            if (count($allGenerated) === 0 && count($allSkipped) === 0) {
+                $this->info('No files to generate.');
+            } else {
+                $this->info('✓ Generation completed successfully');
+            }
 
             return self::SUCCESS;
         } catch (\Exception $e) {
@@ -111,6 +131,8 @@ class GenerateCommand extends Command
 
     /**
      * Generate schema with all its dependencies recursively.
+     *
+     * @return array{generated: array<string>, skipped: array<string>}
      */
     protected function generateWithDependencies(
         string $nsid,
@@ -120,7 +142,7 @@ class GenerateCommand extends Command
     ): array {
         // Skip if already generated
         if (in_array($nsid, $this->generated)) {
-            return [];
+            return ['generated' => [], 'skipped' => []];
         }
 
         $this->line("  → Loading schema: {$nsid}");
@@ -130,18 +152,20 @@ class GenerateCommand extends Command
         } catch (\Exception $e) {
             $this->warn("  ⚠ Could not load {$nsid}: ".$e->getMessage());
 
-            return [];
+            return ['generated' => [], 'skipped' => []];
         }
 
         // Extract all referenced NSIDs from this schema
         $dependencies = $this->extractDependencies($schema);
 
-        $allFiles = [];
+        $allGenerated = [];
+        $allSkipped = [];
 
         // Generate dependencies first
         foreach ($dependencies as $depNsid) {
-            $depFiles = $this->generateWithDependencies($depNsid, $loader, $generator, $force);
-            $allFiles = array_merge($allFiles, $depFiles);
+            $depResult = $this->generateWithDependencies($depNsid, $loader, $generator, $force);
+            $allGenerated = array_merge($allGenerated, $depResult['generated']);
+            $allSkipped = array_merge($allSkipped, $depResult['skipped']);
         }
 
         // Mark as generated before generating to prevent circular references
@@ -149,16 +173,17 @@ class GenerateCommand extends Command
 
         // Generate current schema
         try {
-            $files = $generator->generateByNsid($nsid, [
+            $result = $generator->generateByNsidWithDetails($nsid, [
                 'dryRun' => false,
                 'overwrite' => $force,
             ]);
-            $allFiles = array_merge($allFiles, $files);
+            $allGenerated = array_merge($allGenerated, $result['generated']);
+            $allSkipped = array_merge($allSkipped, $result['skipped']);
         } catch (\Exception $e) {
             $this->warn("  ⚠ Could not generate {$nsid}: ".$e->getMessage());
         }
 
-        return $allFiles;
+        return ['generated' => $allGenerated, 'skipped' => $allSkipped];
     }
 
     /**

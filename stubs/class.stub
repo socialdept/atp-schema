@@ -2,9 +2,12 @@
 
 namespace {{ namespace }};
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 {{ imports }}
 
 {{ docBlock }}
+#[Generated(regenerate: true)]
 class {{ className }}{{ extends }}{{ implements }}
 {
 {{ properties }}{{ constructor }}

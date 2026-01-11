@@ -156,4 +156,189 @@ class FileWriterTest extends TestCase
 
         $this->assertSame('Updated', file_get_contents($path));
     }
+
+    // =========================================================================
+    // #[Generated] Attribute Tests
+    // =========================================================================
+
+    public function test_is_regenerable_returns_true_for_nonexistent_file(): void
+    {
+        $path = $this->tempDir.'/nonexistent.php';
+
+        $this->assertTrue($this->writer->isRegenerable($path));
+    }
+
+    public function test_is_regenerable_returns_true_for_file_with_generated_attribute(): void
+    {
+        $path = $this->tempDir.'/Test.php';
+        $content = <<<'PHP'
+<?php
+
+namespace App\Test;
+
+use SocialDept\AtpSchema\Attributes\Generated;
+
+#[Generated]
+class Test
+{
+}
+PHP;
+
+        file_put_contents($path, $content);
+
+        $this->assertTrue($this->writer->isRegenerable($path));
+    }
+
+    public function test_is_regenerable_returns_true_for_file_with_regenerate_true(): void
+    {
+        $path = $this->tempDir.'/Test.php';
+        $content = <<<'PHP'
+<?php
+
+namespace App\Test;
+
+use SocialDept\AtpSchema\Attributes\Generated;
+
+#[Generated(regenerate: true)]
+class Test
+{
+}
+PHP;
+
+        file_put_contents($path, $content);
+
+        $this->assertTrue($this->writer->isRegenerable($path));
+    }
+
+    public function test_is_regenerable_returns_false_for_file_with_regenerate_false(): void
+    {
+        $path = $this->tempDir.'/Test.php';
+        $content = <<<'PHP'
+<?php
+
+namespace App\Test;
+
+use SocialDept\AtpSchema\Attributes\Generated;
+
+#[Generated(regenerate: false)]
+class Test
+{
+}
+PHP;
+
+        file_put_contents($path, $content);
+
+        $this->assertFalse($this->writer->isRegenerable($path));
+    }
+
+    public function test_is_regenerable_returns_false_for_file_without_generated_attribute(): void
+    {
+        $path = $this->tempDir.'/Test.php';
+        $content = <<<'PHP'
+<?php
+
+namespace App\Test;
+
+class Test
+{
+}
+PHP;
+
+        file_put_contents($path, $content);
+
+        $this->assertFalse($this->writer->isRegenerable($path));
+    }
+
+    public function test_write_skips_file_when_respect_marker_enabled_and_no_attribute(): void
+    {
+        $writer = new FileWriter(overwrite: true, createDirectories: true, respectMarker: true);
+        $path = $this->tempDir.'/Test.php';
+
+        // Create file without Generated attribute
+        file_put_contents($path, '<?php class Test {}');
+
+        // Try to overwrite
+        $written = $writer->write($path, '<?php class Updated {}');
+
+        // Should be skipped
+        $this->assertFalse($written);
+        $this->assertStringContainsString('class Test', file_get_contents($path));
+    }
+
+    public function test_write_overwrites_file_when_respect_marker_enabled_and_has_attribute(): void
+    {
+        $writer = new FileWriter(overwrite: true, createDirectories: true, respectMarker: true);
+        $path = $this->tempDir.'/Test.php';
+
+        // Create file with Generated attribute
+        $original = <<<'PHP'
+<?php
+
+#[Generated(regenerate: true)]
+class Test {}
+PHP;
+        file_put_contents($path, $original);
+
+        // Try to overwrite
+        $newContent = <<<'PHP'
+<?php
+
+#[Generated(regenerate: true)]
+class Updated {}
+PHP;
+        $written = $writer->write($path, $newContent);
+
+        // Should be written
+        $this->assertTrue($written);
+        $this->assertStringContainsString('class Updated', file_get_contents($path));
+    }
+
+    public function test_write_skips_file_when_regenerate_is_false(): void
+    {
+        $writer = new FileWriter(overwrite: true, createDirectories: true, respectMarker: true);
+        $path = $this->tempDir.'/Test.php';
+
+        // Create file with regenerate: false
+        $original = <<<'PHP'
+<?php
+
+#[Generated(regenerate: false)]
+class Test {}
+PHP;
+        file_put_contents($path, $original);
+
+        // Try to overwrite
+        $written = $writer->write($path, '<?php class Updated {}');
+
+        // Should be skipped
+        $this->assertFalse($written);
+        $this->assertStringContainsString('class Test', file_get_contents($path));
+    }
+
+    public function test_write_returns_true_for_new_file(): void
+    {
+        $writer = new FileWriter(overwrite: true, createDirectories: true, respectMarker: true);
+        $path = $this->tempDir.'/NewFile.php';
+
+        $written = $writer->write($path, '<?php class NewFile {}');
+
+        $this->assertTrue($written);
+        $this->assertFileExists($path);
+    }
+
+    public function test_write_ignores_marker_when_respect_marker_disabled(): void
+    {
+        $writer = new FileWriter(overwrite: true, createDirectories: true, respectMarker: false);
+        $path = $this->tempDir.'/Test.php';
+
+        // Create file without Generated attribute
+        file_put_contents($path, '<?php class Test {}');
+
+        // Try to overwrite with respectMarker disabled
+        $written = $writer->write($path, '<?php class Updated {}');
+
+        // Should be written regardless of missing attribute
+        $this->assertTrue($written);
+        $this->assertStringContainsString('class Updated', file_get_contents($path));
+    }
 }
