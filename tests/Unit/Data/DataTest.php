@@ -247,6 +247,28 @@ class DataTest extends TestCase
 
         $this->assertIsArray($errors);
     }
+
+    public function test_it_preserves_false_boolean_in_array(): void
+    {
+        $data = new TestDataWithBoolean('Test', false);
+
+        $array = $data->toArray();
+
+        $this->assertArrayHasKey('enabled', $array);
+        $this->assertFalse($array['enabled']);
+    }
+
+    public function test_it_preserves_zero_integer_in_array(): void
+    {
+        $data = new TestDataWithFalsyValues('Test', 0, '');
+
+        $array = $data->toArray();
+
+        $this->assertArrayHasKey('count', $array);
+        $this->assertSame(0, $array['count']);
+        $this->assertArrayHasKey('description', $array);
+        $this->assertSame('', $array['description']);
+    }
 }
 
 // Test implementations
@@ -341,6 +363,52 @@ class TestDataWithDate extends Data
         return new static(
             name: $data['name'],
             createdAt: new \DateTime($data['createdAt'])
+        );
+    }
+}
+
+class TestDataWithBoolean extends Data
+{
+    public function __construct(
+        public readonly string $name,
+        public readonly bool $enabled
+    ) {
+    }
+
+    public static function getLexicon(): string
+    {
+        return 'app.test.boolean';
+    }
+
+    public static function fromArray(array $data): static
+    {
+        return new static(
+            name: $data['name'],
+            enabled: $data['enabled']
+        );
+    }
+}
+
+class TestDataWithFalsyValues extends Data
+{
+    public function __construct(
+        public readonly string $name,
+        public readonly int $count,
+        public readonly string $description
+    ) {
+    }
+
+    public static function getLexicon(): string
+    {
+        return 'app.test.falsy';
+    }
+
+    public static function fromArray(array $data): static
+    {
+        return new static(
+            name: $data['name'],
+            count: $data['count'],
+            description: $data['description']
         );
     }
 }
