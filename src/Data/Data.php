@@ -39,7 +39,7 @@ abstract class Data implements Arrayable, DiscriminatedUnion, Jsonable, JsonSeri
             }
         }
 
-        return array_filter($result);
+        return array_filter($result, fn ($value) => $value !== null);
     }
 
     /**
