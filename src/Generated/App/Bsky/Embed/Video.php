@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
  * - alt: Max length: 10000
  * - alt: Max graphemes: 1000
  */
+#[Generated(regenerate: true)]
 class Video extends Data
 {
     /**
@@ -59,8 +62,8 @@ class Video extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            video: $data['video'],
-            captions: $data['captions'] ?? [],
+            video: BlobReference::fromArray($data['video']),
+            captions: isset($data['captions']) ? array_map(fn ($item) => Caption::fromArray($item), $data['captions']) : [],
             alt: $data['alt'] ?? null,
             aspectRatio: isset($data['aspectRatio']) ? AspectRatio::fromArray($data['aspectRatio']) : null
         );

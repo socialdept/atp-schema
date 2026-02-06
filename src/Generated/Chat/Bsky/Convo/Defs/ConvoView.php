@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
 use SocialDept\AtpSchema\Support\UnionHelper;
@@ -24,6 +26,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: id, rev, members, muted, unreadCount
  */
+#[Generated(regenerate: true)]
 class ConvoView extends Data
 {
     public function __construct(

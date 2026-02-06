@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
@@ -23,6 +25,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
  * - cid: Format: cid
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class ReasonRepost extends Data
 {
     public function __construct(

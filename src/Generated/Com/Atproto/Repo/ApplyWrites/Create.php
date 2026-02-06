@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo\ApplyWrites;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -22,6 +24,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - rkey: Max length: 512
  * - rkey: Format: record-key
  */
+#[Generated(regenerate: true)]
 class Create extends Data
 {
     /**

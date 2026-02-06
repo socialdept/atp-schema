@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - feedContext: Max length: 2000
  * - reqId: Max length: 100
  */
+#[Generated(regenerate: true)]
 class Interaction extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo\ListMissingBlobs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - cid: Format: cid
  * - recordUri: Format: at-uri
  */
+#[Generated(regenerate: true)]
 class RecordBlob extends Data
 {
     public function __construct(

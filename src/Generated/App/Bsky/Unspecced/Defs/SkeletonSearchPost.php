@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: uri
  * - uri: Format: at-uri
  */
+#[Generated(regenerate: true)]
 class SkeletonSearchPost extends Data
 {
     public function __construct(

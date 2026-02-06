@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Richtext;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: index, features
  */
+#[Generated(regenerate: true)]
 class Facet extends Data
 {
     public function __construct(
@@ -44,7 +47,7 @@ class Facet extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            index: $data['index'],
+            index: ByteSlice::fromArray($data['index']),
             features: $data['features']
         );
     }

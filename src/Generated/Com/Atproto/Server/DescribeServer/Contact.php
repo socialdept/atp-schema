@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Server\DescribeServer;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -12,6 +14,7 @@ use SocialDept\AtpSchema\Data\Data;
  *
  * @property string|null $email
  */
+#[Generated(regenerate: true)]
 class Contact extends Data
 {
     public function __construct(

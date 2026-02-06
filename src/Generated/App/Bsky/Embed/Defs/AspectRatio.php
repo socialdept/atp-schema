@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - width: Minimum: 1
  * - height: Minimum: 1
  */
+#[Generated(regenerate: true)]
 class AspectRatio extends Data
 {
     public function __construct(

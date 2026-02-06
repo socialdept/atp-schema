@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: topic, link
  */
+#[Generated(regenerate: true)]
 class TrendingTopic extends Data
 {
     public function __construct(

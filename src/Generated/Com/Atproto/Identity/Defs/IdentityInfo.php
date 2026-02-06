@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Identity\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - did: Format: did
  * - handle: Format: handle
  */
+#[Generated(regenerate: true)]
 class IdentityInfo extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Notification\ListNotifications;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
@@ -30,6 +32,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - reasonSubject: Format: at-uri
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class Notification extends Data
 {
     /**

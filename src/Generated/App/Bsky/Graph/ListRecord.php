@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
@@ -15,6 +17,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Lexicon: app.bsky.graph.list
  * Type: record
  */
+#[Generated(regenerate: true)]
 class ListRecord extends Data
 {
     /**
@@ -57,7 +60,7 @@ class ListRecord extends Data
             createdAt: Carbon::parse($data['createdAt']),
             description: $data['description'] ?? null,
             descriptionFacets: isset($data['descriptionFacets']) ? array_map(fn ($item) => Facet::fromArray($item), $data['descriptionFacets']) : [],
-            avatar: $data['avatar'] ?? null,
+            avatar: isset($data['avatar']) ? BlobReference::fromArray($data['avatar']) : null,
             labels: isset($data['labels']) ? UnionHelper::validateOpenUnion($data['labels']) : null
         );
     }

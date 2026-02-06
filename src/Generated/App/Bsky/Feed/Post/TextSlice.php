@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - start: Minimum: 0
  * - end: Minimum: 0
  */
+#[Generated(regenerate: true)]
 class TextSlice extends Data
 {
     public function __construct(

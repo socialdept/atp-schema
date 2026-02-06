@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: subject, activitySubscription
  * - subject: Format: did
  */
+#[Generated(regenerate: true)]
 class SubjectActivitySubscription extends Data
 {
     public function __construct(
@@ -48,7 +51,7 @@ class SubjectActivitySubscription extends Data
     {
         return new static(
             subject: $data['subject'],
-            activitySubscription: $data['activitySubscription']
+            activitySubscription: ActivitySubscription::fromArray($data['activitySubscription'])
         );
     }
 

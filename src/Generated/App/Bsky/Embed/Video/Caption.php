@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Video;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: lang, file
  * - lang: Format: language
  */
+#[Generated(regenerate: true)]
 class Caption extends Data
 {
     public function __construct(
@@ -47,7 +50,7 @@ class Caption extends Data
     {
         return new static(
             lang: $data['lang'],
-            file: $data['file']
+            file: BlobReference::fromArray($data['file'])
         );
     }
 

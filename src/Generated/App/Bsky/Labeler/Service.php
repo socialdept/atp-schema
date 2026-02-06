@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs\LabelerPolicies;
@@ -15,6 +17,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Lexicon: app.bsky.labeler.service
  * Type: record
  */
+#[Generated(regenerate: true)]
 class Service extends Data
 {
     /**

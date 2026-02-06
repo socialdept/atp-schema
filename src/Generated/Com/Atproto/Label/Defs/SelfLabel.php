@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: val
  * - val: Max length: 128
  */
+#[Generated(regenerate: true)]
 class SelfLabel extends Data
 {
     /**

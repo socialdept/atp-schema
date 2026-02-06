@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ViewerState;
 
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ViewerState;
  * - Required: did
  * - did: Format: did
  */
+#[Generated(regenerate: true)]
 class BlockedAuthor extends Data
 {
     public function __construct(

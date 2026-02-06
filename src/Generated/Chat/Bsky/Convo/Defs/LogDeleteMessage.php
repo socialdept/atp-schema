@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: rev, convoId, message
  */
+#[Generated(regenerate: true)]
 class LogDeleteMessage extends Data
 {
     public function __construct(

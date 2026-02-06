@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: verifications, verifiedStatus, trustedVerifierStatus
  */
+#[Generated(regenerate: true)]
 class VerificationState extends Data
 {
     /**
@@ -54,7 +57,7 @@ class VerificationState extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            verifications: $data['verifications'] ?? [],
+            verifications: isset($data['verifications']) ? array_map(fn ($item) => VerificationView::fromArray($item), $data['verifications']) : [],
             verifiedStatus: $data['verifiedStatus'],
             trustedVerifierStatus: $data['trustedVerifierStatus']
         );

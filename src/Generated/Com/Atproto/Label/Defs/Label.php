@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -32,6 +34,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - cts: Format: datetime
  * - exp: Format: datetime
  */
+#[Generated(regenerate: true)]
 class Label extends Data
 {
     /**

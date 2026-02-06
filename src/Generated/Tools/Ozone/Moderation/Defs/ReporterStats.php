@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -24,6 +26,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: did, accountReportCount, recordReportCount, reportedAccountCount, reportedRecordCount, takendownAccountCount, takendownRecordCount, labeledAccountCount, labeledRecordCount
  * - did: Format: did
  */
+#[Generated(regenerate: true)]
 class ReporterStats extends Data
 {
     /**

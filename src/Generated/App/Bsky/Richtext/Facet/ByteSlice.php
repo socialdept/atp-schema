@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Richtext\Facet;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -24,6 +26,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - byteStart: Minimum: 0
  * - byteEnd: Minimum: 0
  */
+#[Generated(regenerate: true)]
 class ByteSlice extends Data
 {
     public function __construct(

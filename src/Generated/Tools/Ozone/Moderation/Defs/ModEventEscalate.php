@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -12,6 +14,7 @@ use SocialDept\AtpSchema\Data\Data;
  *
  * @property string|null $comment
  */
+#[Generated(regenerate: true)]
 class ModEventEscalate extends Data
 {
     public function __construct(

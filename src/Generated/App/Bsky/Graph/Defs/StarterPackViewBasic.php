@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
@@ -32,6 +34,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - joinedAllTimeCount: Minimum: 0
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class StarterPackViewBasic extends Data
 {
     public function __construct(

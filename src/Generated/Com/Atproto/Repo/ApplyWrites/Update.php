@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo\ApplyWrites;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - collection: Format: nsid
  * - rkey: Format: record-key
  */
+#[Generated(regenerate: true)]
 class Update extends Data
 {
     public function __construct(

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -14,6 +16,7 @@ use SocialDept\AtpSchema\Data\Data;
  *
  * @property bool|null $hideBadges Hide the blue check badges for verified accounts and trusted verifiers.
  */
+#[Generated(regenerate: true)]
 class VerificationPrefs extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -15,6 +17,7 @@ use SocialDept\AtpSchema\Data\Data;
  * @property string|null $comment
  * @property int|null $durationInHours Indicates how long the account should remain muted. Falsy value here means a permanent mute.
  */
+#[Generated(regenerate: true)]
 class ModEventMuteReporter extends Data
 {
     /**

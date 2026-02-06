@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\PostView;
 
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\PostView;
  * Constraints:
  * - Required: post, moreParents, moreReplies, opThread, hiddenByThreadgate, mutedByViewer
  */
+#[Generated(regenerate: true)]
 class ThreadItemPost extends Data
 {
     /**

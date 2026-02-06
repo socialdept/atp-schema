@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - score: Maximum: 100
  * - score: Minimum: 0
  */
+#[Generated(regenerate: true)]
 class ModEventPriorityScore extends Data
 {
     public function __construct(

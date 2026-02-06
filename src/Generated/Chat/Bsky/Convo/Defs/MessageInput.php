@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\AtpSchema\Support\UnionHelper;
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - text: Max length: 10000
  * - text: Max graphemes: 1000
  */
+#[Generated(regenerate: true)]
 class MessageInput extends Data
 {
     /**

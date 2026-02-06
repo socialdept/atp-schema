@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\Defs\ReasonType;
 
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\Defs\ReasonType;
  * Constraints:
  * - Required: reportType
  */
+#[Generated(regenerate: true)]
 class ModEventReport extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Data\Data;
  * @property int|null $processedCount Number of item currently in "reviewNone" or "reviewClosed" state
  * @property int|null $takendownCount Number of item currently taken down
  */
+#[Generated(regenerate: true)]
 class RecordsStats extends Data
 {
     /**

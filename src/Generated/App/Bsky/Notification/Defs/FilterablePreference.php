@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -17,6 +19,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: include, list, push
  */
+#[Generated(regenerate: true)]
 class FilterablePreference extends Data
 {
     public function __construct(

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -11,6 +13,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Lexicon: app.bsky.graph.block
  * Type: record
  */
+#[Generated(regenerate: true)]
 class Block extends Data
 {
     /**

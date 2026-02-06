@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Server\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -23,6 +25,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: code, available, disabled, forAccount, createdBy, createdAt, uses
  * - createdAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class InviteCode extends Data
 {
     public function __construct(
@@ -62,7 +65,7 @@ class InviteCode extends Data
             forAccount: $data['forAccount'],
             createdBy: $data['createdBy'],
             createdAt: Carbon::parse($data['createdAt']),
-            uses: $data['uses'] ?? []
+            uses: isset($data['uses']) ? array_map(fn ($item) => InviteCodeUse::fromArray($item), $data['uses']) : []
         );
     }
 

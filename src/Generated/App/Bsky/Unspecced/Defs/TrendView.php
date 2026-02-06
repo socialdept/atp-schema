@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
  * - Required: topic, displayName, link, startedAt, postCount, actors
  * - startedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class TrendView extends Data
 {
     public function __construct(

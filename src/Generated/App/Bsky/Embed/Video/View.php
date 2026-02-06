@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Video;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
  * - alt: Max length: 10000
  * - alt: Max graphemes: 1000
  */
+#[Generated(regenerate: true)]
 class View extends Data
 {
     public function __construct(

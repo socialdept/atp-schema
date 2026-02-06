@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - followers: Max length: 5
  * - followers: Min length: 0
  */
+#[Generated(regenerate: true)]
 class KnownFollowers extends Data
 {
     public function __construct(
@@ -49,7 +52,7 @@ class KnownFollowers extends Data
     {
         return new static(
             count: $data['count'],
-            followers: $data['followers'] ?? []
+            followers: isset($data['followers']) ? array_map(fn ($item) => ProfileViewBasic::fromArray($item), $data['followers']) : []
         );
     }
 

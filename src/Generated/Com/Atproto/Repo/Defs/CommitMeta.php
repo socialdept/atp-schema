@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - cid: Format: cid
  * - rev: Format: tid
  */
+#[Generated(regenerate: true)]
 class CommitMeta extends Data
 {
     public function __construct(

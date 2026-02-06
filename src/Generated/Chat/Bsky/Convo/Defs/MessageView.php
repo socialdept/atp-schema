@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Richtext\Facet;
@@ -28,6 +30,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - text: Max graphemes: 1000
  * - sentAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class MessageView extends Data
 {
     /**
@@ -69,11 +72,11 @@ class MessageView extends Data
             id: $data['id'],
             rev: $data['rev'],
             text: $data['text'],
-            sender: $data['sender'],
+            sender: MessageViewSender::fromArray($data['sender']),
             sentAt: Carbon::parse($data['sentAt']),
             facets: isset($data['facets']) ? array_map(fn ($item) => Facet::fromArray($item), $data['facets']) : [],
             embed: isset($data['embed']) ? UnionHelper::validateOpenUnion($data['embed']) : null,
-            reactions: $data['reactions'] ?? []
+            reactions: isset($data['reactions']) ? array_map(fn ($item) => ReactionView::fromArray($item), $data['reactions']) : []
         );
     }
 

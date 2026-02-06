@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
@@ -36,6 +38,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - cid: Format: cid
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class PostView extends Data
 {
     /**
@@ -91,9 +94,9 @@ class PostView extends Data
             repostCount: $data['repostCount'] ?? null,
             likeCount: $data['likeCount'] ?? null,
             quoteCount: $data['quoteCount'] ?? null,
-            viewer: $data['viewer'] ?? null,
+            viewer: isset($data['viewer']) ? ViewerState::fromArray($data['viewer']) : null,
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
-            threadgate: $data['threadgate'] ?? null,
+            threadgate: isset($data['threadgate']) ? ThreadgateView::fromArray($data['threadgate']) : null,
             debug: $data['debug'] ?? null
         );
     }

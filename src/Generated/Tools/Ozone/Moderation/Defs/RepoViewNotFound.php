@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: did
  * - did: Format: did
  */
+#[Generated(regenerate: true)]
 class RepoViewNotFound extends Data
 {
     public function __construct(

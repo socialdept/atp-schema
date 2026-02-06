@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Images;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
  * - thumb: Format: uri
  * - fullsize: Format: uri
  */
+#[Generated(regenerate: true)]
 class ViewImage extends Data
 {
     /**

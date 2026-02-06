@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
@@ -27,6 +29,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - createdBy: Format: did
  * - createdAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class ModEventView extends Data
 {
     public function __construct(
@@ -70,7 +73,7 @@ class ModEventView extends Data
             createdAt: Carbon::parse($data['createdAt']),
             creatorHandle: $data['creatorHandle'] ?? null,
             subjectHandle: $data['subjectHandle'] ?? null,
-            modTool: $data['modTool'] ?? null
+            modTool: isset($data['modTool']) ? ModTool::fromArray($data['modTool']) : null
         );
     }
 

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -27,6 +29,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: chat, follow, like, likeViaRepost, mention, quote, reply, repost, repostViaRepost, starterpackJoined, subscribedPost, unverified, verified
  */
+#[Generated(regenerate: true)]
 class Preferences extends Data
 {
     public function __construct(
@@ -66,19 +69,19 @@ class Preferences extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            chat: $data['chat'],
-            follow: $data['follow'],
-            like: $data['like'],
-            likeViaRepost: $data['likeViaRepost'],
-            mention: $data['mention'],
-            quote: $data['quote'],
-            reply: $data['reply'],
-            repost: $data['repost'],
-            repostViaRepost: $data['repostViaRepost'],
-            starterpackJoined: $data['starterpackJoined'],
-            subscribedPost: $data['subscribedPost'],
-            unverified: $data['unverified'],
-            verified: $data['verified']
+            chat: ChatPreference::fromArray($data['chat']),
+            follow: FilterablePreference::fromArray($data['follow']),
+            like: FilterablePreference::fromArray($data['like']),
+            likeViaRepost: FilterablePreference::fromArray($data['likeViaRepost']),
+            mention: FilterablePreference::fromArray($data['mention']),
+            quote: FilterablePreference::fromArray($data['quote']),
+            reply: FilterablePreference::fromArray($data['reply']),
+            repost: FilterablePreference::fromArray($data['repost']),
+            repostViaRepost: FilterablePreference::fromArray($data['repostViaRepost']),
+            starterpackJoined: Preference::fromArray($data['starterpackJoined']),
+            subscribedPost: Preference::fromArray($data['subscribedPost']),
+            unverified: Preference::fromArray($data['unverified']),
+            verified: Preference::fromArray($data['verified'])
         );
     }
 

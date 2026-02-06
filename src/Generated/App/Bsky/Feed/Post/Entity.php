@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: index, type, value
  */
+#[Generated(regenerate: true)]
 class Entity extends Data
 {
     /**
@@ -51,7 +54,7 @@ class Entity extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            index: $data['index'],
+            index: TextSlice::fromArray($data['index']),
             type: $data['type'],
             value: $data['value']
         );

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Images;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: images
  * - images: Max length: 4
  */
+#[Generated(regenerate: true)]
 class View extends Data
 {
     public function __construct(
@@ -43,7 +46,7 @@ class View extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            images: $data['images'] ?? []
+            images: isset($data['images']) ? array_map(fn ($item) => ViewImage::fromArray($item), $data['images']) : []
         );
     }
 

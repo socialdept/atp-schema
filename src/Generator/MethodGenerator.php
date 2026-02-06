@@ -319,13 +319,13 @@ class MethodGenerator
             return "\$data['{$name}'] ?? null";
         }
 
-        // Handle blob types (already converted to BlobReference by the protocol)
+        // Handle blob types - hydrate as BlobReference
         if ($type === 'blob') {
             if ($isRequired) {
-                return "\$data['{$name}']";
+                return "BlobReference::fromArray(\$data['{$name}'])";
             }
 
-            return "\$data['{$name}'] ?? null";
+            return "isset(\$data['{$name}']) ? BlobReference::fromArray(\$data['{$name}']) : null";
         }
 
         // Default: simple property access

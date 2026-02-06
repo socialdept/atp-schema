@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - queuedNudges: Max length: 1000
  * - nuxs: Max length: 100
  */
+#[Generated(regenerate: true)]
 class BskyAppStatePref extends Data
 {
     /**
@@ -54,7 +57,7 @@ class BskyAppStatePref extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            activeProgressGuide: $data['activeProgressGuide'] ?? null,
+            activeProgressGuide: isset($data['activeProgressGuide']) ? BskyAppProgressGuide::fromArray($data['activeProgressGuide']) : null,
             queuedNudges: $data['queuedNudges'] ?? null,
             nuxs: isset($data['nuxs']) ? array_map(fn ($item) => Nux::fromArray($item), $data['nuxs']) : []
         );

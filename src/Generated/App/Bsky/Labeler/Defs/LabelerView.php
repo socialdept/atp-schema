@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
@@ -28,6 +30,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - likeCount: Minimum: 0
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class LabelerView extends Data
 {
     public function __construct(
@@ -66,7 +69,7 @@ class LabelerView extends Data
             creator: ProfileView::fromArray($data['creator']),
             indexedAt: Carbon::parse($data['indexedAt']),
             likeCount: $data['likeCount'] ?? null,
-            viewer: $data['viewer'] ?? null,
+            viewer: isset($data['viewer']) ? LabelerViewerState::fromArray($data['viewer']) : null,
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\SubscribeRepos;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -26,6 +28,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - time: Format: datetime
  * - handle: Format: handle
  */
+#[Generated(regenerate: true)]
 class Identity extends Data
 {
     /**

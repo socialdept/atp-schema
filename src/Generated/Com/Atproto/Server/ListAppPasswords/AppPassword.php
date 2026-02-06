@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Server\ListAppPasswords;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: name, createdAt
  * - createdAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class AppPassword extends Data
 {
     public function __construct(

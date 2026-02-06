@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - policies: Max length: 5
  */
+#[Generated(regenerate: true)]
 class ModEventReverseTakedown extends Data
 {
     /**

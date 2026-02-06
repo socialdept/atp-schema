@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: include, push
  */
+#[Generated(regenerate: true)]
 class ChatPreference extends Data
 {
     public function __construct(

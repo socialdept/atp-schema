@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
@@ -40,6 +42,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - likeCount: Minimum: 0
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class GeneratorView extends Data
 {
     public function __construct(
@@ -92,7 +95,7 @@ class GeneratorView extends Data
             likeCount: $data['likeCount'] ?? null,
             acceptsInteractions: $data['acceptsInteractions'] ?? null,
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
-            viewer: $data['viewer'] ?? null,
+            viewer: isset($data['viewer']) ? GeneratorViewerState::fromArray($data['viewer']) : null,
             contentMode: $data['contentMode'] ?? null
         );
     }

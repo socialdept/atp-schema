@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Server\GetConfig;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -15,6 +17,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - url: Format: uri
  */
+#[Generated(regenerate: true)]
 class ServiceConfig extends Data
 {
     public function __construct(

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\CreateReport;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: name
  */
+#[Generated(regenerate: true)]
 class ModTool extends Data
 {
     /**

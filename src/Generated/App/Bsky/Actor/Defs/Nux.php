@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - data: Max graphemes: 300
  * - expiresAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class Nux extends Data
 {
     /**

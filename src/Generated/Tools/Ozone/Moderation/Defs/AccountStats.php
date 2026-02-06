@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * @property int|null $escalateCount Number of times the account was escalated
  * @property int|null $takedownCount Number of times the account was taken down
  */
+#[Generated(regenerate: true)]
 class AccountStats extends Data
 {
     /**

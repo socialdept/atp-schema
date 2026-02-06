@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\SubscribeRepos;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -28,6 +30,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - blocks: Max length: 10000
  * - time: Format: datetime
  */
+#[Generated(regenerate: true)]
 class Sync extends Data
 {
     /**

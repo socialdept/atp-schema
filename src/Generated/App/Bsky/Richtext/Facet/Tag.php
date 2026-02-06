@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Richtext\Facet;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - tag: Max length: 640
  * - tag: Max graphemes: 64
  */
+#[Generated(regenerate: true)]
 class Tag extends Data
 {
     public function __construct(

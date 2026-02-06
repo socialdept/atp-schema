@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
 
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
  * - Required: uri, subject
  * - uri: Format: at-uri
  */
+#[Generated(regenerate: true)]
 class ListItemView extends Data
 {
     public function __construct(

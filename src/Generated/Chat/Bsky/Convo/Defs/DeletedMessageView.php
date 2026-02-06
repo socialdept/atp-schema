@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: id, rev, sender, sentAt
  * - sentAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class DeletedMessageView extends Data
 {
     public function __construct(
@@ -52,7 +55,7 @@ class DeletedMessageView extends Data
         return new static(
             id: $data['id'],
             rev: $data['rev'],
-            sender: $data['sender'],
+            sender: MessageViewSender::fromArray($data['sender']),
             sentAt: Carbon::parse($data['sentAt'])
         );
     }

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
 use SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs\ActivitySubscription;
@@ -30,6 +32,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs\ActivitySubscripti
  * - following: Format: at-uri
  * - followedBy: Format: at-uri
  */
+#[Generated(regenerate: true)]
 class ViewerState extends Data
 {
     /**
@@ -76,7 +79,7 @@ class ViewerState extends Data
             blockingByList: isset($data['blockingByList']) ? ListViewBasic::fromArray($data['blockingByList']) : null,
             following: $data['following'] ?? null,
             followedBy: $data['followedBy'] ?? null,
-            knownFollowers: $data['knownFollowers'] ?? null,
+            knownFollowers: isset($data['knownFollowers']) ? KnownFollowers::fromArray($data['knownFollowers']) : null,
             activitySubscription: isset($data['activitySubscription']) ? ActivitySubscription::fromArray($data['activitySubscription']) : null
         );
     }
