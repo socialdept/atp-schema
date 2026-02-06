@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - uri: Format: at-uri
  * - cid: Format: cid
  */
+#[Generated(regenerate: true)]
 class StrongRef extends Data
 {
     public function __construct(

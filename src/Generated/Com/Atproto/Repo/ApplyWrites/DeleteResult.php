@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo\ApplyWrites;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -10,6 +12,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Lexicon: com.atproto.repo.applyWrites.deleteResult
  * Type: object
  */
+#[Generated(regenerate: true)]
 class DeleteResult extends Data
 {
     /**

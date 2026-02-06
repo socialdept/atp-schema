@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - description: Max length: 100000
  * - description: Max graphemes: 10000
  */
+#[Generated(regenerate: true)]
 class LabelValueDefinitionStrings extends Data
 {
     /**

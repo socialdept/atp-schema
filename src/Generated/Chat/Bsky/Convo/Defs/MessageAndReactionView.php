@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: message, reaction
  */
+#[Generated(regenerate: true)]
 class MessageAndReactionView extends Data
 {
     public function __construct(
@@ -44,8 +47,8 @@ class MessageAndReactionView extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            message: $data['message'],
-            reaction: $data['reaction']
+            message: MessageView::fromArray($data['message']),
+            reaction: ReactionView::fromArray($data['reaction'])
         );
     }
 

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: values
  * - values: Max length: 10
  */
+#[Generated(regenerate: true)]
 class SelfLabels extends Data
 {
     public function __construct(
@@ -46,7 +49,7 @@ class SelfLabels extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            values: $data['values'] ?? []
+            values: isset($data['values']) ? array_map(fn ($item) => SelfLabel::fromArray($item), $data['values']) : []
         );
     }
 

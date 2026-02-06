@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -40,6 +42,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - updatedAt: Format: datetime
  * - lastExecutedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class ScheduledActionView extends Data
 {
     /**

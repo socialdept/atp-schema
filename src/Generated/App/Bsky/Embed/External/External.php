@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\External;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: uri, title, description
  * - uri: Format: uri
  */
+#[Generated(regenerate: true)]
 class External extends Data
 {
     public function __construct(
@@ -53,7 +56,7 @@ class External extends Data
             uri: $data['uri'],
             title: $data['title'],
             description: $data['description'],
-            thumb: $data['thumb'] ?? null
+            thumb: isset($data['thumb']) ? BlobReference::fromArray($data['thumb']) : null
         );
     }
 

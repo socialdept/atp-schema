@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
 
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
  * - uri: Format: at-uri
  * - cid: Format: cid
  */
+#[Generated(regenerate: true)]
 class ThreadgateView extends Data
 {
     public function __construct(

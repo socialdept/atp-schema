@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\SubscribeRepos;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -37,6 +39,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - ops: Max length: 200
  * - time: Format: datetime
  */
+#[Generated(regenerate: true)]
 class Commit extends Data
 {
     /**
@@ -95,7 +98,7 @@ class Commit extends Data
             rev: $data['rev'],
             since: $data['since'],
             blocks: $data['blocks'],
-            ops: $data['ops'] ?? [],
+            ops: isset($data['ops']) ? array_map(fn ($item) => RepoOp::fromArray($item), $data['ops']) : [],
             blobs: $data['blobs'],
             time: Carbon::parse($data['time']),
             prevData: $data['prevData'] ?? null

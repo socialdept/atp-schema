@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Richtext\Facet;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: did
  * - did: Format: did
  */
+#[Generated(regenerate: true)]
 class Mention extends Data
 {
     public function __construct(

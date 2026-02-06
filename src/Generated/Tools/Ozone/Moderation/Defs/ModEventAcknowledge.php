@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -13,6 +15,7 @@ use SocialDept\AtpSchema\Data\Data;
  * @property string|null $comment
  * @property bool|null $acknowledgeAccountSubjects If true, all other reports on content authored by this account will be resolved (acknowledged).
  */
+#[Generated(regenerate: true)]
 class ModEventAcknowledge extends Data
 {
     /**

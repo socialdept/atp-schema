@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
@@ -12,6 +14,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
  * Lexicon: app.bsky.feed.like
  * Type: record
  */
+#[Generated(regenerate: true)]
 class Like extends Data
 {
     public function __construct(

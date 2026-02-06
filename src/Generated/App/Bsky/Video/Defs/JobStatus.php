@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Video\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - progress: Maximum: 100
  * - progress: Minimum: 0
  */
+#[Generated(regenerate: true)]
 class JobStatus extends Data
 {
     /**
@@ -66,7 +69,7 @@ class JobStatus extends Data
             did: $data['did'],
             state: $data['state'],
             progress: $data['progress'] ?? null,
-            blob: $data['blob'] ?? null,
+            blob: isset($data['blob']) ? BlobReference::fromArray($data['blob']) : null,
             error: $data['error'] ?? null,
             message: $data['message'] ?? null
         );

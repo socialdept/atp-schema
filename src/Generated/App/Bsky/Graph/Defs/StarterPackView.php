@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
@@ -36,6 +38,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - joinedAllTimeCount: Minimum: 0
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class StarterPackView extends Data
 {
     public function __construct(
@@ -78,8 +81,8 @@ class StarterPackView extends Data
             record: $data['record'],
             creator: ProfileViewBasic::fromArray($data['creator']),
             indexedAt: Carbon::parse($data['indexedAt']),
-            list: $data['list'] ?? null,
-            listItemsSample: $data['listItemsSample'] ?? [],
+            list: isset($data['list']) ? ListViewBasic::fromArray($data['list']) : null,
+            listItemsSample: isset($data['listItemsSample']) ? array_map(fn ($item) => ListItemView::fromArray($item), $data['listItemsSample']) : [],
             feeds: isset($data['feeds']) ? array_map(fn ($item) => GeneratorView::fromArray($item), $data['feeds']) : [],
             joinedWeekCount: $data['joinedWeekCount'] ?? null,
             joinedAllTimeCount: $data['joinedAllTimeCount'] ?? null,

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
 
@@ -17,6 +19,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
  * Constraints:
  * - Required: root, parent
  */
+#[Generated(regenerate: true)]
 class ReplyRef extends Data
 {
     public function __construct(

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -17,6 +19,7 @@ use SocialDept\AtpSchema\Data\Data;
  * @property mixed $chat
  * @property mixed $activitySubscription
  */
+#[Generated(regenerate: true)]
 class ProfileAssociated extends Data
 {
     public function __construct(
@@ -53,8 +56,8 @@ class ProfileAssociated extends Data
             feedgens: $data['feedgens'] ?? null,
             starterPacks: $data['starterPacks'] ?? null,
             labeler: $data['labeler'] ?? null,
-            chat: $data['chat'] ?? null,
-            activitySubscription: $data['activitySubscription'] ?? null
+            chat: isset($data['chat']) ? ProfileAssociatedChat::fromArray($data['chat']) : null,
+            activitySubscription: isset($data['activitySubscription']) ? ProfileAssociatedActivitySubscription::fromArray($data['activitySubscription']) : null
         );
     }
 

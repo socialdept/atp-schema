@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - post: Format: at-uri
  * - feedContext: Max length: 2000
  */
+#[Generated(regenerate: true)]
 class SkeletonFeedPost extends Data
 {
     /**

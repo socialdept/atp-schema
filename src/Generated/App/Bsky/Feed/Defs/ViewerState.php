@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - repost: Format: at-uri
  * - like: Format: at-uri
  */
+#[Generated(regenerate: true)]
 class ViewerState extends Data
 {
     public function __construct(

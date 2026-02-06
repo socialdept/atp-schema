@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Communication\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -28,6 +30,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - createdAt: Format: datetime
  * - updatedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class TemplateView extends Data
 {
     /**

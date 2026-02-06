@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -10,6 +12,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Lexicon: app.bsky.feed.defs.reasonPin
  * Type: object
  */
+#[Generated(regenerate: true)]
 class ReasonPin extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - value: Max graphemes: 1000
  * - expiresAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class MutedWord extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Server\DescribeServer;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -17,6 +19,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - privacyPolicy: Format: uri
  * - termsOfService: Format: uri
  */
+#[Generated(regenerate: true)]
 class Links extends Data
 {
     public function __construct(

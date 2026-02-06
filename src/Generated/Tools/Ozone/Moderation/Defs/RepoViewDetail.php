@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Admin\Defs\ThreatSignature;
@@ -37,6 +39,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Server\Defs\InviteCode;
  * - emailConfirmedAt: Format: datetime
  * - deactivatedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class RepoViewDetail extends Data
 {
     public function __construct(
@@ -81,7 +84,7 @@ class RepoViewDetail extends Data
             handle: $data['handle'],
             relatedRecords: $data['relatedRecords'],
             indexedAt: Carbon::parse($data['indexedAt']),
-            moderation: $data['moderation'],
+            moderation: ModerationDetail::fromArray($data['moderation']),
             email: $data['email'] ?? null,
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             invitedBy: isset($data['invitedBy']) ? InviteCode::fromArray($data['invitedBy']) : null,

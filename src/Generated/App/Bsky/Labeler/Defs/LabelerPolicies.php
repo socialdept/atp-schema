@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\LabelValue;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\LabelValueDefinition;
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\LabelValueDefinition;
  * Constraints:
  * - Required: labelValues
  */
+#[Generated(regenerate: true)]
 class LabelerPolicies extends Data
 {
     /**

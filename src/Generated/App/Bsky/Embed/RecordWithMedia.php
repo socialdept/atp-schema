@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: record, media
  */
+#[Generated(regenerate: true)]
 class RecordWithMedia extends Data
 {
     public function __construct(

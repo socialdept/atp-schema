@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -22,6 +24,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - feedContext: Max length: 2000
  * - reqId: Max length: 100
  */
+#[Generated(regenerate: true)]
 class FeedViewPost extends Data
 {
     /**
@@ -57,8 +60,8 @@ class FeedViewPost extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            post: $data['post'],
-            reply: $data['reply'] ?? null,
+            post: PostView::fromArray($data['post']),
+            reply: isset($data['reply']) ? ReplyRef::fromArray($data['reply']) : null,
             reason: isset($data['reason']) ? UnionHelper::validateOpenUnion($data['reason']) : null,
             feedContext: $data['feedContext'] ?? null,
             reqId: $data['reqId'] ?? null

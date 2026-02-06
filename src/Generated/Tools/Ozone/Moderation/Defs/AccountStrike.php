@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -22,6 +24,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - firstStrikeAt: Format: datetime
  * - lastStrikeAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class AccountStrike extends Data
 {
     /**

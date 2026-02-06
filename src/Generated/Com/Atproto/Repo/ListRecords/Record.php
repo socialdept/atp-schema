@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo\ListRecords;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - uri: Format: at-uri
  * - cid: Format: cid
  */
+#[Generated(regenerate: true)]
 class Record extends Data
 {
     public function __construct(

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -24,6 +26,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - identifier: Max length: 100
  * - identifier: Max graphemes: 100
  */
+#[Generated(regenerate: true)]
 class LabelValueDefinition extends Data
 {
     /**
@@ -66,7 +69,7 @@ class LabelValueDefinition extends Data
             identifier: $data['identifier'],
             severity: $data['severity'],
             blurs: $data['blurs'],
-            locales: $data['locales'] ?? [],
+            locales: isset($data['locales']) ? array_map(fn ($item) => LabelValueDefinitionStrings::fromArray($item), $data['locales']) : [],
             defaultSetting: $data['defaultSetting'] ?? null,
             adultOnly: $data['adultOnly'] ?? null
         );

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Record;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: record
  */
+#[Generated(regenerate: true)]
 class View extends Data
 {
     public function __construct(

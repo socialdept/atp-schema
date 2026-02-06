@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -12,6 +14,7 @@ use SocialDept\AtpSchema\Data\Data;
  *
  * @property mixed $subjectStatus
  */
+#[Generated(regenerate: true)]
 class ModerationDetail extends Data
 {
     public function __construct(
@@ -39,7 +42,7 @@ class ModerationDetail extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            subjectStatus: $data['subjectStatus'] ?? null
+            subjectStatus: isset($data['subjectStatus']) ? SubjectStatusView::fromArray($data['subjectStatus']) : null
         );
     }
 

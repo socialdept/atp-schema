@@ -328,6 +328,36 @@ class MethodGeneratorTest extends TestCase
         $this->assertStringContainsString("last: \$data['last']", $method);
     }
 
+    public function test_it_handles_required_blob_type(): void
+    {
+        $document = $this->createDocument('app.test.image', [
+            'type' => 'object',
+            'properties' => [
+                'image' => ['type' => 'blob'],
+            ],
+            'required' => ['image'],
+        ]);
+
+        $method = $this->generator->generateFromArray($document);
+
+        $this->assertStringContainsString("image: BlobReference::fromArray(\$data['image'])", $method);
+    }
+
+    public function test_it_handles_optional_blob_type(): void
+    {
+        $document = $this->createDocument('app.test.profile', [
+            'type' => 'object',
+            'properties' => [
+                'avatar' => ['type' => 'blob'],
+            ],
+            'required' => [],
+        ]);
+
+        $method = $this->generator->generateFromArray($document);
+
+        $this->assertStringContainsString("avatar: isset(\$data['avatar']) ? BlobReference::fromArray(\$data['avatar']) : null", $method);
+    }
+
     public function test_it_includes_method_docblocks(): void
     {
         $document = $this->createDocument('app.test.post', [

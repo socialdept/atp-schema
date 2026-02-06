@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -10,6 +12,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Lexicon: app.bsky.unspecced.defs.threadItemNotFound
  * Type: object
  */
+#[Generated(regenerate: true)]
 class ThreadItemNotFound extends Data
 {
     /**

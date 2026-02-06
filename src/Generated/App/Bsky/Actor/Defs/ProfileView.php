@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
@@ -39,6 +41,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - indexedAt: Format: datetime
  * - createdAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class ProfileView extends Data
 {
     /**
@@ -88,13 +91,13 @@ class ProfileView extends Data
             pronouns: $data['pronouns'] ?? null,
             description: $data['description'] ?? null,
             avatar: $data['avatar'] ?? null,
-            associated: $data['associated'] ?? null,
+            associated: isset($data['associated']) ? ProfileAssociated::fromArray($data['associated']) : null,
             indexedAt: isset($data['indexedAt']) ? Carbon::parse($data['indexedAt']) : null,
             createdAt: isset($data['createdAt']) ? Carbon::parse($data['createdAt']) : null,
-            viewer: $data['viewer'] ?? null,
+            viewer: isset($data['viewer']) ? ViewerState::fromArray($data['viewer']) : null,
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
-            verification: $data['verification'] ?? null,
-            status: $data['status'] ?? null,
+            verification: isset($data['verification']) ? VerificationState::fromArray($data['verification']) : null,
+            status: isset($data['status']) ? StatusView::fromArray($data['status']) : null,
             debug: $data['debug'] ?? null
         );
     }

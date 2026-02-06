@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Admin\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Server\Defs\InviteCode;
@@ -33,6 +35,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Server\Defs\InviteCode;
  * - emailConfirmedAt: Format: datetime
  * - deactivatedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class AccountView extends Data
 {
     public function __construct(
@@ -82,7 +85,7 @@ class AccountView extends Data
             emailConfirmedAt: isset($data['emailConfirmedAt']) ? Carbon::parse($data['emailConfirmedAt']) : null,
             inviteNote: $data['inviteNote'] ?? null,
             deactivatedAt: isset($data['deactivatedAt']) ? Carbon::parse($data['deactivatedAt']) : null,
-            threatSignatures: $data['threatSignatures'] ?? []
+            threatSignatures: isset($data['threatSignatures']) ? array_map(fn ($item) => ThreatSignature::fromArray($item), $data['threatSignatures']) : []
         );
     }
 

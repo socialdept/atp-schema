@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Server\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - usedBy: Format: did
  * - usedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class InviteCodeUse extends Data
 {
     public function __construct(

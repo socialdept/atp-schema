@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\External;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - uri: Format: uri
  * - thumb: Format: uri
  */
+#[Generated(regenerate: true)]
 class ViewExternal extends Data
 {
     public function __construct(

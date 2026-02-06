@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: did, messageId, convoId
  * - did: Format: did
  */
+#[Generated(regenerate: true)]
 class MessageRef extends Data
 {
     public function __construct(

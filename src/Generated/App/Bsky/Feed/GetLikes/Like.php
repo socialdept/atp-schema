@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\GetLikes;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
  * - indexedAt: Format: datetime
  * - createdAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class Like extends Data
 {
     public function __construct(

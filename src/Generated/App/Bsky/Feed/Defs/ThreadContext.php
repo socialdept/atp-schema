@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -17,6 +19,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - rootAuthorLike: Format: at-uri
  */
+#[Generated(regenerate: true)]
 class ThreadContext extends Data
 {
     public function __construct(

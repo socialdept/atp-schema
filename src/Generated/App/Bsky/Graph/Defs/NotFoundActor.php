@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - actor: Format: at-identifier
  * - notFound: Const: true
  */
+#[Generated(regenerate: true)]
 class NotFoundActor extends Data
 {
     public function __construct(

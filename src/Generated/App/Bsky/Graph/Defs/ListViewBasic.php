@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
@@ -32,6 +34,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - listItemCount: Minimum: 0
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class ListViewBasic extends Data
 {
     public function __construct(
@@ -70,11 +73,11 @@ class ListViewBasic extends Data
             uri: $data['uri'],
             cid: $data['cid'],
             name: $data['name'],
-            purpose: $data['purpose'],
+            purpose: ListPurpose::fromArray($data['purpose']),
             avatar: $data['avatar'] ?? null,
             listItemCount: $data['listItemCount'] ?? null,
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
-            viewer: $data['viewer'] ?? null,
+            viewer: isset($data['viewer']) ? ListViewerState::fromArray($data['viewer']) : null,
             indexedAt: isset($data['indexedAt']) ? Carbon::parse($data['indexedAt']) : null
         );
     }

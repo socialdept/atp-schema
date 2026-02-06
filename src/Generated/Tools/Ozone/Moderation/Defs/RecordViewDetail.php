@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
@@ -27,6 +29,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * - cid: Format: cid
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class RecordViewDetail extends Data
 {
     public function __construct(
@@ -64,10 +67,10 @@ class RecordViewDetail extends Data
             uri: $data['uri'],
             cid: $data['cid'],
             value: $data['value'],
-            blobs: $data['blobs'] ?? [],
+            blobs: isset($data['blobs']) ? array_map(fn ($item) => BlobView::fromArray($item), $data['blobs']) : [],
             indexedAt: Carbon::parse($data['indexedAt']),
-            moderation: $data['moderation'],
-            repo: $data['repo'],
+            moderation: ModerationDetail::fromArray($data['moderation']),
+            repo: RepoView::fromArray($data['repo']),
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : []
         );
     }

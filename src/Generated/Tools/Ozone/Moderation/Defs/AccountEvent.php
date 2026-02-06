@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -23,6 +25,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: timestamp, active
  * - timestamp: Format: datetime
  */
+#[Generated(regenerate: true)]
 class AccountEvent extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Record;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
 
@@ -20,6 +22,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
  * - uri: Format: at-uri
  * - blocked: Const: true
  */
+#[Generated(regenerate: true)]
 class ViewBlocked extends Data
 {
     public function __construct(

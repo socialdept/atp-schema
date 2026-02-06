@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -23,6 +25,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - following: Format: at-uri
  * - followedBy: Format: at-uri
  */
+#[Generated(regenerate: true)]
 class Relationship extends Data
 {
     /**

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: value, sender, createdAt
  * - createdAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class ReactionView extends Data
 {
     public function __construct(
@@ -49,7 +52,7 @@ class ReactionView extends Data
     {
         return new static(
             value: $data['value'],
-            sender: $data['sender'],
+            sender: ReactionViewSender::fromArray($data['sender']),
             createdAt: Carbon::parse($data['createdAt'])
         );
     }

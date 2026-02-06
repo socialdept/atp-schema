@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Label\SubscribeLabels;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
 
@@ -17,6 +19,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;
  * Constraints:
  * - Required: seq, labels
  */
+#[Generated(regenerate: true)]
 class Labels extends Data
 {
     public function __construct(

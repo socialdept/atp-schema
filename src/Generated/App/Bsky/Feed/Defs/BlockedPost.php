@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - uri: Format: at-uri
  * - blocked: Const: true
  */
+#[Generated(regenerate: true)]
 class BlockedPost extends Data
 {
     public function __construct(
@@ -50,7 +53,7 @@ class BlockedPost extends Data
         return new static(
             uri: $data['uri'],
             blocked: $data['blocked'],
-            author: $data['author']
+            author: BlockedAuthor::fromArray($data['author'])
         );
     }
 

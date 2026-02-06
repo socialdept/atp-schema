@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileViewBasic;
 use SocialDept\AtpSchema\Support\UnionHelper;
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: root, parent
  */
+#[Generated(regenerate: true)]
 class ReplyRef extends Data
 {
     /**

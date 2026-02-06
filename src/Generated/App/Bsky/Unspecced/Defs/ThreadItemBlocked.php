@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
 
@@ -16,6 +18,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs\BlockedAuthor;
  * Constraints:
  * - Required: author
  */
+#[Generated(regenerate: true)]
 class ThreadItemBlocked extends Data
 {
     public function __construct(

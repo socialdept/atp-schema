@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: rev, convoId, message, reaction
  */
+#[Generated(regenerate: true)]
 class LogAddReaction extends Data
 {
     public function __construct(
@@ -52,7 +55,7 @@ class LogAddReaction extends Data
             rev: $data['rev'],
             convoId: $data['convoId'],
             message: UnionHelper::validateOpenUnion($data['message']),
-            reaction: $data['reaction']
+            reaction: ReactionView::fromArray($data['reaction'])
         );
     }
 

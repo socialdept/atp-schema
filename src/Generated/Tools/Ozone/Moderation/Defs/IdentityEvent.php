@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -26,6 +28,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - pdsHost: Format: uri
  * - timestamp: Format: datetime
  */
+#[Generated(regenerate: true)]
 class IdentityEvent extends Data
 {
     public function __construct(

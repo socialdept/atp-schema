@@ -2,8 +2,12 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
+use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post\Entity;
+use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post\ReplyRef;
 use SocialDept\AtpSchema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -13,6 +17,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Lexicon: app.bsky.feed.post
  * Type: record
  */
+#[Generated(regenerate: true)]
 class Post extends Data
 {
     /**
@@ -59,9 +64,9 @@ class Post extends Data
         return new static(
             text: $data['text'],
             createdAt: Carbon::parse($data['createdAt']),
-            entities: $data['entities'] ?? [],
+            entities: isset($data['entities']) ? array_map(fn ($item) => Entity::fromArray($item), $data['entities']) : [],
             facets: isset($data['facets']) ? array_map(fn ($item) => Facet::fromArray($item), $data['facets']) : [],
-            reply: $data['reply'] ?? null,
+            reply: isset($data['reply']) ? ReplyRef::fromArray($data['reply']) : null,
             embed: isset($data['embed']) ? UnionHelper::validateOpenUnion($data['embed']) : null,
             langs: $data['langs'] ?? null,
             labels: isset($data['labels']) ? UnionHelper::validateOpenUnion($data['labels']) : null,

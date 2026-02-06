@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Record;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -18,6 +20,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - uri: Format: at-uri
  * - detached: Const: true
  */
+#[Generated(regenerate: true)]
 class ViewDetached extends Data
 {
     public function __construct(

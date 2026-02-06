@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Images;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
  * Constraints:
  * - Required: image, alt
  */
+#[Generated(regenerate: true)]
 class Image extends Data
 {
     /**
@@ -51,7 +54,7 @@ class Image extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            image: $data['image'],
+            image: BlobReference::fromArray($data['image']),
             alt: $data['alt'],
             aspectRatio: isset($data['aspectRatio']) ? AspectRatio::fromArray($data['aspectRatio']) : null
         );

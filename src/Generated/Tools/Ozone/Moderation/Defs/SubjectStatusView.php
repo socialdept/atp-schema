@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
@@ -52,6 +54,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - lastAppealedAt: Format: datetime
  * - suspendUntil: Format: datetime
  */
+#[Generated(regenerate: true)]
 class SubjectStatusView extends Data
 {
     /**
@@ -120,7 +123,7 @@ class SubjectStatusView extends Data
             subject: UnionHelper::validateOpenUnion($data['subject']),
             updatedAt: Carbon::parse($data['updatedAt']),
             createdAt: Carbon::parse($data['createdAt']),
-            reviewState: $data['reviewState'],
+            reviewState: SubjectReviewState::fromArray($data['reviewState']),
             hosting: isset($data['hosting']) ? UnionHelper::validateOpenUnion($data['hosting']) : null,
             subjectBlobCids: $data['subjectBlobCids'] ?? null,
             subjectRepoHandle: $data['subjectRepoHandle'] ?? null,
@@ -136,9 +139,9 @@ class SubjectStatusView extends Data
             appealed: $data['appealed'] ?? null,
             suspendUntil: isset($data['suspendUntil']) ? Carbon::parse($data['suspendUntil']) : null,
             tags: $data['tags'] ?? null,
-            accountStats: $data['accountStats'] ?? null,
-            recordsStats: $data['recordsStats'] ?? null,
-            accountStrike: $data['accountStrike'] ?? null,
+            accountStats: isset($data['accountStats']) ? AccountStats::fromArray($data['accountStats']) : null,
+            recordsStats: isset($data['recordsStats']) ? RecordsStats::fromArray($data['recordsStats']) : null,
+            accountStrike: isset($data['accountStrike']) ? AccountStrike::fromArray($data['accountStrike']) : null,
             ageAssuranceState: $data['ageAssuranceState'] ?? null,
             ageAssuranceUpdatedBy: $data['ageAssuranceUpdatedBy'] ?? null
         );

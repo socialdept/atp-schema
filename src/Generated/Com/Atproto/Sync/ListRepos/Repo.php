@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\ListRepos;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -22,6 +24,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - head: Format: cid
  * - rev: Format: tid
  */
+#[Generated(regenerate: true)]
 class Repo extends Data
 {
     /**

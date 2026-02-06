@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -27,6 +29,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - policies: Max length: 5
  * - strikeExpiresAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class ModEventEmail extends Data
 {
     /**

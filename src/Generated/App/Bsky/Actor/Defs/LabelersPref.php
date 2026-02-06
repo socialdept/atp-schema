@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -15,6 +17,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: labelers
  */
+#[Generated(regenerate: true)]
 class LabelersPref extends Data
 {
     public function __construct(
@@ -42,7 +45,7 @@ class LabelersPref extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            labelers: $data['labelers'] ?? []
+            labelers: isset($data['labelers']) ? array_map(fn ($item) => LabelerPrefItem::fromArray($item), $data['labelers']) : []
         );
     }
 

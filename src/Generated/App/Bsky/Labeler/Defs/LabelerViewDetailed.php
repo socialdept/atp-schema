@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
@@ -34,6 +36,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
  * - likeCount: Minimum: 0
  * - indexedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class LabelerViewDetailed extends Data
 {
     /**
@@ -82,7 +85,7 @@ class LabelerViewDetailed extends Data
             policies: LabelerPolicies::fromArray($data['policies']),
             indexedAt: Carbon::parse($data['indexedAt']),
             likeCount: $data['likeCount'] ?? null,
-            viewer: $data['viewer'] ?? null,
+            viewer: isset($data['viewer']) ? LabelerViewerState::fromArray($data['viewer']) : null,
             labels: isset($data['labels']) ? array_map(fn ($item) => Label::fromArray($item), $data['labels']) : [],
             reasonTypes: isset($data['reasonTypes']) ? array_map(fn ($item) => ReasonType::fromArray($item), $data['reasonTypes']) : [],
             subjectTypes: isset($data['subjectTypes']) ? array_map(fn ($item) => SubjectType::fromArray($item), $data['subjectTypes']) : [],

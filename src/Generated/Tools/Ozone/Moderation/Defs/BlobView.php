@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
@@ -24,6 +26,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * - cid: Format: cid
  * - createdAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class BlobView extends Data
 {
     public function __construct(
@@ -61,7 +64,7 @@ class BlobView extends Data
             size: $data['size'],
             createdAt: Carbon::parse($data['createdAt']),
             details: isset($data['details']) ? UnionHelper::validateOpenUnion($data['details']) : null,
-            moderation: $data['moderation'] ?? null
+            moderation: isset($data['moderation']) ? Moderation::fromArray($data['moderation']) : null
         );
     }
 

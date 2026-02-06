@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
 
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
  * Constraints:
  * - Required: record
  */
+#[Generated(regenerate: true)]
 class Record extends Data
 {
     public function __construct(

@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Feed\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Support\UnionHelper;
 
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: post
  */
+#[Generated(regenerate: true)]
 class ThreadViewPost extends Data
 {
     public function __construct(
@@ -49,10 +52,10 @@ class ThreadViewPost extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            post: $data['post'],
+            post: PostView::fromArray($data['post']),
             parent: isset($data['parent']) ? UnionHelper::validateOpenUnion($data['parent']) : null,
             replies: $data['replies'] ?? null,
-            threadContext: $data['threadContext'] ?? null
+            threadContext: isset($data['threadContext']) ? ThreadContext::fromArray($data['threadContext']) : null
         );
     }
 

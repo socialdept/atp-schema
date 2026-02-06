@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\ListHosts;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Sync\Defs\HostStatus;
 
@@ -19,6 +21,7 @@ use SocialDept\AtpSchema\Generated\Com\Atproto\Sync\Defs\HostStatus;
  * Constraints:
  * - Required: hostname
  */
+#[Generated(regenerate: true)]
 class Host extends Data
 {
     /**

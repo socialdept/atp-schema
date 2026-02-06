@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Moderation\Defs\SubjectType;
 use SocialDept\AtpSchema\Support\UnionHelper;
@@ -25,6 +27,7 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  * Constraints:
  * - Required: type, subject
  */
+#[Generated(regenerate: true)]
 class SubjectView extends Data
 {
     public function __construct(
@@ -59,10 +62,10 @@ class SubjectView extends Data
         return new static(
             type: SubjectType::fromArray($data['type']),
             subject: $data['subject'],
-            status: $data['status'] ?? null,
-            repo: $data['repo'] ?? null,
+            status: isset($data['status']) ? SubjectStatusView::fromArray($data['status']) : null,
+            repo: isset($data['repo']) ? RepoViewDetail::fromArray($data['repo']) : null,
             profile: isset($data['profile']) ? UnionHelper::validateOpenUnion($data['profile']) : null,
-            record: $data['record'] ?? null
+            record: isset($data['record']) ? RecordViewDetail::fromArray($data['record']) : null
         );
     }
 

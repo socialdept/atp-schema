@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use SocialDept\AtpSchema\Data\Data;
 
 /**
@@ -15,6 +17,7 @@ use SocialDept\AtpSchema\Data\Data;
  * Constraints:
  * - Required: external
  */
+#[Generated(regenerate: true)]
 class External extends Data
 {
     public function __construct(
@@ -42,7 +45,7 @@ class External extends Data
     public static function fromArray(array $data): static
     {
         return new static(
-            external: $data['external']
+            external: External::fromArray($data['external'])
         );
     }
 

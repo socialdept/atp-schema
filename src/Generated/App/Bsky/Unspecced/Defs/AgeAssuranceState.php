@@ -2,6 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Unspecced\Defs;
 
+use SocialDept\AtpSchema\Attributes\Generated;
+
 use Carbon\Carbon;
 use SocialDept\AtpSchema\Data\Data;
 
@@ -21,6 +23,7 @@ use SocialDept\AtpSchema\Data\Data;
  * - Required: status
  * - lastInitiatedAt: Format: datetime
  */
+#[Generated(regenerate: true)]
 class AgeAssuranceState extends Data
 {
     /**
