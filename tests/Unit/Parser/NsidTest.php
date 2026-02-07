@@ -2,9 +2,9 @@
 
 namespace SocialDept\AtpSchema\Tests\Unit\Parser;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use SocialDept\AtpSchema\Exceptions\SchemaException;
-use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSupport\Nsid;
 
 class NsidTest extends TestCase
 {
@@ -78,7 +78,7 @@ class NsidTest extends TestCase
 
     public function test_it_throws_on_empty_nsid(): void
     {
-        $this->expectException(SchemaException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('NSID cannot be empty');
 
         Nsid::parse('');
@@ -86,7 +86,7 @@ class NsidTest extends TestCase
 
     public function test_it_throws_on_too_few_segments(): void
     {
-        $this->expectException(SchemaException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('NSID must have at least 3 segments');
 
         Nsid::parse('app.bsky');
@@ -94,7 +94,7 @@ class NsidTest extends TestCase
 
     public function test_it_throws_on_invalid_format(): void
     {
-        $this->expectException(SchemaException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid NSID format');
 
         Nsid::parse('invalid-nsid');
@@ -128,7 +128,7 @@ class NsidTest extends TestCase
 
     public function test_it_rejects_nsid_exceeding_max_length(): void
     {
-        $this->expectException(SchemaException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('NSID exceeds maximum length');
 
         // Create a string longer than 317 characters

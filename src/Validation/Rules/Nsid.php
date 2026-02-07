@@ -4,7 +4,7 @@ namespace SocialDept\AtpSchema\Validation\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use SocialDept\AtpSchema\Parser\Nsid as NsidParser;
+use SocialDept\AtpSupport\Nsid as NsidParser;
 
 class Nsid implements ValidationRule
 {

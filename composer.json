@@ -6,6 +6,7 @@
     "require": {
         "php": "^8.2",
         "ext-gmp": "*",
+        "socialdept/atp-support": "^0.1",
         "illuminate/support": "^11.0|^12.0",
         "illuminate/console": "^11.0|^12.0",
         "illuminate/cache": "^11.0|^12.0",
@@ -15,9 +16,6 @@
         "orchestra/testbench": "^9.0",
         "phpunit/phpunit": "^11.0",
         "friendsofphp/php-cs-fixer": "^3.89"
-    },
-    "suggest": {
-        "socialdept/atp-resolver": "Required for DID resolution during DNS-based lexicon lookup"
     },
     "autoload": {
         "psr-4": {

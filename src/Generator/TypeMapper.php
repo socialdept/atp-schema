@@ -423,7 +423,7 @@ class TypeMapper
                 [$baseNsid, $fragment] = explode('#', $ref, 2);
                 // For fragments, we need to include ALL segments of the base NSID
                 // Parse the NSID and convert each segment to PascalCase
-                $nsid = \SocialDept\AtpSchema\Parser\Nsid::parse($baseNsid);
+                $nsid = \SocialDept\AtpSupport\Nsid::parse($baseNsid);
                 $segments = $nsid->getSegments();
                 $namespaceParts = array_map(
                     fn ($part) => $this->naming->toPascalCase($part),
@@ -458,7 +458,7 @@ class TypeMapper
                 if (str_contains($ref, '#')) {
                     [$baseNsid, $fragment] = explode('#', $ref, 2);
                     // For fragments, we need to include ALL segments of the base NSID
-                    $nsid = \SocialDept\AtpSchema\Parser\Nsid::parse($baseNsid);
+                    $nsid = \SocialDept\AtpSupport\Nsid::parse($baseNsid);
                     $segments = $nsid->getSegments();
                     $namespaceParts = array_map(
                         fn ($part) => $this->naming->toPascalCase($part),

@@ -3,6 +3,8 @@
 namespace SocialDept\AtpSchema\Validation\TypeValidators;
 
 use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSupport\Identity;
+use SocialDept\AtpSupport\Nsid;
 
 class StringValidator
 {
@@ -151,7 +153,7 @@ class StringValidator
      */
     protected function validateDid(string $value): bool
     {
-        return (bool) preg_match('/^did:[a-z]+:[a-zA-Z0-9._:%-]+$/', $value);
+        return Identity::isDid($value);
     }
 
     /**
@@ -159,11 +161,7 @@ class StringValidator
      */
     protected function validateHandle(string $value): bool
     {
-        if (strlen($value) < 3 || strlen($value) > 253) {
-            return false;
-        }
-
-        return (bool) preg_match('/^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/', $value);
+        return Identity::isHandle($value);
     }
 
     /**
@@ -171,7 +169,7 @@ class StringValidator
      */
     protected function validateAtIdentifier(string $value): bool
     {
-        return $this->validateDid($value) || $this->validateHandle($value);
+        return Identity::isDid($value) || Identity::isHandle($value);
     }
 
     /**
@@ -179,13 +177,7 @@ class StringValidator
      */
     protected function validateNsid(string $value): bool
     {
-        try {
-            \SocialDept\AtpSchema\Parser\Nsid::parse($value);
-
-            return true;
-        } catch (\Exception) {
-            return false;
-        }
+        return Nsid::isValid($value);
     }
 
     /**

@@ -5,7 +5,7 @@ namespace SocialDept\AtpSchema\Tests\Unit\Generator;
 use Orchestra\Testbench\TestCase;
 use SocialDept\AtpSchema\Data\LexiconDocument;
 use SocialDept\AtpSchema\Generator\DocBlockGenerator;
-use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSupport\Nsid;
 
 class DocBlockGeneratorTest extends TestCase
 {

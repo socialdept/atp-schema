@@ -2,7 +2,7 @@
 
 namespace SocialDept\AtpSchema\Generator;
 
-use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSupport\Nsid;
 
 class NamespaceResolver
 {

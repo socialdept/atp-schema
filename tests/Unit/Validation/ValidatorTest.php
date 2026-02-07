@@ -4,7 +4,7 @@ namespace SocialDept\AtpSchema\Tests\Unit\Validation;
 
 use Orchestra\Testbench\TestCase;
 use SocialDept\AtpSchema\Data\LexiconDocument;
-use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSupport\Nsid;
 use SocialDept\AtpSchema\Parser\SchemaLoader;
 use SocialDept\AtpSchema\Validation\Validator;
 

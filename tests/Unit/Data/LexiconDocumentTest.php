@@ -5,7 +5,7 @@ namespace SocialDept\AtpSchema\Tests\Unit\Data;
 use Orchestra\Testbench\TestCase;
 use SocialDept\AtpSchema\Data\LexiconDocument;
 use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
-use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSupport\Nsid;
 
 class LexiconDocumentTest extends TestCase
 {
