@@ -2,9 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Moderation\Defs;
 
-use SocialDept\AtpSchema\Attributes\Generated;
-
 use Carbon\Carbon;
+use SocialDept\AtpSchema\Attributes\Generated;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Admin\Defs\ThreatSignature;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;

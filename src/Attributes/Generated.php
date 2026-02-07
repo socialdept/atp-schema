@@ -17,5 +17,6 @@ class Generated
 {
     public function __construct(
         public bool $regenerate = true
-    ) {}
+    ) {
+    }
 }

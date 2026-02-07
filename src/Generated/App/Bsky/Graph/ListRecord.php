@@ -2,9 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Graph;
 
-use SocialDept\AtpSchema\Attributes\Generated;
-
 use Carbon\Carbon;
+use SocialDept\AtpSchema\Attributes\Generated;
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs\ListPurpose;
