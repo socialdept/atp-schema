@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 
 /**

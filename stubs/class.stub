@@ -2,8 +2,6 @@
 
 namespace {{ namespace }};
 
-use SocialDept\AtpSchema\Attributes\Generated;
-
 {{ imports }}
 
 {{ docBlock }}

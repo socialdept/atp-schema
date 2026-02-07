@@ -5,6 +5,7 @@ namespace SocialDept\AtpSchema\Console;
 use Illuminate\Console\Command;
 use SocialDept\AtpSchema\Generator\DTOGenerator;
 use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Support\PathHelper;
 
 class GenerateCommand extends Command
 {
@@ -36,8 +37,9 @@ class GenerateCommand extends Command
     public function handle(): int
     {
         $nsid = $this->argument('nsid');
-        $output = $this->option('output') ?? config('schema.lexicons.output_path');
-        $namespace = $this->option('namespace') ?? config('schema.lexicons.base_namespace');
+        $lexiconPath = config('atp-schema.generators.lexicon_path', 'app/Lexicons');
+        $output = $this->option('output') ?? base_path($lexiconPath);
+        $namespace = $this->option('namespace') ?? PathHelper::pathToNamespace($lexiconPath);
         $force = $this->option('force');
         $dryRun = $this->option('dry-run');
         $withDependencies = $this->option('with-dependencies') || $this->option('recursive');
@@ -45,14 +47,14 @@ class GenerateCommand extends Command
         $this->info("Generating DTO classes for schema: {$nsid}");
 
         try {
-            $sources = config('schema.sources', []);
+            $sources = config('atp-schema.sources', []);
             $loader = new SchemaLoader(
                 sources: $sources,
-                useCache: config('schema.cache.enabled', true),
-                cacheTtl: config('schema.cache.schema_ttl', 3600),
-                cachePrefix: config('schema.cache.prefix', 'schema'),
-                dnsResolutionEnabled: config('schema.dns_resolution.enabled', true),
-                httpTimeout: config('schema.http.timeout', 10)
+                useCache: config('atp-schema.cache.enabled', true),
+                cacheTtl: config('atp-schema.cache.schema_ttl', 3600),
+                cachePrefix: config('atp-schema.cache.prefix', 'schema'),
+                dnsResolutionEnabled: config('atp-schema.dns_resolution.enabled', true),
+                httpTimeout: config('atp-schema.http.timeout', 10)
             );
 
             $generator = new DTOGenerator(

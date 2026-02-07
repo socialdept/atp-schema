@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Video\Defs;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\BlobReference;
 use SocialDept\AtpSchema\Data\Data;
 

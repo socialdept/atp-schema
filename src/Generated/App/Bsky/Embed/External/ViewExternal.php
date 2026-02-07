@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\External;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 
 /**

@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Repo\ApplyWrites;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 
 /**

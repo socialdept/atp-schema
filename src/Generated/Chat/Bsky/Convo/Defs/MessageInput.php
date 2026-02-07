@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Richtext\Facet;
 use SocialDept\AtpSchema\Support\UnionHelper;

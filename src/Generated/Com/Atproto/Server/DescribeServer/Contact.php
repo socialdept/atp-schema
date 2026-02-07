@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Server\DescribeServer;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 
 /**

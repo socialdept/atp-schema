@@ -16,8 +16,8 @@ class SchemaTest extends TestCase
 
     protected function defineEnvironment($app): void
     {
-        $app['config']->set('schema.sources', [__DIR__.'/../../fixtures']);
-        $app['config']->set('schema.cache.enabled', false);
+        $app['config']->set('atp-schema.sources', [__DIR__.'/../../fixtures']);
+        $app['config']->set('atp-schema.cache.enabled', false);
     }
 
     public function test_it_loads_schema(): void

@@ -145,7 +145,7 @@ This copies all lexicon JSON files to `resources/lexicons/`.
 
 ### Generating Custom DTOs
 
-Generate PHP classes from any lexicon schema:
+Generate PHP classes from any lexicon schema. By default, classes are output to `app/Lexicons` with a namespace derived from the path (`App\Lexicons`). You can change this in `config/atp-schema.php` under `generators.lexicon_path`:
 
 ```bash
 # Generate a single lexicon
@@ -156,6 +156,9 @@ php artisan schema:generate app.bsky.feed.post --with-dependencies
 
 # Regenerate existing files
 php artisan schema:generate app.bsky.feed.post --force
+
+# Override output directory and namespace
+php artisan schema:generate app.bsky.feed.post --output=app/DTOs --namespace="App\DTOs"
 ```
 
 Generated classes include a `#[Generated]` attribute that controls regeneration behavior:
@@ -229,7 +232,7 @@ composer require socialdept/atp-schema
 The package will auto-register with Laravel. Optionally publish the config:
 
 ```bash
-php artisan vendor:publish --tag=schema-config
+php artisan vendor:publish --tag=atp-schema-config
 ```
 
 ## Basic Usage
@@ -510,20 +513,38 @@ vendor/bin/phpunit --testsuite=integration
 
 ## Configuration
 
-Customize behavior in `config/schema.php`:
+Publish and customize `config/atp-schema.php`:
 
 ```php
 return [
-    'storage' => [
-        'disk' => env('SCHEMA_STORAGE_DISK', 'local'),
+    // Local lexicon directories (searched in order)
+    'sources' => [
+        resource_path('lexicons'),
+    ],
+
+    // Generator settings — namespace is derived from the path
+    // e.g. 'app/Lexicons' → 'App\Lexicons'
+    'generators' => [
+        'lexicon_path' => 'app/Lexicons',
+    ],
+
+    // Bundled pre-generated classes (SocialDept\AtpSchema\Generated)
+    'generated' => [
+        'namespace' => 'SocialDept\\AtpSchema\\Generated',
+        'enabled' => env('SCHEMA_USE_GENERATED', true),
     ],
 
     'validation' => [
-        'mode' => env('SCHEMA_VALIDATION_MODE', 'optimistic'),
+        'mode' => env('SCHEMA_VALIDATION_MODE', 'strict'),
     ],
 
-    'blob' => [
-        'max_size' => env('SCHEMA_BLOB_MAX_SIZE', 1024 * 1024 * 10), // 10MB
+    'cache' => [
+        'enabled' => env('SCHEMA_CACHE_ENABLED', true),
+    ],
+
+    'blobs' => [
+        'disk' => env('SCHEMA_BLOB_DISK', 'local'),
+        'path' => env('SCHEMA_BLOB_PATH', 'blobs'),
     ],
 ];
 ```

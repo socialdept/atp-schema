@@ -28,7 +28,7 @@ class ListCommand extends Command
         $type = $this->option('type');
 
         try {
-            $sources = config('schema.sources', []);
+            $sources = config('atp-schema.sources', []);
             $loader = new SchemaLoader($sources);
 
             $schemas = $this->discoverSchemas($sources);

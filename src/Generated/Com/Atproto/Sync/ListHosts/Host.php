@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\Com\Atproto\Sync\ListHosts;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Sync\Defs\HostStatus;
 

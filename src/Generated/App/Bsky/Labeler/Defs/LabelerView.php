@@ -2,9 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Labeler\Defs;
 
-use SocialDept\AtpSchema\Attributes\Generated;
-
 use Carbon\Carbon;
+use SocialDept\AtpSchema\Attributes\Generated;
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs\ProfileView;
 use SocialDept\AtpSchema\Generated\Com\Atproto\Label\Defs\Label;

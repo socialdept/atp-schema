@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Actor\Defs;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Defs\ListViewBasic;
 use SocialDept\AtpSchema\Generated\App\Bsky\Notification\Defs\ActivitySubscription;

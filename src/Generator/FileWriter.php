@@ -6,7 +6,6 @@ use SocialDept\AtpSchema\Exceptions\GenerationException;
 
 class FileWriter
 {
-
     /**
      * Whether to overwrite existing files.
      */

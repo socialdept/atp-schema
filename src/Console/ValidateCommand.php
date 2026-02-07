@@ -57,7 +57,7 @@ class ValidateCommand extends Command
             }
 
             // Load schema and validate
-            $sources = config('schema.sources', []);
+            $sources = config('atp-schema.sources', []);
             $loader = new SchemaLoader($sources);
             $validator = new LexiconValidator($loader);
 

@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\App\Bsky\Embed\Video;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 use SocialDept\AtpSchema\Generated\App\Bsky\Embed\Defs\AspectRatio;
 

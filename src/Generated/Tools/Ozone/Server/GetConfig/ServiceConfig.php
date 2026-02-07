@@ -3,7 +3,6 @@
 namespace SocialDept\AtpSchema\Generated\Tools\Ozone\Server\GetConfig;
 
 use SocialDept\AtpSchema\Attributes\Generated;
-
 use SocialDept\AtpSchema\Data\Data;
 
 /**

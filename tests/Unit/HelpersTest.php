@@ -16,8 +16,8 @@ class HelpersTest extends TestCase
 
     protected function defineEnvironment($app): void
     {
-        $app['config']->set('schema.sources', [__DIR__.'/../fixtures']);
-        $app['config']->set('schema.cache.enabled', false);
+        $app['config']->set('atp-schema.sources', [__DIR__.'/../fixtures']);
+        $app['config']->set('atp-schema.cache.enabled', false);
     }
 
     public function test_schema_helper_returns_manager(): void

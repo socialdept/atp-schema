@@ -21,7 +21,7 @@ class ClearCacheCommandTest extends TestCase
         Cache::flush();
 
         config([
-            'schema.cache.prefix' => 'schema',
+            'atp-schema.cache.prefix' => 'schema',
         ]);
     }
 

@@ -2,9 +2,8 @@
 
 namespace SocialDept\AtpSchema\Generated\Chat\Bsky\Convo\Defs;
 
-use SocialDept\AtpSchema\Attributes\Generated;
-
 use Carbon\Carbon;
+use SocialDept\AtpSchema\Attributes\Generated;
 use SocialDept\AtpSchema\Data\Data;
 
 /**
