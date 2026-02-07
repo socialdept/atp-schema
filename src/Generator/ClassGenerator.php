@@ -226,7 +226,10 @@ class ClassGenerator
      */
     protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = '', bool $isRecordType = false): array
     {
-        $uses = ['SocialDept\\AtpSchema\\Data\\Data'];
+        $uses = [
+            'SocialDept\\AtpSchema\\Attributes\\Generated',
+            'SocialDept\\AtpSchema\\Data\\Data',
+        ];
         $properties = $definition['properties'] ?? [];
         $hasUnions = false;
         $localRefs = [];
