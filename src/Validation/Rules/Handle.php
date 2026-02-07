@@ -4,6 +4,7 @@ namespace SocialDept\AtpSchema\Validation\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
+use SocialDept\AtpSupport\Identity;
 
 class Handle implements ValidationRule
 {
@@ -18,33 +19,8 @@ class Handle implements ValidationRule
             return;
         }
 
-        // Check if Resolver package is available
-        if (class_exists('SocialDept\AtpResolver\Support\Identity')) {
-            if (! \SocialDept\AtpResolver\Support\Identity::isHandle($value)) {
-                $fail("The {$attribute} is not a valid handle.");
-            }
-
-            return;
-        }
-
-        // Fallback validation if Resolver is not available
-        if (! $this->isValidHandle($value)) {
+        if (! Identity::isHandle($value)) {
             $fail("The {$attribute} is not a valid handle.");
         }
-    }
-
-    /**
-     * Fallback handle validation.
-     */
-    protected function isValidHandle(string $value): bool
-    {
-        // Handle format: domain.tld (DNS name)
-        // Must be at least 3 chars, no spaces, valid DNS characters
-        if (strlen($value) < 3 || strlen($value) > 253) {
-            return false;
-        }
-
-        // Check for valid DNS hostname format
-        return (bool) preg_match('/^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/', $value);
     }
 }

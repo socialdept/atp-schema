@@ -3,7 +3,7 @@
 namespace SocialDept\AtpSchema\Data;
 
 use SocialDept\AtpSchema\Exceptions\SchemaValidationException;
-use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSupport\Nsid;
 
 class LexiconDocument
 {

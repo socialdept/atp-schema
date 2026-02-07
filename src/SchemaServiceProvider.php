@@ -3,7 +3,7 @@
 namespace SocialDept\AtpSchema;
 
 use Illuminate\Support\ServiceProvider;
-use SocialDept\AtpSchema\Support\PathHelper;
+use SocialDept\AtpSupport\PathHelper;
 
 class SchemaServiceProvider extends ServiceProvider
 {

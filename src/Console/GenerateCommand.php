@@ -5,7 +5,7 @@ namespace SocialDept\AtpSchema\Console;
 use Illuminate\Console\Command;
 use SocialDept\AtpSchema\Generator\DTOGenerator;
 use SocialDept\AtpSchema\Parser\SchemaLoader;
-use SocialDept\AtpSchema\Support\PathHelper;
+use SocialDept\AtpSupport\PathHelper;
 
 class GenerateCommand extends Command
 {

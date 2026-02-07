@@ -6,7 +6,7 @@ use Orchestra\Testbench\TestCase;
 use SocialDept\AtpSchema\Data\LexiconDocument;
 use SocialDept\AtpSchema\Exceptions\GenerationException;
 use SocialDept\AtpSchema\Generator\ClassGenerator;
-use SocialDept\AtpSchema\Parser\Nsid;
+use SocialDept\AtpSupport\Nsid;
 
 class ClassGeneratorTest extends TestCase
 {
