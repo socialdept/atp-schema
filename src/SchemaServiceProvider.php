@@ -3,6 +3,7 @@
 namespace SocialDept\AtpSchema;
 
 use Illuminate\Support\ServiceProvider;
+use SocialDept\AtpSchema\Support\PathHelper;
 
 class SchemaServiceProvider extends ServiceProvider
 {
@@ -35,14 +36,14 @@ class SchemaServiceProvider extends ServiceProvider
         // Register NamingConverter
         $this->app->singleton(Generator\NamingConverter::class, function ($app) {
             return new Generator\NamingConverter(
-                baseNamespace: config('schema.lexicons.base_namespace', 'App\\Lexicons')
+                baseNamespace: PathHelper::pathToNamespace(config('schema.generators.lexicon_path', 'app/Lexicons'))
             );
         });
 
         // Register NamespaceResolver
         $this->app->singleton(Generator\NamespaceResolver::class, function ($app) {
             return new Generator\NamespaceResolver(
-                baseNamespace: config('schema.lexicons.base_namespace', 'App\\Lexicons')
+                baseNamespace: PathHelper::pathToNamespace(config('schema.generators.lexicon_path', 'app/Lexicons'))
             );
         });
 
@@ -94,8 +95,8 @@ class SchemaServiceProvider extends ServiceProvider
         $this->app->singleton(Generator\DTOGenerator::class, function ($app) {
             return new Generator\DTOGenerator(
                 schemaLoader: $app->make(Parser\SchemaLoader::class),
-                baseNamespace: config('schema.lexicons.base_namespace', 'App\\Lexicons'),
-                outputDirectory: config('schema.lexicons.output_path', app_path('Lexicons')),
+                baseNamespace: PathHelper::pathToNamespace(config('schema.generators.lexicon_path', 'app/Lexicons')),
+                outputDirectory: base_path(config('schema.generators.lexicon_path', 'app/Lexicons')),
                 typeParser: null,
                 namespaceResolver: $app->make(Generator\NamespaceResolver::class)
             );

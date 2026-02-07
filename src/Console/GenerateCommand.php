@@ -5,6 +5,7 @@ namespace SocialDept\AtpSchema\Console;
 use Illuminate\Console\Command;
 use SocialDept\AtpSchema\Generator\DTOGenerator;
 use SocialDept\AtpSchema\Parser\SchemaLoader;
+use SocialDept\AtpSchema\Support\PathHelper;
 
 class GenerateCommand extends Command
 {
@@ -36,8 +37,9 @@ class GenerateCommand extends Command
     public function handle(): int
     {
         $nsid = $this->argument('nsid');
-        $output = $this->option('output') ?? config('schema.lexicons.output_path');
-        $namespace = $this->option('namespace') ?? config('schema.lexicons.base_namespace');
+        $lexiconPath = config('schema.generators.lexicon_path', 'app/Lexicons');
+        $output = $this->option('output') ?? base_path($lexiconPath);
+        $namespace = $this->option('namespace') ?? PathHelper::pathToNamespace($lexiconPath);
         $force = $this->option('force');
         $dryRun = $this->option('dry-run');
         $withDependencies = $this->option('with-dependencies') || $this->option('recursive');
