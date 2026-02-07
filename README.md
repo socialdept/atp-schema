@@ -145,7 +145,7 @@ This copies all lexicon JSON files to `resources/lexicons/`.
 
 ### Generating Custom DTOs
 
-Generate PHP classes from any lexicon schema. By default, classes are output to `app/Lexicons` with a namespace derived from the path (`App\Lexicons`). You can change this in `config/schema.php` under `generators.lexicon_path`:
+Generate PHP classes from any lexicon schema. By default, classes are output to `app/Lexicons` with a namespace derived from the path (`App\Lexicons`). You can change this in `config/atp-schema.php` under `generators.lexicon_path`:
 
 ```bash
 # Generate a single lexicon
@@ -232,7 +232,7 @@ composer require socialdept/atp-schema
 The package will auto-register with Laravel. Optionally publish the config:
 
 ```bash
-php artisan vendor:publish --tag=schema-config
+php artisan vendor:publish --tag=atp-schema-config
 ```
 
 ## Basic Usage
@@ -513,7 +513,7 @@ vendor/bin/phpunit --testsuite=integration
 
 ## Configuration
 
-Publish and customize `config/schema.php`:
+Publish and customize `config/atp-schema.php`:
 
 ```php
 return [
