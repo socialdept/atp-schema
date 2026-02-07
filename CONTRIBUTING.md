@@ -39,31 +39,16 @@ When requesting or submitting new features, first consider whether it might be u
 ## Requirements
 
 - **[PSR-12 Coding Standard](https://www.php-fig.org/psr/psr-12/)** - Run `vendor/bin/php-cs-fixer fix` to automatically fix code style issues.
-
-- **Add tests** - Your patch won't be accepted if it doesn't have tests. All tests must use [PHPUnit](https://phpunit.de/) with [Pest](https://pestphp.com/).
-
-- **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
-
+- **Add tests** - Your patch won't be accepted if it doesn't have tests. All tests must use [PHPUnit](https://phpunit.de/).
+- **Document any change in behavior** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
 - **Consider our release cycle** - We follow [SemVer v2.0.0](https://semver.org/). Randomly breaking public APIs is not an option.
-
 - **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
-
 - **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](https://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
 
 ## Running Tests
 
 ```bash
 vendor/bin/phpunit
-```
-
-Run specific test suites:
-
-```bash
-# Unit tests only
-vendor/bin/phpunit --testsuite=unit
-
-# Integration tests only
-vendor/bin/phpunit --testsuite=integration
 ```
 
 ## Code Style
@@ -73,5 +58,3 @@ Schema follows PSR-12 coding standard. Run PHP CS Fixer before submitting:
 ```bash
 vendor/bin/php-cs-fixer fix
 ```
-
-**Happy coding**!

@@ -577,4 +577,4 @@ Schema is open-source software licensed under the [MIT license](LICENSE).
 
 ---
 
-**Built for the Federation** • By Social Dept.
+**Built for the Atmosphere** • By Social Dept.
