@@ -34,7 +34,7 @@ class ClearCacheCommand extends Command
         }
 
         try {
-            $cachePrefix = config('schema.cache.prefix', 'schema');
+            $cachePrefix = config('atp-schema.cache.prefix', 'schema');
 
             if ($all) {
                 $this->info('Clearing all schema caches...');

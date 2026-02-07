@@ -18,7 +18,7 @@ class ListCommandTest extends TestCase
         parent::setUp();
 
         config([
-            'schema.sources' => [__DIR__.'/../../fixtures'],
+            'atp-schema.sources' => [__DIR__.'/../../fixtures'],
         ]);
     }
 

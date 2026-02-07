@@ -12,17 +12,17 @@ class SchemaServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/schema.php', 'schema');
+        $this->mergeConfigFrom(__DIR__.'/../config/atp-schema.php', 'atp-schema');
 
         // Register SchemaLoader
         $this->app->singleton(Parser\SchemaLoader::class, function ($app) {
             return new Parser\SchemaLoader(
-                sources: config('schema.sources', []),
-                useCache: config('schema.cache.enabled', true),
-                cacheTtl: config('schema.cache.schema_ttl', 3600),
-                cachePrefix: config('schema.cache.prefix', 'schema'),
-                dnsResolutionEnabled: config('schema.dns_resolution.enabled', true),
-                httpTimeout: config('schema.http.timeout', 10)
+                sources: config('atp-schema.sources', []),
+                useCache: config('atp-schema.cache.enabled', true),
+                cacheTtl: config('atp-schema.cache.schema_ttl', 3600),
+                cachePrefix: config('atp-schema.cache.prefix', 'schema'),
+                dnsResolutionEnabled: config('atp-schema.dns_resolution.enabled', true),
+                httpTimeout: config('atp-schema.http.timeout', 10)
             );
         });
 
@@ -36,14 +36,14 @@ class SchemaServiceProvider extends ServiceProvider
         // Register NamingConverter
         $this->app->singleton(Generator\NamingConverter::class, function ($app) {
             return new Generator\NamingConverter(
-                baseNamespace: PathHelper::pathToNamespace(config('schema.generators.lexicon_path', 'app/Lexicons'))
+                baseNamespace: PathHelper::pathToNamespace(config('atp-schema.generators.lexicon_path', 'app/Lexicons'))
             );
         });
 
         // Register NamespaceResolver
         $this->app->singleton(Generator\NamespaceResolver::class, function ($app) {
             return new Generator\NamespaceResolver(
-                baseNamespace: PathHelper::pathToNamespace(config('schema.generators.lexicon_path', 'app/Lexicons'))
+                baseNamespace: PathHelper::pathToNamespace(config('atp-schema.generators.lexicon_path', 'app/Lexicons'))
             );
         });
 
@@ -62,8 +62,8 @@ class SchemaServiceProvider extends ServiceProvider
         // Register DnsLexiconResolver
         $this->app->singleton(Parser\DnsLexiconResolver::class, function ($app) {
             return new Parser\DnsLexiconResolver(
-                enabled: config('schema.dns_resolution.enabled', true),
-                httpTimeout: config('schema.http.timeout', 10),
+                enabled: config('atp-schema.dns_resolution.enabled', true),
+                httpTimeout: config('atp-schema.http.timeout', 10),
                 parser: $app->make(Parser\DefaultLexiconParser::class)
             );
         });
@@ -71,8 +71,8 @@ class SchemaServiceProvider extends ServiceProvider
         // Register DefaultBlobHandler
         $this->app->singleton(Support\DefaultBlobHandler::class, function ($app) {
             return new Support\DefaultBlobHandler(
-                disk: config('schema.blobs.disk'),
-                path: config('schema.blobs.path', 'blobs')
+                disk: config('atp-schema.blobs.disk'),
+                path: config('atp-schema.blobs.path', 'blobs')
             );
         });
 
@@ -95,8 +95,8 @@ class SchemaServiceProvider extends ServiceProvider
         $this->app->singleton(Generator\DTOGenerator::class, function ($app) {
             return new Generator\DTOGenerator(
                 schemaLoader: $app->make(Parser\SchemaLoader::class),
-                baseNamespace: PathHelper::pathToNamespace(config('schema.generators.lexicon_path', 'app/Lexicons')),
-                outputDirectory: base_path(config('schema.generators.lexicon_path', 'app/Lexicons')),
+                baseNamespace: PathHelper::pathToNamespace(config('atp-schema.generators.lexicon_path', 'app/Lexicons')),
+                outputDirectory: base_path(config('atp-schema.generators.lexicon_path', 'app/Lexicons')),
                 typeParser: null,
                 namespaceResolver: $app->make(Generator\NamespaceResolver::class)
             );
@@ -255,8 +255,8 @@ class SchemaServiceProvider extends ServiceProvider
     {
         // Publish config
         $this->publishes([
-            __DIR__.'/../config/schema.php' => config_path('schema.php'),
-        ], 'schema-config');
+            __DIR__.'/../config/atp-schema.php' => config_path('atp-schema.php'),
+        ], 'atp-schema-config');
 
         // Publish stubs (will be created in later commits)
         $this->publishes([

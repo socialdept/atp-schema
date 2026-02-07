@@ -23,8 +23,8 @@ class GenerateCommandTest extends TestCase
         mkdir($this->tempDir, 0755, true);
 
         config([
-            'schema.sources' => [__DIR__.'/../../fixtures'],
-            'schema.generators.lexicon_path' => 'app/Lexicons',
+            'atp-schema.sources' => [__DIR__.'/../../fixtures'],
+            'atp-schema.generators.lexicon_path' => 'app/Lexicons',
         ]);
     }
 
