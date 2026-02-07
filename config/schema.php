@@ -34,47 +34,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Generation Settings
+    | Generator Settings
     |--------------------------------------------------------------------------
     |
-    | Configure how Data classes are generated from Lexicon schemas.
+    | Configure path for the schema:generate command. The namespace is
+    | derived from the path (e.g. 'app/Lexicons' → 'App\Lexicons').
     |
     */
 
-    'generation' => [
-        // Output directory for generated Data classes
-        'output_path' => env('SCHEMA_OUTPUT_PATH', app_path('Data')),
-
-        // Base namespace for generated classes
-        'base_namespace' => env('SCHEMA_BASE_NAMESPACE', 'App\\Data'),
-
-        // Use readonly properties (PHP 8.1+)
-        'readonly_properties' => env('SCHEMA_READONLY_PROPERTIES', true),
-
-        // Generate fluent setters for immutable updates
-        'fluent_setters' => env('SCHEMA_FLUENT_SETTERS', true),
-
-        // Generate comprehensive PHPDoc blocks
-        'generate_phpdoc' => env('SCHEMA_GENERATE_PHPDOC', true),
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Lexicon Generation Settings
-    |--------------------------------------------------------------------------
-    |
-    | Configure how Lexicon classes are generated from AT Protocol schemas.
-    | These settings are separate from Data class generation to allow for
-    | different organizational structures.
-    |
-    */
-
-    'lexicons' => [
+    'generators' => [
         // Output directory for generated Lexicon classes
-        'output_path' => env('SCHEMA_LEXICON_OUTPUT_PATH', app_path('Lexicons')),
-
-        // Base namespace for generated Lexicon classes
-        'base_namespace' => env('SCHEMA_LEXICON_BASE_NAMESPACE', 'App\\Lexicons'),
+        'lexicon_path' => 'app/Lexicons',
     ],
 
     /*
