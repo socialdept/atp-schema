@@ -24,8 +24,7 @@ class GenerateCommandTest extends TestCase
 
         config([
             'schema.sources' => [__DIR__.'/../../fixtures'],
-            'schema.lexicons.output_path' => $this->tempDir,
-            'schema.lexicons.base_namespace' => 'Test\\Generated',
+            'schema.generators.lexicon_path' => 'app/Lexicons',
         ]);
     }
 
@@ -135,6 +134,8 @@ class GenerateCommandTest extends TestCase
         // First generation
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
             '--force' => true,
         ])->assertSuccessful();
 
@@ -151,6 +152,8 @@ class GenerateCommandTest extends TestCase
         // Second generation with --force should overwrite
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
             '--force' => true,
         ])
             ->assertSuccessful()
@@ -167,6 +170,8 @@ class GenerateCommandTest extends TestCase
         // First generation
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
             '--force' => true,
         ])->assertSuccessful();
 
@@ -188,6 +193,8 @@ class GenerateCommandTest extends TestCase
         // Second generation with --force should skip this file
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
             '--force' => true,
         ])
             ->assertSuccessful()
@@ -203,6 +210,8 @@ class GenerateCommandTest extends TestCase
         // First generation
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
             '--force' => true,
         ])->assertSuccessful();
 
@@ -225,6 +234,8 @@ class GenerateCommandTest extends TestCase
         // Second generation with --force should skip this file
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
             '--force' => true,
         ])
             ->assertSuccessful()
@@ -240,6 +251,8 @@ class GenerateCommandTest extends TestCase
         // Generation without --force should work for new files
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
         ])
             ->assertSuccessful()
             ->expectsOutputToContain('Generated');
@@ -254,11 +267,15 @@ class GenerateCommandTest extends TestCase
         // First generation
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
         ])->assertSuccessful();
 
         // Second generation without --force should fail
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
         ])
             ->assertFailed()
             ->expectsOutputToContain('Generation failed');
@@ -269,6 +286,8 @@ class GenerateCommandTest extends TestCase
         // Generation with --force should work for new files
         $this->artisan(GenerateCommand::class, [
             'nsid' => 'app.bsky.feed.post',
+            '--output' => $this->tempDir,
+            '--namespace' => 'Test\\Generated',
             '--force' => true,
         ])
             ->assertSuccessful()
