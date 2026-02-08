@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "socialdept/atp-support": "^0.1",
+        "socialdept/atp-support": "^0.1 || ^0.2",
         "illuminate/support": "^11.0|^12.0",
         "illuminate/console": "^11.0|^12.0",
         "illuminate/cache": "^11.0|^12.0",
