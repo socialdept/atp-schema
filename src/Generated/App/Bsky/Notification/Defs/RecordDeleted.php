@@ -21,7 +21,7 @@ class RecordDeleted extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.notification.defs.recordDeleted';
+        return 'app.bsky.notification.defs#recordDeleted';
     }
 
 

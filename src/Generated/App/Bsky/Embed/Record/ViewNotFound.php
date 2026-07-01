@@ -35,7 +35,7 @@ class ViewNotFound extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.record.viewNotFound';
+        return 'app.bsky.embed.record#viewNotFound';
     }
 
 

@@ -33,7 +33,7 @@ class StatusAttr extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.admin.defs.statusAttr';
+        return 'com.atproto.admin.defs#statusAttr';
     }
 
 

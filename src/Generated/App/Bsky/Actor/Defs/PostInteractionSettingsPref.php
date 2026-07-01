@@ -42,7 +42,7 @@ class PostInteractionSettingsPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.postInteractionSettingsPref';
+        return 'app.bsky.actor.defs#postInteractionSettingsPref';
     }
 
 

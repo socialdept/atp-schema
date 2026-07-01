@@ -35,7 +35,7 @@ class Caption extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.video.caption';
+        return 'app.bsky.embed.video#caption';
     }
 
 

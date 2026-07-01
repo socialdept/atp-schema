@@ -32,7 +32,7 @@ class ThreadItemBlocked extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.threadItemBlocked';
+        return 'app.bsky.unspecced.defs#threadItemBlocked';
     }
 
 

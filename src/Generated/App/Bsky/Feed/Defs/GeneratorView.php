@@ -69,7 +69,7 @@ class GeneratorView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.generatorView';
+        return 'app.bsky.feed.defs#generatorView';
     }
 
 

@@ -38,7 +38,7 @@ class SelfLabel extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.label.defs.selfLabel';
+        return 'com.atproto.label.defs#selfLabel';
     }
 
 

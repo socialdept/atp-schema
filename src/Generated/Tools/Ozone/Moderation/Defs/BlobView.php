@@ -45,7 +45,7 @@ class BlobView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.blobView';
+        return 'tools.ozone.moderation.defs#blobView';
     }
 
 

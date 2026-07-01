@@ -35,7 +35,7 @@ class Link extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.richtext.facet.link';
+        return 'app.bsky.richtext.facet#link';
     }
 
 

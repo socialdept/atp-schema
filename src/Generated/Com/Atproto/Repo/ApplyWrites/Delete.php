@@ -37,7 +37,7 @@ class Delete extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.applyWrites.delete';
+        return 'com.atproto.repo.applyWrites#delete';
     }
 
 

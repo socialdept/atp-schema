@@ -48,7 +48,7 @@ class StatusView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.statusView';
+        return 'app.bsky.actor.defs#statusView';
     }
 
 

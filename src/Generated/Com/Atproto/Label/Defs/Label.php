@@ -67,7 +67,7 @@ class Label extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.label.defs.label';
+        return 'com.atproto.label.defs#label';
     }
 
 

@@ -37,7 +37,7 @@ class Record extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.listRecords.record';
+        return 'com.atproto.repo.listRecords#record';
     }
 
 

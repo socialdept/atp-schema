@@ -37,7 +37,7 @@ class ReactionView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.reactionView';
+        return 'chat.bsky.convo.defs#reactionView';
     }
 
 

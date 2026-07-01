@@ -47,7 +47,7 @@ class AccountHosting extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.accountHosting';
+        return 'tools.ozone.moderation.defs#accountHosting';
     }
 
 

@@ -36,7 +36,7 @@ class Tag extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.richtext.facet.tag';
+        return 'app.bsky.richtext.facet#tag';
     }
 
 

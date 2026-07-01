@@ -37,7 +37,7 @@ class BlockedPost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.blockedPost';
+        return 'app.bsky.feed.defs#blockedPost';
     }
 
 

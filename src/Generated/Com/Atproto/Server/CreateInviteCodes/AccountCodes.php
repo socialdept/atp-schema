@@ -33,7 +33,7 @@ class AccountCodes extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.server.createInviteCodes.accountCodes';
+        return 'com.atproto.server.createInviteCodes#accountCodes';
     }
 
 

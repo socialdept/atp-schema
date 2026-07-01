@@ -35,7 +35,7 @@ class NotFoundPost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.notFoundPost';
+        return 'app.bsky.feed.defs#notFoundPost';
     }
 
 

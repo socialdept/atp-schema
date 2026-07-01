@@ -31,7 +31,7 @@ class ServiceConfig extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.server.getConfig.serviceConfig';
+        return 'tools.ozone.server.getConfig#serviceConfig';
     }
 
 

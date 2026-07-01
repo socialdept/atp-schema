@@ -51,7 +51,7 @@ class ModEventView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventView';
+        return 'tools.ozone.moderation.defs#modEventView';
     }
 
 

@@ -36,7 +36,7 @@ class InviteCodeUse extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.server.defs.inviteCodeUse';
+        return 'com.atproto.server.defs#inviteCodeUse';
     }
 
 

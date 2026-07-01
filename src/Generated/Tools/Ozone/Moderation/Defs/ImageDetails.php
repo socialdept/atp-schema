@@ -33,7 +33,7 @@ class ImageDetails extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.imageDetails';
+        return 'tools.ozone.moderation.defs#imageDetails';
     }
 
 

@@ -39,7 +39,7 @@ class AppPassword extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.server.createAppPassword.appPassword';
+        return 'com.atproto.server.createAppPassword#appPassword';
     }
 
 

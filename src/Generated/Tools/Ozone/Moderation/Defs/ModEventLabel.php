@@ -42,7 +42,7 @@ class ModEventLabel extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventLabel';
+        return 'tools.ozone.moderation.defs#modEventLabel';
     }
 
 

@@ -46,7 +46,7 @@ class SubjectView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.subjectView';
+        return 'tools.ozone.moderation.defs#subjectView';
     }
 
 

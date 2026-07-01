@@ -37,7 +37,7 @@ class ModEventPriorityScore extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventPriorityScore';
+        return 'tools.ozone.moderation.defs#modEventPriorityScore';
     }
 
 

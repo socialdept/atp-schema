@@ -43,7 +43,7 @@ class BskyAppStatePref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.bskyAppStatePref';
+        return 'app.bsky.actor.defs#bskyAppStatePref';
     }
 
 

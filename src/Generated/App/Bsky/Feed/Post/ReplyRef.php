@@ -34,7 +34,7 @@ class ReplyRef extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.post.replyRef';
+        return 'app.bsky.feed.post#replyRef';
     }
 
 

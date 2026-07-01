@@ -30,7 +30,7 @@ class ModEventDivert extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventDivert';
+        return 'tools.ozone.moderation.defs#modEventDivert';
     }
 
 

@@ -55,7 +55,7 @@ class Preferences extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.notification.defs.preferences';
+        return 'app.bsky.notification.defs#preferences';
     }
 
 

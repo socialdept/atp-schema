@@ -42,7 +42,7 @@ class AgeAssuranceState extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.ageAssuranceState';
+        return 'app.bsky.unspecced.defs#ageAssuranceState';
     }
 
 

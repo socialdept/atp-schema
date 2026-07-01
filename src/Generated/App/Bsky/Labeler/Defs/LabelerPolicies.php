@@ -39,7 +39,7 @@ class LabelerPolicies extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.labeler.defs.labelerPolicies';
+        return 'app.bsky.labeler.defs#labelerPolicies';
     }
 
 

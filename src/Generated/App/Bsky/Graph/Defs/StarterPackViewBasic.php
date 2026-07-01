@@ -56,7 +56,7 @@ class StarterPackViewBasic extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.graph.defs.starterPackViewBasic';
+        return 'app.bsky.graph.defs#starterPackViewBasic';
     }
 
 

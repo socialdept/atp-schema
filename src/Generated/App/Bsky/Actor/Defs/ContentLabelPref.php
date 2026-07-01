@@ -39,7 +39,7 @@ class ContentLabelPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.contentLabelPref';
+        return 'app.bsky.actor.defs#contentLabelPref';
     }
 
 

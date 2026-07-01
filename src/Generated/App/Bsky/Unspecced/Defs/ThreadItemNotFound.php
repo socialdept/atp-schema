@@ -21,7 +21,7 @@ class ThreadItemNotFound extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.threadItemNotFound';
+        return 'app.bsky.unspecced.defs#threadItemNotFound';
     }
 
 

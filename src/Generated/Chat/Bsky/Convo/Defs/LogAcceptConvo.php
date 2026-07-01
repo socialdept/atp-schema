@@ -33,7 +33,7 @@ class LogAcceptConvo extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.logAcceptConvo';
+        return 'chat.bsky.convo.defs#logAcceptConvo';
     }
 
 

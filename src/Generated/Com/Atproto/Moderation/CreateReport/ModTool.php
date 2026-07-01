@@ -39,7 +39,7 @@ class ModTool extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.moderation.createReport.modTool';
+        return 'com.atproto.moderation.createReport#modTool';
     }
 
 

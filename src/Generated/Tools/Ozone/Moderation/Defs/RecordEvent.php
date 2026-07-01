@@ -43,7 +43,7 @@ class RecordEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.recordEvent';
+        return 'tools.ozone.moderation.defs#recordEvent';
     }
 
 

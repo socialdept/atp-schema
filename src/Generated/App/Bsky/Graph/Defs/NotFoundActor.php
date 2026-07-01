@@ -37,7 +37,7 @@ class NotFoundActor extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.graph.defs.notFoundActor';
+        return 'app.bsky.graph.defs#notFoundActor';
     }
 
 

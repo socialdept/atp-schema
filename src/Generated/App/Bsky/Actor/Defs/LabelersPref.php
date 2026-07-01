@@ -31,7 +31,7 @@ class LabelersPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.labelersPref';
+        return 'app.bsky.actor.defs#labelersPref';
     }
 
 

@@ -105,7 +105,7 @@ class SubjectStatusView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.subjectStatusView';
+        return 'tools.ozone.moderation.defs#subjectStatusView';
     }
 
 

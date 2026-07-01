@@ -69,7 +69,7 @@ class PostView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.postView';
+        return 'app.bsky.feed.defs#postView';
     }
 
 

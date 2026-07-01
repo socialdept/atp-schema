@@ -33,7 +33,7 @@ class LogUnmuteConvo extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.logUnmuteConvo';
+        return 'chat.bsky.convo.defs#logUnmuteConvo';
     }
 
 

@@ -34,7 +34,7 @@ class Links extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.server.describeServer.links';
+        return 'com.atproto.server.describeServer#links';
     }
 
 

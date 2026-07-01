@@ -38,7 +38,7 @@ class TextSlice extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.post.textSlice';
+        return 'app.bsky.feed.post#textSlice';
     }
 
 

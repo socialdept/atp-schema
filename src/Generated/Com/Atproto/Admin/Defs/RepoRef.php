@@ -32,7 +32,7 @@ class RepoRef extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.admin.defs.repoRef';
+        return 'com.atproto.admin.defs#repoRef';
     }
 
 

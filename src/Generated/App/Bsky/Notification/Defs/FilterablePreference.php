@@ -35,7 +35,7 @@ class FilterablePreference extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.notification.defs.filterablePreference';
+        return 'app.bsky.notification.defs#filterablePreference';
     }
 
 

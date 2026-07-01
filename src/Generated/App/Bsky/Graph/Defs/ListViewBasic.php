@@ -56,7 +56,7 @@ class ListViewBasic extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.graph.defs.listViewBasic';
+        return 'app.bsky.graph.defs#listViewBasic';
     }
 
 

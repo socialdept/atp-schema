@@ -65,7 +65,7 @@ class LabelerViewDetailed extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.labeler.defs.labelerViewDetailed';
+        return 'app.bsky.labeler.defs#labelerViewDetailed';
     }
 
 

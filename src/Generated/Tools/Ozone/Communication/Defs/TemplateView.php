@@ -59,7 +59,7 @@ class TemplateView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.communication.defs.templateView';
+        return 'tools.ozone.communication.defs#templateView';
     }
 
 

@@ -32,7 +32,7 @@ class Repo extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.listReposByCollection.repo';
+        return 'com.atproto.sync.listReposByCollection#repo';
     }
 
 

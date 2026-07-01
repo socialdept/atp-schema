@@ -51,7 +51,7 @@ class Account extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.subscribeRepos.account';
+        return 'com.atproto.sync.subscribeRepos#account';
     }
 
 

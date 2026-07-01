@@ -36,7 +36,7 @@ class MessageRef extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.messageRef';
+        return 'chat.bsky.convo.defs#messageRef';
     }
 
 

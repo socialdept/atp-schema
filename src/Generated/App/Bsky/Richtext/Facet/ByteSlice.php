@@ -41,7 +41,7 @@ class ByteSlice extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.richtext.facet.byteSlice';
+        return 'app.bsky.richtext.facet#byteSlice';
     }
 
 

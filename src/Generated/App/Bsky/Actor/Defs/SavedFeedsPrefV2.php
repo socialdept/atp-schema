@@ -31,7 +31,7 @@ class SavedFeedsPrefV2 extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.savedFeedsPrefV2';
+        return 'app.bsky.actor.defs#savedFeedsPrefV2';
     }
 
 

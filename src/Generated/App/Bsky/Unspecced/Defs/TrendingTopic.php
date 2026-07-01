@@ -37,7 +37,7 @@ class TrendingTopic extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.trendingTopic';
+        return 'app.bsky.unspecced.defs#trendingTopic';
     }
 
 

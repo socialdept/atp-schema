@@ -39,7 +39,7 @@ class AgeAssuranceOverrideEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.ageAssuranceOverrideEvent';
+        return 'tools.ozone.moderation.defs#ageAssuranceOverrideEvent';
     }
 
 

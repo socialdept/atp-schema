@@ -56,7 +56,7 @@ class AgeAssuranceEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.ageAssuranceEvent';
+        return 'tools.ozone.moderation.defs#ageAssuranceEvent';
     }
 
 

@@ -35,7 +35,7 @@ class RecordBlob extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.listMissingBlobs.recordBlob';
+        return 'com.atproto.repo.listMissingBlobs#recordBlob';
     }
 
 

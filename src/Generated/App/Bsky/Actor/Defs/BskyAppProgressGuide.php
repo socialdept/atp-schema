@@ -35,7 +35,7 @@ class BskyAppProgressGuide extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.bskyAppProgressGuide';
+        return 'app.bsky.actor.defs#bskyAppProgressGuide';
     }
 
 

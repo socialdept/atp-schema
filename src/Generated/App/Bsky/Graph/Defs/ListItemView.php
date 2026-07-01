@@ -35,7 +35,7 @@ class ListItemView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.graph.defs.listItemView';
+        return 'app.bsky.graph.defs#listItemView';
     }
 
 

@@ -21,7 +21,7 @@ class ThreadItemNoUnauthenticated extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.threadItemNoUnauthenticated';
+        return 'app.bsky.unspecced.defs#threadItemNoUnauthenticated';
     }
 
 

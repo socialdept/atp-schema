@@ -33,7 +33,7 @@ class Info extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.subscribeRepos.info';
+        return 'com.atproto.sync.subscribeRepos#info';
     }
 
 

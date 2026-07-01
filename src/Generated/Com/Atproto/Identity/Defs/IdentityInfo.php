@@ -41,7 +41,7 @@ class IdentityInfo extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.identity.defs.identityInfo';
+        return 'com.atproto.identity.defs#identityInfo';
     }
 
 

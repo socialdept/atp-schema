@@ -41,7 +41,7 @@ class SkeletonFeedPost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.skeletonFeedPost';
+        return 'app.bsky.feed.defs#skeletonFeedPost';
     }
 
 

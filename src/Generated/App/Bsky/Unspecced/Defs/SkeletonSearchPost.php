@@ -32,7 +32,7 @@ class SkeletonSearchPost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.skeletonSearchPost';
+        return 'app.bsky.unspecced.defs#skeletonSearchPost';
     }
 
 

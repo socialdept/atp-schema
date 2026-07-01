@@ -31,7 +31,7 @@ class AdultContentPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.adultContentPref';
+        return 'app.bsky.actor.defs#adultContentPref';
     }
 
 

@@ -59,7 +59,7 @@ class AgeAssuranceEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.ageAssuranceEvent';
+        return 'app.bsky.unspecced.defs#ageAssuranceEvent';
     }
 
 
