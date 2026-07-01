@@ -35,7 +35,7 @@ class VideoDetails extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.videoDetails';
+        return 'tools.ozone.moderation.defs#videoDetails';
     }
 
 

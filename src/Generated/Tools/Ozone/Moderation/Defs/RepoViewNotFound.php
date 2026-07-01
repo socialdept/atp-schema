@@ -32,7 +32,7 @@ class RepoViewNotFound extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.repoViewNotFound';
+        return 'tools.ozone.moderation.defs#repoViewNotFound';
     }
 
 

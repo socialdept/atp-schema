@@ -43,7 +43,7 @@ class Create extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.applyWrites.create';
+        return 'com.atproto.repo.applyWrites#create';
     }
 
 

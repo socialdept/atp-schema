@@ -32,7 +32,7 @@ class SkeletonSearchStarterPack extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.skeletonSearchStarterPack';
+        return 'app.bsky.unspecced.defs#skeletonSearchStarterPack';
     }
 
 

@@ -32,7 +32,7 @@ class View extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.images.view';
+        return 'app.bsky.embed.images#view';
     }
 
 

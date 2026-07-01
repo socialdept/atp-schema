@@ -28,7 +28,7 @@ class Contact extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.server.describeServer.contact';
+        return 'com.atproto.server.describeServer#contact';
     }
 
 

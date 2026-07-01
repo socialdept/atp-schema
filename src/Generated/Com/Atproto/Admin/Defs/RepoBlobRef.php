@@ -38,7 +38,7 @@ class RepoBlobRef extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.admin.defs.repoBlobRef';
+        return 'com.atproto.admin.defs#repoBlobRef';
     }
 
 

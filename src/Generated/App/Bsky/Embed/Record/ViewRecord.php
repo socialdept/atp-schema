@@ -60,7 +60,7 @@ class ViewRecord extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.record.viewRecord';
+        return 'app.bsky.embed.record#viewRecord';
     }
 
 

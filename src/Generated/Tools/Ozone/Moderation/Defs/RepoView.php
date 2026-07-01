@@ -58,7 +58,7 @@ class RepoView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.repoView';
+        return 'tools.ozone.moderation.defs#repoView';
     }
 
 

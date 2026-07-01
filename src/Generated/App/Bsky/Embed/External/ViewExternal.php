@@ -39,7 +39,7 @@ class ViewExternal extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.external.viewExternal';
+        return 'app.bsky.embed.external#viewExternal';
     }
 
 

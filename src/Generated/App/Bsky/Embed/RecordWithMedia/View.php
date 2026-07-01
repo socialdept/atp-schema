@@ -35,7 +35,7 @@ class View extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.recordWithMedia.view';
+        return 'app.bsky.embed.recordWithMedia#view';
     }
 
 

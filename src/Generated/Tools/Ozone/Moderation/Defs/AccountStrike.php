@@ -47,7 +47,7 @@ class AccountStrike extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.accountStrike';
+        return 'tools.ozone.moderation.defs#accountStrike';
     }
 
 

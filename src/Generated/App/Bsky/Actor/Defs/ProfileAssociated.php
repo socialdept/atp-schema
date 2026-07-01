@@ -38,7 +38,7 @@ class ProfileAssociated extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.profileAssociated';
+        return 'app.bsky.actor.defs#profileAssociated';
     }
 
 

@@ -54,7 +54,7 @@ class RecordsStats extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.recordsStats';
+        return 'tools.ozone.moderation.defs#recordsStats';
     }
 
 

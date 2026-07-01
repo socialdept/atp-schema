@@ -38,7 +38,7 @@ class ViewBlocked extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.record.viewBlocked';
+        return 'app.bsky.embed.record#viewBlocked';
     }
 
 

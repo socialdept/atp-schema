@@ -21,7 +21,7 @@ class DeleteResult extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.applyWrites.deleteResult';
+        return 'com.atproto.repo.applyWrites#deleteResult';
     }
 
 

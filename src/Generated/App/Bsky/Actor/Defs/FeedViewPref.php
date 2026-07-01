@@ -49,7 +49,7 @@ class FeedViewPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.feedViewPref';
+        return 'app.bsky.actor.defs#feedViewPref';
     }
 
 

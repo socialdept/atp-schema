@@ -33,7 +33,7 @@ class VerificationPrefs extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.verificationPrefs';
+        return 'app.bsky.actor.defs#verificationPrefs';
     }
 
 

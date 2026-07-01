@@ -28,7 +28,7 @@ class ViewerConfig extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.server.getConfig.viewerConfig';
+        return 'tools.ozone.server.getConfig#viewerConfig';
     }
 
 

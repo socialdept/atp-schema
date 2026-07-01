@@ -35,7 +35,7 @@ class Mention extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.richtext.facet.mention';
+        return 'app.bsky.richtext.facet#mention';
     }
 
 

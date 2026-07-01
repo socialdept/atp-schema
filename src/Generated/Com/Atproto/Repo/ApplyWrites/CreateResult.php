@@ -37,7 +37,7 @@ class CreateResult extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.applyWrites.createResult';
+        return 'com.atproto.repo.applyWrites#createResult';
     }
 
 

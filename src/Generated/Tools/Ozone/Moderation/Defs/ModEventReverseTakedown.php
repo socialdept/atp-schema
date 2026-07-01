@@ -45,7 +45,7 @@ class ModEventReverseTakedown extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventReverseTakedown';
+        return 'tools.ozone.moderation.defs#modEventReverseTakedown';
     }
 
 

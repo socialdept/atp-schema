@@ -49,7 +49,7 @@ class ThreadItemPost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.threadItemPost';
+        return 'app.bsky.unspecced.defs#threadItemPost';
     }
 
 

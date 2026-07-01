@@ -52,7 +52,7 @@ class LabelValueDefinition extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.label.defs.labelValueDefinition';
+        return 'com.atproto.label.defs#labelValueDefinition';
     }
 
 

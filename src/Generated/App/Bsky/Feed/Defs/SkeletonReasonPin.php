@@ -21,7 +21,7 @@ class SkeletonReasonPin extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.skeletonReasonPin';
+        return 'app.bsky.feed.defs#skeletonReasonPin';
     }
 
 

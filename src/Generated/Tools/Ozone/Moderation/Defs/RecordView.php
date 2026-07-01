@@ -47,7 +47,7 @@ class RecordView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.recordView';
+        return 'tools.ozone.moderation.defs#recordView';
     }
 
 

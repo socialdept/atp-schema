@@ -35,7 +35,7 @@ class InterestsPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.interestsPref';
+        return 'app.bsky.actor.defs#interestsPref';
     }
 
 

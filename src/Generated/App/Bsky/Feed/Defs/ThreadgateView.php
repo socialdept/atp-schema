@@ -39,7 +39,7 @@ class ThreadgateView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.threadgateView';
+        return 'app.bsky.feed.defs#threadgateView';
     }
 
 

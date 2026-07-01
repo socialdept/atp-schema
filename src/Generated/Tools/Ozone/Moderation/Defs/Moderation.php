@@ -28,7 +28,7 @@ class Moderation extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.moderation';
+        return 'tools.ozone.moderation.defs#moderation';
     }
 
 

@@ -32,7 +32,7 @@ class LabelerPrefItem extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.labelerPrefItem';
+        return 'app.bsky.actor.defs#labelerPrefItem';
     }
 
 

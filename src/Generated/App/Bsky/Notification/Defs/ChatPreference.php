@@ -33,7 +33,7 @@ class ChatPreference extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.notification.defs.chatPreference';
+        return 'app.bsky.notification.defs#chatPreference';
     }
 
 

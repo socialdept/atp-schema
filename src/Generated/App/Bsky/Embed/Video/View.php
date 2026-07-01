@@ -45,7 +45,7 @@ class View extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.video.view';
+        return 'app.bsky.embed.video#view';
     }
 
 

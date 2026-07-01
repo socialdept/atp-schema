@@ -38,7 +38,7 @@ class ThreadViewPost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.threadViewPost';
+        return 'app.bsky.feed.defs#threadViewPost';
     }
 
 

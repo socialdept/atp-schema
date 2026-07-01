@@ -43,7 +43,7 @@ class RepoOp extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.subscribeRepos.repoOp';
+        return 'com.atproto.sync.subscribeRepos#repoOp';
     }
 
 

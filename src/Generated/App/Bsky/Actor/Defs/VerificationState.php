@@ -43,7 +43,7 @@ class VerificationState extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.verificationState';
+        return 'app.bsky.actor.defs#verificationState';
     }
 
 

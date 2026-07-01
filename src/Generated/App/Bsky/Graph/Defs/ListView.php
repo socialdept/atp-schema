@@ -66,7 +66,7 @@ class ListView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.graph.defs.listView';
+        return 'app.bsky.graph.defs#listView';
     }
 
 

@@ -42,7 +42,7 @@ class Host extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.listHosts.host';
+        return 'com.atproto.sync.listHosts#host';
     }
 
 

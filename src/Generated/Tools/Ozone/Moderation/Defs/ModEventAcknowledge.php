@@ -33,7 +33,7 @@ class ModEventAcknowledge extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventAcknowledge';
+        return 'tools.ozone.moderation.defs#modEventAcknowledge';
     }
 
 

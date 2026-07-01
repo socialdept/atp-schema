@@ -33,7 +33,7 @@ class ModEventResolveAppeal extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventResolveAppeal';
+        return 'tools.ozone.moderation.defs#modEventResolveAppeal';
     }
 
 

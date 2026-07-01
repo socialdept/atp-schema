@@ -60,7 +60,7 @@ class AccountView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.admin.defs.accountView';
+        return 'com.atproto.admin.defs#accountView';
     }
 
 

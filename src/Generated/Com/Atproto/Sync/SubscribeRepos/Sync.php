@@ -55,7 +55,7 @@ class Sync extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.subscribeRepos.sync';
+        return 'com.atproto.sync.subscribeRepos#sync';
     }
 
 

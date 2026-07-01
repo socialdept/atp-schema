@@ -28,7 +28,7 @@ class ModEventEscalate extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventEscalate';
+        return 'tools.ozone.moderation.defs#modEventEscalate';
     }
 
 

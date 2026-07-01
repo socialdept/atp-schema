@@ -55,7 +55,7 @@ class MessageView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.messageView';
+        return 'chat.bsky.convo.defs#messageView';
     }
 
 

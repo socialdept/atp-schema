@@ -39,7 +39,7 @@ class Update extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.applyWrites.update';
+        return 'com.atproto.repo.applyWrites#update';
     }
 
 

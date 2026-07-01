@@ -42,7 +42,7 @@ class ScheduleTakedownEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.scheduleTakedownEvent';
+        return 'tools.ozone.moderation.defs#scheduleTakedownEvent';
     }
 
 

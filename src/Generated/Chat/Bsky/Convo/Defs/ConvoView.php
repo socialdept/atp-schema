@@ -47,7 +47,7 @@ class ConvoView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.convoView';
+        return 'chat.bsky.convo.defs#convoView';
     }
 
 

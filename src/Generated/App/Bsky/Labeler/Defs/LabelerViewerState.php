@@ -31,7 +31,7 @@ class LabelerViewerState extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.labeler.defs.labelerViewerState';
+        return 'app.bsky.labeler.defs#labelerViewerState';
     }
 
 

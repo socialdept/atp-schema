@@ -32,7 +32,7 @@ class RecordViewNotFound extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.recordViewNotFound';
+        return 'tools.ozone.moderation.defs#recordViewNotFound';
     }
 
 

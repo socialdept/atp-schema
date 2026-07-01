@@ -40,7 +40,7 @@ class Entity extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.post.entity';
+        return 'app.bsky.feed.post#entity';
     }
 
 

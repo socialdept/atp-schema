@@ -58,7 +58,7 @@ class ViewerState extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.viewerState';
+        return 'app.bsky.actor.defs#viewerState';
     }
 
 

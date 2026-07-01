@@ -35,7 +35,7 @@ class PersonalDetailsPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.personalDetailsPref';
+        return 'app.bsky.actor.defs#personalDetailsPref';
     }
 
 

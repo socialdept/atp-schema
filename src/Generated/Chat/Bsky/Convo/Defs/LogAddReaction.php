@@ -38,7 +38,7 @@ class LogAddReaction extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.logAddReaction';
+        return 'chat.bsky.convo.defs#logAddReaction';
     }
 
 

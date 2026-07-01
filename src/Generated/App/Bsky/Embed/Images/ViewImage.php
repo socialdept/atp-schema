@@ -45,7 +45,7 @@ class ViewImage extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.images.viewImage';
+        return 'app.bsky.embed.images#viewImage';
     }
 
 

@@ -38,7 +38,7 @@ class AspectRatio extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.defs.aspectRatio';
+        return 'app.bsky.embed.defs#aspectRatio';
     }
 
 

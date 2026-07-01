@@ -41,7 +41,7 @@ class RecordHosting extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.recordHosting';
+        return 'tools.ozone.moderation.defs#recordHosting';
     }
 
 

@@ -32,7 +32,7 @@ class SkeletonReasonRepost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.skeletonReasonRepost';
+        return 'app.bsky.feed.defs#skeletonReasonRepost';
     }
 
 

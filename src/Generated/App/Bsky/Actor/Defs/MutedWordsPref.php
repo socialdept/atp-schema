@@ -34,7 +34,7 @@ class MutedWordsPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.mutedWordsPref';
+        return 'app.bsky.actor.defs#mutedWordsPref';
     }
 
 

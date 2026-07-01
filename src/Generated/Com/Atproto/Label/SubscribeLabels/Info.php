@@ -33,7 +33,7 @@ class Info extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.label.subscribeLabels.info';
+        return 'com.atproto.label.subscribeLabels#info';
     }
 
 

@@ -40,7 +40,7 @@ class Image extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.images.image';
+        return 'app.bsky.embed.images#image';
     }
 
 

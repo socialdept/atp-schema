@@ -49,7 +49,7 @@ class VerificationView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.verificationView';
+        return 'app.bsky.actor.defs#verificationView';
     }
 
 

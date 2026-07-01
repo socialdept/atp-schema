@@ -33,7 +33,7 @@ class ThreadContext extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.threadContext';
+        return 'app.bsky.feed.defs#threadContext';
     }
 
 

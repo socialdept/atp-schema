@@ -30,7 +30,7 @@ class CancelScheduledTakedownEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.cancelScheduledTakedownEvent';
+        return 'tools.ozone.moderation.defs#cancelScheduledTakedownEvent';
     }
 
 

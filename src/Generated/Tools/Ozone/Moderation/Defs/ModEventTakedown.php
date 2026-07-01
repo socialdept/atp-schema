@@ -58,7 +58,7 @@ class ModEventTakedown extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventTakedown';
+        return 'tools.ozone.moderation.defs#modEventTakedown';
     }
 
 

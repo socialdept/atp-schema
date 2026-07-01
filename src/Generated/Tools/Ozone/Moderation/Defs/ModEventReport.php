@@ -41,7 +41,7 @@ class ModEventReport extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventReport';
+        return 'tools.ozone.moderation.defs#modEventReport';
     }
 
 

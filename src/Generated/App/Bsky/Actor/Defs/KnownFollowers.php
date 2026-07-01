@@ -37,7 +37,7 @@ class KnownFollowers extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.knownFollowers';
+        return 'app.bsky.actor.defs#knownFollowers';
     }
 
 

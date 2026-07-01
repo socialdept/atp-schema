@@ -46,7 +46,7 @@ class IdentityEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.identityEvent';
+        return 'tools.ozone.moderation.defs#identityEvent';
     }
 
 

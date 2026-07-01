@@ -48,7 +48,7 @@ class Identity extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.subscribeRepos.identity';
+        return 'com.atproto.sync.subscribeRepos#identity';
     }
 
 

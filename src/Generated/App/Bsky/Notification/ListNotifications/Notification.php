@@ -57,7 +57,7 @@ class Notification extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.notification.listNotifications.notification';
+        return 'app.bsky.notification.listNotifications#notification';
     }
 
 

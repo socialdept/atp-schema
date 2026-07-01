@@ -33,7 +33,7 @@ class ActivitySubscription extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.notification.defs.activitySubscription';
+        return 'app.bsky.notification.defs#activitySubscription';
     }
 
 

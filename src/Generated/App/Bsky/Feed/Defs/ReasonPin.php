@@ -21,7 +21,7 @@ class ReasonPin extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.reasonPin';
+        return 'app.bsky.feed.defs#reasonPin';
     }
 
 

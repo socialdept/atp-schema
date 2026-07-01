@@ -38,7 +38,7 @@ class ModEventMute extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventMute';
+        return 'tools.ozone.moderation.defs#modEventMute';
     }
 
 

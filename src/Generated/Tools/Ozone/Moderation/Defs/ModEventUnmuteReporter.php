@@ -33,7 +33,7 @@ class ModEventUnmuteReporter extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventUnmuteReporter';
+        return 'tools.ozone.moderation.defs#modEventUnmuteReporter';
     }
 
 

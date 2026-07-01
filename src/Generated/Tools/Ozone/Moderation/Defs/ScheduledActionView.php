@@ -87,7 +87,7 @@ class ScheduledActionView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.scheduledActionView';
+        return 'tools.ozone.moderation.defs#scheduledActionView';
     }
 
 

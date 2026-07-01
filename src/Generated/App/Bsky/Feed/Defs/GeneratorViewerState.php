@@ -31,7 +31,7 @@ class GeneratorViewerState extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.generatorViewerState';
+        return 'app.bsky.feed.defs#generatorViewerState';
     }
 
 

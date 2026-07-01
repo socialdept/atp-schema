@@ -31,7 +31,7 @@ class ProfileAssociatedActivitySubscription extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.profileAssociatedActivitySubscription';
+        return 'app.bsky.actor.defs#profileAssociatedActivitySubscription';
     }
 
 

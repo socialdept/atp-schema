@@ -272,7 +272,13 @@ class DTOGenerator implements DataGenerator
             ],
         ];
 
-        $tempDocument = \SocialDept\AtpSchema\Data\LexiconDocument::fromArray($tempSchema);
+        // The synthetic id must stay dotted (Nsid::parse rejects '#') for
+        // namespace/class/path resolution, but the def's $type must serialize as
+        // the canonical fragment form `nsid#defName`.
+        $tempDocument = \SocialDept\AtpSchema\Data\LexiconDocument::fromArray(
+            $tempSchema,
+            lexiconType: $document->getNsid().'#'.$defName,
+        );
 
         // Use ClassGenerator for proper code generation
         $code = $this->classGenerator->generate($tempDocument);

@@ -60,7 +60,7 @@ class ModEventEmail extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventEmail';
+        return 'tools.ozone.moderation.defs#modEventEmail';
     }
 
 

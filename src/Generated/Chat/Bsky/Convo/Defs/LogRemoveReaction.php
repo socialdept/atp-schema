@@ -38,7 +38,7 @@ class LogRemoveReaction extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.logRemoveReaction';
+        return 'chat.bsky.convo.defs#logRemoveReaction';
     }
 
 

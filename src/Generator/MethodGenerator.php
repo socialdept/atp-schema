@@ -67,7 +67,8 @@ class MethodGenerator
      */
     public function generateGetLexicon(LexiconDocument $document): string
     {
-        $nsid = $document->getNsid();
+        // Fragment form (`nsid#def`) for defs; plain NSID for main types.
+        $nsid = $document->getLexiconType();
 
         $method = $this->renderer->render('method', [
             'docBlock' => $this->generateDocBlock('Get the lexicon NSID for this data type.', 'string'),

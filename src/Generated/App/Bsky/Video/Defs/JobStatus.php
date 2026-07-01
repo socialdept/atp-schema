@@ -51,7 +51,7 @@ class JobStatus extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.video.defs.jobStatus';
+        return 'app.bsky.video.defs#jobStatus';
     }
 
 

@@ -31,7 +31,7 @@ class ThreadViewPref extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.threadViewPref';
+        return 'app.bsky.actor.defs#threadViewPref';
     }
 
 

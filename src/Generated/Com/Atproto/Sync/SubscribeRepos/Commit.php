@@ -76,7 +76,7 @@ class Commit extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.sync.subscribeRepos.commit';
+        return 'com.atproto.sync.subscribeRepos#commit';
     }
 
 

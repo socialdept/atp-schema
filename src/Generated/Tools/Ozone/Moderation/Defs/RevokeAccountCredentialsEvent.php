@@ -36,7 +36,7 @@ class RevokeAccountCredentialsEvent extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.revokeAccountCredentialsEvent';
+        return 'tools.ozone.moderation.defs#revokeAccountCredentialsEvent';
     }
 
 

@@ -33,7 +33,7 @@ class ListViewerState extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.graph.defs.listViewerState';
+        return 'app.bsky.graph.defs#listViewerState';
     }
 
 

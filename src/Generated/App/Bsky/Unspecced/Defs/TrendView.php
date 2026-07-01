@@ -48,7 +48,7 @@ class TrendView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.unspecced.defs.trendView';
+        return 'app.bsky.unspecced.defs#trendView';
     }
 
 

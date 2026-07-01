@@ -43,7 +43,7 @@ class Interaction extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.interaction';
+        return 'app.bsky.feed.defs#interaction';
     }
 
 

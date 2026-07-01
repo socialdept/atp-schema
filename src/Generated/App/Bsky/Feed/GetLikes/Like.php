@@ -39,7 +39,7 @@ class Like extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.getLikes.like';
+        return 'app.bsky.feed.getLikes#like';
     }
 
 

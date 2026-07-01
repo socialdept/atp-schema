@@ -51,7 +51,7 @@ class MutedWord extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.mutedWord';
+        return 'app.bsky.actor.defs#mutedWord';
     }
 
 

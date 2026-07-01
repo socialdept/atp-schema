@@ -46,7 +46,7 @@ class FeedViewPost extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.feed.defs.feedViewPost';
+        return 'app.bsky.feed.defs#feedViewPost';
     }
 
 

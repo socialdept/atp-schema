@@ -35,7 +35,7 @@ class ViewDetached extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.embed.record.viewDetached';
+        return 'app.bsky.embed.record#viewDetached';
     }
 
 

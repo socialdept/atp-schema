@@ -36,7 +36,7 @@ class ModEventComment extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.modEventComment';
+        return 'tools.ozone.moderation.defs#modEventComment';
     }
 
 

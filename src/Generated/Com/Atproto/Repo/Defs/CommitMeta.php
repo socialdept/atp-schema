@@ -35,7 +35,7 @@ class CommitMeta extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.repo.defs.commitMeta';
+        return 'com.atproto.repo.defs#commitMeta';
     }
 
 

@@ -48,7 +48,7 @@ class Nux extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.actor.defs.nux';
+        return 'app.bsky.actor.defs#nux';
     }
 
 

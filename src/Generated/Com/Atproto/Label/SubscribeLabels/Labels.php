@@ -34,7 +34,7 @@ class Labels extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.label.subscribeLabels.labels';
+        return 'com.atproto.label.subscribeLabels#labels';
     }
 
 

@@ -39,7 +39,7 @@ class DeletedMessageView extends Data
      */
     public static function getLexicon(): string
     {
-        return 'chat.bsky.convo.defs.deletedMessageView';
+        return 'chat.bsky.convo.defs#deletedMessageView';
     }
 
 

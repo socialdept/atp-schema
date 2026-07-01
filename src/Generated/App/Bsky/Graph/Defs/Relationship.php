@@ -45,7 +45,7 @@ class Relationship extends Data
      */
     public static function getLexicon(): string
     {
-        return 'app.bsky.graph.defs.relationship';
+        return 'app.bsky.graph.defs#relationship';
     }
 
 

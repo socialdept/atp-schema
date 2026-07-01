@@ -33,7 +33,7 @@ class ThreatSignature extends Data
      */
     public static function getLexicon(): string
     {
-        return 'com.atproto.admin.defs.threatSignature';
+        return 'com.atproto.admin.defs#threatSignature';
     }
 
 

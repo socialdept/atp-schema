@@ -45,7 +45,7 @@ class AccountStats extends Data
      */
     public static function getLexicon(): string
     {
-        return 'tools.ozone.moderation.defs.accountStats';
+        return 'tools.ozone.moderation.defs#accountStats';
     }
 
 
