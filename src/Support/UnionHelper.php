@@ -94,6 +94,13 @@ class UnionHelper
             // Get discriminator from the class
             $discriminator = $class::getDiscriminator();
             $typeMap[$discriminator] = $class;
+
+            // Back-compat: records written before def $types were canonicalised
+            // used the dotted form (`nsid.def`) rather than the fragment
+            // (`nsid#def`). Accept both so older data still resolves.
+            if (str_contains($discriminator, '#')) {
+                $typeMap[str_replace('#', '.', $discriminator)] = $class;
+            }
         }
 
         return $typeMap;

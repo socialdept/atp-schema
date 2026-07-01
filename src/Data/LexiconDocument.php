@@ -40,6 +40,13 @@ class LexiconDocument
     public readonly ?string $source;
 
     /**
+     * Canonical lexicon type string for `$type` serialization. Normally the NSID,
+     * but for a synthetic def document it is the fragment form `nsid#defName`
+     * (the id itself must stay dotted so it can pass through Nsid::parse).
+     */
+    public readonly ?string $lexiconType;
+
+    /**
      * Create a new LexiconDocument.
      *
      * @param  array<string, array>  $defs
@@ -50,7 +57,8 @@ class LexiconDocument
         array $defs,
         ?string $description = null,
         ?string $source = null,
-        ?array $raw = null
+        ?array $raw = null,
+        ?string $lexiconType = null
     ) {
         $this->lexicon = $lexicon;
         $this->id = $id;
@@ -58,12 +66,13 @@ class LexiconDocument
         $this->description = $description;
         $this->source = $source;
         $this->raw = $raw ?? [];
+        $this->lexiconType = $lexiconType;
     }
 
     /**
      * Create from array data.
      */
-    public static function fromArray(array $data, ?string $source = null): self
+    public static function fromArray(array $data, ?string $source = null, ?string $lexiconType = null): self
     {
         if (! isset($data['lexicon'])) {
             throw SchemaValidationException::missingField('unknown', 'lexicon');
@@ -88,7 +97,8 @@ class LexiconDocument
             defs: $data['defs'],
             description: $data['description'] ?? null,
             source: $source,
-            raw: $data
+            raw: $data,
+            lexiconType: $lexiconType
         );
     }
 
@@ -150,6 +160,15 @@ class LexiconDocument
     public function getNsid(): string
     {
         return $this->id->toString();
+    }
+
+    /**
+     * Canonical lexicon type used for `$type` serialization: the NSID for a main
+     * type, or the `nsid#defName` fragment for a def.
+     */
+    public function getLexiconType(): string
+    {
+        return $this->lexiconType ?? $this->getNsid();
     }
 
     /**

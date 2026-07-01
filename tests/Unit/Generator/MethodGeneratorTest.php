@@ -31,6 +31,23 @@ class MethodGeneratorTest extends TestCase
         $this->assertStringContainsString("return 'app.test.post';", $method);
     }
 
+    public function test_it_generates_fragment_get_lexicon_for_a_def(): void
+    {
+        // A def's $type must be the canonical fragment form `nsid#defName`,
+        // not the dotted synthetic id used for its namespace/class.
+        $document = new LexiconDocument(
+            lexicon: 1,
+            id: Nsid::parse('app.test.post.replyRef'),
+            defs: ['main' => ['type' => 'object', 'properties' => []]],
+            lexiconType: 'app.test.post#replyRef',
+        );
+
+        $method = $this->generator->generateGetLexicon($document);
+
+        $this->assertStringContainsString("return 'app.test.post#replyRef';", $method);
+        $this->assertStringNotContainsString("return 'app.test.post.replyRef';", $method);
+    }
+
     public function test_it_generates_from_array_with_properties(): void
     {
         $document = $this->createDocument('app.test.user', [
