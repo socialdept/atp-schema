@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.4.7
+
+### Fixed
+- Generated parent DTOs now emit a correct `use` import for the nested sub-object
+  classes they reference. Previously an **object-main** lexicon whose main
+  definition referenced its own sub-object def (e.g. a `#colors` object) emitted
+  the import in the sibling namespace (`…\Colors`) instead of nested under the
+  parent class (`…\Theme\Colors`). Because that wrong import shared the parent's
+  namespace it was silently dropped by the same-namespace filter, leaving
+  `Colors::fromArray()` to resolve against the parent's namespace where the class
+  does not exist — a fatal `Class "…" not found` the moment the parent's
+  `fromArray()` ran. Nesting is now keyed off whether the ref is one of the
+  document's own sub-definitions (record and object mains alike), rather than the
+  previous record-only heuristic. Cross-references between sibling sub-defs
+  continue to resolve in their shared namespace.
+
+### Note
+- Consumers with hand-patched generated DTOs (manually added `use` imports for
+  nested sub-objects) can regenerate with `schema:generate` after upgrading and
+  drop the hand-fix.
+
 ## v0.4.6
 
 ### Fixed

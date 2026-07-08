@@ -154,4 +154,120 @@ class DTOGeneratorTest extends TestCase
 
         $this->assertStringStartsWith('Custom\\Namespace', $metadata['namespace']);
     }
+
+    public function test_object_main_nests_use_imports_for_its_sub_object_defs(): void
+    {
+        // An object main referencing its own sub-defs must nest each import
+        // under the parent class, not point at a non-existent sibling.
+        $document = LexiconDocument::fromArray([
+            'lexicon' => 1,
+            'id' => 'test.example.theme',
+            'defs' => [
+                'main' => [
+                    'type' => 'object',
+                    'required' => ['colors'],
+                    'properties' => [
+                        'colors' => ['type' => 'ref', 'ref' => '#colors'],
+                        'typography' => ['type' => 'ref', 'ref' => '#typography'],
+                    ],
+                ],
+                'colors' => [
+                    'type' => 'object',
+                    'required' => ['primary'],
+                    'properties' => ['primary' => ['type' => 'string']],
+                ],
+                'typography' => [
+                    'type' => 'object',
+                    'properties' => ['font' => ['type' => 'string']],
+                ],
+            ],
+        ]);
+
+        $code = $this->generator->generate($document);
+
+        // Nested under the parent class, not the broken sibling form.
+        $this->assertStringContainsString('use Test\\Generated\\Test\\Example\\Theme\\Colors;', $code);
+        $this->assertStringContainsString('use Test\\Generated\\Test\\Example\\Theme\\Typography;', $code);
+        $this->assertStringNotContainsString('use Test\\Generated\\Test\\Example\\Colors;', $code);
+        $this->assertStringContainsString('Colors::fromArray(', $code);
+    }
+
+    public function test_sub_definition_referencing_a_sibling_def_keeps_the_sibling_import(): void
+    {
+        // A sub-def's ref to a sibling def resolves in their shared namespace,
+        // never nested under the referencing class.
+        $document = LexiconDocument::fromArray([
+            'lexicon' => 1,
+            'id' => 'test.example.theme',
+            'defs' => [
+                'main' => [
+                    'type' => 'object',
+                    'properties' => ['colors' => ['type' => 'ref', 'ref' => '#colors']],
+                ],
+                'colors' => [
+                    'type' => 'object',
+                    'required' => ['scale'],
+                    'properties' => ['scale' => ['type' => 'ref', 'ref' => '#typography']],
+                ],
+                'typography' => [
+                    'type' => 'object',
+                    'properties' => ['font' => ['type' => 'string']],
+                ],
+            ],
+        ]);
+
+        $this->generator->generateFromDocument($document, ['overwrite' => true]);
+
+        $colorsCode = file_get_contents($this->tempDir.'/Test/Example/Theme/Colors.php');
+
+        // Same namespace, so no import is needed; the ref must not nest under Colors.
+        $this->assertStringContainsString('namespace Test\\Generated\\Test\\Example\\Theme;', $colorsCode);
+        $this->assertStringContainsString('Typography::fromArray(', $colorsCode);
+        $this->assertStringNotContainsString('Theme\\Colors\\Typography', $colorsCode);
+    }
+
+    public function test_generated_object_dto_with_nested_defs_hydrates_without_fatal(): void
+    {
+        // Generating + calling fromArray() must not fatal with "Class not found".
+        // A unique base namespace avoids class collisions across runs.
+        $ns = 'Op423'.str_replace('.', '', uniqid());
+        $generator = new DTOGenerator(
+            schemaLoader: new SchemaLoader([__DIR__.'/../../fixtures'], false),
+            baseNamespace: $ns,
+            outputDirectory: $this->tempDir,
+        );
+
+        $document = LexiconDocument::fromArray([
+            'lexicon' => 1,
+            'id' => 'test.example.theme',
+            'defs' => [
+                'main' => [
+                    'type' => 'object',
+                    'required' => ['colors'],
+                    'properties' => ['colors' => ['type' => 'ref', 'ref' => '#colors']],
+                ],
+                'colors' => [
+                    'type' => 'object',
+                    'required' => ['primary'],
+                    'properties' => ['primary' => ['type' => 'string']],
+                ],
+            ],
+        ]);
+
+        $generator->generateFromDocument($document, ['overwrite' => true]);
+
+        $childFile = $this->tempDir.'/Test/Example/Theme/Colors.php';
+        $parentFile = $this->tempDir.'/Test/Example/Theme.php';
+        $this->assertFileExists($childFile);
+        $this->assertFileExists($parentFile);
+
+        require $childFile;
+        require $parentFile;
+
+        $parentClass = $ns.'\\Test\\Example\\Theme';
+        $instance = $parentClass::fromArray(['colors' => ['primary' => '#ffffff']]);
+
+        $this->assertInstanceOf($parentClass, $instance);
+        $this->assertSame('#ffffff', $instance->colors->primary);
+    }
 }
