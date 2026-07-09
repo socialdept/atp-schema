@@ -88,8 +88,10 @@ class ClassGenerator
         // Get class components
         $namespace = $this->extensions->filter('filter:class:namespace', $this->naming->nsidToNamespace($nsid), $document);
         $className = $this->extensions->filter('filter:class:className', $this->naming->toClassName($document->id->getName()), $document);
-        $isRecordType = $type === 'record';
-        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace, $className, $isRecordType), $document, $recordDef);
+        // Sub-object defs nest under this class; pass their names so local-ref
+        // imports resolve to the nested namespace.
+        $nestedDefNames = array_map(static fn (string $ref): string => ltrim($ref, '#'), array_keys($localDefinitions));
+        $useStatements = $this->extensions->filter('filter:class:useStatements', $this->collectUseStatements($recordDef, $namespace, $className, $nestedDefNames), $document, $recordDef);
         $properties = $this->extensions->filter('filter:class:properties', $this->generateProperties($recordDef), $document, $recordDef);
         $constructor = $this->extensions->filter('filter:class:constructor', $this->generateConstructor($recordDef), $document, $recordDef);
         $methods = $this->extensions->filter('filter:class:methods', $this->generateMethods($document), $document);
@@ -224,7 +226,10 @@ class ClassGenerator
      * @param  array<string, mixed>  $definition
      * @return array<string>
      */
-    protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = '', bool $isRecordType = false): array
+    /**
+     * @param  array<string>  $nestedRefs  Names of the document's own sub-definitions, nested under $currentClassName.
+     */
+    protected function collectUseStatements(array $definition, string $currentNamespace = '', string $currentClassName = '', array $nestedRefs = []): array
     {
         $uses = [
             'SocialDept\\AtpSchema\\Attributes\\Generated',
@@ -266,18 +271,15 @@ class ClassGenerator
             }
         }
 
-        // Add local ref imports
-        // For local refs, check if they should be nested or siblings
+        // An owned sub-def nests under the parent class (e.g. Theme\Colors);
+        // any other local ref is a sibling in the current namespace.
         if (! empty($localRefs) && $currentNamespace) {
             foreach ($localRefs as $localRef) {
                 $refClassName = $this->naming->toClassName($localRef);
 
-                // If this is a record type, local refs are nested under the record class
-                // e.g., Site\Standard\Publication\Preferences for #preferences in site.standard.publication
-                if ($isRecordType && $currentClassName) {
+                if ($currentClassName && in_array($localRef, $nestedRefs, true)) {
                     $uses[] = $currentNamespace . '\\' . $currentClassName . '\\' . $refClassName;
                 } else {
-                    // For object definitions or defs lexicons, local refs are siblings
                     $uses[] = $currentNamespace . '\\' . $refClassName;
                 }
             }
