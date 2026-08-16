@@ -4,9 +4,9 @@ namespace SocialDept\AtpSchema\Tests\Unit\Validation;
 
 use Orchestra\Testbench\TestCase;
 use SocialDept\AtpSchema\Data\LexiconDocument;
-use SocialDept\AtpSupport\Nsid;
 use SocialDept\AtpSchema\Parser\SchemaLoader;
 use SocialDept\AtpSchema\Validation\Validator;
+use SocialDept\AtpSupport\Nsid;
 
 class ValidatorTest extends TestCase
 {

@@ -6,8 +6,8 @@ use Orchestra\Testbench\TestCase;
 use SocialDept\AtpSchema\Contracts\LexiconRegistry;
 use SocialDept\AtpSchema\Data\LexiconDocument;
 use SocialDept\AtpSchema\Exceptions\RecordValidationException;
-use SocialDept\AtpSupport\Nsid;
 use SocialDept\AtpSchema\Services\UnionResolver;
+use SocialDept\AtpSupport\Nsid;
 
 class UnionResolverTest extends TestCase
 {
