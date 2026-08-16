@@ -11,7 +11,9 @@ use SocialDept\AtpSchema\Support\UnionHelper;
  */
 class FragmentVariant extends Data
 {
-    public function __construct(public readonly string $value = '') {}
+    public function __construct(public readonly string $value = '')
+    {
+    }
 
     public static function getLexicon(): string
     {
