@@ -53,6 +53,9 @@ class ComplexTypeParser
 
         return match ($type) {
             'object' => $this->parseObject($data),
+            // A query's params block has the shape of an object schema:
+            // properties and required, with primitive or array members.
+            'params' => $this->parseObject(['type' => 'object'] + $data),
             'array' => $this->parseArray($data),
             'union' => UnionType::fromArray($data),
             'ref' => RefType::fromArray($data),
@@ -125,6 +128,7 @@ class ComplexTypeParser
     {
         return in_array($type, [
             'object',
+            'params',
             'array',
             'union',
             'ref',

@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.4.8
+
+### Fixed
+- `validateQuery()` can now validate a query that declares parameters. The type
+  parser did not know the `params` type, so every such query failed with
+  `Unknown Lexicon type: params`. A params block is now parsed as an object
+  schema, which it matches in shape.
+- `validateProcedure()` now validates a procedure's body against `input.schema`.
+  It previously parsed the whole `input` object, `{encoding, schema}`, which has
+  no `type` and failed with `Unknown Lexicon type: (missing type field)`. Only
+  JSON input is validated, so other encodings such as blob uploads are skipped.
+  A bare schema placed directly under `input` is still accepted.
+
 ## v0.4.7
 
 ### Fixed
