@@ -126,6 +126,90 @@ class LexiconValidatorTest extends TestCase
         $this->assertTrue(true);
     }
 
+    public function test_it_validates_procedure_input_against_its_declared_schema(): void
+    {
+        $document = $this->procedure([
+            'encoding' => 'application/json',
+            'schema' => [
+                'type' => 'object',
+                'required' => ['text'],
+                'properties' => [
+                    'text' => ['type' => 'string', 'maxLength' => 10],
+                ],
+            ],
+        ]);
+
+        $this->validator->validateProcedure($document, ['text' => 'hello']);
+
+        $this->expectException(\SocialDept\AtpSchema\Exceptions\SchemaException::class);
+
+        $this->validator->validateProcedure($document, ['text' => str_repeat('x', 50)]);
+    }
+
+    public function test_it_requires_procedure_input_fields_from_the_declared_schema(): void
+    {
+        $document = $this->procedure([
+            'encoding' => 'application/json',
+            'schema' => ['type' => 'object', 'required' => ['text'], 'properties' => ['text' => ['type' => 'string']]],
+        ]);
+
+        $this->expectException(\SocialDept\AtpSchema\Exceptions\SchemaException::class);
+        $this->expectExceptionMessage("missing required property 'text'");
+
+        $this->validator->validateProcedure($document, []);
+    }
+
+    public function test_it_skips_procedure_input_that_is_not_json(): void
+    {
+        $document = $this->procedure(['encoding' => '*/*']);
+
+        $this->validator->validateProcedure($document, []);
+
+        $this->assertTrue(true);
+    }
+
+    public function test_it_validates_query_parameters(): void
+    {
+        $document = LexiconDocument::fromArray([
+            'lexicon' => 1,
+            'id' => 'com.example.query',
+            'defs' => [
+                'main' => [
+                    'type' => 'query',
+                    'parameters' => [
+                        'type' => 'params',
+                        'required' => ['actor'],
+                        'properties' => [
+                            'actor' => ['type' => 'string'],
+                            'limit' => ['type' => 'integer', 'minimum' => 1, 'maximum' => 100],
+                            'uris' => ['type' => 'array', 'items' => ['type' => 'string']],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->validator->validateQuery($document, ['actor' => 'alice', 'limit' => 50, 'uris' => ['at://a', 'at://b']]);
+
+        foreach ([['limit' => 50], ['actor' => 'alice', 'limit' => 500]] as $params) {
+            try {
+                $this->validator->validateQuery($document, $params);
+                $this->fail('Invalid parameters should be refused.');
+            } catch (\SocialDept\AtpSchema\Exceptions\SchemaException) {
+                $this->addToAssertionCount(1);
+            }
+        }
+    }
+
+    protected function procedure(array $input): LexiconDocument
+    {
+        return LexiconDocument::fromArray([
+            'lexicon' => 1,
+            'id' => 'com.example.procedure',
+            'defs' => ['main' => ['type' => 'procedure', 'input' => $input]],
+        ]);
+    }
+
     public function test_it_validates_with_contract_method(): void
     {
         $document = $this->loader->load('app.bsky.feed.post');

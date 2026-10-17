@@ -207,13 +207,37 @@ class LexiconValidator implements LexiconValidatorContract
             );
         }
 
-        // Get the input schema
-        $inputSchema = $mainDef['input'] ?? null;
+        $inputSchema = $this->procedureInputSchema($mainDef['input'] ?? null);
 
-        if ($inputSchema !== null && is_array($inputSchema)) {
+        if ($inputSchema !== null) {
             $inputType = $this->typeParser->parse($inputSchema, $document);
             $inputType->validate($input, '$');
         }
+    }
+
+    /**
+     * The schema a procedure's input is validated against.
+     *
+     * Lexicons declare input as {encoding, schema}. Only a JSON body has a
+     * schema to check, and other encodings, such as a blob upload, are not
+     * validated. A bare schema directly under input is still accepted.
+     *
+     * @param  mixed  $input  The procedure's input definition
+     * @return array<string, mixed>|null
+     */
+    protected function procedureInputSchema(mixed $input): ?array
+    {
+        if (! is_array($input)) {
+            return null;
+        }
+
+        if (array_key_exists('encoding', $input) || array_key_exists('schema', $input)) {
+            return ($input['encoding'] ?? null) === 'application/json' && is_array($input['schema'] ?? null)
+                ? $input['schema']
+                : null;
+        }
+
+        return isset($input['type']) ? $input : null;
     }
 
     /**
