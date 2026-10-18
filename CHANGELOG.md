@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.10
+
+### Changed
+- `Authoring\NetworkLexicons` now resolves through atp-support's `LexiconDnsResolver::fetch()` and `fetchFrom()` instead of its own lookup, so lexicon resolution lives in one place. Its methods and results are unchanged. Requires `socialdept/atp-support` `^0.3.4`.
+
 ## v0.4.9
 
 ### Added

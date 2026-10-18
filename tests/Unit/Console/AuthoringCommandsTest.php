@@ -218,4 +218,20 @@ class AuthoringCommandsTest extends TestCase
         $this->artisan('schema:check-dns', ['--did' => self::DID])->assertSuccessful();
         $this->artisan('schema:check-dns', ['--did' => 'did:plc:someone-else'])->expectsOutputToContain('not did:plc:someone-else')->assertFailed();
     }
+
+    public function test_an_unreachable_authority_is_reported_not_taken_as_unpublished(): void
+    {
+        $this->dns['_lexicon.example.com'] = self::DID;
+        Http::fake(['*' => Http::response('down', 503)]);
+        $this->files()->write('com.example.thing', Templates::make('record', 'com.example.thing'));
+
+        $this->artisan('schema:pull', ['nsid' => ['com.example.thing'], '--force' => true])
+            ->expectsOutputToContain('answered HTTP 503')
+            ->doesntExpectOutputToContain('not published')
+            ->assertFailed();
+
+        $this->artisan('schema:breaking', ['nsid' => ['com.example.thing']])
+            ->expectsOutputToContain('answered HTTP 503')
+            ->assertFailed();
+    }
 }
