@@ -3,23 +3,24 @@
 namespace SocialDept\AtpSchema\Authoring;
 
 use Closure;
-use Illuminate\Support\Facades\Http;
 use RuntimeException;
-use SocialDept\AtpSupport\Facades\Resolver;
+use SocialDept\AtpSupport\Data\PublishedLexicon as SupportPublishedLexicon;
+use SocialDept\AtpSupport\Exceptions\LexiconResolutionException;
 use SocialDept\AtpSupport\Nsid;
+use SocialDept\AtpSupport\Resolver;
 use SocialDept\AtpSupport\Resolvers\LexiconDnsResolver;
 
 /**
- * Lexicons as the network publishes them.
+ * Lexicons as the network publishes them, for the authoring commands.
  *
- * An NSID's authority publishes a TXT record at _lexicon.<authority domain>
- * holding did=<DID>, and the schema as a com.atproto.lexicon.schema record,
- * keyed by the NSID, in that DID's repo. Resolution is not hierarchical:
- * every authority level needs its own TXT record.
+ * Resolution itself is atp-support's LexiconDnsResolver: the TXT record at
+ * _lexicon.<authority domain> names a DID, and the schema is that repo's
+ * com.atproto.lexicon.schema record keyed by the NSID. Resolution is not
+ * hierarchical, so every authority level needs its own TXT record.
  */
 class NetworkLexicons
 {
-    public const COLLECTION = 'com.atproto.lexicon.schema';
+    public const COLLECTION = LexiconDnsResolver::COLLECTION;
 
     /**
      * @param  (Closure(string): ?string)|null  $dns  Looks up the DID for a TXT name, for tests
@@ -35,7 +36,7 @@ class NetworkLexicons
      */
     public static function dnsName(string $nsid): string
     {
-        return '_lexicon.'.Nsid::parse($nsid)->getAuthorityDomain();
+        return Nsid::parse($nsid)->lexiconDnsName();
     }
 
     /**
@@ -43,13 +44,7 @@ class NetworkLexicons
      */
     public function authority(string $nsid): ?string
     {
-        if ($this->dns !== null) {
-            return ($this->dns)(self::dnsName($nsid));
-        }
-
-        $parsed = Nsid::parse($nsid);
-
-        return (new LexiconDnsResolver(app(\SocialDept\AtpSupport\Resolver::class), $this->timeout))->lookupDns($parsed->getAuthority());
+        return $this->resolver()->lookupDns(Nsid::parse($nsid)->getAuthority());
     }
 
     /**
@@ -60,9 +55,7 @@ class NetworkLexicons
      */
     public function fetch(string $nsid): ?PublishedLexicon
     {
-        $did = $this->authority($nsid);
-
-        return $did === null ? null : $this->fetchFrom($did, $nsid);
+        return $this->convert(fn (LexiconDnsResolver $resolver) => $resolver->fetch($nsid));
     }
 
     /**
@@ -72,32 +65,41 @@ class NetworkLexicons
      */
     public function fetchFrom(string $did, string $nsid): ?PublishedLexicon
     {
-        $pds = Resolver::resolvePds($did) ?? throw new RuntimeException("{$did} names no PDS.");
+        return $this->convert(fn (LexiconDnsResolver $resolver) => $resolver->fetchFrom($did, $nsid));
+    }
 
-        $response = Http::timeout($this->timeout)
-            ->acceptJson()
-            ->get(rtrim($pds, '/').'/xrpc/com.atproto.repo.getRecord', [
-                'repo' => $did,
-                'collection' => self::COLLECTION,
-                'rkey' => $nsid,
-            ]);
-
-        if ($response->status() === 400 && in_array($response->json('error'), ['RecordNotFound', 'NotFound'], true)) {
-            return null;
+    /**
+     * @param  Closure(LexiconDnsResolver): ?SupportPublishedLexicon  $lookup
+     */
+    protected function convert(Closure $lookup): ?PublishedLexicon
+    {
+        try {
+            $published = $lookup($this->resolver());
+        } catch (LexiconResolutionException $e) {
+            throw new RuntimeException($e->getMessage(), 0, $e);
         }
 
-        if (! $response->successful() || ! is_array($value = $response->json('value'))) {
-            throw new RuntimeException("Could not read {$nsid} from {$pds}: HTTP {$response->status()}.");
-        }
+        return $published === null ? null : new PublishedLexicon(
+            nsid: $published->nsid,
+            did: $published->did,
+            uri: $published->uri,
+            cid: $published->cid,
+            lexicon: $published->schema,
+        );
+    }
 
-        unset($value['$type']);
+    protected function resolver(): LexiconDnsResolver
+    {
+        $dns = $this->dns;
 
-        return new PublishedLexicon(
-            nsid: $nsid,
-            did: $did,
-            uri: (string) ($response->json('uri') ?? 'at://'.$did.'/'.self::COLLECTION.'/'.$nsid),
-            cid: $response->json('cid'),
-            lexicon: $value,
+        return new LexiconDnsResolver(
+            resolver: app(Resolver::class),
+            httpTimeout: $this->timeout,
+            dnsLookup: $dns === null ? null : function (string $hostname) use ($dns) {
+                $did = $dns($hostname);
+
+                return $did === null ? false : [['txt' => "did={$did}"]];
+            },
         );
     }
 }
