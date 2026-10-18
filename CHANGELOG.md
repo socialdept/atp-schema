@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.12
+
+### Changed
+- Allows Guzzle 8 alongside Guzzle 7 (`guzzlehttp/guzzle` `^7.5|^8.0`), so the package installs in a fresh Laravel app without downgrading Guzzle. With atp-support 0.3.5 or later, the whole tree resolves to Guzzle 8.
+
 ## v0.4.11
 
 ### Fixed
