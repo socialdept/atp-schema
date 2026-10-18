@@ -4,6 +4,7 @@ namespace SocialDept\AtpSchema\Data\Types;
 
 use SocialDept\AtpSchema\Data\TypeDefinition;
 use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Support\Formats;
 
 class StringType extends TypeDefinition
 {
@@ -207,7 +208,7 @@ class StringType extends TypeDefinition
                 break;
 
             case 'uri':
-                if (! filter_var($value, FILTER_VALIDATE_URL)) {
+                if (! Formats::isUri($value)) {
                     throw RecordValidationException::invalidValue($path, 'must be a valid URI');
                 }
 
@@ -258,8 +259,7 @@ class StringType extends TypeDefinition
                 break;
 
             case 'language':
-                // Basic language tag validation (BCP 47)
-                if (! preg_match('/^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$/', $value)) {
+                if (! Formats::isLanguage($value)) {
                     throw RecordValidationException::invalidValue($path, 'must be a valid language tag');
                 }
 

@@ -3,6 +3,7 @@
 namespace SocialDept\AtpSchema\Validation\TypeValidators;
 
 use SocialDept\AtpSchema\Exceptions\RecordValidationException;
+use SocialDept\AtpSchema\Support\Formats;
 use SocialDept\AtpSupport\Identity;
 use SocialDept\AtpSupport\Nsid;
 
@@ -137,7 +138,7 @@ class StringValidator
      */
     protected function validateUri(string $value): bool
     {
-        return filter_var($value, FILTER_VALIDATE_URL) !== false;
+        return Formats::isUri($value);
     }
 
     /**
