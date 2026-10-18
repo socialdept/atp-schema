@@ -389,6 +389,46 @@ if ($validator->validate($postData, $schema)) {
 }
 ```
 
+## Authoring Lexicons
+
+Commands for the lifecycle of your own lexicons: create them, check them, see what changed, and follow other people's. They work on the files in `atp-schema.lexicon_path` (`resources/lexicons` by default), where `com.example.thing` lives at `com/example/thing.json`. The rules and finding names follow Bluesky's own tooling (`goat lex`), so both report the same things.
+
+```bash
+php artisan schema:new record com.example.thing   # record, query, procedure or permission-set
+php artisan schema:lint                           # every local file, or name some
+php artisan schema:diff com.example.thing         # against the published version
+php artisan schema:breaking                       # changes that would break the published versions
+php artisan schema:pull com.other.thing           # copy someone else's lexicon in, and lock it
+php artisan schema:check-dns --did=did:plc:abc    # the _lexicon TXT records you are missing
+```
+
+| Command | Fails when |
+|---|---|
+| `schema:lint` | A file has an error. Warnings and notes are listed but pass |
+| `schema:breaking` | A change would break the published version |
+| `schema:pull` | A lexicon is not published, or its authority cannot be read |
+| `schema:check-dns` | A TXT record is missing, or names another DID than `--did` |
+
+`lint` and `breaking` take `--json` for one finding per line. `diff` and `breaking` take `--against=<file>` to compare with a file instead of the network.
+
+### What counts as breaking
+
+A published lexicon may grow but not change shape. New fields must be optional, types cannot change, required and nullable fields cannot change, enums, consts and string formats are fixed, a record's key type is fixed, and a closed union cannot gain or lose types. Changed length limits, integer ranges, blob types and sizes, and refs are warnings. Adding or removing an optional field or a whole definition is fine.
+
+```php
+use SocialDept\AtpSchema\Authoring\BreakingChanges;
+
+$issues = BreakingChanges::between($published, $edited);   // array of Issue
+```
+
+### Publishing and resolution
+
+An NSID's authority publishes a TXT record at `_lexicon.<authority domain>` holding `did=<DID>`, and the schema as a `com.atproto.lexicon.schema` record, keyed by the NSID, in that DID's repo. Resolution is not hierarchical: `com.example.feed.post` needs `_lexicon.feed.example.com`, and `com.example`'s record does not cover it. `schema:check-dns` prints each record you need.
+
+`schema:pull` writes what it copies to `lexicons.lock.json` (`atp-schema.lock_file`): the repo and version of each lexicon. Run it with no names to pull everything in the lock file again. A local copy that differs from the published version is kept unless you pass `--force`.
+
+Publishing your own lexicons needs an authenticated session, so it lives in [atp-client](https://github.com/socialdept/atp-client): `php artisan lexicon:publish`.
+
 ## Supported Types
 
 Schema supports all AT Protocol Lexicon types:

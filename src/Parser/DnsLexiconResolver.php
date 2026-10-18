@@ -49,9 +49,7 @@ class DnsLexiconResolver implements LexiconResolver
         }
 
         try {
-            $resolver = app(Resolver::class);
-            $dnsResolver = new LexiconDnsResolver($resolver, $this->httpTimeout);
-            $schema = $dnsResolver->resolve($nsid);
+            $schema = $this->dns()->resolve($nsid);
 
             return $this->parser->parseArray($schema);
         } catch (SchemaNotFoundException $e) {
@@ -59,6 +57,27 @@ class DnsLexiconResolver implements LexiconResolver
         } catch (\Exception $e) {
             throw SchemaNotFoundException::forNsid($nsid);
         }
+    }
+
+    /**
+     * Perform DNS TXT lookup for _lexicon.{authority}.
+     */
+    public function lookupDns(string $authority): ?string
+    {
+        return $this->dns()->lookupDns($authority);
+    }
+
+    /**
+     * Retrieve schema via XRPC from PDS.
+     */
+    public function retrieveSchema(string $pdsEndpoint, string $did, string $nsid): array
+    {
+        return $this->dns()->retrieveSchema($pdsEndpoint, $did, $nsid);
+    }
+
+    protected function dns(): LexiconDnsResolver
+    {
+        return new LexiconDnsResolver(app(Resolver::class), $this->httpTimeout);
     }
 
     /**

@@ -68,6 +68,11 @@ class SchemaServiceProvider extends ServiceProvider
             );
         });
 
+        // Published lexicons, read from the network for the authoring commands
+        $this->app->singleton(Authoring\NetworkLexicons::class, fn () => new Authoring\NetworkLexicons(
+            timeout: (int) config('atp-schema.http.timeout', 10),
+        ));
+
         // Register DefaultBlobHandler
         $this->app->singleton(Support\DefaultBlobHandler::class, function ($app) {
             return new Support\DefaultBlobHandler(
@@ -274,6 +279,12 @@ class SchemaServiceProvider extends ServiceProvider
             Console\ValidateCommand::class,
             Console\ListCommand::class,
             Console\ClearCacheCommand::class,
+            Console\NewCommand::class,
+            Console\LintCommand::class,
+            Console\DiffCommand::class,
+            Console\BreakingCommand::class,
+            Console\PullCommand::class,
+            Console\CheckDnsCommand::class,
         ]);
     }
 }
