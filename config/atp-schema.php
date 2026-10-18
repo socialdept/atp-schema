@@ -34,6 +34,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Authoring
+    |--------------------------------------------------------------------------
+    |
+    | Where schema:new writes lexicons and schema:pull copies them, and the
+    | lock file schema:pull keeps of what it pulled, from which repo, at which
+    | version. Commit both.
+    |
+    */
+
+    'lexicon_path' => resource_path('lexicons'),
+
+    'lock_file' => base_path('lexicons.lock.json'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Generator Settings
     |--------------------------------------------------------------------------
     |

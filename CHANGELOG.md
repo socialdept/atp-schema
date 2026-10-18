@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.4.9
+
+### Added
+- **Lexicon authoring commands.** `schema:new` creates a lexicon from a template, `schema:lint` checks files for errors and style problems, `schema:diff` shows what changed against the published version, `schema:breaking` finds changes that would break it, `schema:pull` copies published lexicons in and records them in `lexicons.lock.json`, and `schema:check-dns` prints the `_lexicon` TXT records an authority is missing. Rules and finding names follow Bluesky's `goat lex`.
+- `Authoring\BreakingChanges::between()` and `Authoring\LexiconLinter`, usable from code, returning `Authoring\Issue` findings.
+- `atp-schema.lexicon_path` and `atp-schema.lock_file` config.
+
+### Fixed
+- `DnsLexiconResolver` could not be loaded: it implemented `LexiconResolver` without `lookupDns()` and `retrieveSchema()`, a fatal error the first time the class was used. Both now delegate to atp-support's resolver.
+
 ## v0.4.8
 
 ### Fixed
