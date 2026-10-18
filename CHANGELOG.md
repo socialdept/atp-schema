@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.11
+
+### Fixed
+- **The `uri` format rejected `at://` URIs.** It was checked with PHP's `FILTER_VALIDATE_URL`, which refuses an AT-URI's DID authority (`at://did:plc:...`) and schemes such as `did:` and `mailto:`. The Lexicon spec allows any URI with a scheme, so a record pointing at another record by its AT-URI in a `uri` field failed validation. It now follows the spec and Bluesky's reference implementation: a scheme, then no whitespace, at most 8 KB.
+- **The `language` format in record validation rejected valid BCP 47 tags** such as `es-419` and `pt-br`. It now uses the spec's loose check: a primary subtag of two or three letters, or `i`, then any subtags.
+
 ## v0.4.10
 
 ### Changed
