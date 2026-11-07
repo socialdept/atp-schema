@@ -1,4 +1,4 @@
-[![Schema Header](./header.png)](https://github.com/socialdept/atp-signals)
+[![Schema Header](./header.png)](https://github.com/socialdept/atp-schema)
 
 <h3 align="center">
     Parse, validate, and transform AT Protocol Lexicon schemas in Laravel.
@@ -13,608 +13,59 @@
 
 ---
 
-## What is Schema?
+This package loads AT Protocol lexicons into a Laravel app, validates records against them, ships PHP classes for the standard AT Protocol and Bluesky lexicons, generates classes for any other lexicon, and gives you commands to create, lint and check lexicons of your own before you publish them. To learn all about it, head over to [the documentation](https://socialde.pt/docs/atp-schema).
 
-**Schema** is a Laravel package for working with AT Protocol Lexicon schemas. It provides comprehensive tools for parsing schema definitions, validating data against those schemas, handling file uploads (blobs), and transforming between raw data and domain models.
+Here are a few short examples of what you can do. Validate a record against a lexicon:
 
-Think of it as your complete toolkit for building AT Protocol applications that need strict data validation and schema compliance.
+```php
+use SocialDept\AtpSchema\Facades\Schema;
 
-## Why use Schema?
+Schema::validate('app.bsky.feed.post', [
+    'text' => 'Hello, AT Protocol!',
+    'createdAt' => '2024-01-01T12:00:00Z',
+]); // true
+```
 
-- **Complete Lexicon support** - All types, formats, and constraints from the AT Protocol spec
-- **Multiple validation modes** - STRICT, OPTIMISTIC, and LENIENT for different use cases
-- **Laravel integration** - Works seamlessly with Laravel's validation and storage systems
-- **Blob handling** - Built-in file upload validation and storage
-- **Model transformation** - Convert between arrays and domain objects
-- **Union types** - Full support for discriminated unions with `$type` fields
-- **Extensible** - Macros and hooks let you customize behavior
-- **Production ready** - 842 passing tests with comprehensive coverage
-- **Pre-generated classes** - Includes type-safe PHP classes for all standard AT Protocol & Bluesky lexicons
-
-## Pre-Generated Lexicon Classes
-
-Schema ships with pre-generated PHP classes for all standard AT Protocol and Bluesky lexicons, providing immediate type-safe access without any generation step:
+Build records with the bundled classes:
 
 ```php
 use SocialDept\AtpSchema\Generated\App\Bsky\Feed\Post;
-use SocialDept\AtpSchema\Generated\App\Bsky\Graph\Follow;
-use SocialDept\AtpSchema\Generated\Com\Atproto\Repo\StrongRef;
 
-// Create type-safe records
-$post = new Post(
-    text: 'Hello ATP!',
-    createdAt: now()
-);
+$post = new Post(text: 'Hello ATP!', createdAt: now());
 
-// Create references
-$ref = new StrongRef(
-    uri: 'at://did:plc:example/app.bsky.feed.post/123',
-    cid: 'bafyreic3...'
-);
-
-// Validate and use
-Schema::validate('app.bsky.feed.post', $post); // true
+$post->toRecord(); // ['text' => 'Hello ATP!', 'createdAt' => '...', '$type' => 'app.bsky.feed.post']
 ```
 
-### Available Pre-Generated Classes
-
-Schema includes **220+ pre-generated classes** covering all standard AT Protocol and Bluesky lexicons:
-
-**Record Types (`SocialDept\AtpSchema\Generated\App\Bsky\*`)**
-- `Feed\Post` - Social media posts
-- `Feed\Like` - Like records
-- `Feed\Repost` - Repost records
-- `Graph\Follow` - Follow relationships
-- `Graph\Block` - Block records
-- `Graph\List` - User lists
-- `Graph\Listitem` - List items
-- `Labeler\Service` - Labeler service records
-
-**Embed Types**
-- `Embed\Images` - Image embeds
-- `Embed\External` - External link embeds
-- `Embed\Record` - Record embeds
-- `Embed\RecordWithMedia` - Record with media embeds
-- `Embed\Video` - Video embeds
-
-**Feed & Post Views (`App\Bsky\Feed\Defs\*`)**
-- `PostView` - Post with engagement metrics
-- `FeedViewPost` - Post in feed context
-- `ThreadViewPost` - Post in thread context
-- `ReplyRef` - Reply references
-- `ViewerState` - User's interaction state
-
-**Actor & Profile Views (`App\Bsky\Actor\Defs\*`)**
-- `ProfileView` - Full profile view
-- `ProfileViewBasic` - Basic profile view
-- `ProfileViewDetailed` - Detailed profile view
-- `ViewerState` - Viewer's relationship to profile
-- Plus 25+ preference and state classes
-
-**Graph & Social Views (`App\Bsky\Graph\Defs\*`)**
-- `ListView` - List views
-- `ListItemView` - List item views
-- `Relationship` - User relationships
-- `StarterPackView` - Starter pack views
-
-**Rich Text (`App\Bsky\Richtext\Facet\*`)**
-- `Facet` - Text annotations (mentions, URLs, hashtags)
-- `Mention` - User mention facets
-- `Link` - URL link facets
-- `Tag` - Hashtag facets
-
-**AT Protocol Core (`Com\Atproto\*`)**
-- `Repo\StrongRef` - Content-addressed record references
-- `Repo\Defs\CommitMeta` - Repository commit metadata
-- `Label\Defs\Label` - Content labels
-- `Admin\Defs\*` - Administrative tools (20+ classes)
-- `Sync\SubscribeRepos\*` - Repository sync events (6+ classes)
-- `Server\Defs\*` - Server definitions
-
-**Moderation (`Tools\Ozone\*`)**
-- `Moderation\Defs\*` - Moderation definitions
-- `Communication\Defs\*` - Moderation communication
-
-### Generated Enums
-
-Schema also generates PHP 8.1+ enums for string types with known values:
-
-**Moderation**
-- `Com\Atproto\Moderation\ReasonType` - Report reason types (spam, violation, etc.)
-- `Com\Atproto\Moderation\SubjectType` - Report subject types (account, record, chat)
-
-**Labels & Content**
-- `Com\Atproto\Label\LabelValue` - Content label values
-
-**Graph & Social**
-- `App\Bsky\Graph\ListPurpose` - List purpose types (modlist, curatelist)
-- `App\Bsky\Actor\MutedWordTarget` - Muted word target types
-
-**Moderation Tools**
-- `Tools\Ozone\Moderation\SubjectReviewState` - Review state values
-
-### Publishing Source Lexicons
-
-Developers can optionally publish the source JSON lexicons to their project for reference or custom generation:
+Generate classes for any lexicon:
 
 ```bash
-php artisan vendor:publish --tag=atp-lexicons
-```
-
-This copies all lexicon JSON files to `resources/lexicons/`.
-
-### Generating Custom DTOs
-
-Generate PHP classes from any lexicon schema. By default, classes are output to `app/Lexicons` with a namespace derived from the path (`App\Lexicons`). You can change this in `config/atp-schema.php` under `generators.lexicon_path`:
-
-```bash
-# Generate a single lexicon
-php artisan schema:generate app.bsky.feed.post
-
-# Generate with all dependencies
 php artisan schema:generate app.bsky.feed.post --with-dependencies
-
-# Regenerate existing files
-php artisan schema:generate app.bsky.feed.post --force
-
-# Override output directory and namespace
-php artisan schema:generate app.bsky.feed.post --output=app/DTOs --namespace="App\DTOs"
 ```
 
-Generated classes include a `#[Generated]` attribute that controls regeneration behavior:
-
-```php
-use SocialDept\AtpSchema\Attributes\Generated;
-
-#[Generated(regenerate: true)]  // Will be overwritten on next --force
-class Post extends Data
-{
-    // ...
-}
-```
-
-**Protecting customized files:** If you modify a generated class and want to prevent it from being overwritten:
-
-1. Change `regenerate: true` to `regenerate: false`, or
-2. Remove the `#[Generated]` attribute entirely
-
-Files without the attribute or with `regenerate: false` will be skipped when running `--force`, keeping your customizations safe.
-
-## Quick Example
-
-```php
-use SocialDept\AtpSchema\Data\LexiconDocument;
-use SocialDept\AtpSchema\Validation\Validator;
-use SocialDept\AtpSchema\Parser\SchemaLoader;
-
-// Load a schema
-$schema = LexiconDocument::fromArray([
-    'lexicon' => 1,
-    'id' => 'app.bsky.feed.post',
-    'defs' => [
-        'main' => [
-            'type' => 'record',
-            'record' => [
-                'type' => 'object',
-                'required' => ['text', 'createdAt'],
-                'properties' => [
-                    'text' => ['type' => 'string', 'maxLength' => 300],
-                    'createdAt' => ['type' => 'string', 'format' => 'datetime'],
-                ],
-            ],
-        ],
-    ],
-]);
-
-// Validate data
-$validator = new Validator(new SchemaLoader([]));
-
-$data = [
-    'text' => 'Hello, AT Protocol!',
-    'createdAt' => '2024-01-01T12:00:00Z',
-];
-
-if ($validator->validate($data, $schema)) {
-    // Data is valid!
-}
-
-// Get Laravel-formatted errors
-$errors = $validator->validateWithErrors($invalidData, $schema);
-// ['text' => ['The text field exceeds maximum length.']]
-```
-
-## Installation
+Write lexicons of your own, and check them before you publish:
 
 ```bash
-composer require socialdept/atp-schema
+php artisan schema:new record com.example.thing
+php artisan schema:lint
+php artisan schema:breaking
 ```
 
-The package will auto-register with Laravel. Optionally publish the config:
+## Documentation
 
-```bash
-php artisan vendor:publish --tag=atp-schema-config
-```
+You'll find the documentation on [https://socialde.pt/docs/atp-schema](https://socialde.pt/docs/atp-schema).
 
-## Basic Usage
-
-### Validation Modes
-
-Choose the validation strictness that fits your use case:
-
-```php
-use SocialDept\AtpSchema\Validation\Validator;
-
-// STRICT - Rejects unknown fields
-$validator->setMode(Validator::MODE_STRICT);
-
-// OPTIMISTIC - Allows unknown fields (default)
-$validator->setMode(Validator::MODE_OPTIMISTIC);
-
-// LENIENT - Skips constraint validation
-$validator->setMode(Validator::MODE_LENIENT);
-```
-
-### Handling Blobs
-
-Upload and validate files with built-in constraints:
-
-```php
-use SocialDept\AtpSchema\Services\BlobHandler;
-
-$blobHandler = new BlobHandler('local');
-
-$blob = $blobHandler->store(request()->file('image'), [
-    'accept' => ['image/*'],
-    'maxSize' => 1024 * 1024 * 5, // 5MB
-]);
-
-// Use in validated data
-$data = [
-    'image' => $blob->toArray(),
-];
-```
-
-### Model Transformation
-
-Transform between raw arrays and domain objects:
-
-```php
-use SocialDept\AtpSchema\Services\ModelMapper;
-use SocialDept\AtpSchema\Contracts\Transformer;
-
-class Post
-{
-    public function __construct(
-        public string $text,
-        public string $createdAt
-    ) {}
-}
-
-class PostTransformer implements Transformer
-{
-    public function fromArray(array $data): Post
-    {
-        return new Post(
-            text: $data['text'],
-            createdAt: $data['createdAt']
-        );
-    }
-
-    public function toArray(mixed $model): array
-    {
-        return [
-            'text' => $model->text,
-            'createdAt' => $model->createdAt,
-        ];
-    }
-
-    public function supports(string $type): bool
-    {
-        return $type === 'app.bsky.feed.post';
-    }
-}
-
-// Register and use
-$mapper = new ModelMapper();
-$mapper->register('app.bsky.feed.post', new PostTransformer());
-
-$post = $mapper->fromArray('app.bsky.feed.post', $data);
-$array = $mapper->toArray('app.bsky.feed.post', $post);
-```
-
-### Union Types
-
-Work with discriminated unions using the `$type` field:
-
-```php
-use SocialDept\AtpSchema\Services\UnionResolver;
-
-$resolver = new UnionResolver();
-
-$data = [
-    '$type' => 'app.bsky.embed.images',
-    'images' => [/* ... */],
-];
-
-$type = $resolver->extractType($data);
-// "app.bsky.embed.images"
-
-// Validate discriminated union
-$refs = ['app.bsky.embed.images', 'app.bsky.embed.video'];
-$resolver->validateDiscriminated($data, $refs);
-```
-
-## Complete Workflow Example
-
-Here's how to validate a post with an image upload:
-
-```php
-use SocialDept\AtpSchema\Data\LexiconDocument;
-use SocialDept\AtpSchema\Validation\Validator;
-use SocialDept\AtpSchema\Services\BlobHandler;
-
-// Load schema
-$schema = LexiconDocument::fromArray([/* ... */]);
-
-// Handle image upload
-$blobHandler = new BlobHandler('local');
-$blob = $blobHandler->store(request()->file('image'), [
-    'accept' => ['image/*'],
-    'maxSize' => 1024 * 1024 * 5,
-]);
-
-// Create post data
-$postData = [
-    'text' => 'Check out this photo!',
-    'createdAt' => now()->toIso8601String(),
-    'embed' => [
-        '$type' => 'app.bsky.embed.images',
-        'images' => [
-            [
-                'image' => $blob->toArray(),
-                'alt' => 'A beautiful sunset',
-            ],
-        ],
-    ],
-];
-
-// Validate
-$validator = new Validator(new SchemaLoader([]));
-
-if ($validator->validate($postData, $schema)) {
-    // Store post...
-} else {
-    $errors = $validator->validateWithErrors($postData, $schema);
-    // Handle errors...
-}
-```
-
-## Authoring Lexicons
-
-Commands for the lifecycle of your own lexicons: create them, check them, see what changed, and follow other people's. They work on the files in `atp-schema.lexicon_path` (`resources/lexicons` by default), where `com.example.thing` lives at `com/example/thing.json`. The rules and finding names follow Bluesky's own tooling (`goat lex`), so both report the same things.
-
-```bash
-php artisan schema:new record com.example.thing   # record, query, procedure or permission-set
-php artisan schema:lint                           # every local file, or name some
-php artisan schema:diff com.example.thing         # against the published version
-php artisan schema:breaking                       # changes that would break the published versions
-php artisan schema:pull com.other.thing           # copy someone else's lexicon in, and lock it
-php artisan schema:check-dns --did=did:plc:abc    # the _lexicon TXT records you are missing
-```
-
-| Command | Fails when |
-|---|---|
-| `schema:lint` | A file has an error. Warnings and notes are listed but pass |
-| `schema:breaking` | A change would break the published version |
-| `schema:pull` | A lexicon is not published, or its authority cannot be read |
-| `schema:check-dns` | A TXT record is missing, or names another DID than `--did` |
-
-`lint` and `breaking` take `--json` for one finding per line. `diff` and `breaking` take `--against=<file>` to compare with a file instead of the network.
-
-### What counts as breaking
-
-A published lexicon may grow but not change shape. New fields must be optional, types cannot change, required and nullable fields cannot change, enums, consts and string formats are fixed, a record's key type is fixed, and a closed union cannot gain or lose types. Changed length limits, integer ranges, blob types and sizes, and refs are warnings. Adding or removing an optional field or a whole definition is fine.
-
-```php
-use SocialDept\AtpSchema\Authoring\BreakingChanges;
-
-$issues = BreakingChanges::between($published, $edited);   // array of Issue
-```
-
-### Publishing and resolution
-
-An NSID's authority publishes a TXT record at `_lexicon.<authority domain>` holding `did=<DID>`, and the schema as a `com.atproto.lexicon.schema` record, keyed by the NSID, in that DID's repo. Resolution is not hierarchical: `com.example.feed.post` needs `_lexicon.feed.example.com`, and `com.example`'s record does not cover it. `schema:check-dns` prints each record you need.
-
-`schema:pull` writes what it copies to `lexicons.lock.json` (`atp-schema.lock_file`): the repo and version of each lexicon. Run it with no names to pull everything in the lock file again. A local copy that differs from the published version is kept unless you pass `--force`.
-
-Publishing your own lexicons needs an authenticated session, so it lives in [atp-client](https://github.com/socialdept/atp-client): `php artisan lexicon:publish`.
-
-## Supported Types
-
-Schema supports all AT Protocol Lexicon types:
-
-- **Primitives** - `string`, `integer`, `boolean`, `bytes`
-- **Objects** - Nested objects with properties
-- **Arrays** - Sequential lists with item validation
-- **Blobs** - File uploads with mime type and size constraints
-- **Unions** - Discriminated unions with `$type` field
-- **Unknown** - Accept any value
-
-## Supported Formats
-
-Built-in validators for AT Protocol formats:
-
-- `datetime` - ISO 8601 timestamps
-- `uri` - Valid URIs
-- `at-uri` - AT Protocol URIs
-- `did` - Decentralized identifiers
-- `nsid` - Namespaced identifiers
-- `cid` - Content identifiers
-
-## Advanced Features
-
-### Extension Hooks
-
-Add custom logic at key points in the validation lifecycle:
-
-```php
-use SocialDept\AtpSchema\Support\ExtensionManager;
-
-$extensions = new ExtensionManager();
-
-$extensions->hook('before:validate', function ($data) {
-    $data['text'] = trim($data['text']);
-    return $data;
-});
-
-$transformed = $extensions->filter('before:validate', $data);
-```
-
-### Macros
-
-Extend core services with custom methods:
-
-```php
-use SocialDept\AtpSchema\Services\ModelMapper;
-
-ModelMapper::macro('validateAndTransform', function ($type, $data, $schema) {
-    if (!$this->validator->validate($data, $schema)) {
-        return null;
-    }
-    return $this->fromArray($type, $data);
-});
-
-$mapper = new ModelMapper();
-$result = $mapper->validateAndTransform('app.bsky.feed.post', $data, $schema);
-```
-
-## API Reference
-
-### Core Classes
-
-**LexiconDocument**
-```php
-LexiconDocument::fromArray(array $data): self
-LexiconDocument::fromJson(string $json): self
-$document->getNsid(): string
-$document->getVersion(): int
-$document->getDefinition(string $name): ?array
-$document->getMainDefinition(): ?array
-```
-
-**Validator**
-```php
-$validator->validate(array $data, LexiconDocument $schema): bool
-$validator->validateWithErrors(array $data, LexiconDocument $schema): array
-$validator->setMode(string $mode): self
-```
-
-**BlobHandler**
-```php
-$handler->store(UploadedFile $file, array $constraints = []): BlobReference
-$handler->storeFromString(string $content, string $mimeType): BlobReference
-$handler->get(string $ref): ?string
-$handler->delete(string $ref): bool
-$handler->exists(string $ref): bool
-```
-
-**ModelMapper**
-```php
-$mapper->register(string $type, Transformer $transformer): self
-$mapper->fromArray(string $type, array $data): mixed
-$mapper->toArray(string $type, mixed $model): array
-$mapper->fromArrayMany(string $type, array $items): array
-```
-
-**UnionResolver**
-```php
-$resolver->extractType(array $data): ?string
-$resolver->validateDiscriminated(mixed $data, array $refs): void
-$resolver->getTypeDefinition(array $data, array $definition): ?LexiconDocument
-```
+Find yourself stuck using the package? Found a bug? Do you have general questions or suggestions for improving it? Feel free to [create an issue on GitHub](https://github.com/socialdept/atp-schema/issues).
 
 ## Testing
-
-Run the test suite:
 
 ```bash
 vendor/bin/phpunit
 ```
 
-Run specific test categories:
+## Contributing
 
-```bash
-# Unit tests only
-vendor/bin/phpunit --testsuite=unit
-
-# Integration tests only
-vendor/bin/phpunit --testsuite=integration
-```
-
-## Configuration
-
-Publish and customize `config/atp-schema.php`:
-
-```php
-return [
-    // Local lexicon directories (searched in order)
-    'sources' => [
-        resource_path('lexicons'),
-    ],
-
-    // Generator settings — namespace is derived from the path
-    // e.g. 'app/Lexicons' → 'App\Lexicons'
-    'generators' => [
-        'lexicon_path' => 'app/Lexicons',
-    ],
-
-    // Bundled pre-generated classes (SocialDept\AtpSchema\Generated)
-    'generated' => [
-        'namespace' => 'SocialDept\\AtpSchema\\Generated',
-        'enabled' => env('SCHEMA_USE_GENERATED', true),
-    ],
-
-    'validation' => [
-        'mode' => env('SCHEMA_VALIDATION_MODE', 'strict'),
-    ],
-
-    'cache' => [
-        'enabled' => env('SCHEMA_CACHE_ENABLED', true),
-    ],
-
-    'blobs' => [
-        'disk' => env('SCHEMA_BLOB_DISK', 'local'),
-        'path' => env('SCHEMA_BLOB_PATH', 'blobs'),
-    ],
-];
-```
-
-## Requirements
-
-- PHP 8.2+
-- Laravel 11+
-
-## Resources
-
-- [AT Protocol Documentation](https://atproto.com/)
-- [Lexicon Specification](https://atproto.com/specs/lexicon)
-- [Bluesky API Docs](https://docs.bsky.app/)
-
-## Support & Contributing
-
-Found a bug or have a feature request? [Open an issue](https://github.com/socialdept/atp-schema/issues).
-
-Want to contribute? We'd love your help! Check out the [contribution guidelines](CONTRIBUTING.md).
-
-## Credits
-
-- [Miguel Batres](https://batres.co) - founder & lead maintainer
-- [All contributors](https://github.com/socialdept/atp-schema/graphs/contributors)
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## License
 
-Schema is open-source software licensed under the [MIT license](LICENSE).
-
----
-
-**Built for the Atmosphere** • By Social Dept.
+The MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
